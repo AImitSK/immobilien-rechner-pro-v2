@@ -19,6 +19,7 @@ class IRP_Shortcode {
      * Usage:
      * - [immobilien_rechner] - User can choose mode and city from dropdown
      * - [immobilien_rechner mode="rental"] - Locks to rental mode
+     * - [immobilien_rechner mode="sale_value"] - Locks to sale value mode
      * - [immobilien_rechner city_id="muenchen"] - Locks to a specific city, skips location step
      * - [immobilien_rechner mode="comparison" city_id="berlin"] - Both locked
      *
@@ -27,7 +28,7 @@ class IRP_Shortcode {
      */
     public function render_calculator(array $atts = []): string {
         $atts = shortcode_atts([
-            'mode' => '', // Empty means user can choose, 'rental' or 'comparison' locks to that mode
+            'mode' => '', // Empty means user can choose, 'rental', 'comparison', or 'sale_value' locks to that mode
             'city_id' => '', // If set, uses this city's values and skips location step
             'theme' => 'light',
             'show_branding' => 'true',

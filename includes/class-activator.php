@@ -73,6 +73,43 @@ class IRP_Activator {
         if (!in_array('propstack_synced_at', $columns)) {
             $wpdb->query("ALTER TABLE {$leads_table} ADD COLUMN propstack_synced_at datetime DEFAULT NULL AFTER propstack_error");
         }
+
+        // Sale value calculator fields (v2.0)
+        if (!in_array('land_size', $columns)) {
+            $wpdb->query("ALTER TABLE {$leads_table} ADD COLUMN land_size decimal(10,2) DEFAULT NULL AFTER property_size");
+        }
+
+        if (!in_array('house_type', $columns)) {
+            $wpdb->query("ALTER TABLE {$leads_table} ADD COLUMN house_type varchar(50) DEFAULT NULL AFTER land_size");
+        }
+
+        if (!in_array('build_year', $columns)) {
+            $wpdb->query("ALTER TABLE {$leads_table} ADD COLUMN build_year int(4) DEFAULT NULL AFTER house_type");
+        }
+
+        if (!in_array('modernization', $columns)) {
+            $wpdb->query("ALTER TABLE {$leads_table} ADD COLUMN modernization varchar(50) DEFAULT NULL AFTER build_year");
+        }
+
+        if (!in_array('quality', $columns)) {
+            $wpdb->query("ALTER TABLE {$leads_table} ADD COLUMN quality varchar(50) DEFAULT NULL AFTER modernization");
+        }
+
+        if (!in_array('usage_type', $columns)) {
+            $wpdb->query("ALTER TABLE {$leads_table} ADD COLUMN usage_type varchar(50) DEFAULT NULL AFTER quality");
+        }
+
+        if (!in_array('sale_intention', $columns)) {
+            $wpdb->query("ALTER TABLE {$leads_table} ADD COLUMN sale_intention varchar(50) DEFAULT NULL AFTER usage_type");
+        }
+
+        if (!in_array('timeframe', $columns)) {
+            $wpdb->query("ALTER TABLE {$leads_table} ADD COLUMN timeframe varchar(50) DEFAULT NULL AFTER sale_intention");
+        }
+
+        if (!in_array('street_address', $columns)) {
+            $wpdb->query("ALTER TABLE {$leads_table} ADD COLUMN street_address varchar(255) DEFAULT NULL AFTER zip_code");
+        }
     }
     
     private static function create_tables(): void {
@@ -90,8 +127,17 @@ class IRP_Activator {
             mode varchar(20) NOT NULL DEFAULT 'rental',
             property_type varchar(50) DEFAULT NULL,
             property_size decimal(10,2) DEFAULT NULL,
+            land_size decimal(10,2) DEFAULT NULL,
+            house_type varchar(50) DEFAULT NULL,
+            build_year int(4) DEFAULT NULL,
+            modernization varchar(50) DEFAULT NULL,
+            quality varchar(50) DEFAULT NULL,
+            usage_type varchar(50) DEFAULT NULL,
+            sale_intention varchar(50) DEFAULT NULL,
+            timeframe varchar(50) DEFAULT NULL,
             property_location varchar(255) DEFAULT NULL,
             zip_code varchar(10) DEFAULT NULL,
+            street_address varchar(255) DEFAULT NULL,
             calculation_data longtext DEFAULT NULL,
             consent tinyint(1) NOT NULL DEFAULT 0,
             newsletter_consent tinyint(1) NOT NULL DEFAULT 0,

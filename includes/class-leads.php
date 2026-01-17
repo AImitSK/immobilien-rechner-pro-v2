@@ -68,35 +68,70 @@ class IRP_Leads {
 
         error_log('[IRP Leads] create_partial called');
 
+        $mode = sanitize_text_field($data['mode']);
+        $is_sale_value = $mode === 'sale_value';
+
+        // Build calculation_data based on mode
+        $calculation_data = [
+            'mode' => $mode,
+            'property_type' => $data['property_type'] ?? '',
+            'size' => $data['property_size'] ?? ($data['living_space'] ?? 0),
+            'city_id' => $data['city_id'] ?? '',
+            'city_name' => $data['city_name'] ?? ($data['property_location'] ?? ''),
+            'address' => $data['address'] ?? ($data['street_address'] ?? ''),
+            'condition' => $data['condition'] ?? '',
+            'location_rating' => $data['location_rating'] ?? 3,
+            'features' => $data['features'] ?? [],
+            'result' => $data['calculation_result'] ?? null,
+        ];
+
+        // Add sale value specific fields
+        if ($is_sale_value) {
+            $calculation_data = array_merge($calculation_data, [
+                'land_size' => $data['land_size'] ?? null,
+                'living_space' => $data['living_space'] ?? ($data['property_size'] ?? null),
+                'house_type' => $data['house_type'] ?? null,
+                'build_year' => $data['build_year'] ?? null,
+                'modernization' => $data['modernization'] ?? null,
+                'quality' => $data['quality'] ?? null,
+                'usage_type' => $data['usage_type'] ?? null,
+                'sale_intention' => $data['sale_intention'] ?? null,
+                'timeframe' => $data['timeframe'] ?? null,
+                'street_address' => $data['street_address'] ?? null,
+                'zip_code' => $data['zip_code'] ?? null,
+                'property_location' => $data['property_location'] ?? ($data['city_name'] ?? null),
+            ]);
+        }
+
         $insert_data = [
             'email' => '', // Will be filled when completing
-            'mode' => sanitize_text_field($data['mode']),
+            'mode' => $mode,
             'property_type' => sanitize_text_field($data['property_type'] ?? ''),
-            'property_size' => (float) ($data['property_size'] ?? 0),
-            'property_location' => sanitize_text_field($data['city_name'] ?? ''),
-            'calculation_data' => wp_json_encode([
-                'property_type' => $data['property_type'] ?? '',
-                'size' => $data['property_size'] ?? 0,
-                'city_id' => $data['city_id'] ?? '',
-                'city_name' => $data['city_name'] ?? '',
-                'address' => $data['address'] ?? '',
-                'condition' => $data['condition'] ?? '',
-                'location_rating' => $data['location_rating'] ?? 3,
-                'features' => $data['features'] ?? [],
-                'result' => $data['calculation_result'] ?? null,
-            ]),
+            'property_size' => (float) ($data['property_size'] ?? ($data['living_space'] ?? 0)),
+            'property_location' => sanitize_text_field($data['city_name'] ?? ($data['property_location'] ?? '')),
+            'zip_code' => sanitize_text_field($data['zip_code'] ?? ''),
+            'calculation_data' => wp_json_encode($calculation_data),
             'status' => 'partial',
             'ip_address' => $this->get_client_ip(),
             'source' => sanitize_text_field($data['source'] ?? 'calculator'),
         ];
 
+        // Add sale value specific database fields
+        if ($is_sale_value) {
+            $insert_data['land_size'] = !empty($data['land_size']) ? (float) $data['land_size'] : null;
+            $insert_data['house_type'] = !empty($data['house_type']) ? sanitize_text_field($data['house_type']) : null;
+            $insert_data['build_year'] = !empty($data['build_year']) ? (int) $data['build_year'] : null;
+            $insert_data['modernization'] = !empty($data['modernization']) ? sanitize_text_field($data['modernization']) : null;
+            $insert_data['quality'] = !empty($data['quality']) ? sanitize_text_field($data['quality']) : null;
+            $insert_data['usage_type'] = !empty($data['usage_type']) ? sanitize_text_field($data['usage_type']) : null;
+            $insert_data['sale_intention'] = !empty($data['sale_intention']) ? sanitize_text_field($data['sale_intention']) : null;
+            $insert_data['timeframe'] = !empty($data['timeframe']) ? sanitize_text_field($data['timeframe']) : null;
+            $insert_data['street_address'] = !empty($data['street_address']) ? sanitize_text_field($data['street_address']) : null;
+        }
+
         error_log('[IRP Leads] Insert data: ' . print_r($insert_data, true));
 
-        $result = $wpdb->insert(
-            $this->table_name,
-            $insert_data,
-            ['%s', '%s', '%s', '%f', '%s', '%s', '%s', '%s', '%s']
-        );
+        $result = $wpdb->insert($this->table_name, $insert_data);
 
         error_log('[IRP Leads] Insert result: ' . var_export($result, true));
 
@@ -312,11 +347,16 @@ class IRP_Leads {
             'apartment' => __('Wohnung', 'immobilien-rechner-pro'),
             'house' => __('Haus', 'immobilien-rechner-pro'),
             'commercial' => __('Gewerbe', 'immobilien-rechner-pro'),
+            'land' => __('Grundstück', 'immobilien-rechner-pro'),
         ];
 
-        $mode_label = $lead->mode === 'rental'
-            ? __('Mietwert-Berechnung', 'immobilien-rechner-pro')
-            : __('Verkauf vs. Vermietung', 'immobilien-rechner-pro');
+        $mode_labels = [
+            'rental' => __('Mietwert-Berechnung', 'immobilien-rechner-pro'),
+            'comparison' => __('Verkauf vs. Vermietung', 'immobilien-rechner-pro'),
+            'sale_value' => __('Verkaufswert-Berechnung', 'immobilien-rechner-pro'),
+        ];
+
+        $mode_label = $mode_labels[$lead->mode] ?? $lead->mode;
 
         $subject = sprintf(
             __('[Neuer Lead] %s - %s', 'immobilien-rechner-pro'),
@@ -331,6 +371,7 @@ class IRP_Leads {
             ? __('Ja', 'immobilien-rechner-pro')
             : __('Nein', 'immobilien-rechner-pro');
 
+        // Base message
         $message = sprintf(
             __("Neuer Lead vom Immobilien Rechner Pro\n" .
                "══════════════════════════════════════\n\n" .
@@ -343,21 +384,69 @@ class IRP_Leads {
                "IMMOBILIE\n" .
                "────────────────────────────────────\n" .
                "Modus:      %s\n" .
-               "Objekttyp:  %s\n" .
-               "Größe:      %s m²\n" .
-               "Standort:   %s %s\n\n" .
-               "────────────────────────────────────\n" .
-               "Im Admin ansehen:\n%s",
+               "Objekttyp:  %s\n",
             'immobilien-rechner-pro'),
             $lead->name ?: '-',
             $lead->email,
             $lead->phone ?: '-',
             $newsletter_status,
             $mode_label,
-            $property_type_label,
-            $lead->property_size ?: '-',
-            $lead->zip_code ?: '',
-            $lead->property_location ?: '',
+            $property_type_label
+        );
+
+        // Add mode-specific fields
+        if ($lead->mode === 'sale_value') {
+            // Sale value specific info
+            $calc_data = $lead->calculation_data ?? [];
+
+            if (!empty($lead->land_size)) {
+                $message .= sprintf("Grundstück: %s m²\n", $lead->land_size);
+            }
+            if (!empty($lead->property_size) && $lead->property_type !== 'land') {
+                $message .= sprintf("Wohnfläche: %s m²\n", $lead->property_size);
+            }
+            if (!empty($lead->build_year)) {
+                $message .= sprintf("Baujahr:    %s\n", $lead->build_year);
+            }
+            if (!empty($lead->quality)) {
+                $quality_labels = ['simple' => 'Einfach', 'normal' => 'Normal', 'upscale' => 'Gehoben', 'luxury' => 'Luxuriös'];
+                $message .= sprintf("Qualität:   %s\n", $quality_labels[$lead->quality] ?? $lead->quality);
+            }
+            if (!empty($lead->street_address)) {
+                $message .= sprintf("Adresse:    %s\n", $lead->street_address);
+            }
+            $message .= sprintf("Standort:   %s %s\n", $lead->zip_code ?: '', $lead->property_location ?: '');
+
+            // Sale intention and timeframe
+            if (!empty($lead->sale_intention)) {
+                $intention_labels = ['sell' => 'Verkaufen', 'buy' => 'Kaufen'];
+                $message .= sprintf("Absicht:    %s\n", $intention_labels[$lead->sale_intention] ?? $lead->sale_intention);
+            }
+            if (!empty($lead->timeframe)) {
+                $timeframe_labels = [
+                    'immediately' => 'Sofort',
+                    '3_months' => 'In 3 Monaten',
+                    '6_months' => 'In 6 Monaten',
+                    '12_months' => 'In 12 Monaten',
+                    'undecided' => 'Noch offen',
+                ];
+                $message .= sprintf("Zeitrahmen: %s\n", $timeframe_labels[$lead->timeframe] ?? $lead->timeframe);
+            }
+
+            // Calculated value
+            if (!empty($calc_data['result']['price_estimate'])) {
+                $message .= sprintf("\nGeschätzter Wert: %s €\n",
+                    number_format($calc_data['result']['price_estimate'], 0, ',', '.'));
+            }
+        } else {
+            // Rental/comparison mode
+            $message .= sprintf("Größe:      %s m²\n", $lead->property_size ?: '-');
+            $message .= sprintf("Standort:   %s %s\n", $lead->zip_code ?: '', $lead->property_location ?: '');
+        }
+
+        $message .= sprintf(
+            "\n────────────────────────────────────\n" .
+            "Im Admin ansehen:\n%s",
             admin_url('admin.php?page=irp-leads&lead=' . $lead_id)
         );
 

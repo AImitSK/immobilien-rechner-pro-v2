@@ -339,52 +339,141 @@ class IRP_Propstack {
 
         // Mode
         $mode = $lead_data['mode'] ?? 'rental';
-        $html .= '<p><strong>Modus:</strong> ' . ($mode === 'rental' ? 'Mietwertberechnung' : 'Verkaufen vs. Vermieten') . '</p>';
+        $mode_labels = [
+            'rental' => 'Mietwertberechnung',
+            'comparison' => 'Verkaufen vs. Vermieten',
+            'sale_value' => 'Verkaufswertberechnung',
+        ];
+        $html .= '<p><strong>Modus:</strong> ' . ($mode_labels[$mode] ?? $mode) . '</p>';
 
         // Property type
-        $types = ['apartment' => 'Wohnung', 'house' => 'Haus', 'commercial' => 'Gewerbe'];
+        $types = ['apartment' => 'Wohnung', 'house' => 'Haus', 'commercial' => 'Gewerbe', 'land' => 'Grundstück'];
         $property_type = $calc['property_type'] ?? '';
         if ($property_type) {
             $html .= '<p><strong>Objekttyp:</strong> ' . ($types[$property_type] ?? $property_type) . '</p>';
         }
 
-        // Size
-        $size = $calc['size'] ?? $lead_data['property_size'] ?? '';
-        if ($size) {
-            $html .= '<p><strong>Größe:</strong> ' . esc_html($size) . ' m²</p>';
-        }
-
-        // City
-        $city = $calc['city_name'] ?? $lead_data['property_location'] ?? '';
-        if ($city) {
-            $html .= '<p><strong>Stadt:</strong> ' . esc_html($city) . '</p>';
-        }
-
-        // Condition
-        $conditions = [
-            'new' => 'Neubau',
-            'renovated' => 'Renoviert',
-            'good' => 'Gut',
-            'needs_renovation' => 'Renovierungsbedürftig',
-        ];
-        $condition = $calc['condition'] ?? '';
-        if ($condition) {
-            $html .= '<p><strong>Zustand:</strong> ' . ($conditions[$condition] ?? $condition) . '</p>';
-        }
-
-        // Results
-        $html .= '<hr style="border: none; border-top: 1px solid #ddd; margin: 15px 0;">';
-        $html .= '<h4 style="color: #555;">Ergebnis</h4>';
-
-        if (isset($result['monthly_rent'])) {
-            $rent = $result['monthly_rent']['estimate'] ?? $result['monthly_rent'];
-            if (is_numeric($rent)) {
-                $html .= '<p><strong>Geschätzte Miete:</strong> ' . number_format($rent, 0, ',', '.') . ' €/Monat</p>';
+        // Sale value specific fields
+        if ($mode === 'sale_value') {
+            // House type
+            $house_types = [
+                'single_family' => 'Einfamilienhaus',
+                'multi_family' => 'Mehrfamilienhaus',
+                'semi_detached' => 'Doppelhaushälfte',
+                'townhouse_middle' => 'Mittelreihenhaus',
+                'townhouse_end' => 'Endreihenhaus',
+                'bungalow' => 'Bungalow',
+            ];
+            $house_type = $calc['house_type'] ?? '';
+            if ($house_type) {
+                $html .= '<p><strong>Haustyp:</strong> ' . ($house_types[$house_type] ?? $house_type) . '</p>';
             }
-        }
 
-        if (isset($result['price_per_sqm'])) {
-            $html .= '<p><strong>Preis pro m²:</strong> ' . number_format($result['price_per_sqm'], 2, ',', '.') . ' €</p>';
+            // Land size
+            $land_size = $calc['land_size'] ?? '';
+            if ($land_size) {
+                $html .= '<p><strong>Grundstück:</strong> ' . esc_html($land_size) . ' m²</p>';
+            }
+
+            // Living space
+            $living_space = $calc['living_space'] ?? $calc['size'] ?? '';
+            if ($living_space && $property_type !== 'land') {
+                $html .= '<p><strong>Wohnfläche:</strong> ' . esc_html($living_space) . ' m²</p>';
+            }
+
+            // Build year
+            $build_year = $calc['build_year'] ?? '';
+            if ($build_year) {
+                $html .= '<p><strong>Baujahr:</strong> ' . esc_html($build_year) . '</p>';
+            }
+
+            // Quality
+            $qualities = ['simple' => 'Einfach', 'normal' => 'Normal', 'upscale' => 'Gehoben', 'luxury' => 'Luxuriös'];
+            $quality = $calc['quality'] ?? '';
+            if ($quality) {
+                $html .= '<p><strong>Qualität:</strong> ' . ($qualities[$quality] ?? $quality) . '</p>';
+            }
+
+            // Address
+            $street = $calc['street_address'] ?? '';
+            if ($street) {
+                $html .= '<p><strong>Adresse:</strong> ' . esc_html($street) . '</p>';
+            }
+
+            // City
+            $city = $calc['property_location'] ?? $calc['city_name'] ?? $lead_data['property_location'] ?? '';
+            $zip = $calc['zip_code'] ?? '';
+            if ($city || $zip) {
+                $html .= '<p><strong>Standort:</strong> ' . esc_html(trim($zip . ' ' . $city)) . '</p>';
+            }
+
+            // Sale intention
+            $intentions = ['sell' => 'Verkaufen', 'buy' => 'Kaufen'];
+            $intention = $calc['sale_intention'] ?? '';
+            if ($intention) {
+                $html .= '<p><strong>Absicht:</strong> ' . ($intentions[$intention] ?? $intention) . '</p>';
+            }
+
+            // Timeframe
+            $timeframes = [
+                'immediately' => 'Sofort',
+                '3_months' => 'In 3 Monaten',
+                '6_months' => 'In 6 Monaten',
+                '12_months' => 'In 12 Monaten',
+                'undecided' => 'Noch offen',
+            ];
+            $timeframe = $calc['timeframe'] ?? '';
+            if ($timeframe) {
+                $html .= '<p><strong>Zeitrahmen:</strong> ' . ($timeframes[$timeframe] ?? $timeframe) . '</p>';
+            }
+
+            // Results - Sale value
+            $html .= '<hr style="border: none; border-top: 1px solid #ddd; margin: 15px 0;">';
+            $html .= '<h4 style="color: #555;">Ergebnis</h4>';
+
+            if (isset($result['price_estimate'])) {
+                $html .= '<p style="font-size: 18px; color: #2563eb;"><strong>Geschätzter Verkaufswert:</strong> ' . number_format($result['price_estimate'], 0, ',', '.') . ' €</p>';
+            }
+            if (isset($result['price_min']) && isset($result['price_max'])) {
+                $html .= '<p><strong>Preisspanne:</strong> ' . number_format($result['price_min'], 0, ',', '.') . ' - ' . number_format($result['price_max'], 0, ',', '.') . ' €</p>';
+            }
+        } else {
+            // Rental/comparison mode - original logic
+            $size = $calc['size'] ?? $lead_data['property_size'] ?? '';
+            if ($size) {
+                $html .= '<p><strong>Größe:</strong> ' . esc_html($size) . ' m²</p>';
+            }
+
+            $city = $calc['city_name'] ?? $lead_data['property_location'] ?? '';
+            if ($city) {
+                $html .= '<p><strong>Stadt:</strong> ' . esc_html($city) . '</p>';
+            }
+
+            $conditions = [
+                'new' => 'Neubau',
+                'renovated' => 'Renoviert',
+                'good' => 'Gut',
+                'needs_renovation' => 'Renovierungsbedürftig',
+            ];
+            $condition = $calc['condition'] ?? '';
+            if ($condition) {
+                $html .= '<p><strong>Zustand:</strong> ' . ($conditions[$condition] ?? $condition) . '</p>';
+            }
+
+            // Results
+            $html .= '<hr style="border: none; border-top: 1px solid #ddd; margin: 15px 0;">';
+            $html .= '<h4 style="color: #555;">Ergebnis</h4>';
+
+            if (isset($result['monthly_rent'])) {
+                $rent = $result['monthly_rent']['estimate'] ?? $result['monthly_rent'];
+                if (is_numeric($rent)) {
+                    $html .= '<p><strong>Geschätzte Miete:</strong> ' . number_format($rent, 0, ',', '.') . ' €/Monat</p>';
+                }
+            }
+
+            if (isset($result['price_per_sqm'])) {
+                $html .= '<p><strong>Preis pro m²:</strong> ' . number_format($result['price_per_sqm'], 2, ',', '.') . ' €</p>';
+            }
         }
 
         $html .= '</div>';
@@ -576,48 +665,135 @@ class IRP_Propstack {
 
         // Mode
         $mode = $lead_data['mode'] ?? 'rental';
-        $lines[] = 'Modus: ' . ($mode === 'rental' ? 'Mietwertberechnung' : 'Verkaufen vs. Vermieten');
+        $mode_labels = [
+            'rental' => 'Mietwertberechnung',
+            'comparison' => 'Verkaufen vs. Vermieten',
+            'sale_value' => 'Verkaufswertberechnung',
+        ];
+        $lines[] = 'Modus: ' . ($mode_labels[$mode] ?? $mode);
 
         // Property type
-        $types = ['apartment' => 'Wohnung', 'house' => 'Haus', 'commercial' => 'Gewerbe'];
+        $types = ['apartment' => 'Wohnung', 'house' => 'Haus', 'commercial' => 'Gewerbe', 'land' => 'Grundstück'];
         $property_type = $calc['property_type'] ?? '';
         $lines[] = 'Objekttyp: ' . ($types[$property_type] ?? $property_type);
 
-        // Size
-        $size = $calc['size'] ?? $lead_data['property_size'] ?? '';
-        if ($size) {
-            $lines[] = 'Größe: ' . $size . ' m²';
-        }
-
-        // City
-        $city = $calc['city_name'] ?? $lead_data['property_location'] ?? '';
-        if ($city) {
-            $lines[] = 'Stadt: ' . $city;
-        }
-
-        // Condition
-        $conditions = [
-            'new' => 'Neubau',
-            'renovated' => 'Renoviert',
-            'good' => 'Gut',
-            'needs_renovation' => 'Renovierungsbedürftig',
-        ];
-        $condition = $calc['condition'] ?? '';
-        if ($condition) {
-            $lines[] = 'Zustand: ' . ($conditions[$condition] ?? $condition);
-        }
-
-        // Result
-        $lines[] = '';
-        if (isset($result['monthly_rent'])) {
-            $rent = $result['monthly_rent']['estimate'] ?? $result['monthly_rent'];
-            if (is_numeric($rent)) {
-                $lines[] = 'Geschätzte Miete: ' . number_format($rent, 0, ',', '.') . ' €/Monat';
+        // Sale value specific fields
+        if ($mode === 'sale_value') {
+            // House type
+            $house_types = [
+                'single_family' => 'Einfamilienhaus',
+                'multi_family' => 'Mehrfamilienhaus',
+                'semi_detached' => 'Doppelhaushälfte',
+                'townhouse_middle' => 'Mittelreihenhaus',
+                'townhouse_end' => 'Endreihenhaus',
+                'bungalow' => 'Bungalow',
+            ];
+            $house_type = $calc['house_type'] ?? '';
+            if ($house_type) {
+                $lines[] = 'Haustyp: ' . ($house_types[$house_type] ?? $house_type);
             }
-        }
 
-        if (isset($result['price_per_sqm'])) {
-            $lines[] = 'Preis pro m²: ' . number_format($result['price_per_sqm'], 2, ',', '.') . ' €';
+            // Land size
+            $land_size = $calc['land_size'] ?? '';
+            if ($land_size) {
+                $lines[] = 'Grundstück: ' . $land_size . ' m²';
+            }
+
+            // Living space
+            $living_space = $calc['living_space'] ?? $calc['size'] ?? '';
+            if ($living_space && $property_type !== 'land') {
+                $lines[] = 'Wohnfläche: ' . $living_space . ' m²';
+            }
+
+            // Build year
+            $build_year = $calc['build_year'] ?? '';
+            if ($build_year) {
+                $lines[] = 'Baujahr: ' . $build_year;
+            }
+
+            // Quality
+            $qualities = ['simple' => 'Einfach', 'normal' => 'Normal', 'upscale' => 'Gehoben', 'luxury' => 'Luxuriös'];
+            $quality = $calc['quality'] ?? '';
+            if ($quality) {
+                $lines[] = 'Qualität: ' . ($qualities[$quality] ?? $quality);
+            }
+
+            // Address
+            $street = $calc['street_address'] ?? '';
+            if ($street) {
+                $lines[] = 'Adresse: ' . $street;
+            }
+
+            // City
+            $city = $calc['property_location'] ?? $calc['city_name'] ?? $lead_data['property_location'] ?? '';
+            $zip = $calc['zip_code'] ?? '';
+            if ($city || $zip) {
+                $lines[] = 'Standort: ' . trim($zip . ' ' . $city);
+            }
+
+            // Sale intention
+            $intentions = ['sell' => 'Verkaufen', 'buy' => 'Kaufen'];
+            $intention = $calc['sale_intention'] ?? '';
+            if ($intention) {
+                $lines[] = 'Absicht: ' . ($intentions[$intention] ?? $intention);
+            }
+
+            // Timeframe
+            $timeframes = [
+                'immediately' => 'Sofort',
+                '3_months' => 'In 3 Monaten',
+                '6_months' => 'In 6 Monaten',
+                '12_months' => 'In 12 Monaten',
+                'undecided' => 'Noch offen',
+            ];
+            $timeframe = $calc['timeframe'] ?? '';
+            if ($timeframe) {
+                $lines[] = 'Zeitrahmen: ' . ($timeframes[$timeframe] ?? $timeframe);
+            }
+
+            // Result - Sale value
+            $lines[] = '';
+            if (isset($result['price_estimate'])) {
+                $lines[] = 'Geschätzter Verkaufswert: ' . number_format($result['price_estimate'], 0, ',', '.') . ' €';
+            }
+            if (isset($result['price_min']) && isset($result['price_max'])) {
+                $lines[] = 'Preisspanne: ' . number_format($result['price_min'], 0, ',', '.') . ' - ' . number_format($result['price_max'], 0, ',', '.') . ' €';
+            }
+        } else {
+            // Rental/comparison mode - original logic
+            $size = $calc['size'] ?? $lead_data['property_size'] ?? '';
+            if ($size) {
+                $lines[] = 'Größe: ' . $size . ' m²';
+            }
+
+            $city = $calc['city_name'] ?? $lead_data['property_location'] ?? '';
+            if ($city) {
+                $lines[] = 'Stadt: ' . $city;
+            }
+
+            $conditions = [
+                'new' => 'Neubau',
+                'renovated' => 'Renoviert',
+                'good' => 'Gut',
+                'needs_renovation' => 'Renovierungsbedürftig',
+            ];
+            $condition = $calc['condition'] ?? '';
+            if ($condition) {
+                $lines[] = 'Zustand: ' . ($conditions[$condition] ?? $condition);
+            }
+
+            // Result
+            $lines[] = '';
+            if (isset($result['monthly_rent'])) {
+                $rent = $result['monthly_rent']['estimate'] ?? $result['monthly_rent'];
+                if (is_numeric($rent)) {
+                    $lines[] = 'Geschätzte Miete: ' . number_format($rent, 0, ',', '.') . ' €/Monat';
+                }
+            }
+
+            if (isset($result['price_per_sqm'])) {
+                $lines[] = 'Preis pro m²: ' . number_format($result['price_per_sqm'], 2, ',', '.') . ' €';
+            }
         }
 
         return implode("\n", $lines);

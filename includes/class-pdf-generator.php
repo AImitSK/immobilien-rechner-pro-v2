@@ -14,9 +14,10 @@ class IRP_PDF_Generator {
      * Create PDF from lead data
      *
      * @param array $data Lead data with calculation_data
+     * @param string $mode Optional mode override ('rental', 'comparison', 'sale_value')
      * @return string|false Path to generated PDF or false on failure
      */
-    public static function create(array $data) {
+    public static function create(array $data, $mode = null) {
         // Load DOMPDF
         if (!self::load_dompdf()) {
             error_log('[IRP PDF] Failed to load DOMPDF');
@@ -24,7 +25,20 @@ class IRP_PDF_Generator {
         }
 
         try {
-            $html = self::build_html($data);
+            // Determine mode from data if not provided
+            if ($mode === null) {
+                $calc = isset($data['calculation_data']) && is_array($data['calculation_data'])
+                    ? $data['calculation_data']
+                    : [];
+                $mode = isset($calc['mode']) ? $calc['mode'] : 'rental';
+            }
+
+            // Build HTML based on mode
+            if ($mode === 'sale_value') {
+                $html = self::build_sale_value_html($data);
+            } else {
+                $html = self::build_html($data);
+            }
 
             $options = new \Dompdf\Options();
             $options->set('isRemoteEnabled', false);
@@ -44,7 +58,8 @@ class IRP_PDF_Generator {
                 wp_mkdir_p($pdf_dir);
             }
 
-            $filename = 'immobilienbewertung-' . time() . '-' . wp_rand(1000, 9999) . '.pdf';
+            $filename_prefix = $mode === 'sale_value' ? 'verkaufswert' : 'immobilienbewertung';
+            $filename = $filename_prefix . '-' . time() . '-' . wp_rand(1000, 9999) . '.pdf';
             $filepath = $pdf_dir . '/' . $filename;
 
             file_put_contents($filepath, $dompdf->output());
@@ -438,6 +453,319 @@ class IRP_PDF_Generator {
 
     <div class="disclaimer">
         <strong>Hinweis:</strong> ' . esc_html($vars['disclaimer']) . '
+    </div>
+
+    <div class="footer">
+        <strong>' . esc_html($vars['company_name']) . '</strong>';
+
+        if (!empty($vars['company_name_2'])) {
+            $html .= ' | ' . esc_html($vars['company_name_2']);
+        }
+
+        $html .= '<br>';
+
+        $contact = [];
+        if (!empty($vars['company_address'])) {
+            $contact[] = $vars['company_address'];
+        }
+        if (!empty($vars['company_phone'])) {
+            $contact[] = 'Tel.: ' . $vars['company_phone'];
+        }
+        if (!empty($vars['company_email'])) {
+            $contact[] = $vars['company_email'];
+        }
+        $html .= esc_html(implode(' | ', $contact));
+
+        $html .= '<br><span style="color: #999;">Erstellt am ' . $vars['date'] . '</span>
+    </div>
+</body>
+</html>';
+
+        return $html;
+    }
+
+    /**
+     * Build HTML for Sale Value PDF
+     *
+     * @param array $data Lead data
+     * @return string
+     */
+    private static function build_sale_value_html(array $data) {
+        $branding = get_option('irp_settings', []);
+        $calc = isset($data['calculation_data']) && is_array($data['calculation_data'])
+            ? $data['calculation_data']
+            : [];
+        $result = isset($calc['result']) && is_array($calc['result']) ? $calc['result'] : [];
+
+        // Determine property type and calculation method
+        $property_type = isset($calc['property_type']) ? $calc['property_type'] : 'house';
+        $calculation_methods = [
+            'apartment' => 'vergleichswertverfahren',
+            'house' => 'sachwertverfahren',
+            'land' => 'bodenwertverfahren',
+        ];
+        $calculation_method = isset($calculation_methods[$property_type]) ? $calculation_methods[$property_type] : 'sachwertverfahren';
+
+        // Translate property type
+        $property_type_labels = [
+            'apartment' => 'Wohnung',
+            'house' => 'Haus',
+            'land' => 'Grundstück',
+        ];
+        $property_type_label = isset($property_type_labels[$property_type]) ? $property_type_labels[$property_type] : $property_type;
+
+        // Translate house type
+        $house_type_labels = [
+            'single_family' => 'Einfamilienhaus',
+            'multi_family' => 'Mehrfamilienhaus',
+            'semi_detached' => 'Doppelhaushälfte',
+            'townhouse_middle' => 'Mittelreihenhaus',
+            'townhouse_end' => 'Endreihenhaus',
+            'bungalow' => 'Bungalow',
+        ];
+        $house_type = isset($calc['house_type']) ? $calc['house_type'] : '';
+        $house_type_label = isset($house_type_labels[$house_type]) ? $house_type_labels[$house_type] : '';
+
+        // Translate quality
+        $quality_labels = [
+            'simple' => 'Einfach',
+            'normal' => 'Normal',
+            'upscale' => 'Gehoben',
+            'luxury' => 'Luxuriös',
+        ];
+        $quality = isset($calc['quality']) ? $calc['quality'] : 'normal';
+        $quality_label = isset($quality_labels[$quality]) ? $quality_labels[$quality] : $quality;
+
+        // Translate modernization
+        $modernization_labels = [
+            '1-3_years' => 'Vor 1-3 Jahren',
+            '4-9_years' => 'Vor 4-9 Jahren',
+            '10-15_years' => 'Vor 10-15 Jahren',
+            'over_15_years' => 'Vor mehr als 15 Jahren',
+            'never' => 'Noch nie modernisiert',
+        ];
+        $modernization = isset($calc['modernization']) ? $calc['modernization'] : '';
+        $modernization_label = isset($modernization_labels[$modernization]) ? $modernization_labels[$modernization] : '';
+
+        // Get values from result
+        $price_estimate = isset($result['price_estimate']) ? $result['price_estimate'] : 0;
+        $price_min = isset($result['price_min']) ? $result['price_min'] : ($price_estimate * 0.95);
+        $price_max = isset($result['price_max']) ? $result['price_max'] : ($price_estimate * 1.05);
+        $land_value = isset($result['land_value']) ? $result['land_value'] : 0;
+        $building_value = isset($result['building_value']) ? $result['building_value'] : 0;
+        $features_value = isset($result['features_value']) ? $result['features_value'] : 0;
+        $price_per_sqm_living = isset($result['price_per_sqm_living']) ? $result['price_per_sqm_living'] : 0;
+        $price_per_sqm_land = isset($result['price_per_sqm_land']) ? $result['price_per_sqm_land'] : 0;
+
+        // Get factors
+        $factors = isset($result['factors']) ? $result['factors'] : [];
+        $market_factor = isset($factors['market']) ? $factors['market'] : 1.0;
+        $effective_build_year = isset($factors['effective_build_year']) ? $factors['effective_build_year'] : '';
+
+        // Prepare template variables
+        $vars = [
+            'logo_base64' => self::get_logo_base64($branding),
+            'logo_width' => isset($branding['company_logo_width']) ? (int) $branding['company_logo_width'] : 150,
+            'primary_color' => isset($branding['primary_color']) ? $branding['primary_color'] : '#2563eb',
+            'company_name' => isset($branding['company_name']) ? $branding['company_name'] : '',
+            'company_name_2' => isset($branding['company_name_2']) ? $branding['company_name_2'] : '',
+            'company_name_3' => isset($branding['company_name_3']) ? $branding['company_name_3'] : '',
+            'company_address' => self::build_address($branding),
+            'company_phone' => isset($branding['company_phone']) ? $branding['company_phone'] : '',
+            'company_email' => isset($branding['company_email']) ? $branding['company_email'] : '',
+            'lead_name' => isset($data['name']) ? $data['name'] : '',
+            'property_type' => $property_type,
+            'property_type_label' => $property_type_label,
+            'living_space' => isset($calc['living_space']) ? $calc['living_space'] : (isset($calc['property_size']) ? $calc['property_size'] : ''),
+            'land_size' => isset($calc['land_size']) ? $calc['land_size'] : '',
+            'city_name' => isset($calc['city_name']) ? $calc['city_name'] : (isset($calc['property_location']) ? $calc['property_location'] : ''),
+            'street_address' => isset($calc['street_address']) ? $calc['street_address'] : '',
+            'house_type_label' => $house_type_label,
+            'quality_label' => $quality_label,
+            'build_year' => isset($calc['build_year']) ? $calc['build_year'] : '',
+            'effective_build_year' => $effective_build_year,
+            'modernization_label' => $modernization_label,
+            'location_rating' => isset($calc['location_rating']) ? (int) $calc['location_rating'] : 3,
+            'features' => isset($calc['features']) ? self::translate_sale_features($calc['features']) : [],
+            'price_estimate' => self::format_currency($price_estimate),
+            'price_min' => self::format_currency($price_min),
+            'price_max' => self::format_currency($price_max),
+            'price_per_sqm_living' => $price_per_sqm_living > 0 ? self::format_currency($price_per_sqm_living) : '',
+            'price_per_sqm_land' => $price_per_sqm_land > 0 ? self::format_currency($price_per_sqm_land) : '',
+            'land_value' => self::format_currency($land_value),
+            'building_value' => self::format_currency($building_value),
+            'features_value' => self::format_currency($features_value),
+            'market_factor' => $market_factor,
+            'calculation_method' => $calculation_method,
+            'date' => date_i18n('d.m.Y'),
+        ];
+
+        // Build disclaimer
+        $vars['disclaimer'] = 'Diese Schätzung dient nur zur Orientierung und ersetzt keine professionelle Immobilienbewertung. Der tatsächliche Verkaufspreis kann aufgrund individueller Objektmerkmale, aktueller Marktbedingungen und Verhandlungen abweichen. Für eine verbindliche Bewertung empfehlen wir die Konsultation eines Sachverständigen.';
+
+        // Check for template file
+        $template_path = IRP_PLUGIN_DIR . 'includes/templates/pdf-sale-value.php';
+        if (file_exists($template_path)) {
+            ob_start();
+            extract($vars);
+            include $template_path;
+            return ob_get_clean();
+        }
+
+        // Fallback to simple HTML if template doesn't exist
+        return self::build_sale_value_fallback_html($vars);
+    }
+
+    /**
+     * Translate sale value features
+     *
+     * @param array $features Feature keys
+     * @return array Translated feature names
+     */
+    private static function translate_sale_features($features) {
+        if (!is_array($features) || empty($features)) {
+            return [];
+        }
+
+        $translations = [
+            // Exterior
+            'balcony' => 'Balkon',
+            'terrace' => 'Terrasse',
+            'garden' => 'Garten',
+            'garage' => 'Garage',
+            'parking' => 'Stellplatz',
+            'solar' => 'Solaranlage',
+            // Interior
+            'fitted_kitchen' => 'Einbauküche',
+            'elevator' => 'Aufzug',
+            'cellar' => 'Keller',
+            'attic' => 'Dachboden',
+            'fireplace' => 'Kamin',
+            'parquet' => 'Parkettboden',
+        ];
+
+        $translated = [];
+        foreach ($features as $feature) {
+            $translated[] = isset($translations[$feature]) ? $translations[$feature] : $feature;
+        }
+        return $translated;
+    }
+
+    /**
+     * Build fallback HTML for sale value PDF
+     *
+     * @param array $vars Template variables
+     * @return string
+     */
+    private static function build_sale_value_fallback_html(array $vars) {
+        $html = '<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body { font-family: DejaVu Sans, Arial, sans-serif; font-size: 12pt; color: #333; margin: 0; padding: 40px; }
+        .header { text-align: center; margin-bottom: 30px; }
+        .logo { max-width: ' . $vars['logo_width'] . 'px; margin-bottom: 20px; }
+        h1 { color: ' . $vars['primary_color'] . '; font-size: 22pt; margin-bottom: 5px; }
+        .subtitle { color: #666; font-size: 11pt; }
+        .result-box { background: #f8fafc; border: 2px solid ' . $vars['primary_color'] . '; border-radius: 10px; padding: 25px; text-align: center; margin: 25px 0; }
+        .result-range { font-size: 11pt; color: #374151; margin-bottom: 5px; }
+        .result-value { font-size: 30pt; font-weight: bold; color: ' . $vars['primary_color'] . '; }
+        .result-label { font-size: 10pt; color: #666; margin-top: 5px; }
+        .breakdown { background: #f8fafc; border-radius: 6px; padding: 15px; margin: 20px 0; }
+        .breakdown h3 { color: ' . $vars['primary_color'] . '; font-size: 11pt; margin: 0 0 10px 0; }
+        .breakdown table { width: 100%; border-collapse: collapse; }
+        .breakdown td { padding: 5px 0; font-size: 10pt; }
+        .breakdown td:last-child { text-align: right; font-weight: 500; }
+        .details { margin: 20px 0; }
+        .details h3 { color: ' . $vars['primary_color'] . '; font-size: 11pt; border-bottom: 2px solid #e5e7eb; padding-bottom: 5px; }
+        .details table { width: 100%; border-collapse: collapse; }
+        .details td { padding: 6px 0; border-bottom: 1px solid #f3f4f6; font-size: 10pt; }
+        .details td:first-child { color: #666; width: 35%; }
+        .disclaimer { background: #fef9e7; border-left: 3px solid #f59e0b; padding: 12px; margin: 20px 0; font-size: 9pt; color: #78350f; }
+        .footer { position: fixed; bottom: 30px; left: 40px; right: 40px; text-align: center; font-size: 8pt; color: #666; border-top: 1px solid #e5e7eb; padding-top: 10px; }
+    </style>
+</head>
+<body>
+    <div class="header">';
+
+        if (!empty($vars['logo_base64'])) {
+            $html .= '<img src="' . $vars['logo_base64'] . '" class="logo" alt="Logo">';
+        }
+
+        $html .= '<h1>Verkaufswert-Schätzung</h1>
+        <div class="subtitle">' . esc_html($vars['property_type_label']) . ' in ' . esc_html($vars['city_name']) . '</div>
+    </div>
+
+    <div class="result-box">
+        <div class="result-range">' . $vars['price_min'] . ' – ' . $vars['price_max'] . '</div>
+        <div class="result-value">' . $vars['price_estimate'] . '</div>
+        <div class="result-label">Mittelwert</div>
+    </div>';
+
+        // Show breakdown for houses
+        if ($vars['property_type'] === 'house') {
+            $html .= '
+    <div class="breakdown">
+        <h3>Wertermittlung</h3>
+        <table>
+            <tr><td>Grundstückswert</td><td>' . $vars['land_value'] . '</td></tr>
+            <tr><td>Gebäudewert</td><td>' . $vars['building_value'] . '</td></tr>';
+            if (!empty($vars['features_value']) && $vars['features_value'] !== '0 €') {
+                $html .= '<tr><td>Ausstattung</td><td>+' . $vars['features_value'] . '</td></tr>';
+            }
+            $html .= '<tr><td>Marktanpassung</td><td>×' . number_format($vars['market_factor'], 2, ',', '.') . '</td></tr>
+        </table>
+    </div>';
+        }
+
+        $html .= '
+    <div class="details">
+        <h3>Objektdaten</h3>
+        <table>
+            <tr><td>Objekttyp</td><td>' . esc_html($vars['property_type_label']);
+        if (!empty($vars['house_type_label'])) {
+            $html .= ' (' . esc_html($vars['house_type_label']) . ')';
+        }
+        $html .= '</td></tr>';
+
+        if (!empty($vars['living_space'])) {
+            $html .= '<tr><td>Wohnfläche</td><td>' . esc_html($vars['living_space']) . ' m²</td></tr>';
+        }
+        if (!empty($vars['land_size'])) {
+            $html .= '<tr><td>Grundstücksfläche</td><td>' . esc_html($vars['land_size']) . ' m²</td></tr>';
+        }
+
+        $html .= '<tr><td>Standort</td><td>' . esc_html($vars['city_name']);
+        if (!empty($vars['street_address'])) {
+            $html .= ', ' . esc_html($vars['street_address']);
+        }
+        $html .= '</td></tr>';
+
+        if (!empty($vars['build_year'])) {
+            $html .= '<tr><td>Baujahr</td><td>' . esc_html($vars['build_year']);
+            if (!empty($vars['effective_build_year']) && $vars['effective_build_year'] != $vars['build_year']) {
+                $html .= ' <span style="color: #666; font-size: 8pt;">(fiktiv: ' . esc_html($vars['effective_build_year']) . ')</span>';
+            }
+            $html .= '</td></tr>';
+        }
+
+        if (!empty($vars['quality_label'])) {
+            $html .= '<tr><td>Bauqualität</td><td>' . esc_html($vars['quality_label']) . '</td></tr>';
+        }
+
+        $html .= '<tr><td>Lagebewertung</td><td>' . $vars['location_rating'] . ' von 5</td></tr>';
+
+        if (!empty($vars['features'])) {
+            $html .= '<tr><td>Ausstattung</td><td>' . esc_html(implode(', ', $vars['features'])) . '</td></tr>';
+        }
+
+        $html .= '
+        </table>
+    </div>
+
+    <div class="disclaimer">
+        <strong>Wichtiger Hinweis:</strong> ' . esc_html($vars['disclaimer']) . '
     </div>
 
     <div class="footer">

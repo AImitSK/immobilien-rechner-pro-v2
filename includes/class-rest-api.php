@@ -31,7 +31,15 @@ class IRP_Rest_API {
             'permission_callback' => '__return_true',
             'args' => $this->get_comparison_args(),
         ]);
-        
+
+        // Calculate sale value (Verkaufswert)
+        register_rest_route($this->namespace, '/calculate/sale_value', [
+            'methods' => 'POST',
+            'callback' => [$this, 'calculate_sale_value'],
+            'permission_callback' => '__return_true',
+            'args' => $this->get_sale_value_args(),
+        ]);
+
         // Submit lead (legacy - full lead in one step)
         register_rest_route($this->namespace, '/leads', [
             'methods' => 'POST',
@@ -202,7 +210,7 @@ class IRP_Rest_API {
             'mode' => [
                 'required' => true,
                 'type' => 'string',
-                'enum' => ['rental', 'comparison'],
+                'enum' => ['rental', 'comparison', 'sale_value'],
             ],
             'calculation_data' => [
                 'required' => false,
@@ -220,7 +228,7 @@ class IRP_Rest_API {
             'mode' => [
                 'required' => true,
                 'type' => 'string',
-                'enum' => ['rental', 'comparison'],
+                'enum' => ['rental', 'comparison', 'sale_value'],
             ],
             'property_type' => [
                 'required' => true,
@@ -228,7 +236,7 @@ class IRP_Rest_API {
                 'sanitize_callback' => 'sanitize_text_field',
             ],
             'property_size' => [
-                'required' => true,
+                'required' => false, // Not required for sale_value mode (uses living_space)
                 'type' => 'number',
             ],
             'city_id' => [
@@ -259,6 +267,64 @@ class IRP_Rest_API {
             'calculation_result' => [
                 'required' => false,
                 'type' => 'object',
+            ],
+            // Sale value specific fields
+            'land_size' => [
+                'required' => false,
+                'type' => 'number',
+            ],
+            'living_space' => [
+                'required' => false,
+                'type' => 'number',
+            ],
+            'house_type' => [
+                'required' => false,
+                'type' => 'string',
+                'sanitize_callback' => 'sanitize_text_field',
+            ],
+            'build_year' => [
+                'required' => false,
+                'type' => 'integer',
+            ],
+            'modernization' => [
+                'required' => false,
+                'type' => 'string',
+                'sanitize_callback' => 'sanitize_text_field',
+            ],
+            'quality' => [
+                'required' => false,
+                'type' => 'string',
+                'sanitize_callback' => 'sanitize_text_field',
+            ],
+            'usage_type' => [
+                'required' => false,
+                'type' => 'string',
+                'sanitize_callback' => 'sanitize_text_field',
+            ],
+            'sale_intention' => [
+                'required' => false,
+                'type' => 'string',
+                'sanitize_callback' => 'sanitize_text_field',
+            ],
+            'timeframe' => [
+                'required' => false,
+                'type' => 'string',
+                'sanitize_callback' => 'sanitize_text_field',
+            ],
+            'street_address' => [
+                'required' => false,
+                'type' => 'string',
+                'sanitize_callback' => 'sanitize_text_field',
+            ],
+            'zip_code' => [
+                'required' => false,
+                'type' => 'string',
+                'sanitize_callback' => 'sanitize_text_field',
+            ],
+            'property_location' => [
+                'required' => false,
+                'type' => 'string',
+                'sanitize_callback' => 'sanitize_text_field',
             ],
         ];
     }
@@ -318,16 +384,95 @@ class IRP_Rest_API {
     public function calculate_comparison(\WP_REST_Request $request): \WP_REST_Response {
         $calculator = new IRP_Calculator();
         $result = $calculator->calculate_comparison($request->get_params());
-        
+
         // Store calculation (anonymous)
         $this->store_calculation('comparison', $request->get_params(), $result);
-        
+
         return new \WP_REST_Response([
             'success' => true,
             'data' => $result,
         ]);
     }
-    
+
+    public function calculate_sale_value(\WP_REST_Request $request): \WP_REST_Response {
+        $calculator = new IRP_Sale_Calculator();
+        $result = $calculator->calculate($request->get_params());
+
+        // Store calculation (anonymous)
+        $this->store_calculation('sale_value', $request->get_params(), $result);
+
+        return new \WP_REST_Response([
+            'success' => true,
+            'data' => $result,
+        ]);
+    }
+
+    private function get_sale_value_args(): array {
+        return [
+            'property_type' => [
+                'required' => true,
+                'type' => 'string',
+                'enum' => ['apartment', 'house', 'land'],
+                'sanitize_callback' => 'sanitize_text_field',
+            ],
+            'city_id' => [
+                'required' => false,
+                'type' => 'string',
+                'sanitize_callback' => 'sanitize_key',
+            ],
+            'living_space' => [
+                'required' => false,
+                'type' => 'number',
+                'minimum' => 10,
+                'maximum' => 5000,
+            ],
+            'land_size' => [
+                'required' => false,
+                'type' => 'number',
+                'minimum' => 50,
+                'maximum' => 100000,
+            ],
+            'house_type' => [
+                'required' => false,
+                'type' => 'string',
+                'enum' => ['single_family', 'multi_family', 'semi_detached', 'townhouse_middle', 'townhouse_end', 'bungalow'],
+                'sanitize_callback' => 'sanitize_text_field',
+            ],
+            'build_year' => [
+                'required' => false,
+                'type' => 'integer',
+                'minimum' => 1800,
+                'maximum' => 2030,
+            ],
+            'modernization' => [
+                'required' => false,
+                'type' => 'string',
+                'enum' => ['1-3_years', '4-9_years', '10-15_years', 'over_15_years', 'never'],
+                'sanitize_callback' => 'sanitize_text_field',
+            ],
+            'quality' => [
+                'required' => false,
+                'type' => 'string',
+                'enum' => ['simple', 'normal', 'upscale', 'luxury'],
+                'default' => 'normal',
+                'sanitize_callback' => 'sanitize_text_field',
+            ],
+            'location_rating' => [
+                'required' => false,
+                'type' => 'integer',
+                'minimum' => 1,
+                'maximum' => 5,
+                'default' => 3,
+            ],
+            'features' => [
+                'required' => false,
+                'type' => 'array',
+                'items' => ['type' => 'string'],
+                'default' => [],
+            ],
+        ];
+    }
+
     public function submit_lead(\WP_REST_Request $request): \WP_REST_Response {
         if (!$request->get_param('consent')) {
             return new \WP_REST_Response([
