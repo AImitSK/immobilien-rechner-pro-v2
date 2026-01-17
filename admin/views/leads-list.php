@@ -18,6 +18,7 @@ if (!defined('ABSPATH')) {
                 <option value=""><?php esc_html_e('Alle Modi', 'immobilien-rechner-pro'); ?></option>
                 <option value="rental" <?php selected($args['mode'], 'rental'); ?>><?php esc_html_e('Mietwert', 'immobilien-rechner-pro'); ?></option>
                 <option value="comparison" <?php selected($args['mode'], 'comparison'); ?>><?php esc_html_e('Vergleich', 'immobilien-rechner-pro'); ?></option>
+                <option value="sale_value" <?php selected($args['mode'], 'sale_value'); ?>><?php esc_html_e('Verkaufswert', 'immobilien-rechner-pro'); ?></option>
             </select>
 
             <select name="status">
@@ -139,7 +140,14 @@ if (!defined('ABSPATH')) {
                         </td>
                         <td class="column-mode">
                             <span class="irp-badge irp-badge-<?php echo esc_attr($lead->mode); ?>">
-                                <?php echo $lead->mode === 'rental' ? esc_html__('Mietwert', 'immobilien-rechner-pro') : esc_html__('Vergleich', 'immobilien-rechner-pro'); ?>
+                                <?php
+                                $mode_labels = [
+                                    'rental' => __('Mietwert', 'immobilien-rechner-pro'),
+                                    'comparison' => __('Vergleich', 'immobilien-rechner-pro'),
+                                    'sale_value' => __('Verkaufswert', 'immobilien-rechner-pro'),
+                                ];
+                                echo esc_html($mode_labels[$lead->mode] ?? $lead->mode);
+                                ?>
                             </span>
                         </td>
                         <td class="column-date">

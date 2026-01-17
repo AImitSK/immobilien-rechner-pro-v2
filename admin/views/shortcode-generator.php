@@ -49,6 +49,15 @@ if (!defined('ABSPATH')) {
                             <span class="description"><?php esc_html_e('Verkaufen vs. Vermieten', 'immobilien-rechner-pro'); ?></span>
                         </div>
                     </label>
+
+                    <label class="irp-radio-card">
+                        <input type="radio" name="irp_mode" value="sale_value">
+                        <div class="irp-radio-card-content">
+                            <span class="irp-radio-card-icon dashicons dashicons-money-alt"></span>
+                            <strong><?php esc_html_e('Nur Verkaufswert', 'immobilien-rechner-pro'); ?></strong>
+                            <span class="description"><?php esc_html_e('Immobilienbewertung', 'immobilien-rechner-pro'); ?></span>
+                        </div>
+                    </label>
                 </div>
             </div>
 

@@ -42,6 +42,14 @@ if (!defined('ABSPATH')) {
                 <span class="irp-card-label"><?php esc_html_e('Mietwert-Berechnungen', 'immobilien-rechner-pro'); ?></span>
             </div>
         </div>
+
+        <div class="irp-card">
+            <div class="irp-card-icon dashicons dashicons-money-alt"></div>
+            <div class="irp-card-content">
+                <span class="irp-card-value"><?php echo esc_html($sale_value_calculations); ?></span>
+                <span class="irp-card-label"><?php esc_html_e('Verkaufswert-Berechnungen', 'immobilien-rechner-pro'); ?></span>
+            </div>
+        </div>
     </div>
 
     <div class="irp-dashboard-row">
@@ -55,7 +63,7 @@ if (!defined('ABSPATH')) {
                 <table class="irp-shortcode-options">
                     <tr>
                         <td><code>mode=""</code></td>
-                        <td><?php esc_html_e('Leer lassen für Modusauswahl, oder "rental" oder "comparison" setzen', 'immobilien-rechner-pro'); ?></td>
+                        <td><?php esc_html_e('Leer lassen für Modusauswahl, oder "rental", "comparison" oder "sale_value" setzen', 'immobilien-rechner-pro'); ?></td>
                     </tr>
                     <tr>
                         <td><code>theme="light"</code></td>
@@ -93,7 +101,14 @@ if (!defined('ABSPATH')) {
                                     </td>
                                     <td>
                                         <span class="irp-badge irp-badge-<?php echo esc_attr($lead->mode); ?>">
-                                            <?php echo $lead->mode === 'rental' ? esc_html__('Mietwert', 'immobilien-rechner-pro') : esc_html__('Vergleich', 'immobilien-rechner-pro'); ?>
+                                            <?php
+                                            $mode_labels = [
+                                                'rental' => __('Mietwert', 'immobilien-rechner-pro'),
+                                                'comparison' => __('Vergleich', 'immobilien-rechner-pro'),
+                                                'sale_value' => __('Verkaufswert', 'immobilien-rechner-pro'),
+                                            ];
+                                            echo esc_html($mode_labels[$lead->mode] ?? $lead->mode);
+                                            ?>
                                         </span>
                                     </td>
                                     <td><?php echo esc_html(date_i18n(get_option('date_format'), strtotime($lead->created_at))); ?></td>

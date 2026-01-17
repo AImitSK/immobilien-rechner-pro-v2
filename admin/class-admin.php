@@ -371,7 +371,10 @@ class IRP_Admin {
         $rental_calculations = (int) $wpdb->get_var(
             "SELECT COUNT(*) FROM {$calculations_table} WHERE mode = 'rental'"
         );
-        
+        $sale_value_calculations = (int) $wpdb->get_var(
+            "SELECT COUNT(*) FROM {$calculations_table} WHERE mode = 'sale_value'"
+        );
+
         // Recent leads
         $recent_leads = $wpdb->get_results(
             "SELECT * FROM {$leads_table} ORDER BY created_at DESC LIMIT 5"

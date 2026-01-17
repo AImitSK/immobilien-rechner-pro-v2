@@ -34,7 +34,14 @@ $type_labels = [
             <div class="irp-lead-info">
                 <h2><?php echo esc_html($lead->name ?: $lead->email); ?></h2>
                 <span class="irp-badge irp-badge-<?php echo esc_attr($lead->mode); ?>">
-                    <?php echo $lead->mode === 'rental' ? esc_html__('Mietwert-Berechnung', 'immobilien-rechner-pro') : esc_html__('Verkauf vs. Vermietung', 'immobilien-rechner-pro'); ?>
+                    <?php
+                    $mode_labels = [
+                        'rental' => __('Mietwert-Berechnung', 'immobilien-rechner-pro'),
+                        'comparison' => __('Verkauf vs. Vermietung', 'immobilien-rechner-pro'),
+                        'sale_value' => __('Verkaufswert-Bewertung', 'immobilien-rechner-pro'),
+                    ];
+                    echo esc_html($mode_labels[$lead->mode] ?? $lead->mode);
+                    ?>
                 </span>
                 <p class="irp-lead-date">
                     <?php printf(

@@ -321,6 +321,8 @@
                     modeText = 'Nur Mietwert-Rechner';
                 } else if (mode === 'comparison') {
                     modeText = 'Nur Vergleich';
+                } else if (mode === 'sale_value') {
+                    modeText = 'Nur Verkaufswert';
                 }
                 $infoMode.text('Modus: ' + modeText);
 
