@@ -3,7 +3,7 @@ node_modules/
 # vendor/ is committed - contains bundled DOMPDF for PDF generation
 
 # Build output
-build/
+# build/ is committed - required for WordPress plugin
 dist/
 
 # WordPress
