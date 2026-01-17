@@ -207,16 +207,35 @@ class IRP_GitHub_Updater {
     public function after_install($response, $hook_extra, $result) {
         global $wp_filesystem;
 
-        if (!isset($hook_extra['plugin']) || $hook_extra['plugin'] !== $this->plugin_basename) {
+        // Check if this is our plugin being updated
+        $dominated = isset($hook_extra['plugin']) && $hook_extra['plugin'] === $this->plugin_basename;
+
+        // Also check by destination folder name pattern (for fresh installs)
+        $is_our_plugin = false;
+        if (isset($result['destination'])) {
+            $dest_folder = basename($result['destination']);
+            // Match GitHub zipball folder pattern: AImitSK-immobilien-rechner-pro-v2-xxxxx
+            if (strpos($dest_folder, 'immobilien-rechner-pro') !== false) {
+                $is_our_plugin = true;
+            }
+        }
+
+        if (!$dominated && !$is_our_plugin) {
             return $result;
         }
 
         $plugin_folder = WP_PLUGIN_DIR . '/' . $this->plugin_slug;
 
+        // Delete old folder if it exists
+        if ($result['destination'] !== $plugin_folder && $wp_filesystem->exists($plugin_folder)) {
+            $wp_filesystem->delete($plugin_folder, true);
+        }
+
         // Move to correct folder if needed
         if ($result['destination'] !== $plugin_folder) {
             $wp_filesystem->move($result['destination'], $plugin_folder);
             $result['destination'] = $plugin_folder;
+            $result['destination_name'] = $this->plugin_slug;
         }
 
         // Reactivate plugin
