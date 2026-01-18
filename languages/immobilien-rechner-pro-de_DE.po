@@ -1,0 +1,1224 @@
+# German translations for Immobilien Rechner Pro package.
+# Copyright (C) 2024 Stefan Kühne
+# This file is distributed under the GPL v2 or later.
+# Stefan Kühne <info@sk-online-marketing.de>, 2024.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Immobilien Rechner Pro 2.1.1\n"
+"Report-Msgid-Bugs-To: https://github.com/AImitSK/immobilien-rechner-pro-v2/issues\n"
+"POT-Creation-Date: 2024-01-18T12:00:00+00:00\n"
+"PO-Revision-Date: 2024-01-18T12:00:00+00:00\n"
+"Last-Translator: Stefan Kühne <info@sk-online-marketing.de>\n"
+"Language-Team: German <de@li.org>\n"
+"Language: de_DE\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Claude Code\n"
+"X-Domain: immobilien-rechner-pro\n"
+
+#. Plugin Name of the plugin
+msgid "Immobilien Rechner Pro V2"
+msgstr "Immobilien Rechner Pro V2"
+
+#. Description of the plugin
+msgid "Professionelles WordPress-Plugin für Immobilienbewertung, Mietwertberechnung und Verkaufen-vs-Vermieten-Vergleich. White-Label-Lösung für Immobilienmakler."
+msgstr "Professionelles WordPress-Plugin für Immobilienbewertung, Mietwertberechnung und Verkaufen-vs-Vermieten-Vergleich. White-Label-Lösung für Immobilienmakler."
+
+#. Author of the plugin
+msgid "Stefan Kühne"
+msgstr "Stefan Kühne"
+
+#: src/components/App.js
+msgid "Ein Fehler ist aufgetreten."
+msgstr "Ein Fehler ist aufgetreten."
+
+#: src/components/ModeSelector.js
+msgid "Mietwert berechnen"
+msgstr "Mietwert berechnen"
+
+#: src/components/ModeSelector.js
+msgid "Erfahren Sie, wie viel Miete Sie für Ihre Immobilie verlangen können"
+msgstr "Erfahren Sie, wie viel Miete Sie für Ihre Immobilie verlangen können"
+
+#: src/components/ModeSelector.js
+msgid "Ich möchte meine Immobilie vermieten"
+msgstr "Ich möchte meine Immobilie vermieten"
+
+#: src/components/ModeSelector.js
+msgid "Verkaufen vs. Vermieten"
+msgstr "Verkaufen vs. Vermieten"
+
+#: src/components/ModeSelector.js
+msgid "Vergleichen Sie die finanziellen Ergebnisse von Verkauf und Vermietung"
+msgstr "Vergleichen Sie die finanziellen Ergebnisse von Verkauf und Vermietung"
+
+#: src/components/ModeSelector.js
+msgid "Ich bin unsicher, ob ich verkaufen oder vermieten soll"
+msgstr "Ich bin unsicher, ob ich verkaufen oder vermieten soll"
+
+#: src/components/ModeSelector.js
+msgid "Was möchten Sie wissen?"
+msgstr "Was möchten Sie wissen?"
+
+#: src/components/ModeSelector.js
+msgid "Wählen Sie eine Option, um mit Ihrer Immobilienanalyse zu beginnen"
+msgstr "Wählen Sie eine Option, um mit Ihrer Immobilienanalyse zu beginnen"
+
+#: src/components/RentalCalculator.js src/components/ComparisonCalculator.js src/components/SaleValueCalculator.js
+msgid "Immobilienart"
+msgstr "Immobilienart"
+
+#: src/components/RentalCalculator.js src/components/ComparisonCalculator.js
+msgid "Details"
+msgstr "Details"
+
+#: src/components/RentalCalculator.js src/components/ComparisonCalculator.js
+msgid "Standort"
+msgstr "Standort"
+
+#: src/components/RentalCalculator.js src/components/ComparisonCalculator.js
+msgid "Zustand"
+msgstr "Zustand"
+
+#: src/components/RentalCalculator.js src/components/ComparisonCalculator.js
+msgid "Lage"
+msgstr "Lage"
+
+#: src/components/RentalCalculator.js src/components/ComparisonCalculator.js src/components/SaleValueCalculator.js
+msgid "Ausstattung"
+msgstr "Ausstattung"
+
+#: src/components/RentalCalculator.js src/components/ComparisonCalculator.js src/components/SaleValueCalculator.js
+msgid "Berechnung fehlgeschlagen"
+msgstr "Berechnung fehlgeschlagen"
+
+#: src/components/RentalCalculator.js src/components/ComparisonCalculator.js src/components/SaleValueCalculator.js
+msgid "Ein Fehler ist aufgetreten"
+msgstr "Ein Fehler ist aufgetreten"
+
+#: src/components/RentalCalculator.js src/components/ComparisonCalculator.js src/components/SaleValueCalculator.js src/components/steps/ContactFormStep.js src/components/LeadForm.js
+msgid "Zurück"
+msgstr "Zurück"
+
+#: src/components/RentalCalculator.js src/components/ComparisonCalculator.js src/components/SaleValueCalculator.js
+msgid "Berechnen"
+msgstr "Berechnen"
+
+#: src/components/RentalCalculator.js src/components/ComparisonCalculator.js src/components/SaleValueCalculator.js
+msgid "Weiter"
+msgstr "Weiter"
+
+#: src/components/ComparisonCalculator.js
+msgid "Immobilie"
+msgstr "Immobilie"
+
+#: src/components/ComparisonCalculator.js
+msgid "Finanzen"
+msgstr "Finanzen"
+
+#: src/components/SaleValueCalculator.js
+msgid "Größe"
+msgstr "Größe"
+
+#: src/components/SaleValueCalculator.js
+msgid "Qualität & Lage"
+msgstr "Qualität & Lage"
+
+#: src/components/SaleValueCalculator.js
+msgid "Adresse"
+msgstr "Adresse"
+
+#: src/components/SaleValueCalculator.js
+msgid "Vorhaben"
+msgstr "Vorhaben"
+
+#: src/components/ResultsDisplay.js
+msgid "Vielen Dank für Ihre Anfrage!"
+msgstr "Vielen Dank für Ihre Anfrage!"
+
+#: src/components/ResultsDisplay.js
+msgid "Ihre Daten werden jetzt von einem erfahrenen Immobilienexperten bei %s analysiert. Sie erhalten in Kürze eine ausführliche Bewertung mit detaillierten Marktdaten direkt in Ihr E-Mail-Postfach."
+msgstr "Ihre Daten werden jetzt von einem erfahrenen Immobilienexperten bei %s analysiert. Sie erhalten in Kürze eine ausführliche Bewertung mit detaillierten Marktdaten direkt in Ihr E-Mail-Postfach."
+
+#: src/components/ResultsDisplay.js
+msgid "Ihre Daten werden jetzt von einem erfahrenen Immobilienexperten analysiert. Sie erhalten in Kürze eine ausführliche Bewertung mit detaillierten Marktdaten direkt in Ihr E-Mail-Postfach."
+msgstr "Ihre Daten werden jetzt von einem erfahrenen Immobilienexperten analysiert. Sie erhalten in Kürze eine ausführliche Bewertung mit detaillierten Marktdaten direkt in Ihr E-Mail-Postfach."
+
+#: src/components/ResultsDisplay.js
+msgid "Ihre Mietwert-Schätzung"
+msgstr "Ihre Mietwert-Schätzung"
+
+#: src/components/ResultsDisplay.js
+msgid "Basierend auf Ihren Immobiliendaten und dem Standort"
+msgstr "Basierend auf Ihren Immobiliendaten und dem Standort"
+
+#: src/components/ResultsDisplay.js
+msgid "Geschätzte Monatsmiete"
+msgstr "Geschätzte Monatsmiete"
+
+#: src/components/ResultsDisplay.js
+msgid "Spanne:"
+msgstr "Spanne:"
+
+#: src/components/ResultsDisplay.js
+msgid "Preis pro m²"
+msgstr "Preis pro m²"
+
+#: src/components/ResultsDisplay.js
+msgid "Jährliche Mieteinnahmen"
+msgstr "Jährliche Mieteinnahmen"
+
+#: src/components/ResultsDisplay.js
+msgid "Marktposition"
+msgstr "Marktposition"
+
+#: src/components/ResultsDisplay.js src/components/SaleResultsDisplay.js
+msgid "Neue Berechnung starten"
+msgstr "Neue Berechnung starten"
+
+#: src/components/ResultsDisplay.js
+msgid "Kumulierte Mieteinnahmen"
+msgstr "Kumulierte Mieteinnahmen"
+
+#: src/components/ResultsDisplay.js
+msgid "Verkaufserlös (wenn in dem Jahr verkauft)"
+msgstr "Verkaufserlös (wenn in dem Jahr verkauft)"
+
+#: src/components/ResultsDisplay.js
+msgid "Verkaufen vs. Vermieten Vergleich"
+msgstr "Verkaufen vs. Vermieten Vergleich"
+
+#: src/components/ResultsDisplay.js
+msgid "Wenn Sie jetzt verkaufen"
+msgstr "Wenn Sie jetzt verkaufen"
+
+#: src/components/ResultsDisplay.js
+msgid "Nettoerlös"
+msgstr "Nettoerlös"
+
+#: src/components/ResultsDisplay.js
+msgid "Immobilienwert"
+msgstr "Immobilienwert"
+
+#: src/components/ResultsDisplay.js
+msgid "Verkaufskosten"
+msgstr "Verkaufskosten"
+
+#: src/components/ResultsDisplay.js
+msgid "Hypothekenablösung"
+msgstr "Hypothekenablösung"
+
+#: src/components/ResultsDisplay.js
+msgid "Wenn Sie vermieten"
+msgstr "Wenn Sie vermieten"
+
+#: src/components/ResultsDisplay.js
+msgid "Jahr"
+msgstr "Jahr"
+
+#: src/components/ResultsDisplay.js
+msgid "Netto-Mieteinnahmen"
+msgstr "Netto-Mieteinnahmen"
+
+#: src/components/ResultsDisplay.js
+msgid "Bruttomiete"
+msgstr "Bruttomiete"
+
+#: src/components/ResultsDisplay.js
+msgid "Leerstandsverlust"
+msgstr "Leerstandsverlust"
+
+#: src/components/ResultsDisplay.js
+msgid "Instandhaltung"
+msgstr "Instandhaltung"
+
+#: src/components/ResultsDisplay.js
+msgid "Bruttorendite:"
+msgstr "Bruttorendite:"
+
+#: src/components/ResultsDisplay.js
+msgid "Nettorendite:"
+msgstr "Nettorendite:"
+
+#: src/components/ResultsDisplay.js
+msgid "15-Jahres-Prognose"
+msgstr "15-Jahres-Prognose"
+
+#: src/components/ResultsDisplay.js
+msgid "Break-even-Punkt:"
+msgstr "Break-even-Punkt:"
+
+#: src/components/ResultsDisplay.js src/components/steps/FinancialStep.js
+msgid "Jahre"
+msgstr "Jahre"
+
+#: src/components/ResultsDisplay.js
+msgid "Unsere Einschätzung"
+msgstr "Unsere Einschätzung"
+
+#: src/components/SaleResultsDisplay.js
+msgid "Ein Immobilienexperte von %s wird sich in Kürze mit Ihnen in Verbindung setzen, um eine detaillierte Bewertung Ihrer Immobilie vorzunehmen."
+msgstr "Ein Immobilienexperte von %s wird sich in Kürze mit Ihnen in Verbindung setzen, um eine detaillierte Bewertung Ihrer Immobilie vorzunehmen."
+
+#: src/components/SaleResultsDisplay.js
+msgid "Ein Immobilienexperte wird sich in Kürze mit Ihnen in Verbindung setzen, um eine detaillierte Bewertung Ihrer Immobilie vorzunehmen."
+msgstr "Ein Immobilienexperte wird sich in Kürze mit Ihnen in Verbindung setzen, um eine detaillierte Bewertung Ihrer Immobilie vorzunehmen."
+
+#: src/components/SaleResultsDisplay.js
+msgid "Mittelwert:"
+msgstr "Mittelwert:"
+
+#: src/components/SaleResultsDisplay.js
+msgid "Geschätzter Verkaufswert Ihrer Immobilie"
+msgstr "Geschätzter Verkaufswert Ihrer Immobilie"
+
+#: src/components/SaleResultsDisplay.js
+msgid "Ermittelt nach dem Sachwertverfahren"
+msgstr "Ermittelt nach dem Sachwertverfahren"
+
+#: src/components/SaleResultsDisplay.js
+msgid "Geschätzter Verkaufspreis"
+msgstr "Geschätzter Verkaufspreis"
+
+#: src/components/SaleResultsDisplay.js src/components/steps/SaleFeaturesStep.js
+msgid "Wertermittlung"
+msgstr "Wertermittlung"
+
+#: src/components/SaleResultsDisplay.js
+msgid "Grundstückswert"
+msgstr "Grundstückswert"
+
+#: src/components/SaleResultsDisplay.js
+msgid "Gebäudewert"
+msgstr "Gebäudewert"
+
+#: src/components/SaleResultsDisplay.js
+msgid "Marktanpassung"
+msgstr "Marktanpassung"
+
+#: src/components/SaleResultsDisplay.js
+msgid "Kennzahlen"
+msgstr "Kennzahlen"
+
+#: src/components/SaleResultsDisplay.js
+msgid "pro m² Wohnfläche"
+msgstr "pro m² Wohnfläche"
+
+#: src/components/SaleResultsDisplay.js
+msgid "pro m² Grundstück"
+msgstr "pro m² Grundstück"
+
+#: src/components/SaleResultsDisplay.js
+msgid "Angewandte Faktoren"
+msgstr "Angewandte Faktoren"
+
+#: src/components/SaleResultsDisplay.js
+msgid "Haustyp"
+msgstr "Haustyp"
+
+#: src/components/SaleResultsDisplay.js src/components/steps/SaleQualityLocationStep.js
+msgid "Qualität"
+msgstr "Qualität"
+
+#: src/components/SaleResultsDisplay.js
+msgid "Fikt. Baujahr"
+msgstr "Fikt. Baujahr"
+
+#: src/components/SaleResultsDisplay.js
+msgid "Geschätzter Verkaufswert Ihrer Wohnung"
+msgstr "Geschätzter Verkaufswert Ihrer Wohnung"
+
+#: src/components/SaleResultsDisplay.js
+msgid "Ermittelt nach dem Vergleichswertverfahren"
+msgstr "Ermittelt nach dem Vergleichswertverfahren"
+
+#: src/components/SaleResultsDisplay.js
+msgid "Basierend auf"
+msgstr "Basierend auf"
+
+#: src/components/SaleResultsDisplay.js src/components/steps/SaleQualityLocationStep.js
+msgid "Qualität:"
+msgstr "Qualität:"
+
+#: src/components/SaleResultsDisplay.js src/components/steps/SaleQualityLocationStep.js
+msgid "Lage:"
+msgstr "Lage:"
+
+#: src/components/SaleResultsDisplay.js
+msgid "Vergleich Region"
+msgstr "Vergleich Region"
+
+#: src/components/SaleResultsDisplay.js
+msgid "Ø Preis/m² in"
+msgstr "Ø Preis/m² in"
+
+#: src/components/SaleResultsDisplay.js
+msgid "der Region"
+msgstr "der Region"
+
+#: src/components/SaleResultsDisplay.js
+msgid "Ihre Wohnung"
+msgstr "Ihre Wohnung"
+
+#: src/components/SaleResultsDisplay.js
+msgid "Geschätzter Wert Ihres Grundstücks"
+msgstr "Geschätzter Wert Ihres Grundstücks"
+
+#: src/components/SaleResultsDisplay.js
+msgid "Ermittelt auf Basis des Bodenrichtwerts"
+msgstr "Ermittelt auf Basis des Bodenrichtwerts"
+
+#: src/components/SaleResultsDisplay.js
+msgid "Geschätzter Grundstückswert"
+msgstr "Geschätzter Grundstückswert"
+
+#: src/components/SaleResultsDisplay.js
+msgid "Lagefaktor"
+msgstr "Lagefaktor"
+
+#: src/components/SaleResultsDisplay.js
+msgid "Bodenrichtwert pro m²"
+msgstr "Bodenrichtwert pro m²"
+
+#: src/components/SaleResultsDisplay.js
+msgid "Standort:"
+msgstr "Standort:"
+
+#: src/components/SaleResultsDisplay.js
+msgid "Hinweis: Diese Schätzung dient nur zur Orientierung und ersetzt keine professionelle Immobilienbewertung. Der tatsächliche Verkaufspreis kann aufgrund individueller Objektmerkmale, aktueller Marktbedingungen und Verhandlungen abweichen."
+msgstr "Hinweis: Diese Schätzung dient nur zur Orientierung und ersetzt keine professionelle Immobilienbewertung. Der tatsächliche Verkaufspreis kann aufgrund individueller Objektmerkmale, aktueller Marktbedingungen und Verhandlungen abweichen."
+
+#: src/components/steps/PropertyTypeStep.js src/components/steps/SalePropertyTypeStep.js
+msgid "Wohnung"
+msgstr "Wohnung"
+
+#: src/components/steps/PropertyTypeStep.js
+msgid "Wohnung in einem Mehrfamilienhaus"
+msgstr "Wohnung in einem Mehrfamilienhaus"
+
+#: src/components/steps/PropertyTypeStep.js src/components/steps/SalePropertyTypeStep.js
+msgid "Haus"
+msgstr "Haus"
+
+#: src/components/steps/PropertyTypeStep.js
+msgid "Einfamilienhaus oder Doppelhaushälfte"
+msgstr "Einfamilienhaus oder Doppelhaushälfte"
+
+#: src/components/steps/PropertyTypeStep.js
+msgid "Gewerbe"
+msgstr "Gewerbe"
+
+#: src/components/steps/PropertyTypeStep.js
+msgid "Büro, Einzelhandel oder Mischnutzung"
+msgstr "Büro, Einzelhandel oder Mischnutzung"
+
+#: src/components/steps/PropertyTypeStep.js
+msgid "Welche Art von Immobilie haben Sie?"
+msgstr "Welche Art von Immobilie haben Sie?"
+
+#: src/components/steps/PropertyDetailsStep.js
+msgid "Erzählen Sie uns von Ihrer Immobilie"
+msgstr "Erzählen Sie uns von Ihrer Immobilie"
+
+#: src/components/steps/PropertyDetailsStep.js src/components/steps/SaleSizeStep.js
+msgid "Wohnfläche"
+msgstr "Wohnfläche"
+
+#: src/components/steps/PropertyDetailsStep.js
+msgid "Gesamte Wohnfläche in Quadratmetern"
+msgstr "Gesamte Wohnfläche in Quadratmetern"
+
+#: src/components/steps/PropertyDetailsStep.js
+msgid "Anzahl der Zimmer"
+msgstr "Anzahl der Zimmer"
+
+#: src/components/steps/PropertyDetailsStep.js
+msgid "Auswählen..."
+msgstr "Auswählen..."
+
+#: src/components/steps/PropertyDetailsStep.js
+msgid "Ohne Küche und Bad"
+msgstr "Ohne Küche und Bad"
+
+#: src/components/steps/PropertyDetailsStep.js src/components/steps/SaleSizeStep.js
+msgid "Baujahr"
+msgstr "Baujahr"
+
+#: src/components/steps/PropertyDetailsStep.js
+msgid "Ursprüngliches Baujahr"
+msgstr "Ursprüngliches Baujahr"
+
+#: src/components/steps/CityStep.js
+msgid "Städte konnten nicht geladen werden"
+msgstr "Städte konnten nicht geladen werden"
+
+#: src/components/steps/CityStep.js
+msgid "Standort auswählen"
+msgstr "Standort auswählen"
+
+#: src/components/steps/CityStep.js
+msgid "Städte werden geladen..."
+msgstr "Städte werden geladen..."
+
+#: src/components/steps/CityStep.js
+msgid "Keine Städte konfiguriert. Bitte kontaktieren Sie den Administrator."
+msgstr "Keine Städte konfiguriert. Bitte kontaktieren Sie den Administrator."
+
+#: src/components/steps/CityStep.js
+msgid "Für welche Stadt möchten Sie den Mietwert berechnen?"
+msgstr "Für welche Stadt möchten Sie den Mietwert berechnen?"
+
+#: src/components/steps/CityStep.js src/components/steps/SaleAddressStep.js
+msgid "Stadt"
+msgstr "Stadt"
+
+#: src/components/steps/CityStep.js
+msgid "Bitte wählen..."
+msgstr "Bitte wählen..."
+
+#: src/components/steps/CityStep.js
+msgid "Berechnung für"
+msgstr "Berechnung für"
+
+#: src/components/steps/ConditionStep.js
+msgid "Neubau / Kernsaniert"
+msgstr "Neubau / Kernsaniert"
+
+#: src/components/steps/ConditionStep.js
+msgid "Neu gebaut oder vollständig saniert"
+msgstr "Neu gebaut oder vollständig saniert"
+
+#: src/components/steps/ConditionStep.js
+msgid "Kürzlich renoviert"
+msgstr "Kürzlich renoviert"
+
+#: src/components/steps/ConditionStep.js
+msgid "In den letzten 5 Jahren modernisiert"
+msgstr "In den letzten 5 Jahren modernisiert"
+
+#: src/components/steps/ConditionStep.js
+msgid "Guter Zustand"
+msgstr "Guter Zustand"
+
+#: src/components/steps/ConditionStep.js
+msgid "Gut gepflegt, bezugsfertig"
+msgstr "Gut gepflegt, bezugsfertig"
+
+#: src/components/steps/ConditionStep.js
+msgid "Renovierungsbedürftig"
+msgstr "Renovierungsbedürftig"
+
+#: src/components/steps/ConditionStep.js
+msgid "Erfordert Modernisierung oder Reparaturen"
+msgstr "Erfordert Modernisierung oder Reparaturen"
+
+#: src/components/steps/ConditionStep.js
+msgid "In welchem Zustand ist Ihre Immobilie?"
+msgstr "In welchem Zustand ist Ihre Immobilie?"
+
+#: src/components/steps/LocationRatingStep.js
+msgid "Wie bewerten Sie die Lage?"
+msgstr "Wie bewerten Sie die Lage?"
+
+#: src/components/steps/LocationRatingStep.js
+msgid "Die Lage hat einen erheblichen Einfluss auf den Mietwert."
+msgstr "Die Lage hat einen erheblichen Einfluss auf den Mietwert."
+
+#: src/components/steps/LocationRatingStep.js
+msgid "Adresse der Immobilie"
+msgstr "Adresse der Immobilie"
+
+#: src/components/steps/LocationRatingStep.js
+msgid "optional"
+msgstr "optional"
+
+#: src/components/steps/LocationRatingStep.js
+msgid "Straße und Hausnummer in "
+msgstr "Straße und Hausnummer in "
+
+#: src/components/steps/LocationRatingStep.js
+msgid "Adresse eingeben..."
+msgstr "Adresse eingeben..."
+
+#: src/components/steps/LocationRatingStep.js
+msgid "z.B. Musterstraße 123"
+msgstr "z.B. Musterstraße 123"
+
+#: src/components/steps/LocationRatingStep.js
+msgid "Lage-Bewertung"
+msgstr "Lage-Bewertung"
+
+#: src/components/steps/LocationRatingStep.js src/components/steps/SaleQualityLocationStep.js
+msgid "Einfach"
+msgstr "Einfach"
+
+#: src/components/steps/LocationRatingStep.js
+msgid "Premium"
+msgstr "Premium"
+
+#: src/components/steps/FeaturesStep.js src/components/steps/SaleFeaturesStep.js
+msgid "Balkon"
+msgstr "Balkon"
+
+#: src/components/steps/FeaturesStep.js src/components/steps/SaleFeaturesStep.js
+msgid "Terrasse"
+msgstr "Terrasse"
+
+#: src/components/steps/FeaturesStep.js src/components/steps/SaleFeaturesStep.js
+msgid "Garten"
+msgstr "Garten"
+
+#: src/components/steps/FeaturesStep.js src/components/steps/SaleFeaturesStep.js
+msgid "Aufzug"
+msgstr "Aufzug"
+
+#: src/components/steps/FeaturesStep.js src/components/steps/SaleFeaturesStep.js
+msgid "Stellplatz"
+msgstr "Stellplatz"
+
+#: src/components/steps/FeaturesStep.js src/components/steps/SaleFeaturesStep.js
+msgid "Garage"
+msgstr "Garage"
+
+#: src/components/steps/FeaturesStep.js src/components/steps/SaleFeaturesStep.js
+msgid "Keller"
+msgstr "Keller"
+
+#: src/components/steps/FeaturesStep.js src/components/steps/SaleFeaturesStep.js
+msgid "Einbauküche"
+msgstr "Einbauküche"
+
+#: src/components/steps/FeaturesStep.js
+msgid "Fußbodenheizung"
+msgstr "Fußbodenheizung"
+
+#: src/components/steps/FeaturesStep.js
+msgid "Gäste-WC"
+msgstr "Gäste-WC"
+
+#: src/components/steps/FeaturesStep.js
+msgid "Barrierefrei"
+msgstr "Barrierefrei"
+
+#: src/components/steps/FeaturesStep.js
+msgid "Welche Ausstattungsmerkmale hat Ihre Immobilie?"
+msgstr "Welche Ausstattungsmerkmale hat Ihre Immobilie?"
+
+#: src/components/steps/FeaturesStep.js
+msgid "Wählen Sie alle zutreffenden aus. Diese können den Mietwert erhöhen."
+msgstr "Wählen Sie alle zutreffenden aus. Diese können den Mietwert erhöhen."
+
+#: src/components/steps/FeaturesStep.js src/components/steps/SaleFeaturesStep.js
+msgid "Keine Ausstattung ausgewählt"
+msgstr "Keine Ausstattung ausgewählt"
+
+#: src/components/steps/FeaturesStep.js src/components/steps/SaleFeaturesStep.js
+msgid "Merkmal ausgewählt"
+msgstr "Merkmal ausgewählt"
+
+#: src/components/steps/FeaturesStep.js src/components/steps/SaleFeaturesStep.js
+msgid "Merkmale ausgewählt"
+msgstr "Merkmale ausgewählt"
+
+#: src/components/steps/FinancialStep.js
+msgid "Finanzielle Details"
+msgstr "Finanzielle Details"
+
+#: src/components/steps/FinancialStep.js
+msgid "Diese Informationen helfen uns, Verkauf und Vermietung genau zu vergleichen."
+msgstr "Diese Informationen helfen uns, Verkauf und Vermietung genau zu vergleichen."
+
+#: src/components/steps/FinancialStep.js
+msgid "Geschätzter Immobilienwert"
+msgstr "Geschätzter Immobilienwert"
+
+#: src/components/steps/FinancialStep.js
+msgid "Ihre beste Schätzung des aktuellen Marktwerts"
+msgstr "Ihre beste Schätzung des aktuellen Marktwerts"
+
+#: src/components/steps/FinancialStep.js
+msgid "Restschuld Hypothek"
+msgstr "Restschuld Hypothek"
+
+#: src/components/steps/FinancialStep.js
+msgid "Offener Darlehensbetrag (falls vorhanden)"
+msgstr "Offener Darlehensbetrag (falls vorhanden)"
+
+#: src/components/steps/FinancialStep.js
+msgid "Besitzdauer"
+msgstr "Besitzdauer"
+
+#: src/components/steps/FinancialStep.js
+msgid "Wie lange Sie die Immobilie besitzen"
+msgstr "Wie lange Sie die Immobilie besitzen"
+
+#: src/components/steps/FinancialStep.js
+msgid "Hypothekenzins"
+msgstr "Hypothekenzins"
+
+#: src/components/steps/FinancialStep.js
+msgid "Warum das wichtig ist"
+msgstr "Warum das wichtig ist"
+
+#: src/components/steps/FinancialStep.js
+msgid "Immobilien, die weniger als 10 Jahre im Besitz sind, können beim Verkauf der Spekulationssteuer unterliegen. Ihre Hypothek beeinflusst sowohl den Nettoverkaufserlös als auch die laufenden Kosten der Vermietung."
+msgstr "Immobilien, die weniger als 10 Jahre im Besitz sind, können beim Verkauf der Spekulationssteuer unterliegen. Ihre Hypothek beeinflusst sowohl den Nettoverkaufserlös als auch die laufenden Kosten der Vermietung."
+
+#: src/components/steps/FinancialStep.js
+msgid "Erweiterte Optionen"
+msgstr "Erweiterte Optionen"
+
+#: src/components/steps/FinancialStep.js
+msgid "Erwartete jährliche Wertsteigerung"
+msgstr "Erwartete jährliche Wertsteigerung"
+
+#: src/components/steps/FinancialStep.js
+msgid "Der historische Durchschnitt liegt bei etwa 2-3% pro Jahr"
+msgstr "Der historische Durchschnitt liegt bei etwa 2-3% pro Jahr"
+
+#: src/components/steps/ContactFormStep.js
+msgid "Bitte geben Sie Ihren Namen ein."
+msgstr "Bitte geben Sie Ihren Namen ein."
+
+#: src/components/steps/ContactFormStep.js
+msgid "Bitte geben Sie Ihre E-Mail-Adresse ein."
+msgstr "Bitte geben Sie Ihre E-Mail-Adresse ein."
+
+#: src/components/steps/ContactFormStep.js
+msgid "Bitte geben Sie eine gültige E-Mail-Adresse ein."
+msgstr "Bitte geben Sie eine gültige E-Mail-Adresse ein."
+
+#: src/components/steps/ContactFormStep.js
+msgid "Bitte stimmen Sie der Datenschutzerklärung zu."
+msgstr "Bitte stimmen Sie der Datenschutzerklärung zu."
+
+#: src/components/steps/ContactFormStep.js
+msgid "Fast geschafft!"
+msgstr "Fast geschafft!"
+
+#: src/components/steps/ContactFormStep.js
+msgid "Geben Sie Ihre Kontaktdaten ein, um Ihre persönliche Bewertung zu erhalten."
+msgstr "Geben Sie Ihre Kontaktdaten ein, um Ihre persönliche Bewertung zu erhalten."
+
+#: src/components/steps/ContactFormStep.js src/components/LeadForm.js
+msgid "Name"
+msgstr "Name"
+
+#: src/components/steps/ContactFormStep.js
+msgid "Max Mustermann"
+msgstr "Max Mustermann"
+
+#: src/components/steps/ContactFormStep.js src/components/LeadForm.js
+msgid "E-Mail"
+msgstr "E-Mail"
+
+#: src/components/steps/ContactFormStep.js
+msgid "max@beispiel.de"
+msgstr "max@beispiel.de"
+
+#: src/components/steps/ContactFormStep.js src/components/LeadForm.js
+msgid "Telefon"
+msgstr "Telefon"
+
+#: src/components/steps/ContactFormStep.js
+msgid "+49 123 456789"
+msgstr "+49 123 456789"
+
+#: src/components/steps/ContactFormStep.js src/components/LeadForm.js
+msgid "Ich stimme der"
+msgstr "Ich stimme der"
+
+#: src/components/steps/ContactFormStep.js src/components/LeadForm.js
+msgid "Datenschutzerklärung"
+msgstr "Datenschutzerklärung"
+
+#: src/components/steps/ContactFormStep.js
+msgid "zu."
+msgstr "zu."
+
+#: src/components/steps/ContactFormStep.js
+msgid "Ich möchte den Newsletter mit Immobilien-Tipps erhalten."
+msgstr "Ich möchte den Newsletter mit Immobilien-Tipps erhalten."
+
+#: src/components/steps/ContactFormStep.js src/components/LeadForm.js
+msgid "Wird gesendet..."
+msgstr "Wird gesendet..."
+
+#: src/components/steps/ContactFormStep.js
+msgid "Bewertung anzeigen"
+msgstr "Bewertung anzeigen"
+
+#: src/components/steps/ContactFormStep.js src/components/LeadForm.js
+msgid "Ihre Daten sind sicher"
+msgstr "Ihre Daten sind sicher"
+
+#: src/components/steps/ContactFormStep.js
+msgid "Kostenlos & unverbindlich"
+msgstr "Kostenlos & unverbindlich"
+
+#: src/components/steps/ContactFormStep.js
+msgid "Diese Seite ist durch reCAPTCHA geschützt. Es gelten die"
+msgstr "Diese Seite ist durch reCAPTCHA geschützt. Es gelten die"
+
+#: src/components/steps/ContactFormStep.js
+msgid "und"
+msgstr "und"
+
+#: src/components/steps/ContactFormStep.js
+msgid "Nutzungsbedingungen"
+msgstr "Nutzungsbedingungen"
+
+#: src/components/steps/ContactFormStep.js
+msgid "von Google."
+msgstr "von Google."
+
+#: src/components/steps/CalculationPendingStep.js
+msgid "Daten werden analysiert..."
+msgstr "Daten werden analysiert..."
+
+#: src/components/steps/CalculationPendingStep.js
+msgid "Marktdaten werden abgerufen..."
+msgstr "Marktdaten werden abgerufen..."
+
+#: src/components/steps/CalculationPendingStep.js
+msgid "Mietwert wird berechnet..."
+msgstr "Mietwert wird berechnet..."
+
+#: src/components/steps/CalculationPendingStep.js
+msgid "Ihre Berechnung wird vorbereitet"
+msgstr "Ihre Berechnung wird vorbereitet"
+
+#: src/components/steps/SalePropertyTypeStep.js
+msgid "Grundstück"
+msgstr "Grundstück"
+
+#: src/components/steps/SalePropertyTypeStep.js
+msgid "Unbebautes Grundstück"
+msgstr "Unbebautes Grundstück"
+
+#: src/components/steps/SalePropertyTypeStep.js
+msgid "Eigentumswohnung in einem Mehrfamilienhaus"
+msgstr "Eigentumswohnung in einem Mehrfamilienhaus"
+
+#: src/components/steps/SalePropertyTypeStep.js
+msgid "Einfamilienhaus, Reihenhaus oder Mehrfamilienhaus"
+msgstr "Einfamilienhaus, Reihenhaus oder Mehrfamilienhaus"
+
+#: src/components/steps/SalePropertyTypeStep.js
+msgid "Einfamilienhaus"
+msgstr "Einfamilienhaus"
+
+#: src/components/steps/SalePropertyTypeStep.js
+msgid "Doppelhaushälfte"
+msgstr "Doppelhaushälfte"
+
+#: src/components/steps/SalePropertyTypeStep.js
+msgid "Endreihenhaus"
+msgstr "Endreihenhaus"
+
+#: src/components/steps/SalePropertyTypeStep.js
+msgid "Mittelreihenhaus"
+msgstr "Mittelreihenhaus"
+
+#: src/components/steps/SalePropertyTypeStep.js
+msgid "Mehrfamilienhaus"
+msgstr "Mehrfamilienhaus"
+
+#: src/components/steps/SalePropertyTypeStep.js
+msgid "Bungalow"
+msgstr "Bungalow"
+
+#: src/components/steps/SalePropertyTypeStep.js
+msgid "Welche Art von Immobilie möchten Sie bewerten?"
+msgstr "Welche Art von Immobilie möchten Sie bewerten?"
+
+#: src/components/steps/SalePropertyTypeStep.js
+msgid "Um welchen Haustyp handelt es sich?"
+msgstr "Um welchen Haustyp handelt es sich?"
+
+#: src/components/steps/SaleSizeStep.js
+msgid "Vor 1-3 Jahren"
+msgstr "Vor 1-3 Jahren"
+
+#: src/components/steps/SaleSizeStep.js
+msgid "Kernsanierung / umfassende Modernisierung"
+msgstr "Kernsanierung / umfassende Modernisierung"
+
+#: src/components/steps/SaleSizeStep.js
+msgid "Vor 4-9 Jahren"
+msgstr "Vor 4-9 Jahren"
+
+#: src/components/steps/SaleSizeStep.js
+msgid "Größere Modernisierungsmaßnahmen"
+msgstr "Größere Modernisierungsmaßnahmen"
+
+#: src/components/steps/SaleSizeStep.js
+msgid "Vor 10-15 Jahren"
+msgstr "Vor 10-15 Jahren"
+
+#: src/components/steps/SaleSizeStep.js
+msgid "Mittlere Modernisierung"
+msgstr "Mittlere Modernisierung"
+
+#: src/components/steps/SaleSizeStep.js
+msgid "Vor mehr als 15 Jahren"
+msgstr "Vor mehr als 15 Jahren"
+
+#: src/components/steps/SaleSizeStep.js
+msgid "Ältere Modernisierung"
+msgstr "Ältere Modernisierung"
+
+#: src/components/steps/SaleSizeStep.js
+msgid "Noch nie"
+msgstr "Noch nie"
+
+#: src/components/steps/SaleSizeStep.js
+msgid "Originalzustand"
+msgstr "Originalzustand"
+
+#: src/components/steps/SaleSizeStep.js
+msgid "Wie groß ist Ihr Grundstück?"
+msgstr "Wie groß ist Ihr Grundstück?"
+
+#: src/components/steps/SaleSizeStep.js
+msgid "Angaben zu Größe und Baujahr"
+msgstr "Angaben zu Größe und Baujahr"
+
+#: src/components/steps/SaleSizeStep.js
+msgid "Grundstücksfläche"
+msgstr "Grundstücksfläche"
+
+#: src/components/steps/SaleSizeStep.js
+msgid "Die Größe des Grundstücks lt. Grundbuch"
+msgstr "Die Größe des Grundstücks lt. Grundbuch"
+
+#: src/components/steps/SaleSizeStep.js
+msgid "Die Wohnfläche gemäß Wohnflächenberechnung"
+msgstr "Die Wohnfläche gemäß Wohnflächenberechnung"
+
+#: src/components/steps/SaleSizeStep.js
+msgid "Das Jahr der ursprünglichen Fertigstellung"
+msgstr "Das Jahr der ursprünglichen Fertigstellung"
+
+#: src/components/steps/SaleSizeStep.js
+msgid "Wann wurde zuletzt umfassend modernisiert?"
+msgstr "Wann wurde zuletzt umfassend modernisiert?"
+
+#: src/components/steps/SaleSizeStep.js
+msgid "Eine umfassende Modernisierung wirkt sich positiv auf den Wert aus."
+msgstr "Eine umfassende Modernisierung wirkt sich positiv auf den Wert aus."
+
+#: src/components/steps/SaleFeaturesStep.js
+msgid "Solaranlage"
+msgstr "Solaranlage"
+
+#: src/components/steps/SaleFeaturesStep.js
+msgid "Dachboden"
+msgstr "Dachboden"
+
+#: src/components/steps/SaleFeaturesStep.js
+msgid "Kamin"
+msgstr "Kamin"
+
+#: src/components/steps/SaleFeaturesStep.js
+msgid "Parkettboden"
+msgstr "Parkettboden"
+
+#: src/components/steps/SaleFeaturesStep.js
+msgid "Ausstattungsmerkmale"
+msgstr "Ausstattungsmerkmale"
+
+#: src/components/steps/SaleFeaturesStep.js
+msgid "Für unbebaute Grundstücke werden keine Ausstattungsmerkmale erfasst."
+msgstr "Für unbebaute Grundstücke werden keine Ausstattungsmerkmale erfasst."
+
+#: src/components/steps/SaleFeaturesStep.js
+msgid "Welche Ausstattung hat Ihre Immobilie?"
+msgstr "Welche Ausstattung hat Ihre Immobilie?"
+
+#: src/components/steps/SaleFeaturesStep.js
+msgid "Wählen Sie alle zutreffenden Merkmale aus. Diese erhöhen den geschätzten Verkaufswert."
+msgstr "Wählen Sie alle zutreffenden Merkmale aus. Diese erhöhen den geschätzten Verkaufswert."
+
+#: src/components/steps/SaleFeaturesStep.js
+msgid "Außenbereich"
+msgstr "Außenbereich"
+
+#: src/components/steps/SaleFeaturesStep.js
+msgid "Innenbereich"
+msgstr "Innenbereich"
+
+#: src/components/steps/SaleQualityLocationStep.js
+msgid "Einfache Ausstattung, Standardmaterialien"
+msgstr "Einfache Ausstattung, Standardmaterialien"
+
+#: src/components/steps/SaleQualityLocationStep.js
+msgid "Normal"
+msgstr "Normal"
+
+#: src/components/steps/SaleQualityLocationStep.js
+msgid "Durchschnittliche Ausstattung und Materialien"
+msgstr "Durchschnittliche Ausstattung und Materialien"
+
+#: src/components/steps/SaleQualityLocationStep.js
+msgid "Gehoben"
+msgstr "Gehoben"
+
+#: src/components/steps/SaleQualityLocationStep.js
+msgid "Hochwertige Ausstattung und Materialien"
+msgstr "Hochwertige Ausstattung und Materialien"
+
+#: src/components/steps/SaleQualityLocationStep.js
+msgid "Luxuriös"
+msgstr "Luxuriös"
+
+#: src/components/steps/SaleQualityLocationStep.js
+msgid "Erstklassige Ausstattung, exklusive Materialien"
+msgstr "Erstklassige Ausstattung, exklusive Materialien"
+
+#: src/components/steps/SaleQualityLocationStep.js
+msgid "Einfache Lage"
+msgstr "Einfache Lage"
+
+#: src/components/steps/SaleQualityLocationStep.js
+msgid "Weniger begehrte Wohngegend, einfache Infrastruktur"
+msgstr "Weniger begehrte Wohngegend, einfache Infrastruktur"
+
+#: src/components/steps/SaleQualityLocationStep.js
+msgid "Normale Lage"
+msgstr "Normale Lage"
+
+#: src/components/steps/SaleQualityLocationStep.js
+msgid "Durchschnittliche Wohnlage mit guter Versorgung"
+msgstr "Durchschnittliche Wohnlage mit guter Versorgung"
+
+#: src/components/steps/SaleQualityLocationStep.js
+msgid "Gute Lage"
+msgstr "Gute Lage"
+
+#: src/components/steps/SaleQualityLocationStep.js
+msgid "Beliebte Wohngegend, gute Anbindung"
+msgstr "Beliebte Wohngegend, gute Anbindung"
+
+#: src/components/steps/SaleQualityLocationStep.js
+msgid "Sehr gute Lage"
+msgstr "Sehr gute Lage"
+
+#: src/components/steps/SaleQualityLocationStep.js
+msgid "Begehrte Wohngegend, sehr gute Infrastruktur"
+msgstr "Begehrte Wohngegend, sehr gute Infrastruktur"
+
+#: src/components/steps/SaleQualityLocationStep.js
+msgid "Premium-Lage"
+msgstr "Premium-Lage"
+
+#: src/components/steps/SaleQualityLocationStep.js
+msgid "Erstklassige Wohngegend, exzellente Ausstattung"
+msgstr "Erstklassige Wohngegend, exzellente Ausstattung"
+
+#: src/components/steps/SaleQualityLocationStep.js
+msgid "Wie würden Sie die Bauqualität einschätzen?"
+msgstr "Wie würden Sie die Bauqualität einschätzen?"
+
+#: src/components/steps/SaleQualityLocationStep.js
+msgid "Die Qualität der Bauausführung und verwendeten Materialien."
+msgstr "Die Qualität der Bauausführung und verwendeten Materialien."
+
+#: src/components/steps/SaleQualityLocationStep.js
+msgid "Wie bewerten Sie die Lage des Grundstücks?"
+msgstr "Wie bewerten Sie die Lage des Grundstücks?"
+
+#: src/components/steps/SaleQualityLocationStep.js
+msgid "Wie bewerten Sie die Lage der Immobilie?"
+msgstr "Wie bewerten Sie die Lage der Immobilie?"
+
+#: src/components/steps/SaleQualityLocationStep.js
+msgid "Die Lage hat erheblichen Einfluss auf den Verkaufswert."
+msgstr "Die Lage hat erheblichen Einfluss auf den Verkaufswert."
+
+#: src/components/steps/SaleAddressStep.js
+msgid "Wo befindet sich die Immobilie?"
+msgstr "Wo befindet sich die Immobilie?"
+
+#: src/components/steps/SaleAddressStep.js
+msgid "Die genaue Adresse wird für die Bewertung und Kontaktaufnahme benötigt."
+msgstr "Die genaue Adresse wird für die Bewertung und Kontaktaufnahme benötigt."
+
+#: src/components/steps/SaleAddressStep.js
+msgid "PLZ"
+msgstr "PLZ"
+
+#: src/components/steps/SaleAddressStep.js
+msgid "z.B. Berlin"
+msgstr "z.B. Berlin"
+
+#: src/components/steps/SaleAddressStep.js
+msgid "Straße und Hausnummer"
+msgstr "Straße und Hausnummer"
+
+#: src/components/steps/SaleAddressStep.js
+msgid "Straße und Hausnummer..."
+msgstr "Straße und Hausnummer..."
+
+#: src/components/steps/SaleAddressStep.js
+msgid "Tippen Sie die Adresse ein für Vorschläge."
+msgstr "Tippen Sie die Adresse ein für Vorschläge."
+
+#: src/components/steps/SaleAddressStep.js
+msgid "Die Adresse wird vertraulich behandelt und nur für die Bewertung verwendet."
+msgstr "Die Adresse wird vertraulich behandelt und nur für die Bewertung verwendet."
+
+#: src/components/steps/SalePurposeStep.js
+msgid "Selbstgenutzt"
+msgstr "Selbstgenutzt"
+
+#: src/components/steps/SalePurposeStep.js
+msgid "Sie wohnen selbst in der Immobilie"
+msgstr "Sie wohnen selbst in der Immobilie"
+
+#: src/components/steps/SalePurposeStep.js
+msgid "Vermietet"
+msgstr "Vermietet"
+
+#: src/components/steps/SalePurposeStep.js
+msgid "Die Immobilie ist aktuell vermietet"
+msgstr "Die Immobilie ist aktuell vermietet"
+
+#: src/components/steps/SalePurposeStep.js
+msgid "Leerstand"
+msgstr "Leerstand"
+
+#: src/components/steps/SalePurposeStep.js
+msgid "Die Immobilie steht derzeit leer"
+msgstr "Die Immobilie steht derzeit leer"
+
+#: src/components/steps/SalePurposeStep.js
+msgid "Verkaufen"
+msgstr "Verkaufen"
+
+#: src/components/steps/SalePurposeStep.js
+msgid "Ich möchte die Immobilie verkaufen"
+msgstr "Ich möchte die Immobilie verkaufen"
+
+#: src/components/steps/SalePurposeStep.js
+msgid "Kaufen"
+msgstr "Kaufen"
+
+#: src/components/steps/SalePurposeStep.js
+msgid "Ich möchte eine Immobilie kaufen"
+msgstr "Ich möchte eine Immobilie kaufen"
+
+#: src/components/steps/SalePurposeStep.js
+msgid "Sofort"
+msgstr "Sofort"
+
+#: src/components/steps/SalePurposeStep.js
+msgid "So schnell wie möglich"
+msgstr "So schnell wie möglich"
+
+#: src/components/steps/SalePurposeStep.js
+msgid "In 3 Monaten"
+msgstr "In 3 Monaten"
+
+#: src/components/steps/SalePurposeStep.js
+msgid "Kurzfristig"
+msgstr "Kurzfristig"
+
+#: src/components/steps/SalePurposeStep.js
+msgid "In 6 Monaten"
+msgstr "In 6 Monaten"
+
+#: src/components/steps/SalePurposeStep.js
+msgid "Mittelfristig"
+msgstr "Mittelfristig"
+
+#: src/components/steps/SalePurposeStep.js
+msgid "In 12 Monaten"
+msgstr "In 12 Monaten"
+
+#: src/components/steps/SalePurposeStep.js
+msgid "Langfristig"
+msgstr "Langfristig"
+
+#: src/components/steps/SalePurposeStep.js
+msgid "Noch offen"
+msgstr "Noch offen"
+
+#: src/components/steps/SalePurposeStep.js
+msgid "Kein fester Zeitplan"
+msgstr "Kein fester Zeitplan"
+
+#: src/components/steps/SalePurposeStep.js
+msgid "Wie wird die Immobilie aktuell genutzt?"
+msgstr "Wie wird die Immobilie aktuell genutzt?"
+
+#: src/components/steps/SalePurposeStep.js
+msgid "Was ist Ihr Ziel?"
+msgstr "Was ist Ihr Ziel?"
+
+#: src/components/steps/SalePurposeStep.js
+msgid "Was möchten Sie tun?"
+msgstr "Was möchten Sie tun?"
+
+#: src/components/steps/SalePurposeStep.js
+msgid "Wann möchten Sie aktiv werden?"
+msgstr "Wann möchten Sie aktiv werden?"
+
+#: src/components/LeadForm.js
+msgid "E-Mail ist erforderlich"
+msgstr "E-Mail ist erforderlich"
+
+#: src/components/LeadForm.js
+msgid "Bitte geben Sie eine gültige E-Mail-Adresse ein"
+msgstr "Bitte geben Sie eine gültige E-Mail-Adresse ein"
+
+#: src/components/LeadForm.js
+msgid "Sie müssen der Datenschutzerklärung zustimmen"
+msgstr "Sie müssen der Datenschutzerklärung zustimmen"
+
+#: src/components/LeadForm.js
+msgid "Übermittlung fehlgeschlagen"
+msgstr "Übermittlung fehlgeschlagen"
+
+#: src/components/LeadForm.js
+msgid "Ihre kostenlose Beratung"
+msgstr "Ihre kostenlose Beratung"
+
+#: src/components/LeadForm.js
+msgid "Hinterlassen Sie Ihre Kontaktdaten und ein lokaler Experte wird sich mit Ihnen in Verbindung setzen."
+msgstr "Hinterlassen Sie Ihre Kontaktdaten und ein lokaler Experte wird sich mit Ihnen in Verbindung setzen."
+
+#: src/components/LeadForm.js
+msgid "Ihr Name"
+msgstr "Ihr Name"
+
+#: src/components/LeadForm.js
+msgid "ihre@email.de"
+msgstr "ihre@email.de"
+
+#: src/components/LeadForm.js
+msgid "Ihre Telefonnummer"
+msgstr "Ihre Telefonnummer"
+
+#: src/components/LeadForm.js
+msgid "Optional - für schnellere Rückmeldung"
+msgstr "Optional - für schnellere Rückmeldung"
+
+#: src/components/LeadForm.js
+msgid "zu und bin mit einer Kontaktaufnahme einverstanden."
+msgstr "zu und bin mit einer Kontaktaufnahme einverstanden."
+
+#: src/components/LeadForm.js
+msgid "Beratung anfordern"
+msgstr "Beratung anfordern"
+
+#: src/components/LeadForm.js
+msgid "Antwort innerhalb 24h"
+msgstr "Antwort innerhalb 24h"
+
+#: src/components/LeadForm.js
+msgid "Unverbindlich"
+msgstr "Unverbindlich"

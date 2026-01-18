@@ -58,6 +58,13 @@ class IRP_Assets {
             true
         );
 
+        // Set script translations for JavaScript i18n
+        wp_set_script_translations(
+            'irp-calculator',
+            'immobilien-rechner-pro',
+            IRP_PLUGIN_DIR . 'languages'
+        );
+
         wp_enqueue_style(
             'irp-calculator',
             IRP_PLUGIN_URL . 'build/index.css',
