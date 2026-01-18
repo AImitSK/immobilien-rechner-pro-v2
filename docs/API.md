@@ -523,7 +523,101 @@ Der Nonce wird automatisch vom React-Frontend mitgesendet.
 
 ## Rate Limiting
 
-Aktuell kein Rate Limiting implementiert. Bei Missbrauch kann dies serverseitig konfiguriert werden.
+Für Lead-Endpoints ist Rate Limiting implementiert:
+
+| Endpoint | Limit | Zeitraum |
+|----------|-------|----------|
+| `/leads/partial` | 10 Requests | pro Stunde |
+| `/leads/complete` | 10 Requests | pro Stunde |
+
+Das Limit gilt pro IP-Adresse. Bei Überschreitung wird HTTP 429 (Too Many Requests) zurückgegeben.
+
+---
+
+## Error-Codes
+
+Das Plugin verwendet ein strukturiertes Error-Code-System für konsistente Fehlerbehandlung.
+
+### Error-Code-Kategorien
+
+| Bereich | Codes | Beschreibung |
+|---------|-------|--------------|
+| Validierung | E1xxx | Ungültige Eingabedaten |
+| Authentifizierung | E2xxx | Berechtigungs- und Session-Fehler |
+| Datenbank | E3xxx | Datenbank-Operationen |
+| Externe APIs | E4xxx | Externe Dienste (Propstack, E-Mail) |
+| System | E5xxx | Server- und Systemfehler |
+
+### Fehler-Response-Format
+
+```json
+{
+    "success": false,
+    "code": "E1001",
+    "message": "Bitte geben Sie eine gültige E-Mail-Adresse ein.",
+    "data": null
+}
+```
+
+### Validierungsfehler (E1xxx)
+
+| Code | Beschreibung |
+|------|--------------|
+| E1001 | Ungültige E-Mail-Adresse |
+| E1002 | Ungültige Telefonnummer |
+| E1003 | Pflichtfeld fehlt |
+| E1004 | Ungültige Wohnfläche (min. 10 m²) |
+| E1005 | Ungültiger Immobilientyp |
+| E1006 | Standort nicht gefunden |
+| E1007 | Ungültige Postleitzahl |
+| E1008 | Ungültiges Baujahr |
+| E1009 | Ungültiger Preis |
+| E1010 | Ungültige Eingabedaten |
+
+### Authentifizierungsfehler (E2xxx)
+
+| Code | Beschreibung |
+|------|--------------|
+| E2001 | Keine Berechtigung |
+| E2002 | Session abgelaufen |
+| E2003 | Ungültiger Nonce (CSRF) |
+| E2004 | reCAPTCHA-Prüfung fehlgeschlagen |
+| E2005 | Ungültiges Token |
+
+### Datenbankfehler (E3xxx)
+
+| Code | Beschreibung |
+|------|--------------|
+| E3001 | Datenbankverbindung fehlgeschlagen |
+| E3002 | Datenbankabfrage fehlgeschlagen |
+| E3003 | Lead nicht gefunden |
+| E3004 | Doppelter Eintrag |
+| E3005 | Einfügen fehlgeschlagen |
+| E3006 | Aktualisieren fehlgeschlagen |
+| E3007 | Löschen fehlgeschlagen |
+
+### Externe API-Fehler (E4xxx)
+
+| Code | Beschreibung |
+|------|--------------|
+| E4001 | API-Verbindung fehlgeschlagen |
+| E4002 | Rate-Limit überschritten |
+| E4003 | Ungültige API-Antwort |
+| E4004 | Propstack-Sync fehlgeschlagen |
+| E4005 | Geocoding fehlgeschlagen |
+| E4006 | E-Mail-Versand fehlgeschlagen |
+
+### Systemfehler (E5xxx)
+
+| Code | Beschreibung |
+|------|--------------|
+| E5001 | Datei nicht gefunden |
+| E5002 | Zugriff verweigert |
+| E5003 | Speicherlimit erreicht |
+| E5004 | Timeout |
+| E5005 | PDF-Generierung fehlgeschlagen |
+| E5006 | Export fehlgeschlagen |
+| E5007 | Berechnung fehlgeschlagen |
 
 ---
 

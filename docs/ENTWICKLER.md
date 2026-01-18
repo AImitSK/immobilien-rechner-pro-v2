@@ -27,14 +27,16 @@ immobilien-rechner-pro-v2/
 │   ├── class-activator.php          # Datenbank-Setup, Migrations
 │   ├── class-assets.php             # Script/Style-Loading
 │   ├── class-calculator.php         # Mietwert-Berechnungslogik
-│   ├── class-sale-calculator.php    # Verkaufswert-Berechnungslogik
+│   ├── class-deactivator.php        # Plugin-Deaktivierung
 │   ├── class-email.php              # E-Mail-Versand
+│   ├── class-error-handler.php      # Zentrale Fehlerbehandlung (E1xxx-E5xxx)
 │   ├── class-github-updater.php     # Auto-Updates von GitHub
 │   ├── class-leads.php              # Lead-Verwaltung
 │   ├── class-pdf-generator.php      # PDF-Generierung mit DOMPDF
 │   ├── class-propstack.php          # Propstack CRM Integration
 │   ├── class-recaptcha.php          # reCAPTCHA v3
 │   ├── class-rest-api.php           # REST API Endpoints
+│   ├── class-sale-calculator.php    # Verkaufswert-Berechnungslogik
 │   ├── class-shortcode.php          # Shortcode-Handler
 │   └── templates/
 │       ├── email.php                # E-Mail HTML Template
@@ -62,6 +64,7 @@ immobilien-rechner-pro-v2/
 │   ├── index.js                     # Entry Point
 │   ├── components/
 │   │   ├── App.js                   # Hauptkomponente
+│   │   ├── Icon.js                  # Inline-SVG-Loader mit Theme-Farben
 │   │   ├── ModeSelector.js          # Modus-Auswahl
 │   │   ├── RentalCalculator.js      # Mietwert-Wizard
 │   │   ├── ComparisonCalculator.js  # Vergleichs-Wizard
@@ -90,6 +93,8 @@ immobilien-rechner-pro-v2/
 │   │   └── useDebounce.js
 │   ├── utils/
 │   │   ├── debug.js                 # Debug-Funktionen
+│   │   ├── errorHandler.js          # Frontend Error-Handler (E1xxx-E5xxx)
+│   │   ├── iconPaths.js             # Icon-Pfad-Verwaltung
 │   │   └── tracking.js              # Google Ads Tracking
 │   └── styles/
 │       └── main.scss
@@ -99,15 +104,29 @@ immobilien-rechner-pro-v2/
 │   ├── index.css
 │   └── index.asset.php
 │
-├── languages/                        # Übersetzungen
-│   └── immobilien-rechner-pro.pot
+├── assets/
+│   └── icon/                         # SVG-Icons mit CSS-Variablen
+│       ├── ausstattung/              # Balkon, Terrasse, Garten, etc.
+│       ├── immobilientyp/            # Wohnung, Haus, Gewerbe
+│       ├── zustand/                  # Neubau, Renoviert, Gut
+│       ├── haustypen/                # EFH, MFH, DHH, Reihenhaus
+│       ├── qualitaetsstufen/         # Einfach, Normal, Gehoben
+│       ├── nutzung/                  # Selbstgenutzt, Vermietet
+│       └── modernisierung/           # Modernisierungs-Icons
+│
+├── languages/                        # Übersetzungen (i18n)
+│   ├── immobilien-rechner-pro.pot   # Template
+│   ├── immobilien-rechner-pro-de_DE.po  # Deutsche Übersetzung
+│   └── README.md                     # Übersetzungs-Anleitung
 │
 ├── docs/                             # Dokumentation
-│   ├── BENUTZERHANDBUCH.md
-│   ├── KONFIGURATION.md
 │   ├── API.md
+│   ├── BENUTZERHANDBUCH.md
 │   ├── ENTWICKLER.md
-│   └── PLANUNG-VERKAUFSWERT-RECHNER.md
+│   ├── KONFIGURATION.md
+│   ├── PLANUNG-VERKAUFSWERT-RECHNER.md  # (wird nach Refactoring gelöscht)
+│   ├── REFACTORING-PLAN.md              # (wird nach Refactoring gelöscht)
+│   └── WORKFLOW.md                      # (wird nach Refactoring gelöscht)
 │
 ├── README.md
 ├── CHANGELOG.md
@@ -149,6 +168,32 @@ calculate_comparison(array $data): array
 get_city_data(string $city_id): array
 apply_size_degression(float $base_price, float $size): float
 calculate_features_bonus(array $features, array $settings): float
+```
+
+### IRP_Error_Handler
+
+**Datei:** `includes/class-error-handler.php`
+
+Zentrale Fehlerbehandlung mit Error-Code-System (E1xxx-E5xxx).
+
+```php
+// Statische Methoden
+create_error(string $code, array $context = [], int $http_status = 400): WP_Error
+get_message(string $code, array $context = []): string
+to_rest_response(WP_Error $error): WP_REST_Response
+log_error(string $code, array $context = []): void
+code_exists(string $code): bool
+create_and_log_error(string $code, array $context = [], int $http_status = 400): WP_Error
+```
+
+**Verwendung:**
+```php
+// Fehler erstellen und als REST-Response zurückgeben
+$error = IRP_Error_Handler::create_error('E1001', ['field' => 'email']);
+return IRP_Error_Handler::to_rest_response($error);
+
+// Fehler loggen (nur im Debug-Modus)
+IRP_Error_Handler::log_error('E3002', ['query' => $sql]);
 ```
 
 ### IRP_Sale_Calculator
@@ -640,7 +685,7 @@ build/
 
 ```php
 // Plugin-Verzeichnisse
-IRP_VERSION           // '2.1.1'
+IRP_VERSION           // '2.0.0'
 IRP_PLUGIN_DIR        // Absoluter Pfad zum Plugin
 IRP_PLUGIN_URL        // URL zum Plugin
 IRP_PLUGIN_BASENAME   // 'immobilien-rechner-pro-v2/immobilien-rechner-pro.php'

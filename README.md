@@ -2,7 +2,7 @@
 
 Professionelles WordPress-Plugin zur Immobilienbewertung. White-Label-Lösung für Immobilienmakler mit Lead-Generierung und CRM-Integration.
 
-**Version:** 2.1.1 | **Autor:** [Stefan Kühne](https://sk-online-marketing.de) | **Lizenz:** GPL v2+
+**Version:** 2.0.0 | **Autor:** [Stefan Kühne](https://sk-online-marketing.de) | **Lizenz:** GPL v2+
 
 ---
 
