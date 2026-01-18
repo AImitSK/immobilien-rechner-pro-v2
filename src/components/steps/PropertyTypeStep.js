@@ -9,19 +9,19 @@ import Icon from '../Icon';
 const PROPERTY_TYPES = [
     {
         id: 'apartment',
-        iconPath: 'immobilientyp/wohnung.svg',
+        iconPath: 'assets/icon/immobilientyp/wohnung.svg',
         label: __('Wohnung', 'immobilien-rechner-pro'),
         description: __('Wohnung in einem Mehrfamilienhaus', 'immobilien-rechner-pro'),
     },
     {
         id: 'house',
-        iconPath: 'immobilientyp/haus.svg',
+        iconPath: 'assets/icon/immobilientyp/haus.svg',
         label: __('Haus', 'immobilien-rechner-pro'),
         description: __('Einfamilienhaus oder Doppelhaushälfte', 'immobilien-rechner-pro'),
     },
     {
         id: 'commercial',
-        iconPath: 'immobilientyp/gewerbe.svg',
+        iconPath: 'assets/icon/immobilientyp/gewerbe.svg',
         label: __('Gewerbe', 'immobilien-rechner-pro'),
         description: __('Büro, Einzelhandel oder Mischnutzung', 'immobilien-rechner-pro'),
     },

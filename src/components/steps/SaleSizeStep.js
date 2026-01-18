@@ -159,7 +159,7 @@ export default function SaleSizeStep({ data, onChange }) {
                                 whileHover={{ scale: 1.02 }}
                                 whileTap={{ scale: 0.98 }}
                             >
-                                <Icon path="modernisierung/modernisierung.svg" size={32} className="irp-modernization-icon" />
+                                <Icon path="assets/icon/modernisierung/modernisierung.svg" size={32} className="irp-modernization-icon" />
                                 <span className="irp-modernization-label">{option.label}</span>
                                 <span className="irp-modernization-description">{option.description}</span>
                             </motion.button>

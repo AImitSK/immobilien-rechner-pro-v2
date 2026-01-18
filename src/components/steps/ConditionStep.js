@@ -11,25 +11,25 @@ const CONDITIONS = [
         id: 'new',
         label: __('Neubau / Kernsaniert', 'immobilien-rechner-pro'),
         description: __('Neu gebaut oder vollständig saniert', 'immobilien-rechner-pro'),
-        iconPath: 'zustand/neubau.svg',
+        iconPath: 'assets/icon/zustand/neubau.svg',
     },
     {
         id: 'renovated',
         label: __('Kürzlich renoviert', 'immobilien-rechner-pro'),
         description: __('In den letzten 5 Jahren modernisiert', 'immobilien-rechner-pro'),
-        iconPath: 'zustand/renoviert.svg',
+        iconPath: 'assets/icon/zustand/renoviert.svg',
     },
     {
         id: 'good',
         label: __('Guter Zustand', 'immobilien-rechner-pro'),
         description: __('Gut gepflegt, bezugsfertig', 'immobilien-rechner-pro'),
-        iconPath: 'zustand/gut.svg',
+        iconPath: 'assets/icon/zustand/gut.svg',
     },
     {
         id: 'needs_renovation',
         label: __('Renovierungsbedürftig', 'immobilien-rechner-pro'),
         description: __('Erfordert Modernisierung oder Reparaturen', 'immobilien-rechner-pro'),
-        iconPath: 'zustand/reparaturen.svg',
+        iconPath: 'assets/icon/zustand/reparaturen.svg',
     },
 ];
 

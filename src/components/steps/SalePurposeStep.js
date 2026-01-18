@@ -10,19 +10,19 @@ import Icon from '../Icon';
 const USAGE_TYPES = [
     {
         id: 'owner_occupied',
-        iconPath: 'nutzung/selbstgenutzt.svg',
+        iconPath: 'assets/icon/nutzung/selbstgenutzt.svg',
         label: __('Selbstgenutzt', 'immobilien-rechner-pro'),
         description: __('Sie wohnen selbst in der Immobilie', 'immobilien-rechner-pro'),
     },
     {
         id: 'rented',
-        iconPath: 'nutzung/vermietet.svg',
+        iconPath: 'assets/icon/nutzung/vermietet.svg',
         label: __('Vermietet', 'immobilien-rechner-pro'),
         description: __('Die Immobilie ist aktuell vermietet', 'immobilien-rechner-pro'),
     },
     {
         id: 'vacant',
-        iconPath: 'nutzung/leerstand.svg',
+        iconPath: 'assets/icon/nutzung/leerstand.svg',
         label: __('Leerstand', 'immobilien-rechner-pro'),
         description: __('Die Immobilie steht derzeit leer', 'immobilien-rechner-pro'),
     },
@@ -31,13 +31,13 @@ const USAGE_TYPES = [
 const SALE_INTENTIONS = [
     {
         id: 'sell',
-        iconPath: 'nutzung/verkaufen.svg',
+        iconPath: 'assets/icon/nutzung/verkaufen.svg',
         label: __('Verkaufen', 'immobilien-rechner-pro'),
         description: __('Ich möchte die Immobilie verkaufen', 'immobilien-rechner-pro'),
     },
     {
         id: 'buy',
-        iconPath: 'nutzung/kaufen.svg',
+        iconPath: 'assets/icon/nutzung/kaufen.svg',
         label: __('Kaufen', 'immobilien-rechner-pro'),
         description: __('Ich möchte eine Immobilie kaufen', 'immobilien-rechner-pro'),
     },
@@ -158,7 +158,7 @@ export default function SalePurposeStep({ data, onChange }) {
                             whileHover={{ scale: 1.02 }}
                             whileTap={{ scale: 0.98 }}
                         >
-                            <Icon path="zeitrahmen/zeitrahmen.svg" size={32} className="irp-timeframe-icon" />
+                            <Icon path="assets/icon/zeitrahmen/zeitrahmen.svg" size={32} className="irp-timeframe-icon" />
                             <span className="irp-timeframe-label">{timeframe.label}</span>
                             <span className="irp-timeframe-description">{timeframe.description}</span>
                         </motion.button>

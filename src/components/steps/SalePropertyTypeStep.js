@@ -10,19 +10,19 @@ import Icon from '../Icon';
 const PROPERTY_TYPES = [
     {
         id: 'land',
-        iconPath: 'immobilientyp/grundstueck.svg',
+        iconPath: 'assets/icon/immobilientyp/grundstueck.svg',
         label: __('Grundstück', 'immobilien-rechner-pro'),
         description: __('Unbebautes Grundstück', 'immobilien-rechner-pro'),
     },
     {
         id: 'apartment',
-        iconPath: 'immobilientyp/wohnung.svg',
+        iconPath: 'assets/icon/immobilientyp/wohnung.svg',
         label: __('Wohnung', 'immobilien-rechner-pro'),
         description: __('Eigentumswohnung in einem Mehrfamilienhaus', 'immobilien-rechner-pro'),
     },
     {
         id: 'house',
-        iconPath: 'immobilientyp/haus.svg',
+        iconPath: 'assets/icon/immobilientyp/haus.svg',
         label: __('Haus', 'immobilien-rechner-pro'),
         description: __('Einfamilienhaus, Reihenhaus oder Mehrfamilienhaus', 'immobilien-rechner-pro'),
     },
@@ -31,32 +31,32 @@ const PROPERTY_TYPES = [
 const HOUSE_TYPES = [
     {
         id: 'single_family',
-        iconPath: 'haustypen/einfamilienhaus.svg',
+        iconPath: 'assets/icon/haustypen/einfamilienhaus.svg',
         label: __('Einfamilienhaus', 'immobilien-rechner-pro'),
     },
     {
         id: 'semi_detached',
-        iconPath: 'haustypen/doppelhaushaelfte.svg',
+        iconPath: 'assets/icon/haustypen/doppelhaushaelfte.svg',
         label: __('Doppelhaushälfte', 'immobilien-rechner-pro'),
     },
     {
         id: 'townhouse_end',
-        iconPath: 'haustypen/endreihenhaus.svg',
+        iconPath: 'assets/icon/haustypen/endreihenhaus.svg',
         label: __('Endreihenhaus', 'immobilien-rechner-pro'),
     },
     {
         id: 'townhouse_middle',
-        iconPath: 'haustypen/mittelreihenhaus.svg',
+        iconPath: 'assets/icon/haustypen/mittelreihenhaus.svg',
         label: __('Mittelreihenhaus', 'immobilien-rechner-pro'),
     },
     {
         id: 'multi_family',
-        iconPath: 'haustypen/mehrfamilienhaus.svg',
+        iconPath: 'assets/icon/haustypen/mehrfamilienhaus.svg',
         label: __('Mehrfamilienhaus', 'immobilien-rechner-pro'),
     },
     {
         id: 'bungalow',
-        iconPath: 'haustypen/bungalow.svg',
+        iconPath: 'assets/icon/haustypen/bungalow.svg',
         label: __('Bungalow', 'immobilien-rechner-pro'),
     },
 ];

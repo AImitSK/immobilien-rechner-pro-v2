@@ -8,17 +8,17 @@ import { CheckIcon } from '@heroicons/react/24/solid';
 import Icon from '../Icon';
 
 const FEATURES = [
-    { id: 'balcony', label: __('Balkon', 'immobilien-rechner-pro'), iconPath: 'ausstattung/balkon.svg' },
-    { id: 'terrace', label: __('Terrasse', 'immobilien-rechner-pro'), iconPath: 'ausstattung/terrasse.svg' },
-    { id: 'garden', label: __('Garten', 'immobilien-rechner-pro'), iconPath: 'ausstattung/garten.svg' },
-    { id: 'elevator', label: __('Aufzug', 'immobilien-rechner-pro'), iconPath: 'ausstattung/aufzug.svg' },
-    { id: 'parking', label: __('Stellplatz', 'immobilien-rechner-pro'), iconPath: 'ausstattung/stellplatz.svg' },
-    { id: 'garage', label: __('Garage', 'immobilien-rechner-pro'), iconPath: 'ausstattung/garage.svg' },
-    { id: 'cellar', label: __('Keller', 'immobilien-rechner-pro'), iconPath: 'ausstattung/keller.svg' },
-    { id: 'fitted_kitchen', label: __('Einbauküche', 'immobilien-rechner-pro'), iconPath: 'ausstattung/kueche.svg' },
-    { id: 'floor_heating', label: __('Fußbodenheizung', 'immobilien-rechner-pro'), iconPath: 'ausstattung/fussbodenheizung.svg' },
-    { id: 'guest_toilet', label: __('Gäste-WC', 'immobilien-rechner-pro'), iconPath: 'ausstattung/wc.svg' },
-    { id: 'barrier_free', label: __('Barrierefrei', 'immobilien-rechner-pro'), iconPath: 'ausstattung/barrierefrei.svg' },
+    { id: 'balcony', label: __('Balkon', 'immobilien-rechner-pro'), iconPath: 'assets/icon/ausstattung/balkon.svg' },
+    { id: 'terrace', label: __('Terrasse', 'immobilien-rechner-pro'), iconPath: 'assets/icon/ausstattung/terrasse.svg' },
+    { id: 'garden', label: __('Garten', 'immobilien-rechner-pro'), iconPath: 'assets/icon/ausstattung/garten.svg' },
+    { id: 'elevator', label: __('Aufzug', 'immobilien-rechner-pro'), iconPath: 'assets/icon/ausstattung/aufzug.svg' },
+    { id: 'parking', label: __('Stellplatz', 'immobilien-rechner-pro'), iconPath: 'assets/icon/ausstattung/stellplatz.svg' },
+    { id: 'garage', label: __('Garage', 'immobilien-rechner-pro'), iconPath: 'assets/icon/ausstattung/garage.svg' },
+    { id: 'cellar', label: __('Keller', 'immobilien-rechner-pro'), iconPath: 'assets/icon/ausstattung/keller.svg' },
+    { id: 'fitted_kitchen', label: __('Einbauküche', 'immobilien-rechner-pro'), iconPath: 'assets/icon/ausstattung/kueche.svg' },
+    { id: 'floor_heating', label: __('Fußbodenheizung', 'immobilien-rechner-pro'), iconPath: 'assets/icon/ausstattung/fussbodenheizung.svg' },
+    { id: 'guest_toilet', label: __('Gäste-WC', 'immobilien-rechner-pro'), iconPath: 'assets/icon/ausstattung/wc.svg' },
+    { id: 'barrier_free', label: __('Barrierefrei', 'immobilien-rechner-pro'), iconPath: 'assets/icon/ausstattung/barrierefrei.svg' },
 ];
 
 export default function FeaturesStep({ data, onChange }) {

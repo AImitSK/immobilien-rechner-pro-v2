@@ -10,25 +10,25 @@ import Icon from '../Icon';
 const QUALITY_LEVELS = [
     {
         id: 'simple',
-        iconPath: 'qualitaetsstufen/einfach.svg',
+        iconPath: 'assets/icon/qualitaetsstufen/einfach.svg',
         label: __('Einfach', 'immobilien-rechner-pro'),
         description: __('Einfache Ausstattung, Standardmaterialien', 'immobilien-rechner-pro'),
     },
     {
         id: 'normal',
-        iconPath: 'qualitaetsstufen/normal.svg',
+        iconPath: 'assets/icon/qualitaetsstufen/normal.svg',
         label: __('Normal', 'immobilien-rechner-pro'),
         description: __('Durchschnittliche Ausstattung und Materialien', 'immobilien-rechner-pro'),
     },
     {
         id: 'upscale',
-        iconPath: 'qualitaetsstufen/gehoben.svg',
+        iconPath: 'assets/icon/qualitaetsstufen/gehoben.svg',
         label: __('Gehoben', 'immobilien-rechner-pro'),
         description: __('Hochwertige Ausstattung und Materialien', 'immobilien-rechner-pro'),
     },
     {
         id: 'luxury',
-        iconPath: 'qualitaetsstufen/luxurioes.svg',
+        iconPath: 'assets/icon/qualitaetsstufen/luxurioes.svg',
         label: __('Luxuriös', 'immobilien-rechner-pro'),
         description: __('Erstklassige Ausstattung, exklusive Materialien', 'immobilien-rechner-pro'),
     },
