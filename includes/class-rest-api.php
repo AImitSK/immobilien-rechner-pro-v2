@@ -86,8 +86,16 @@ class IRP_Rest_API {
         ]);
     }
     
+    /**
+     * Get rental calculation API arguments
+     *
+     * Parameters are divided into:
+     * - Calculation parameters: Used in IRP_Calculator for rental value calculation
+     * - Lead data only: Stored with lead but not used in calculation
+     */
     private function get_rental_args(): array {
         return [
+            // === Calculation Parameters (used in IRP_Calculator) ===
             'property_type' => [
                 'required' => true,
                 'type' => 'string',
@@ -100,26 +108,10 @@ class IRP_Rest_API {
                 'minimum' => 10,
                 'maximum' => 10000,
             ],
-            'rooms' => [
-                'required' => false,
-                'type' => 'number',
-                'minimum' => 1,
-                'maximum' => 20,
-            ],
             'city_id' => [
                 'required' => false,
                 'type' => 'string',
                 'sanitize_callback' => 'sanitize_key',
-            ],
-            'zip_code' => [
-                'required' => false, // Not required when city_id is provided
-                'type' => 'string',
-                'sanitize_callback' => 'sanitize_text_field',
-            ],
-            'location' => [
-                'required' => false,
-                'type' => 'string',
-                'sanitize_callback' => 'sanitize_text_field',
             ],
             'condition' => [
                 'required' => true,
@@ -145,7 +137,24 @@ class IRP_Rest_API {
                 'maximum' => 5,
                 'default' => 3, // "Gute Lage"
             ],
-            'address' => [
+            // === Lead Data Only - not used in calculation ===
+            'rooms' => [
+                'required' => false,
+                'type' => 'number',
+                'minimum' => 1,
+                'maximum' => 20,
+            ],
+            'zip_code' => [ // Lead data only - not used in calculation
+                'required' => false,
+                'type' => 'string',
+                'sanitize_callback' => 'sanitize_text_field',
+            ],
+            'location' => [ // Lead data only - not used in calculation
+                'required' => false,
+                'type' => 'string',
+                'sanitize_callback' => 'sanitize_text_field',
+            ],
+            'address' => [ // Lead data only - not used in calculation
                 'required' => false,
                 'type' => 'string',
                 'sanitize_callback' => 'sanitize_text_field',
@@ -223,13 +232,23 @@ class IRP_Rest_API {
         ];
     }
 
+    /**
+     * Get partial lead API arguments
+     *
+     * Parameters are divided into:
+     * - Property data: Used for calculation and stored with lead
+     * - Lead data only: For consultation purposes, not used in calculation
+     * - Address data: For location context, not used in calculation
+     */
     private function get_partial_lead_args(): array {
         return [
+            // === Meta ===
             'mode' => [
                 'required' => true,
                 'type' => 'string',
                 'enum' => ['rental', 'comparison', 'sale_value'],
             ],
+            // === Property Data (used in calculation) ===
             'property_type' => [
                 'required' => true,
                 'type' => 'string',
@@ -268,7 +287,7 @@ class IRP_Rest_API {
                 'required' => false,
                 'type' => 'object',
             ],
-            // Sale value specific fields
+            // === Sale Value Specific Fields (used in IRP_Sale_Calculator) ===
             'land_size' => [
                 'required' => false,
                 'type' => 'number',
@@ -296,32 +315,34 @@ class IRP_Rest_API {
                 'type' => 'string',
                 'sanitize_callback' => 'sanitize_text_field',
             ],
-            'usage_type' => [
+            // === Lead Data Only - for consultation purposes ===
+            'usage_type' => [ // Lead data only - for consultation purposes
                 'required' => false,
                 'type' => 'string',
                 'sanitize_callback' => 'sanitize_text_field',
             ],
-            'sale_intention' => [
+            'sale_intention' => [ // Lead data only - for consultation purposes
                 'required' => false,
                 'type' => 'string',
                 'sanitize_callback' => 'sanitize_text_field',
             ],
-            'timeframe' => [
+            'timeframe' => [ // Lead data only - for consultation purposes
                 'required' => false,
                 'type' => 'string',
                 'sanitize_callback' => 'sanitize_text_field',
             ],
-            'street_address' => [
+            // === Address Data - not used in calculation ===
+            'street_address' => [ // Lead data only - not used in calculation
                 'required' => false,
                 'type' => 'string',
                 'sanitize_callback' => 'sanitize_text_field',
             ],
-            'zip_code' => [
+            'zip_code' => [ // Lead data only - not used in calculation
                 'required' => false,
                 'type' => 'string',
                 'sanitize_callback' => 'sanitize_text_field',
             ],
-            'property_location' => [
+            'property_location' => [ // Lead data only - not used in calculation
                 'required' => false,
                 'type' => 'string',
                 'sanitize_callback' => 'sanitize_text_field',

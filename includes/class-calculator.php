@@ -1,6 +1,45 @@
 <?php
 /**
  * Calculator logic for rental value and comparison calculations
+ *
+ * ============================================================================
+ * PARAMETER DOCUMENTATION
+ * ============================================================================
+ *
+ * This calculator uses the following parameters for calculations:
+ *
+ * CALCULATION PARAMETERS (used in calculate_rental_value):
+ * - property_type: Type of property (apartment, house, commercial)
+ * - size: Property size in sqm
+ * - city_id: ID of the city for base price lookup
+ * - condition: Property condition (new, renovated, good, needs_renovation)
+ * - features: Array of property features (balcony, garage, etc.)
+ * - year_built: Construction year for age factor calculation
+ * - location_rating: Location quality rating (1-5)
+ *
+ * LEAD DATA ONLY (accepted by API but NOT used in calculation):
+ * - rooms: Number of rooms - stored for lead/consultation context
+ * - zip_code: Postal code - stored for lead/consultation context
+ * - location: Location description - stored for lead/consultation context
+ * - address: Full address - stored for lead/consultation context
+ *
+ * These lead-only parameters are passed through the API for storage with
+ * the lead record, enabling brokers to have complete property information
+ * for follow-up consultations.
+ *
+ * ============================================================================
+ * SHARED CODE NOTE
+ * ============================================================================
+ *
+ * The get_default_location_ratings() method is duplicated in:
+ * - IRP_Calculator (this class)
+ * - IRP_Sale_Calculator (class-sale-calculator.php)
+ *
+ * Both return identical location rating configurations. If updating these
+ * values, ensure both classes are updated for consistency. A future
+ * refactoring could extract this to a shared utility class or trait.
+ *
+ * ============================================================================
  */
 
 if (!defined('ABSPATH')) {

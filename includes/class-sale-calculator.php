@@ -6,6 +6,44 @@
  * - Apartments: Comparative value method (Vergleichswertverfahren)
  * - Houses: Asset value method (Sachwertverfahren)
  * - Land: Pure land value (Bodenwert)
+ *
+ * ============================================================================
+ * PARAMETER DOCUMENTATION
+ * ============================================================================
+ *
+ * CALCULATION PARAMETERS (used in calculate method):
+ * - property_type: Type (apartment, house, land)
+ * - city_id: ID of the city for price lookup
+ * - living_space: Living area in sqm (apartments/houses)
+ * - land_size: Land area in sqm (houses/land)
+ * - house_type: Type of house (single_family, multi_family, etc.)
+ * - build_year: Construction year for age depreciation
+ * - modernization: Last modernization timeframe
+ * - quality: Quality level (simple, normal, upscale, luxury)
+ * - location_rating: Location quality rating (1-5)
+ * - features: Array of property features
+ *
+ * LEAD DATA ONLY (NOT used in calculation, for consultation purposes):
+ * - usage_type: Current usage of property
+ * - sale_intention: Reason for selling
+ * - timeframe: Desired sale timeframe
+ * - street_address: Full street address
+ * - zip_code: Postal code
+ * - property_location: Location description
+ *
+ * ============================================================================
+ * SHARED CODE NOTE
+ * ============================================================================
+ *
+ * The get_default_location_ratings() method is duplicated in:
+ * - IRP_Calculator (class-calculator.php)
+ * - IRP_Sale_Calculator (this class)
+ *
+ * Both return identical location rating configurations. If updating these
+ * values, ensure both classes are updated for consistency. A future
+ * refactoring could extract this to a shared utility class or trait.
+ *
+ * ============================================================================
  */
 
 if (!defined('ABSPATH')) {
