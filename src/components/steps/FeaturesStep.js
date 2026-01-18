@@ -12,7 +12,7 @@ const pluginUrl = window.irpSettings?.pluginUrl || '';
 const FEATURES = [
     { id: 'balcony', label: __('Balkon', 'immobilien-rechner-pro'), icon: `${pluginUrl}assets/images/balkon.svg` },
     { id: 'terrace', label: __('Terrasse', 'immobilien-rechner-pro'), icon: `${pluginUrl}assets/images/terrasse.svg` },
-    { id: 'garden', label: __('Garten', 'immobilien-rechner-pro'), icon: `${pluginUrl}assets/images/garte.svg` },
+    { id: 'garden', label: __('Garten', 'immobilien-rechner-pro'), icon: `${pluginUrl}assets/images/garten.svg` },
     { id: 'elevator', label: __('Aufzug', 'immobilien-rechner-pro'), icon: `${pluginUrl}assets/images/aufzug.svg` },
     { id: 'parking', label: __('Stellplatz', 'immobilien-rechner-pro'), icon: `${pluginUrl}assets/images/stellplatz.svg` },
     { id: 'garage', label: __('Garage', 'immobilien-rechner-pro'), icon: `${pluginUrl}assets/images/garage.svg` },
