@@ -388,6 +388,9 @@ class IRP_Admin {
 
         // Handle single delete action (from detail view)
         if (isset($_POST['action']) && $_POST['action'] === 'delete_lead' && wp_verify_nonce($_POST['_wpnonce'], 'irp_delete_lead')) {
+            if (!current_user_can('manage_options')) {
+                wp_die(__('Keine Berechtigung.', 'immobilien-rechner-pro'));
+            }
             $leads_manager->delete((int) $_POST['lead_id']);
             wp_redirect(admin_url('admin.php?page=irp-leads&deleted=1'));
             exit;
@@ -395,6 +398,9 @@ class IRP_Admin {
 
         // Handle bulk delete action
         if (isset($_POST['action']) && $_POST['action'] === 'bulk_delete' && wp_verify_nonce($_POST['_wpnonce'], 'irp_bulk_delete_leads')) {
+            if (!current_user_can('manage_options')) {
+                wp_die(__('Keine Berechtigung.', 'immobilien-rechner-pro'));
+            }
             $lead_ids = array_map('intval', $_POST['lead_ids'] ?? []);
             $deleted = 0;
             foreach ($lead_ids as $lead_id) {

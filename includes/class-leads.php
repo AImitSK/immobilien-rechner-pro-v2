@@ -252,8 +252,9 @@ class IRP_Leads {
         
         $args = wp_parse_args($args, $defaults);
         
-        $where = ['1=1'];
-        $values = [];
+        // Always have at least one prepared parameter to avoid empty $values array
+        $where = ['1=%d'];
+        $values = [1];
         
         if (!empty($args['mode'])) {
             $where[] = 'mode = %s';
@@ -266,8 +267,11 @@ class IRP_Leads {
         }
 
         if (!empty($args['search'])) {
+            // Sanitize and limit search input length to prevent abuse
+            $search = sanitize_text_field($args['search']);
+            $search = substr($search, 0, 100);
             $where[] = '(name LIKE %s OR email LIKE %s OR property_location LIKE %s)';
-            $search_term = '%' . $wpdb->esc_like($args['search']) . '%';
+            $search_term = '%' . $wpdb->esc_like($search) . '%';
             $values[] = $search_term;
             $values[] = $search_term;
             $values[] = $search_term;
@@ -292,11 +296,9 @@ class IRP_Leads {
         
         $offset = ($args['page'] - 1) * $args['per_page'];
         
-        // Get total count
+        // Get total count (always use prepare since $values is never empty)
         $count_sql = "SELECT COUNT(*) FROM {$this->table_name} WHERE {$where_clause}";
-        if (!empty($values)) {
-            $count_sql = $wpdb->prepare($count_sql, $values);
-        }
+        $count_sql = $wpdb->prepare($count_sql, $values);
         $total = (int) $wpdb->get_var($count_sql);
         
         // Get results

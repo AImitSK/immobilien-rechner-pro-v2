@@ -505,6 +505,18 @@ class IRP_Rest_API {
      * Create a partial lead (property data only, no contact info yet)
      */
     public function create_partial_lead(\WP_REST_Request $request): \WP_REST_Response {
+        // Rate Limiting
+        $ip = $_SERVER['REMOTE_ADDR'] ?? '0.0.0.0';
+        $transient_key = 'irp_rate_' . md5($ip);
+        $attempts = (int) get_transient($transient_key);
+        if ($attempts >= 10) {
+            return new \WP_REST_Response([
+                'success' => false,
+                'message' => __('Zu viele Anfragen. Bitte warten Sie.', 'immobilien-rechner-pro'),
+            ], 429);
+        }
+        set_transient($transient_key, $attempts + 1, HOUR_IN_SECONDS);
+
         error_log('[IRP] create_partial_lead called');
 
         $leads = new IRP_Leads();
@@ -537,6 +549,18 @@ class IRP_Rest_API {
      * Complete a partial lead (add contact info)
      */
     public function complete_lead(\WP_REST_Request $request): \WP_REST_Response {
+        // Rate Limiting
+        $ip = $_SERVER['REMOTE_ADDR'] ?? '0.0.0.0';
+        $transient_key = 'irp_rate_' . md5($ip);
+        $attempts = (int) get_transient($transient_key);
+        if ($attempts >= 10) {
+            return new \WP_REST_Response([
+                'success' => false,
+                'message' => __('Zu viele Anfragen. Bitte warten Sie.', 'immobilien-rechner-pro'),
+            ], 429);
+        }
+        set_transient($transient_key, $attempts + 1, HOUR_IN_SECONDS);
+
         // Verify reCAPTCHA if configured
         $recaptcha = new IRP_Recaptcha();
         $token = $request->get_param('recaptcha_token');
@@ -636,8 +660,11 @@ class IRP_Rest_API {
     
     private function store_calculation(string $mode, array $input, array $result): void {
         global $wpdb;
-        
-        $session_id = $_COOKIE['irp_session'] ?? wp_generate_uuid4();
+
+        // Validate session cookie format (UUID4) before using
+        $session_id = isset($_COOKIE['irp_session']) && preg_match('/^[a-f0-9-]{36}$/', $_COOKIE['irp_session'])
+            ? sanitize_text_field($_COOKIE['irp_session'])
+            : wp_generate_uuid4();
         
         $wpdb->insert(
             $wpdb->prefix . 'irp_calculations',
