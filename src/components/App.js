@@ -68,21 +68,54 @@ export default function App({ config }) {
         // Create partial lead in background
         try {
             irpDebug('Creating partial lead...');
+
+            // Build partial lead data based on mode
+            const partialLeadData = {
+                mode: mode,
+                property_type: data.property_type,
+                city_id: data.city_id || '',
+                city_name: data.city_name || '',
+                location_rating: data.location_rating || 3,
+                features: data.features || [],
+                calculation_result: calculationResults,
+            };
+
+            // Add mode-specific fields
+            if (mode === 'sale_value') {
+                // Sale value uses living_space and land_size
+                if (data.living_space) {
+                    partialLeadData.living_space = parseFloat(data.living_space);
+                    partialLeadData.property_size = parseFloat(data.living_space);
+                }
+                if (data.land_size) {
+                    partialLeadData.land_size = parseFloat(data.land_size);
+                }
+                if (data.house_type) {
+                    partialLeadData.house_type = data.house_type;
+                }
+                if (data.build_year) {
+                    partialLeadData.build_year = parseInt(data.build_year);
+                }
+                if (data.modernization) {
+                    partialLeadData.modernization = data.modernization;
+                }
+                if (data.quality) {
+                    partialLeadData.quality = data.quality;
+                }
+                if (data.street_address) {
+                    partialLeadData.street_address = data.street_address;
+                }
+            } else {
+                // Rental and comparison use size
+                partialLeadData.property_size = parseFloat(data.size) || 0;
+                partialLeadData.address = data.address || '';
+                partialLeadData.condition = data.condition;
+            }
+
             const response = await apiFetch({
                 path: '/irp/v1/leads/partial',
                 method: 'POST',
-                data: {
-                    mode: mode,
-                    property_type: data.property_type,
-                    property_size: parseFloat(data.size),
-                    city_id: data.city_id || '',
-                    city_name: data.city_name || '',
-                    address: data.address || '',
-                    condition: data.condition,
-                    location_rating: data.location_rating || 3,
-                    features: data.features || [],
-                    calculation_result: calculationResults,
-                },
+                data: partialLeadData,
             });
 
             irpDebug('API response:', response);

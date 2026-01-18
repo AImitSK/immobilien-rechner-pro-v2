@@ -81,21 +81,41 @@ export default function SaleValueCalculator({ initialData, onComplete, onBack, c
         setError(null);
 
         try {
+            const propertyType = formData.property_type;
+            const isLand = propertyType === 'land';
+            const isHouse = propertyType === 'house';
+            const isApartment = propertyType === 'apartment';
+
+            // Build request data based on property type
+            const requestData = {
+                property_type: propertyType,
+                location_rating: formData.location_rating || 3,
+                features: formData.features || [],
+                city_id: formData.city_id || cityId || '',
+            };
+
+            // Add living_space for apartments and houses
+            if (isApartment || isHouse) {
+                requestData.living_space = parseFloat(formData.living_space) || 0;
+                requestData.build_year = formData.build_year ? parseInt(formData.build_year) : null;
+                requestData.modernization = formData.modernization || 'never';
+                requestData.quality = formData.quality || 'normal';
+            }
+
+            // Add land_size for houses and land
+            if (isHouse || isLand) {
+                requestData.land_size = parseFloat(formData.land_size) || 0;
+            }
+
+            // Add house_type only for houses
+            if (isHouse && formData.house_type) {
+                requestData.house_type = formData.house_type;
+            }
+
             const response = await apiFetch({
                 path: '/irp/v1/calculate/sale_value',
                 method: 'POST',
-                data: {
-                    property_type: formData.property_type,
-                    living_space: parseFloat(formData.living_space) || 0,
-                    land_size: parseFloat(formData.land_size) || 0,
-                    house_type: formData.house_type || '',
-                    build_year: formData.build_year ? parseInt(formData.build_year) : null,
-                    modernization: formData.modernization || 'none',
-                    quality: formData.quality || 'normal',
-                    location_rating: formData.location_rating || 3,
-                    features: formData.features || [],
-                    city_id: formData.city_id || cityId || '',
-                },
+                data: requestData,
             });
 
             if (response.success) {
