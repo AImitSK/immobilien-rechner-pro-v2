@@ -82,6 +82,15 @@ function applyCssVariables(svgContent) {
         updatedSvg = updatedSvg.replace(stylePattern, newStyleBlock);
     }
 
+    // Also replace hardcoded default colors in SVG elements (case-insensitive)
+    // Default colors: primary=#428dff, secondary=#7facfa, light=#a4c2f7, bg=#e8edfc
+    // Some SVGs also use: #D4E1F4 (similar to bg/light)
+    updatedSvg = updatedSvg.replace(/#428[dD][fF][fF]/g, colors.primary);
+    updatedSvg = updatedSvg.replace(/#7[fF][aA][cC][fF][aA]/g, colors.secondary);
+    updatedSvg = updatedSvg.replace(/#[aA]4[cC]2[fF]7/g, colors.light);
+    updatedSvg = updatedSvg.replace(/#[eE]8[eE][dD][fF][cC]/g, colors.bg);
+    updatedSvg = updatedSvg.replace(/#[dD]4[eE]1[fF]4/g, colors.bg);
+
     return updatedSvg;
 }
 
