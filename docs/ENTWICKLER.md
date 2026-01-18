@@ -123,10 +123,13 @@ immobilien-rechner-pro-v2/
 │   ├── API.md
 │   ├── BENUTZERHANDBUCH.md
 │   ├── ENTWICKLER.md
-│   ├── KONFIGURATION.md
-│   ├── PLANUNG-VERKAUFSWERT-RECHNER.md  # (wird nach Refactoring gelöscht)
-│   ├── REFACTORING-PLAN.md              # (wird nach Refactoring gelöscht)
-│   └── WORKFLOW.md                      # (wird nach Refactoring gelöscht)
+│   └── KONFIGURATION.md
+│
+├── tests/                            # PHPUnit-Tests
+│   └── php/
+│       ├── test-rental-calculator.php
+│       ├── test-sale-calculator.php
+│       └── test-comparison-calculator.php
 │
 ├── README.md
 ├── CHANGELOG.md
