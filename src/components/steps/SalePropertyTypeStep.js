@@ -5,26 +5,24 @@
 
 import { __ } from '@wordpress/i18n';
 import { motion, AnimatePresence } from 'framer-motion';
-
-// Get plugin URL from WordPress localized settings
-const pluginUrl = window.irpSettings?.pluginUrl || '';
+import Icon from '../Icon';
 
 const PROPERTY_TYPES = [
     {
         id: 'land',
-        icon: `${pluginUrl}assets/icon/immobilientyp/grundstueck.svg`,
+        iconPath: 'immobilientyp/grundstueck.svg',
         label: __('Grundstück', 'immobilien-rechner-pro'),
         description: __('Unbebautes Grundstück', 'immobilien-rechner-pro'),
     },
     {
         id: 'apartment',
-        icon: `${pluginUrl}assets/icon/immobilientyp/wohnung.svg`,
+        iconPath: 'immobilientyp/wohnung.svg',
         label: __('Wohnung', 'immobilien-rechner-pro'),
         description: __('Eigentumswohnung in einem Mehrfamilienhaus', 'immobilien-rechner-pro'),
     },
     {
         id: 'house',
-        icon: `${pluginUrl}assets/icon/immobilientyp/haus.svg`,
+        iconPath: 'immobilientyp/haus.svg',
         label: __('Haus', 'immobilien-rechner-pro'),
         description: __('Einfamilienhaus, Reihenhaus oder Mehrfamilienhaus', 'immobilien-rechner-pro'),
     },
@@ -33,32 +31,32 @@ const PROPERTY_TYPES = [
 const HOUSE_TYPES = [
     {
         id: 'single_family',
-        icon: `${pluginUrl}assets/icon/haustypen/einfamilienhaus.svg`,
+        iconPath: 'haustypen/einfamilienhaus.svg',
         label: __('Einfamilienhaus', 'immobilien-rechner-pro'),
     },
     {
         id: 'semi_detached',
-        icon: `${pluginUrl}assets/icon/haustypen/doppelhaushaelfte.svg`,
+        iconPath: 'haustypen/doppelhaushaelfte.svg',
         label: __('Doppelhaushälfte', 'immobilien-rechner-pro'),
     },
     {
         id: 'townhouse_end',
-        icon: `${pluginUrl}assets/icon/haustypen/endreihenhaus.svg`,
+        iconPath: 'haustypen/endreihenhaus.svg',
         label: __('Endreihenhaus', 'immobilien-rechner-pro'),
     },
     {
         id: 'townhouse_middle',
-        icon: `${pluginUrl}assets/icon/haustypen/mittelreihenhaus.svg`,
+        iconPath: 'haustypen/mittelreihenhaus.svg',
         label: __('Mittelreihenhaus', 'immobilien-rechner-pro'),
     },
     {
         id: 'multi_family',
-        icon: `${pluginUrl}assets/icon/haustypen/mehrfamilienhaus.svg`,
+        iconPath: 'haustypen/mehrfamilienhaus.svg',
         label: __('Mehrfamilienhaus', 'immobilien-rechner-pro'),
     },
     {
         id: 'bungalow',
-        icon: `${pluginUrl}assets/icon/haustypen/bungalow.svg`,
+        iconPath: 'haustypen/bungalow.svg',
         label: __('Bungalow', 'immobilien-rechner-pro'),
     },
 ];
@@ -96,11 +94,7 @@ export default function SalePropertyTypeStep({ data, onChange }) {
                         whileTap={{ scale: 0.98 }}
                     >
                         <div className="irp-type-icon">
-                            <img
-                                src={type.icon}
-                                alt={type.label}
-                                className="irp-type-icon-img"
-                            />
+                            <Icon path={type.iconPath} size={48} />
                         </div>
                         <span className="irp-type-label">{type.label}</span>
                         <span className="irp-type-description">{type.description}</span>
@@ -130,11 +124,7 @@ export default function SalePropertyTypeStep({ data, onChange }) {
                                     whileTap={{ scale: 0.98 }}
                                 >
                                     <div className="irp-type-icon">
-                                        <img
-                                            src={type.icon}
-                                            alt={type.label}
-                                            className="irp-type-icon-img"
-                                        />
+                                        <Icon path={type.iconPath} size={40} />
                                     </div>
                                     <span className="irp-type-label">{type.label}</span>
                                 </motion.button>

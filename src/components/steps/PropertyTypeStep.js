@@ -4,44 +4,24 @@
 
 import { __ } from '@wordpress/i18n';
 import { motion } from 'framer-motion';
-
-// Get plugin URL from WordPress localized settings
-const pluginUrl = window.irpSettings?.pluginUrl || '';
+import Icon from '../Icon';
 
 const PROPERTY_TYPES = [
     {
         id: 'apartment',
-        icon: (
-            <img
-                src={`${pluginUrl}assets/icon/immobilientyp/wohnung.svg`}
-                alt="Wohnung"
-                className="irp-type-icon-img"
-            />
-        ),
+        iconPath: 'immobilientyp/wohnung.svg',
         label: __('Wohnung', 'immobilien-rechner-pro'),
         description: __('Wohnung in einem Mehrfamilienhaus', 'immobilien-rechner-pro'),
     },
     {
         id: 'house',
-        icon: (
-            <img
-                src={`${pluginUrl}assets/icon/immobilientyp/haus.svg`}
-                alt="Haus"
-                className="irp-type-icon-img"
-            />
-        ),
+        iconPath: 'immobilientyp/haus.svg',
         label: __('Haus', 'immobilien-rechner-pro'),
         description: __('Einfamilienhaus oder Doppelhaushälfte', 'immobilien-rechner-pro'),
     },
     {
         id: 'commercial',
-        icon: (
-            <img
-                src={`${pluginUrl}assets/icon/immobilientyp/gewerbe.svg`}
-                alt="Gewerbe"
-                className="irp-type-icon-img"
-            />
-        ),
+        iconPath: 'immobilientyp/gewerbe.svg',
         label: __('Gewerbe', 'immobilien-rechner-pro'),
         description: __('Büro, Einzelhandel oder Mischnutzung', 'immobilien-rechner-pro'),
     },
@@ -67,7 +47,7 @@ export default function PropertyTypeStep({ data, onChange }) {
                         whileTap={{ scale: 0.98 }}
                     >
                         <div className="irp-type-icon">
-                            {type.icon}
+                            <Icon path={type.iconPath} size={48} />
                         </div>
                         <span className="irp-type-label">{type.label}</span>
                         <span className="irp-type-description">{type.description}</span>

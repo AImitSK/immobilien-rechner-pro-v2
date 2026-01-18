@@ -6,26 +6,24 @@
 import { __ } from '@wordpress/i18n';
 import { motion } from 'framer-motion';
 import { CheckIcon } from '@heroicons/react/24/solid';
-
-// Get plugin URL from WordPress localized settings
-const pluginUrl = window.irpSettings?.pluginUrl || '';
+import Icon from '../Icon';
 
 const EXTERIOR_FEATURES = [
-    { id: 'balcony', label: __('Balkon', 'immobilien-rechner-pro'), icon: `${pluginUrl}assets/icon/ausstattung/balkon.svg` },
-    { id: 'terrace', label: __('Terrasse', 'immobilien-rechner-pro'), icon: `${pluginUrl}assets/icon/ausstattung/terrasse.svg` },
-    { id: 'garden', label: __('Garten', 'immobilien-rechner-pro'), icon: `${pluginUrl}assets/icon/ausstattung/garten.svg` },
-    { id: 'garage', label: __('Garage', 'immobilien-rechner-pro'), icon: `${pluginUrl}assets/icon/ausstattung/garage.svg` },
-    { id: 'parking', label: __('Stellplatz', 'immobilien-rechner-pro'), icon: `${pluginUrl}assets/icon/ausstattung/stellplatz.svg` },
-    { id: 'solar', label: __('Solaranlage', 'immobilien-rechner-pro'), icon: `${pluginUrl}assets/icon/ausstattung/solaranlage.svg` },
+    { id: 'balcony', label: __('Balkon', 'immobilien-rechner-pro'), iconPath: 'ausstattung/balkon.svg' },
+    { id: 'terrace', label: __('Terrasse', 'immobilien-rechner-pro'), iconPath: 'ausstattung/terrasse.svg' },
+    { id: 'garden', label: __('Garten', 'immobilien-rechner-pro'), iconPath: 'ausstattung/garten.svg' },
+    { id: 'garage', label: __('Garage', 'immobilien-rechner-pro'), iconPath: 'ausstattung/garage.svg' },
+    { id: 'parking', label: __('Stellplatz', 'immobilien-rechner-pro'), iconPath: 'ausstattung/stellplatz.svg' },
+    { id: 'solar', label: __('Solaranlage', 'immobilien-rechner-pro'), iconPath: 'ausstattung/solaranlage.svg' },
 ];
 
 const INTERIOR_FEATURES = [
-    { id: 'fitted_kitchen', label: __('Einbauküche', 'immobilien-rechner-pro'), icon: `${pluginUrl}assets/icon/ausstattung/kueche.svg` },
-    { id: 'elevator', label: __('Aufzug', 'immobilien-rechner-pro'), icon: `${pluginUrl}assets/icon/ausstattung/aufzug.svg` },
-    { id: 'cellar', label: __('Keller', 'immobilien-rechner-pro'), icon: `${pluginUrl}assets/icon/ausstattung/keller.svg` },
-    { id: 'attic', label: __('Dachboden', 'immobilien-rechner-pro'), icon: `${pluginUrl}assets/icon/ausstattung/dachboden.svg` },
-    { id: 'fireplace', label: __('Kamin', 'immobilien-rechner-pro'), icon: `${pluginUrl}assets/icon/ausstattung/kamin.svg` },
-    { id: 'parquet', label: __('Parkettboden', 'immobilien-rechner-pro'), icon: `${pluginUrl}assets/icon/ausstattung/parkettboden.svg` },
+    { id: 'fitted_kitchen', label: __('Einbauküche', 'immobilien-rechner-pro'), iconPath: 'ausstattung/kueche.svg' },
+    { id: 'elevator', label: __('Aufzug', 'immobilien-rechner-pro'), iconPath: 'ausstattung/aufzug.svg' },
+    { id: 'cellar', label: __('Keller', 'immobilien-rechner-pro'), iconPath: 'ausstattung/keller.svg' },
+    { id: 'attic', label: __('Dachboden', 'immobilien-rechner-pro'), iconPath: 'ausstattung/dachboden.svg' },
+    { id: 'fireplace', label: __('Kamin', 'immobilien-rechner-pro'), iconPath: 'ausstattung/kamin.svg' },
+    { id: 'parquet', label: __('Parkettboden', 'immobilien-rechner-pro'), iconPath: 'ausstattung/parkettboden.svg' },
 ];
 
 export default function SaleFeaturesStep({ data, onChange }) {
@@ -72,11 +70,7 @@ export default function SaleFeaturesStep({ data, onChange }) {
                             whileTap={{ scale: 0.95 }}
                         >
                             <span className="irp-feature-icon">
-                                <img
-                                    src={feature.icon}
-                                    alt={feature.label}
-                                    className="irp-feature-icon-img"
-                                />
+                                <Icon path={feature.iconPath} size={32} />
                             </span>
                             <span className="irp-feature-label">{feature.label}</span>
                             {isSelected && (

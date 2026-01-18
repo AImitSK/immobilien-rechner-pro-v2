@@ -5,9 +5,7 @@
 
 import { __ } from '@wordpress/i18n';
 import { motion } from 'framer-motion';
-
-// Get plugin URL from WordPress localized settings
-const pluginUrl = window.irpSettings?.pluginUrl || '';
+import Icon from '../Icon';
 
 const MODERNIZATION_OPTIONS = [
     {
@@ -161,11 +159,7 @@ export default function SaleSizeStep({ data, onChange }) {
                                 whileHover={{ scale: 1.02 }}
                                 whileTap={{ scale: 0.98 }}
                             >
-                                <img
-                                    src={`${pluginUrl}assets/icon/modernisierung/modernisierung.svg`}
-                                    alt=""
-                                    className="irp-modernization-icon"
-                                />
+                                <Icon path="modernisierung/modernisierung.svg" size={32} className="irp-modernization-icon" />
                                 <span className="irp-modernization-label">{option.label}</span>
                                 <span className="irp-modernization-description">{option.description}</span>
                             </motion.button>

@@ -5,32 +5,30 @@
 
 import { __ } from '@wordpress/i18n';
 import { motion } from 'framer-motion';
-
-// Get plugin URL from WordPress localized settings
-const pluginUrl = window.irpSettings?.pluginUrl || '';
+import Icon from '../Icon';
 
 const QUALITY_LEVELS = [
     {
         id: 'simple',
-        icon: `${pluginUrl}assets/icon/qualitaetsstufen/einfach.svg`,
+        iconPath: 'qualitaetsstufen/einfach.svg',
         label: __('Einfach', 'immobilien-rechner-pro'),
         description: __('Einfache Ausstattung, Standardmaterialien', 'immobilien-rechner-pro'),
     },
     {
         id: 'normal',
-        icon: `${pluginUrl}assets/icon/qualitaetsstufen/normal.svg`,
+        iconPath: 'qualitaetsstufen/normal.svg',
         label: __('Normal', 'immobilien-rechner-pro'),
         description: __('Durchschnittliche Ausstattung und Materialien', 'immobilien-rechner-pro'),
     },
     {
         id: 'upscale',
-        icon: `${pluginUrl}assets/icon/qualitaetsstufen/gehoben.svg`,
+        iconPath: 'qualitaetsstufen/gehoben.svg',
         label: __('Gehoben', 'immobilien-rechner-pro'),
         description: __('Hochwertige Ausstattung und Materialien', 'immobilien-rechner-pro'),
     },
     {
         id: 'luxury',
-        icon: `${pluginUrl}assets/icon/qualitaetsstufen/luxurioes.svg`,
+        iconPath: 'qualitaetsstufen/luxurioes.svg',
         label: __('Luxuriös', 'immobilien-rechner-pro'),
         description: __('Erstklassige Ausstattung, exklusive Materialien', 'immobilien-rechner-pro'),
     },
@@ -101,11 +99,7 @@ export default function SaleQualityLocationStep({ data, onChange }) {
                                 whileTap={{ scale: 0.98 }}
                             >
                                 <div className="irp-quality-icon">
-                                    <img
-                                        src={level.icon}
-                                        alt={level.label}
-                                        className="irp-quality-icon-img"
-                                    />
+                                    <Icon path={level.iconPath} size={48} />
                                 </div>
                                 <span className="irp-quality-label">{level.label}</span>
                                 <span className="irp-quality-description">{level.description}</span>
