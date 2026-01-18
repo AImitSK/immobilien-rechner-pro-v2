@@ -13,7 +13,9 @@ import { trackPartialLead } from '../utils/tracking';
 import ModeSelector from './ModeSelector';
 import RentalCalculator from './RentalCalculator';
 import ComparisonCalculator from './ComparisonCalculator';
+import SaleValueCalculator from './SaleValueCalculator';
 import ResultsDisplay from './ResultsDisplay';
+import SaleResultsDisplay from './SaleResultsDisplay';
 import CalculationPendingStep from './steps/CalculationPendingStep';
 import ContactFormStep from './steps/ContactFormStep';
 
@@ -201,7 +203,7 @@ export default function App({ config }) {
                             exit="exit"
                             transition={pageTransition}
                         >
-                            {mode === 'rental' ? (
+                            {mode === 'rental' && (
                                 <RentalCalculator
                                     initialData={formData}
                                     onComplete={handleCalculationComplete}
@@ -209,8 +211,18 @@ export default function App({ config }) {
                                     cityId={cityId}
                                     cityName={cityName}
                                 />
-                            ) : (
+                            )}
+                            {mode === 'comparison' && (
                                 <ComparisonCalculator
+                                    initialData={formData}
+                                    onComplete={handleCalculationComplete}
+                                    onBack={!initialMode ? handleBack : null}
+                                    cityId={cityId}
+                                    cityName={cityName}
+                                />
+                            )}
+                            {mode === 'sale_value' && (
+                                <SaleValueCalculator
                                     initialData={formData}
                                     onComplete={handleCalculationComplete}
                                     onBack={!initialMode ? handleBack : null}
@@ -264,14 +276,23 @@ export default function App({ config }) {
                             exit="exit"
                             transition={pageTransition}
                         >
-                            <ResultsDisplay
-                                mode={mode}
-                                formData={formData}
-                                results={results}
-                                onStartOver={handleStartOver}
-                                showBrokerNotice={true}
-                                leadId={leadId}
-                            />
+                            {mode === 'sale_value' ? (
+                                <SaleResultsDisplay
+                                    formData={formData}
+                                    results={results}
+                                    onStartOver={handleStartOver}
+                                    leadId={leadId}
+                                />
+                            ) : (
+                                <ResultsDisplay
+                                    mode={mode}
+                                    formData={formData}
+                                    results={results}
+                                    onStartOver={handleStartOver}
+                                    showBrokerNotice={true}
+                                    leadId={leadId}
+                                />
+                            )}
                         </motion.div>
                     )}
                 </AnimatePresence>
