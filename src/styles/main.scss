@@ -1812,3 +1812,921 @@ select {
     padding-top: 24px;
     border-top: 1px solid var(--irp-border);
 }
+
+// ============================================
+// SALE VALUE CALCULATOR STYLES
+// ============================================
+
+// Sale Calculator Container
+.irp-sale-calculator {
+    width: 100%;
+}
+
+// Common Step Styles
+.irp-sale-property-type-step,
+.irp-sale-size-step,
+.irp-sale-features-step,
+.irp-sale-quality-location-step,
+.irp-sale-address-step,
+.irp-sale-purpose-step {
+    h3 {
+        font-size: 20px;
+        font-weight: 600;
+        color: var(--irp-text);
+        margin: 0 0 8px 0;
+        text-align: center;
+    }
+
+    h4 {
+        font-size: 16px;
+        font-weight: 600;
+        color: var(--irp-text);
+        margin: 24px 0 12px 0;
+    }
+
+    .irp-step-description {
+        font-size: 14px;
+        color: var(--irp-text-light);
+        text-align: center;
+        margin-bottom: 24px;
+    }
+}
+
+// House Type Grid (in PropertyTypeStep)
+.irp-house-type-section {
+    margin-top: 24px;
+    padding-top: 24px;
+    border-top: 1px solid var(--irp-border);
+
+    h4 {
+        text-align: center;
+        margin-bottom: 16px;
+    }
+}
+
+.irp-house-type-grid {
+    .irp-type-card {
+        padding: 12px;
+    }
+
+    .irp-type-icon {
+        width: 48px;
+        height: 48px;
+    }
+
+    .irp-type-label {
+        font-size: 13px;
+    }
+}
+
+// Size Step - Input Groups
+.irp-size-inputs {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin-bottom: 24px;
+}
+
+.irp-input-group {
+    label {
+        display: block;
+        font-size: 14px;
+        font-weight: 500;
+        color: var(--irp-text);
+        margin-bottom: 8px;
+    }
+}
+
+.irp-input-with-unit {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    input {
+        flex: 1;
+        padding: 12px 16px;
+        border: 2px solid var(--irp-border);
+        border-radius: var(--irp-radius);
+        font-size: 16px;
+        transition: border-color var(--irp-transition);
+
+        &:focus {
+            outline: none;
+            border-color: var(--irp-primary);
+        }
+    }
+
+    .irp-input-unit {
+        font-size: 14px;
+        color: var(--irp-text-light);
+        font-weight: 500;
+    }
+}
+
+.irp-input-hint {
+    font-size: 12px;
+    color: var(--irp-text-light);
+    margin-top: 4px;
+}
+
+// Modernization Section
+.irp-modernization-section {
+    margin-top: 32px;
+    padding-top: 24px;
+    border-top: 1px solid var(--irp-border);
+
+    h4 {
+        text-align: center;
+        margin-bottom: 8px;
+    }
+
+    .irp-step-description {
+        margin-bottom: 16px;
+    }
+}
+
+.irp-modernization-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 12px;
+}
+
+.irp-modernization-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 16px 12px;
+    background: var(--irp-bg);
+    border: 2px solid var(--irp-border);
+    border-radius: var(--irp-radius);
+    cursor: pointer;
+    transition: all var(--irp-transition);
+    text-align: center;
+
+    &:hover {
+        border-color: var(--irp-primary);
+        background: var(--irp-bg-secondary);
+    }
+
+    &.is-selected {
+        border-color: var(--irp-primary);
+        background: rgba(37, 99, 235, 0.05);
+    }
+
+    .irp-modernization-icon {
+        width: 40px;
+        height: 40px;
+        margin-bottom: 8px;
+        object-fit: contain;
+    }
+
+    .irp-modernization-label {
+        font-size: 13px;
+        font-weight: 600;
+        color: var(--irp-text);
+        margin-bottom: 4px;
+    }
+
+    .irp-modernization-description {
+        font-size: 11px;
+        color: var(--irp-text-light);
+    }
+}
+
+// Quality Section
+.irp-quality-section {
+    margin-bottom: 32px;
+
+    .irp-step-description {
+        text-align: center;
+        margin-bottom: 16px;
+    }
+}
+
+.irp-quality-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 12px;
+}
+
+.irp-quality-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 16px 12px;
+    background: var(--irp-bg);
+    border: 2px solid var(--irp-border);
+    border-radius: var(--irp-radius);
+    cursor: pointer;
+    transition: all var(--irp-transition);
+    text-align: center;
+
+    &:hover {
+        border-color: var(--irp-primary);
+        background: var(--irp-bg-secondary);
+    }
+
+    &.is-selected {
+        border-color: var(--irp-primary);
+        background: rgba(37, 99, 235, 0.05);
+    }
+
+    .irp-quality-icon {
+        width: 48px;
+        height: 48px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 8px;
+    }
+
+    .irp-quality-icon-img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
+
+    .irp-quality-label {
+        font-size: 14px;
+        font-weight: 600;
+        color: var(--irp-text);
+        margin-bottom: 4px;
+    }
+
+    .irp-quality-description {
+        font-size: 11px;
+        color: var(--irp-text-light);
+    }
+}
+
+// Location Section
+.irp-location-section {
+    margin-top: 24px;
+    padding-top: 24px;
+    border-top: 1px solid var(--irp-border);
+
+    .irp-step-description {
+        text-align: center;
+        margin-bottom: 16px;
+    }
+}
+
+.irp-location-ratings {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.irp-location-rating-card {
+    display: flex;
+    flex-direction: column;
+    padding: 12px 16px;
+    background: var(--irp-bg);
+    border: 2px solid var(--irp-border);
+    border-radius: var(--irp-radius);
+    cursor: pointer;
+    transition: all var(--irp-transition);
+    text-align: left;
+
+    &:hover {
+        border-color: var(--irp-primary);
+        background: var(--irp-bg-secondary);
+    }
+
+    &.is-selected {
+        border-color: var(--irp-primary);
+        background: rgba(37, 99, 235, 0.05);
+    }
+
+    .irp-location-rating-header {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 4px;
+    }
+
+    .irp-location-stars {
+        font-size: 14px;
+        color: #f59e0b;
+        letter-spacing: 2px;
+    }
+
+    .irp-location-label {
+        font-size: 14px;
+        font-weight: 600;
+        color: var(--irp-text);
+    }
+
+    .irp-location-description {
+        font-size: 12px;
+        color: var(--irp-text-light);
+        margin-left: 0;
+    }
+}
+
+// Features Step
+.irp-feature-section {
+    margin-bottom: 24px;
+
+    h4 {
+        margin-bottom: 12px;
+    }
+}
+
+.irp-features-summary {
+    margin-top: 16px;
+    text-align: center;
+
+    .irp-no-features {
+        font-size: 13px;
+        color: var(--irp-text-light);
+    }
+
+    .irp-selected-count {
+        font-size: 13px;
+        color: var(--irp-primary);
+        font-weight: 500;
+    }
+}
+
+.irp-feature-chip {
+    .irp-feature-icon {
+        width: 24px;
+        height: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .irp-feature-icon-img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
+}
+
+.irp-info-message {
+    padding: 16px;
+    background: var(--irp-bg-secondary);
+    border-radius: var(--irp-radius);
+    text-align: center;
+}
+
+// Address Step
+.irp-address-form {
+    margin-bottom: 16px;
+}
+
+.irp-form-row {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 16px;
+    margin-bottom: 16px;
+
+    @media (max-width: 480px) {
+        grid-template-columns: 1fr;
+    }
+}
+
+.irp-form-group {
+    margin-bottom: 16px;
+
+    label {
+        display: block;
+        font-size: 14px;
+        font-weight: 500;
+        color: var(--irp-text);
+        margin-bottom: 8px;
+
+        .irp-required {
+            color: #ef4444;
+            margin-left: 2px;
+        }
+    }
+
+    input {
+        width: 100%;
+        padding: 12px 16px;
+        border: 2px solid var(--irp-border);
+        border-radius: var(--irp-radius);
+        font-size: 16px;
+        transition: border-color var(--irp-transition);
+
+        &:focus {
+            outline: none;
+            border-color: var(--irp-primary);
+        }
+    }
+}
+
+.irp-info-text {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: var(--irp-text-light);
+
+    svg {
+        flex-shrink: 0;
+        color: var(--irp-primary);
+    }
+}
+
+// Purpose Step - Usage Section
+.irp-usage-section {
+    margin-bottom: 24px;
+}
+
+.irp-usage-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+
+    @media (max-width: 480px) {
+        grid-template-columns: 1fr;
+    }
+}
+
+.irp-usage-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 16px 12px;
+    background: var(--irp-bg);
+    border: 2px solid var(--irp-border);
+    border-radius: var(--irp-radius);
+    cursor: pointer;
+    transition: all var(--irp-transition);
+    text-align: center;
+
+    &:hover {
+        border-color: var(--irp-primary);
+        background: var(--irp-bg-secondary);
+    }
+
+    &.is-selected {
+        border-color: var(--irp-primary);
+        background: rgba(37, 99, 235, 0.05);
+    }
+
+    .irp-usage-icon {
+        width: 48px;
+        height: 48px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 8px;
+    }
+
+    .irp-usage-icon-img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
+
+    .irp-usage-label {
+        font-size: 14px;
+        font-weight: 600;
+        color: var(--irp-text);
+        margin-bottom: 4px;
+    }
+
+    .irp-usage-description {
+        font-size: 11px;
+        color: var(--irp-text-light);
+    }
+}
+
+// Intention Section
+.irp-intention-section {
+    margin-bottom: 24px;
+    padding-top: 24px;
+    border-top: 1px solid var(--irp-border);
+}
+
+.irp-intention-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+}
+
+.irp-intention-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 16px;
+    background: var(--irp-bg);
+    border: 2px solid var(--irp-border);
+    border-radius: var(--irp-radius);
+    cursor: pointer;
+    transition: all var(--irp-transition);
+    text-align: center;
+
+    &:hover {
+        border-color: var(--irp-primary);
+        background: var(--irp-bg-secondary);
+    }
+
+    &.is-selected {
+        border-color: var(--irp-primary);
+        background: rgba(37, 99, 235, 0.05);
+    }
+
+    .irp-intention-icon {
+        width: 56px;
+        height: 56px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 12px;
+    }
+
+    .irp-intention-icon-img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
+
+    .irp-intention-label {
+        font-size: 16px;
+        font-weight: 600;
+        color: var(--irp-text);
+        margin-bottom: 4px;
+    }
+
+    .irp-intention-description {
+        font-size: 12px;
+        color: var(--irp-text-light);
+    }
+}
+
+// Timeframe Section
+.irp-timeframe-section {
+    padding-top: 24px;
+    border-top: 1px solid var(--irp-border);
+}
+
+.irp-timeframe-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 10px;
+}
+
+.irp-timeframe-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 12px 8px;
+    background: var(--irp-bg);
+    border: 2px solid var(--irp-border);
+    border-radius: var(--irp-radius);
+    cursor: pointer;
+    transition: all var(--irp-transition);
+    text-align: center;
+
+    &:hover {
+        border-color: var(--irp-primary);
+        background: var(--irp-bg-secondary);
+    }
+
+    &.is-selected {
+        border-color: var(--irp-primary);
+        background: rgba(37, 99, 235, 0.05);
+    }
+
+    .irp-timeframe-icon {
+        width: 32px;
+        height: 32px;
+        margin-bottom: 8px;
+        object-fit: contain;
+    }
+
+    .irp-timeframe-label {
+        font-size: 13px;
+        font-weight: 600;
+        color: var(--irp-text);
+        margin-bottom: 2px;
+    }
+
+    .irp-timeframe-description {
+        font-size: 10px;
+        color: var(--irp-text-light);
+    }
+}
+
+// ============================================
+// SALE RESULTS DISPLAY STYLES
+// ============================================
+
+.irp-results-sale {
+    .irp-results-header {
+        text-align: center;
+        margin-bottom: 24px;
+
+        h2 {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--irp-text);
+            margin: 0 0 8px 0;
+        }
+
+        .irp-results-subtitle {
+            font-size: 14px;
+            color: var(--irp-text-light);
+            margin: 0;
+        }
+    }
+}
+
+// Price Display
+.irp-sale-price-display {
+    background: linear-gradient(135deg, var(--irp-primary), var(--irp-secondary));
+    color: white;
+    padding: 32px 24px;
+    border-radius: var(--irp-radius-lg);
+    text-align: center;
+    margin-bottom: 24px;
+
+    .irp-sale-price-label {
+        display: block;
+        font-size: 14px;
+        opacity: 0.9;
+        margin-bottom: 12px;
+    }
+
+    .irp-sale-price-range {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        margin-bottom: 16px;
+    }
+
+    .irp-sale-price-min,
+    .irp-sale-price-max {
+        font-size: 28px;
+        font-weight: 700;
+
+        @media (max-width: 480px) {
+            font-size: 22px;
+        }
+    }
+
+    .irp-sale-price-separator {
+        font-size: 24px;
+        opacity: 0.7;
+    }
+
+    .irp-sale-price-estimate {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        padding-top: 12px;
+        border-top: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .irp-sale-price-estimate-label {
+        font-size: 14px;
+        opacity: 0.9;
+    }
+
+    .irp-sale-price-estimate-value {
+        font-size: 20px;
+        font-weight: 700;
+    }
+}
+
+// Breakdown Section
+.irp-sale-breakdown {
+    background: var(--irp-bg-secondary);
+    padding: 20px;
+    border-radius: var(--irp-radius);
+    margin-bottom: 20px;
+
+    h3 {
+        font-size: 16px;
+        font-weight: 600;
+        color: var(--irp-text);
+        margin: 0 0 16px 0;
+    }
+
+    .irp-breakdown-list {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+}
+
+.irp-factor-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--irp-border);
+
+    &:last-child {
+        border-bottom: none;
+    }
+
+    &.irp-factor-highlight {
+        background: rgba(37, 99, 235, 0.05);
+        margin: 0 -12px;
+        padding: 12px;
+        border-radius: var(--irp-radius);
+        border-bottom: none;
+    }
+
+    .irp-factor-label {
+        font-size: 14px;
+        color: var(--irp-text);
+    }
+
+    .irp-factor-value {
+        font-size: 14px;
+        font-weight: 600;
+        color: var(--irp-text);
+    }
+}
+
+// Metrics Section
+.irp-sale-metrics {
+    margin-bottom: 20px;
+
+    h3 {
+        font-size: 16px;
+        font-weight: 600;
+        color: var(--irp-text);
+        margin: 0 0 12px 0;
+    }
+}
+
+.irp-metrics-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+
+    @media (max-width: 400px) {
+        grid-template-columns: 1fr;
+    }
+}
+
+.irp-metric-card {
+    background: var(--irp-bg-secondary);
+    padding: 16px;
+    border-radius: var(--irp-radius);
+    text-align: center;
+
+    &.irp-metric-card-wide {
+        grid-column: 1 / -1;
+    }
+
+    .irp-metric-value {
+        display: block;
+        font-size: 24px;
+        font-weight: 700;
+        color: var(--irp-primary);
+        margin-bottom: 4px;
+    }
+
+    .irp-metric-label {
+        display: block;
+        font-size: 12px;
+        color: var(--irp-text-light);
+    }
+}
+
+// Factors Section
+.irp-sale-factors {
+    margin-bottom: 20px;
+
+    h3 {
+        font-size: 16px;
+        font-weight: 600;
+        color: var(--irp-text);
+        margin: 0 0 12px 0;
+    }
+}
+
+.irp-factors-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.irp-factor-badge {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 12px 16px;
+    background: var(--irp-bg-secondary);
+    border-radius: var(--irp-radius);
+    min-width: 100px;
+
+    .irp-factor-badge-label {
+        font-size: 10px;
+        color: var(--irp-text-light);
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        margin-bottom: 4px;
+    }
+
+    .irp-factor-badge-value {
+        font-size: 13px;
+        font-weight: 600;
+        color: var(--irp-text);
+        margin-bottom: 2px;
+    }
+
+    .irp-factor-badge-multiplier {
+        font-size: 12px;
+        color: var(--irp-primary);
+        font-weight: 500;
+    }
+}
+
+// Comparison Section (Apartments)
+.irp-sale-comparison {
+    background: var(--irp-bg-secondary);
+    padding: 20px;
+    border-radius: var(--irp-radius);
+    margin-bottom: 20px;
+
+    h3 {
+        font-size: 16px;
+        font-weight: 600;
+        color: var(--irp-text);
+        margin: 0 0 16px 0;
+    }
+}
+
+.irp-comparison-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+
+    @media (max-width: 400px) {
+        grid-template-columns: 1fr;
+    }
+}
+
+.irp-comparison-stat {
+    text-align: center;
+
+    &.irp-comparison-stat-highlight {
+        .irp-comparison-stat-value {
+            color: var(--irp-primary);
+        }
+    }
+
+    .irp-comparison-stat-label {
+        display: block;
+        font-size: 12px;
+        color: var(--irp-text-light);
+        margin-bottom: 4px;
+    }
+
+    .irp-comparison-stat-value {
+        display: block;
+        font-size: 20px;
+        font-weight: 700;
+        color: var(--irp-text);
+    }
+}
+
+// Location Info (Land)
+.irp-sale-location-info {
+    margin-bottom: 20px;
+}
+
+.irp-location-info-card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px 16px;
+    background: var(--irp-bg-secondary);
+    border-radius: var(--irp-radius);
+    font-size: 14px;
+    color: var(--irp-text);
+
+    svg {
+        color: var(--irp-primary);
+    }
+}
+
+// Disclaimer
+.irp-sale-disclaimer {
+    margin-top: 24px;
+    padding: 16px;
+    background: var(--irp-bg-secondary);
+    border-radius: var(--irp-radius);
+    border-left: 3px solid var(--irp-primary);
+
+    p {
+        margin: 0;
+        font-size: 12px;
+        color: var(--irp-text-light);
+        line-height: 1.6;
+    }
+}

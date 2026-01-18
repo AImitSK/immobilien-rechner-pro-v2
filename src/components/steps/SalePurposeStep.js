@@ -123,12 +123,12 @@ export default function SalePurposeStep({ data, onChange }) {
 
             {/* Sale Intention */}
             <div className="irp-intention-section">
-                <h3>
+                <h4>
                     {isLand
                         ? __('Was ist Ihr Ziel?', 'immobilien-rechner-pro')
                         : __('Was möchten Sie tun?', 'immobilien-rechner-pro')
                     }
-                </h3>
+                </h4>
 
                 <div className="irp-intention-grid">
                     {SALE_INTENTIONS.map((intention) => (
@@ -156,7 +156,7 @@ export default function SalePurposeStep({ data, onChange }) {
 
             {/* Timeframe */}
             <div className="irp-timeframe-section">
-                <h3>{__('Wann möchten Sie aktiv werden?', 'immobilien-rechner-pro')}</h3>
+                <h4>{__('Wann möchten Sie aktiv werden?', 'immobilien-rechner-pro')}</h4>
 
                 <div className="irp-timeframe-grid">
                     {TIMEFRAMES.map((timeframe) => (

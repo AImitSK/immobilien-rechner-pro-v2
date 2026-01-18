@@ -117,12 +117,12 @@ export default function SaleQualityLocationStep({ data, onChange }) {
 
             {/* Location Section - for all property types */}
             <div className="irp-location-section">
-                <h3>
+                <h4>
                     {isLand
                         ? __('Wie bewerten Sie die Lage des Grundstücks?', 'immobilien-rechner-pro')
                         : __('Wie bewerten Sie die Lage der Immobilie?', 'immobilien-rechner-pro')
                     }
-                </h3>
+                </h4>
                 <p className="irp-step-description">
                     {__('Die Lage hat erheblichen Einfluss auf den Verkaufswert.', 'immobilien-rechner-pro')}
                 </p>
