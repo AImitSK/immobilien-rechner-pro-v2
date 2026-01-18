@@ -48,6 +48,9 @@ final class Immobilien_Rechner_Pro {
     }
     
     private function load_dependencies(): void {
+        // Core utilities (load first)
+        require_once IRP_PLUGIN_DIR . 'includes/class-error-handler.php';
+
         require_once IRP_PLUGIN_DIR . 'includes/class-activator.php';
         require_once IRP_PLUGIN_DIR . 'includes/class-deactivator.php';
         require_once IRP_PLUGIN_DIR . 'includes/class-assets.php';
