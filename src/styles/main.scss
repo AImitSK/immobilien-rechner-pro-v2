@@ -423,10 +423,14 @@ select {
     margin-bottom: 12px;
     transition: all var(--irp-transition);
 
-    svg {
-        width: 24px;
-        height: 24px;
-        color: var(--irp-primary);
+    .irp-icon {
+        width: 100% !important;
+        height: 100% !important;
+
+        svg {
+            width: 100% !important;
+            height: 100% !important;
+        }
     }
 
     .irp-type-icon-img {
@@ -489,6 +493,16 @@ select {
     margin-bottom: 12px;
     transition: all var(--irp-transition);
 
+    .irp-icon {
+        width: 100% !important;
+        height: 100% !important;
+
+        svg {
+            width: 100% !important;
+            height: 100% !important;
+        }
+    }
+
     .irp-condition-icon-img {
         width: 100%;
         height: 100%;
@@ -545,6 +559,16 @@ select {
     width: 32px;
     height: 32px;
     flex-shrink: 0;
+
+    .irp-icon {
+        width: 100% !important;
+        height: 100% !important;
+
+        svg {
+            width: 100% !important;
+            height: 100% !important;
+        }
+    }
 
     .irp-feature-icon-img {
         width: 100%;
@@ -1977,7 +2001,14 @@ select {
         width: 40px;
         height: 40px;
         margin-bottom: 8px;
-        object-fit: contain;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        svg {
+            width: 100% !important;
+            height: 100% !important;
+        }
     }
 
     .irp-modernization-label {
@@ -2038,6 +2069,16 @@ select {
         align-items: center;
         justify-content: center;
         margin-bottom: 8px;
+
+        .irp-icon {
+            width: 100% !important;
+            height: 100% !important;
+
+            svg {
+                width: 100% !important;
+                height: 100% !important;
+            }
+        }
     }
 
     .irp-quality-icon-img {
@@ -2276,6 +2317,16 @@ select {
         align-items: center;
         justify-content: center;
         margin-bottom: 8px;
+
+        .irp-icon {
+            width: 100% !important;
+            height: 100% !important;
+
+            svg {
+                width: 100% !important;
+                height: 100% !important;
+            }
+        }
     }
 
     .irp-usage-icon-img {
@@ -2339,6 +2390,16 @@ select {
         align-items: center;
         justify-content: center;
         margin-bottom: 12px;
+
+        .irp-icon {
+            width: 100% !important;
+            height: 100% !important;
+
+            svg {
+                width: 100% !important;
+                height: 100% !important;
+            }
+        }
     }
 
     .irp-intention-icon-img {
@@ -2398,7 +2459,14 @@ select {
         width: 32px;
         height: 32px;
         margin-bottom: 8px;
-        object-fit: contain;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        svg {
+            width: 100% !important;
+            height: 100% !important;
+        }
     }
 
     .irp-timeframe-label {
