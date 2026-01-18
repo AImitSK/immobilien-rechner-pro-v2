@@ -4,6 +4,16 @@
  * This module provides a centralized configuration for all icon paths
  * used throughout the Immobilien Rechner Pro plugin.
  *
+ * All icons are now consolidated in assets/icon/ with category subdirectories:
+ * - ausstattung/     (Feature icons)
+ * - immobilientyp/   (Property type icons)
+ * - zustand/         (Condition icons)
+ * - haustypen/       (House type icons)
+ * - qualitaetsstufen/ (Quality level icons)
+ * - nutzung/         (Usage icons)
+ * - modernisierung/  (Modernization icons)
+ * - zeitrahmen/      (Timeframe icons)
+ *
  * Usage:
  *   import { ICON_BASE_PATH, ICON_PATHS, getIconUrl } from './utils/iconPaths';
  *   const balkonIcon = getIconUrl(ICON_PATHS.FEATURES.balkon);
@@ -24,24 +34,24 @@ export const ICON_BASE_PATH = window.irpSettings?.pluginUrl || '';
 export const ICON_PATHS = {
     /**
      * Feature icons (Ausstattungsmerkmale)
-     * Located in: assets/images/ and assets/icon/ausstattung/
+     * Located in: assets/icon/ausstattung/
      */
     FEATURES: {
         // Exterior features (Aussenbereich)
-        balkon: 'assets/images/balkon.svg',
-        terrasse: 'assets/images/terrasse.svg',
-        garten: 'assets/images/garten.svg',
-        garage: 'assets/images/garage.svg',
-        stellplatz: 'assets/images/stellplatz.svg',
+        balkon: 'assets/icon/ausstattung/balkon.svg',
+        terrasse: 'assets/icon/ausstattung/terrasse.svg',
+        garten: 'assets/icon/ausstattung/garten.svg',
+        garage: 'assets/icon/ausstattung/garage.svg',
+        stellplatz: 'assets/icon/ausstattung/stellplatz.svg',
         solaranlage: 'assets/icon/ausstattung/solaranlage.svg',
 
         // Interior features (Innenbereich)
-        aufzug: 'assets/images/aufzug.svg',
-        keller: 'assets/images/keller.svg',
-        kueche: 'assets/images/kueche.svg',
-        fussbodenheizung: 'assets/images/fussbodenheizung.svg',
-        wc: 'assets/images/wc.svg',
-        barrierefrei: 'assets/images/barrierefrei.svg',
+        aufzug: 'assets/icon/ausstattung/aufzug.svg',
+        keller: 'assets/icon/ausstattung/keller.svg',
+        kueche: 'assets/icon/ausstattung/kueche.svg',
+        fussbodenheizung: 'assets/icon/ausstattung/fussbodenheizung.svg',
+        wc: 'assets/icon/ausstattung/wc.svg',
+        barrierefrei: 'assets/icon/ausstattung/barrierefrei.svg',
         dachboden: 'assets/icon/ausstattung/dachboden.svg',
         kamin: 'assets/icon/ausstattung/kamin.svg',
         parkettboden: 'assets/icon/ausstattung/parkettboden.svg',
@@ -49,24 +59,24 @@ export const ICON_PATHS = {
 
     /**
      * Property type icons (Immobilientypen)
-     * Located in: assets/images/ and assets/icon/immobilientyp/
+     * Located in: assets/icon/immobilientyp/
      */
     PROPERTY_TYPES: {
-        wohnung: 'assets/images/wohnung.svg',
-        haus: 'assets/images/haus.svg',
-        gewerbe: 'assets/images/gewerbe.svg',
+        wohnung: 'assets/icon/immobilientyp/wohnung.svg',
+        haus: 'assets/icon/immobilientyp/haus.svg',
+        gewerbe: 'assets/icon/immobilientyp/gewerbe.svg',
         grundstueck: 'assets/icon/immobilientyp/grundstueck.svg',
     },
 
     /**
      * Condition icons (Zustand)
-     * Located in: assets/images/
+     * Located in: assets/icon/zustand/
      */
     CONDITIONS: {
-        neubau: 'assets/images/neubau.svg',
-        renoviert: 'assets/images/renoviert.svg',
-        gut: 'assets/images/gut.svg',
-        reparaturen: 'assets/images/reparaturen.svg',
+        neubau: 'assets/icon/zustand/neubau.svg',
+        renoviert: 'assets/icon/zustand/renoviert.svg',
+        gut: 'assets/icon/zustand/gut.svg',
+        reparaturen: 'assets/icon/zustand/reparaturen.svg',
     },
 
     /**
@@ -123,7 +133,7 @@ export const ICON_PATHS = {
  *
  * @example
  * const url = getIconUrl(ICON_PATHS.FEATURES.balkon);
- * // Returns: "https://example.com/wp-content/plugins/immobilien-rechner-pro/assets/images/balkon.svg"
+ * // Returns: "https://example.com/wp-content/plugins/immobilien-rechner-pro/assets/icon/ausstattung/balkon.svg"
  */
 export function getIconUrl(relativePath) {
     return `${ICON_BASE_PATH}${relativePath}`;
@@ -133,17 +143,33 @@ export function getIconUrl(relativePath) {
  * Helper function to get all icons in a category as an array with full URLs.
  *
  * @param {Object} category - A category object from ICON_PATHS (e.g., ICON_PATHS.FEATURES)
- * @returns {Array<{id: string, url: string}>} Array of icon objects with id and full URL
+ * @returns {Array<{id: string, url: string, path: string}>} Array of icon objects with id, full URL, and relative path
  *
  * @example
  * const featureIcons = getIconsInCategory(ICON_PATHS.FEATURES);
- * // Returns: [{ id: 'balkon', url: 'https://...' }, { id: 'terrasse', url: 'https://...' }, ...]
+ * // Returns: [{ id: 'balkon', url: 'https://...', path: 'assets/icon/ausstattung/balkon.svg' }, ...]
  */
 export function getIconsInCategory(category) {
     return Object.entries(category).map(([id, path]) => ({
         id,
         url: getIconUrl(path),
+        path,
     }));
+}
+
+/**
+ * Get all icon paths as a flat array (useful for preloading).
+ *
+ * @returns {string[]} Array of all icon relative paths
+ */
+export function getAllIconPaths() {
+    const paths = [];
+    Object.values(ICON_PATHS).forEach((category) => {
+        Object.values(category).forEach((path) => {
+            paths.push(path);
+        });
+    });
+    return paths;
 }
 
 export default ICON_PATHS;

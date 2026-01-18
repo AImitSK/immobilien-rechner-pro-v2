@@ -105,5 +105,48 @@ class IRP_Assets {
                 'locale' => get_locale(),
             ]
         ]);
+
+        // Generate CSS variables for icon theming
+        $icon_css = $this->generate_icon_css_variables($settings);
+        wp_add_inline_style('irp-calculator', $icon_css);
+    }
+
+    /**
+     * Generate CSS variables for icon theming based on primary color.
+     *
+     * @param array $settings Plugin settings array.
+     * @return string CSS custom properties declaration.
+     */
+    private function generate_icon_css_variables(array $settings): string {
+        $primary_color = $settings['primary_color'] ?? '#428dff';
+
+        // Parse hex color to RGB components
+        $hex = ltrim($primary_color, '#');
+        if (strlen($hex) === 3) {
+            $hex = $hex[0] . $hex[0] . $hex[1] . $hex[1] . $hex[2] . $hex[2];
+        }
+        $r = hexdec(substr($hex, 0, 2));
+        $g = hexdec(substr($hex, 2, 2));
+        $b = hexdec(substr($hex, 4, 2));
+
+        // Generate color variations by mixing with white
+        $mix_with_white = function($r, $g, $b, $factor) {
+            $new_r = round($r + (255 - $r) * $factor);
+            $new_g = round($g + (255 - $g) * $factor);
+            $new_b = round($b + (255 - $b) * $factor);
+            return sprintf('#%02x%02x%02x', $new_r, $new_g, $new_b);
+        };
+
+        $secondary = $mix_with_white($r, $g, $b, 0.5);  // 50% lighter
+        $light = $mix_with_white($r, $g, $b, 0.7);      // 70% lighter
+        $bg = $mix_with_white($r, $g, $b, 0.9);         // 90% lighter
+
+        return sprintf(
+            ':root { --irp-icon-primary: %s; --irp-icon-secondary: %s; --irp-icon-light: %s; --irp-icon-bg: %s; }',
+            esc_attr($primary_color),
+            esc_attr($secondary),
+            esc_attr($light),
+            esc_attr($bg)
+        );
     }
 }

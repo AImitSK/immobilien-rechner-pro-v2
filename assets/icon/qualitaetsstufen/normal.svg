@@ -2,29 +2,29 @@
 <svg id="Icons" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 512 512">
   <!-- Generator: Adobe Illustrator 29.4.0, SVG Export Plug-In . SVG Version: 2.1.0 Build 152)  -->
   <defs>
-    <style>
+    <style>:root{--irp-icon-primary:#428dff;--irp-icon-secondary:#7facfa;--irp-icon-light:#a4c2f7;--irp-icon-bg:#e8edfc;}
       .st0 {
         fill: #fff;
       }
 
       .st1 {
-        fill: #e8edfc;
+        fill: var(--irp-icon-bg, #e8edfc);
       }
 
       .st2 {
-        fill: #cad9fc;
+        fill: var(--irp-icon-bg, #e8edfc);
       }
 
       .st3 {
-        fill: #428dff;
+        fill: var(--irp-icon-primary, #428dff);
       }
 
       .st4 {
-        fill: #a4c3fd;
+        fill: var(--irp-icon-light, #a4c2f7);
       }
 
       .st5 {
-        fill: #c6d8fb;
+        fill: var(--irp-icon-bg, #e8edfc);
       }
     </style>
   </defs>

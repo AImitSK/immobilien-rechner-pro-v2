@@ -18,13 +18,13 @@ const PROPERTY_TYPES = [
     },
     {
         id: 'apartment',
-        icon: `${pluginUrl}assets/images/wohnung.svg`,
+        icon: `${pluginUrl}assets/icon/immobilientyp/wohnung.svg`,
         label: __('Wohnung', 'immobilien-rechner-pro'),
         description: __('Eigentumswohnung in einem Mehrfamilienhaus', 'immobilien-rechner-pro'),
     },
     {
         id: 'house',
-        icon: `${pluginUrl}assets/images/haus.svg`,
+        icon: `${pluginUrl}assets/icon/immobilientyp/haus.svg`,
         label: __('Haus', 'immobilien-rechner-pro'),
         description: __('Einfamilienhaus, Reihenhaus oder Mehrfamilienhaus', 'immobilien-rechner-pro'),
     },

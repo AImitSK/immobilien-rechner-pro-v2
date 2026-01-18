@@ -13,7 +13,7 @@ const PROPERTY_TYPES = [
         id: 'apartment',
         icon: (
             <img
-                src={`${pluginUrl}assets/images/wohnung.svg`}
+                src={`${pluginUrl}assets/icon/immobilientyp/wohnung.svg`}
                 alt="Wohnung"
                 className="irp-type-icon-img"
             />
@@ -25,7 +25,7 @@ const PROPERTY_TYPES = [
         id: 'house',
         icon: (
             <img
-                src={`${pluginUrl}assets/images/haus.svg`}
+                src={`${pluginUrl}assets/icon/immobilientyp/haus.svg`}
                 alt="Haus"
                 className="irp-type-icon-img"
             />
@@ -37,7 +37,7 @@ const PROPERTY_TYPES = [
         id: 'commercial',
         icon: (
             <img
-                src={`${pluginUrl}assets/images/gewerbe.svg`}
+                src={`${pluginUrl}assets/icon/immobilientyp/gewerbe.svg`}
                 alt="Gewerbe"
                 className="irp-type-icon-img"
             />
