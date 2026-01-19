@@ -697,15 +697,19 @@ function ResultsMap({ formData, priceEstimate, propertyType }) {
             <div className="irp-results-map-container">
                 <div ref={mapRef} className="irp-results-google-map" />
             </div>
-            {formData?.street_address && (
+            {(formData?.address || formData?.street_address) && (
                 <p className="irp-results-address">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="16" height="16">
                         <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
                         <circle cx="12" cy="10" r="3" />
                     </svg>
-                    {formData.street_address}
-                    {formData.zip_code && `, ${formData.zip_code}`}
-                    {formData.property_location && ` ${formData.property_location}`}
+                    {formData.address || (
+                        <>
+                            {formData.street_address}
+                            {formData.zip_code && `, ${formData.zip_code}`}
+                            {formData.property_location && ` ${formData.property_location}`}
+                        </>
+                    )}
                 </p>
             )}
         </motion.div>

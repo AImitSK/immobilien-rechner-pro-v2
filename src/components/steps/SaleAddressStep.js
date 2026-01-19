@@ -1,33 +1,30 @@
 /**
  * Sale Value Calculator - Address Step
- * Address input with Google Maps Autocomplete and Map display
+ * Single address input with Google Maps Autocomplete and Map display
+ * Similar to LocationRatingStep but extracts address components for data flow
  */
 
-import { useState, useEffect, useRef, useCallback } from '@wordpress/element';
+import { useState, useEffect, useRef } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
-const inputStyle = {
-    color: '#44474c',
-    WebkitTextFillColor: '#44474c',
-};
-
 export default function SaleAddressStep({ data, onChange, city }) {
-    const [isGoogleMapsLoaded, setIsGoogleMapsLoaded] = useState(false);
-    const [autocomplete, setAutocomplete] = useState(null);
-    const addressInputRef = useRef(null);
+    const [mapLoaded, setMapLoaded] = useState(false);
     const mapRef = useRef(null);
     const mapInstanceRef = useRef(null);
     const markerRef = useRef(null);
+    const autocompleteRef = useRef(null);
 
-    // Get Google Maps API key from settings
+    // Get settings
     const settings = window.irpSettings?.settings || {};
-    const googleMapsApiKey = settings.googleMapsApiKey || window.irpSettings?.googleMapsApiKey || '';
-    const showMap = settings.showMapInLocationStep && googleMapsApiKey;
+    const apiKey = settings.googleMapsApiKey || window.irpSettings?.googleMapsApiKey || '';
+    const showMap = apiKey && window.google?.maps;
+
+    // City name for autocomplete restriction
     const cityName = city?.name || data.property_location || '';
 
-    // Initialize Google Map
+    // Initialize Google Maps
     useEffect(() => {
-        if (!showMap || !window.google?.maps) return;
+        if (!showMap) return;
 
         const initMap = () => {
             if (!mapRef.current || mapInstanceRef.current) return;
@@ -51,6 +48,8 @@ export default function SaleAddressStep({ data, onChange, city }) {
                     map: mapInstanceRef.current,
                 });
             }
+
+            setMapLoaded(true);
         };
 
         // Small delay to ensure DOM is ready
@@ -63,83 +62,77 @@ export default function SaleAddressStep({ data, onChange, city }) {
         };
     }, [showMap]);
 
-    // Geocode city name to center map
+    // Initialize Places Autocomplete
     useEffect(() => {
-        if (!showMap || !window.google?.maps || !cityName || data.address_lat) return;
+        if (!showMap || !window.google?.maps?.places || !autocompleteRef.current) return;
+        if (autocompleteRef.current._autocomplete) return; // Already initialized
 
         const geocoder = new window.google.maps.Geocoder();
-        geocoder.geocode({ address: cityName + ', Deutschland' }, (results, status) => {
-            if (status === 'OK' && results[0]?.geometry?.location && mapInstanceRef.current) {
-                mapInstanceRef.current.setCenter(results[0].geometry.location);
-                mapInstanceRef.current.setZoom(12);
-            }
-        });
-    }, [showMap, cityName]);
 
-    // Initialize Google Maps Autocomplete
-    useEffect(() => {
-        if (!googleMapsApiKey || !window.google?.maps?.places) {
-            setIsGoogleMapsLoaded(false);
-            return;
-        }
-
-        setIsGoogleMapsLoaded(true);
-
-        if (addressInputRef.current && !autocomplete) {
-            const options = {
+        const initAutocomplete = (bounds) => {
+            const autocompleteOptions = {
                 types: ['address'],
                 componentRestrictions: { country: 'de' },
             };
 
-            const ac = new window.google.maps.places.Autocomplete(
-                addressInputRef.current,
-                options
+            if (bounds) {
+                autocompleteOptions.bounds = bounds;
+                autocompleteOptions.strictBounds = true;
+            }
+
+            const autocomplete = new window.google.maps.places.Autocomplete(
+                autocompleteRef.current,
+                autocompleteOptions
             );
 
-            ac.addListener('place_changed', () => {
-                const place = ac.getPlace();
+            autocomplete.addListener('place_changed', () => {
+                const place = autocomplete.getPlace();
 
-                if (place && place.address_components) {
+                if (place.geometry?.location) {
+                    const lat = place.geometry.location.lat();
+                    const lng = place.geometry.location.lng();
+
+                    // Extract address components
                     let street = '';
                     let streetNumber = '';
                     let zip = '';
                     let cityFromPlace = '';
 
-                    place.address_components.forEach((component) => {
-                        const types = component.types;
+                    if (place.address_components) {
+                        place.address_components.forEach((component) => {
+                            const types = component.types;
 
-                        if (types.includes('route')) {
-                            street = component.long_name;
-                        }
-                        if (types.includes('street_number')) {
-                            streetNumber = component.long_name;
-                        }
-                        if (types.includes('postal_code')) {
-                            zip = component.long_name;
-                        }
-                        if (types.includes('locality')) {
-                            cityFromPlace = component.long_name;
-                        }
-                    });
+                            if (types.includes('route')) {
+                                street = component.long_name;
+                            }
+                            if (types.includes('street_number')) {
+                                streetNumber = component.long_name;
+                            }
+                            if (types.includes('postal_code')) {
+                                zip = component.long_name;
+                            }
+                            if (types.includes('locality')) {
+                                cityFromPlace = component.long_name;
+                            }
+                        });
+                    }
 
                     const fullStreet = streetNumber
                         ? `${street} ${streetNumber}`
                         : street;
 
-                    // Get coordinates from place
-                    const lat = place.geometry?.location?.lat();
-                    const lng = place.geometry?.location?.lng();
-
+                    // Update all address data
                     onChange({
-                        street_address: fullStreet,
-                        zip_code: zip || data.zip_code,
-                        property_location: cityFromPlace || data.property_location,
+                        address: place.formatted_address || '',
                         address_lat: lat,
                         address_lng: lng,
+                        street_address: fullStreet,
+                        zip_code: zip || data.zip_code,
+                        property_location: cityFromPlace || data.property_location || cityName,
                     });
 
                     // Update map
-                    if (lat && lng && mapInstanceRef.current) {
+                    if (mapInstanceRef.current) {
                         mapInstanceRef.current.setCenter({ lat, lng });
                         mapInstanceRef.current.setZoom(15);
 
@@ -155,103 +148,68 @@ export default function SaleAddressStep({ data, onChange, city }) {
                 }
             });
 
-            setAutocomplete(ac);
-        }
-
-        return () => {
-            if (autocomplete) {
-                window.google.maps.event.clearInstanceListeners(autocomplete);
-            }
+            autocompleteRef.current._autocomplete = autocomplete;
         };
-    }, [googleMapsApiKey, autocomplete]);
 
-    const handleZipChange = (e) => {
-        const value = e.target.value.replace(/[^0-9]/g, '').slice(0, 5);
-        onChange({ zip_code: value });
-    };
+        // If we have a city name, geocode it to get bounds
+        if (cityName) {
+            geocoder.geocode({ address: cityName + ', Deutschland' }, (results, status) => {
+                if (status === 'OK' && results[0]?.geometry?.viewport) {
+                    initAutocomplete(results[0].geometry.viewport);
 
-    const handleCityChange = (e) => {
-        onChange({ property_location: e.target.value });
-    };
+                    // Also center the map on the city
+                    if (mapInstanceRef.current && !data.address_lat) {
+                        mapInstanceRef.current.setCenter(results[0].geometry.location);
+                        mapInstanceRef.current.setZoom(12);
+                    }
+                } else {
+                    initAutocomplete(null);
+                }
+            });
+        } else {
+            initAutocomplete(null);
+        }
+    }, [mapLoaded, showMap, cityName]);
 
-    const handleStreetChange = (e) => {
-        onChange({ street_address: e.target.value });
+    // Handle address input change
+    const handleAddressChange = (e) => {
+        onChange({ address: e.target.value });
     };
 
     return (
         <div className="irp-sale-address-step">
             <h3>{__('Wo befindet sich die Immobilie?', 'immobilien-rechner-pro')}</h3>
             <p className="irp-step-description">
-                {__('Die genaue Adresse wird für die Bewertung und Kontaktaufnahme benötigt.', 'immobilien-rechner-pro')}
+                {__('Die genaue Adresse wird für die Bewertung benötigt.', 'immobilien-rechner-pro')}
             </p>
 
-            <div className="irp-address-form">
-                <div className="irp-form-row">
-                    <div className="irp-form-group irp-form-group-zip">
-                        <label htmlFor="irp-zip">
-                            {__('PLZ', 'immobilien-rechner-pro')}
-                            <span className="irp-required">*</span>
-                        </label>
-                        <input
-                            type="text"
-                            id="irp-zip"
-                            name="zip_code"
-                            value={data.zip_code || ''}
-                            onChange={handleZipChange}
-                            placeholder="12345"
-                            maxLength="5"
-                            pattern="[0-9]*"
-                            inputMode="numeric"
-                            required
-                            style={inputStyle}
-                        />
-                    </div>
-
-                    <div className="irp-form-group irp-form-group-city">
-                        <label htmlFor="irp-city">
-                            {__('Stadt', 'immobilien-rechner-pro')}
-                            <span className="irp-required">*</span>
-                        </label>
-                        <input
-                            type="text"
-                            id="irp-city"
-                            name="property_location"
-                            value={data.property_location || cityName || ''}
-                            onChange={handleCityChange}
-                            placeholder={__('z.B. Berlin', 'immobilien-rechner-pro')}
-                            required
-                            style={inputStyle}
-                        />
-                    </div>
-                </div>
-
-                <div className="irp-form-group">
-                    <label htmlFor="irp-street">
-                        {__('Straße und Hausnummer', 'immobilien-rechner-pro')}
-                        <span className="irp-required">*</span>
-                    </label>
-                    <input
-                        ref={addressInputRef}
-                        type="text"
-                        id="irp-street"
-                        name="street_address"
-                        value={data.street_address || ''}
-                        onChange={handleStreetChange}
-                        placeholder={
-                            cityName
-                                ? __(`Straße und Hausnummer in ${cityName}...`, 'immobilien-rechner-pro')
-                                : __('Straße und Hausnummer...', 'immobilien-rechner-pro')
-                        }
-                        autoComplete="off"
-                        required
-                        style={inputStyle}
-                    />
-                    {isGoogleMapsLoaded && (
-                        <p className="irp-input-hint">
-                            {__('Tippen Sie die Adresse ein für Vorschläge.', 'immobilien-rechner-pro')}
-                        </p>
-                    )}
-                </div>
+            {/* Address Input */}
+            <div className="irp-form-group">
+                <label htmlFor="irp-address">
+                    {__('Adresse der Immobilie', 'immobilien-rechner-pro')}
+                    <span className="irp-required">*</span>
+                </label>
+                <input
+                    ref={showMap ? autocompleteRef : null}
+                    type="text"
+                    id="irp-address"
+                    name="address"
+                    value={data.address || ''}
+                    onChange={handleAddressChange}
+                    placeholder={showMap
+                        ? (cityName
+                            ? __('Straße und Hausnummer in ', 'immobilien-rechner-pro') + cityName + '...'
+                            : __('Adresse eingeben...', 'immobilien-rechner-pro'))
+                        : __('z.B. Musterstraße 123, 12345 Berlin', 'immobilien-rechner-pro')
+                    }
+                    autoComplete="off"
+                    required
+                />
+                {showMap && (
+                    <p className="irp-input-hint">
+                        {__('Tippen Sie die Adresse ein und wählen Sie einen Vorschlag aus.', 'immobilien-rechner-pro')}
+                    </p>
+                )}
             </div>
 
             {/* Google Map */}

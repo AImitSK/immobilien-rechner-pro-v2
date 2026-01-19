@@ -43,7 +43,13 @@ export default function SaleValueCalculator({ initialData, onComplete, onBack, c
         usage_type: '',
         sale_intention: '',
         timeframe: '',
+        // Address fields
+        address: '',
         street_address: '',
+        zip_code: '',
+        property_location: '',
+        address_lat: null,
+        address_lng: null,
         city_id: cityId || '',
         city_name: cityName || '',
         ...initialData,

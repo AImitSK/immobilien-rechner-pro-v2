@@ -102,8 +102,22 @@ export default function App({ config }) {
                 if (data.quality) {
                     partialLeadData.quality = data.quality;
                 }
+                // Address fields
+                if (data.address) {
+                    partialLeadData.address = data.address;
+                }
                 if (data.street_address) {
                     partialLeadData.street_address = data.street_address;
+                }
+                if (data.zip_code) {
+                    partialLeadData.zip_code = data.zip_code;
+                }
+                if (data.property_location) {
+                    partialLeadData.property_location = data.property_location;
+                }
+                if (data.address_lat && data.address_lng) {
+                    partialLeadData.address_lat = data.address_lat;
+                    partialLeadData.address_lng = data.address_lng;
                 }
             } else {
                 // Rental and comparison use size
