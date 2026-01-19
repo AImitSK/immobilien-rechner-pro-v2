@@ -80,46 +80,6 @@ $email_settings = get_option('irp_email_settings', []);
             </div>
 
             <div class="irp-settings-section">
-                <h2><?php esc_html_e('Rechner-Standardwerte', 'immobilien-rechner-pro'); ?></h2>
-
-                <table class="form-table">
-                    <tr>
-                        <th scope="row">
-                            <label for="default_maintenance_rate"><?php esc_html_e('Instandhaltungsrate (%)', 'immobilien-rechner-pro'); ?></label>
-                        </th>
-                        <td>
-                            <input type="number" id="default_maintenance_rate" name="irp_settings[default_maintenance_rate]"
-                                   value="<?php echo esc_attr($settings['default_maintenance_rate'] ?? 1.5); ?>"
-                                   step="0.1" min="0" max="10" class="small-text"> %
-                            <p class="description"><?php esc_html_e('Jährliche Instandhaltungskosten als Prozentsatz des Immobilienwerts.', 'immobilien-rechner-pro'); ?></p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">
-                            <label for="default_vacancy_rate"><?php esc_html_e('Leerstandsrate (%)', 'immobilien-rechner-pro'); ?></label>
-                        </th>
-                        <td>
-                            <input type="number" id="default_vacancy_rate" name="irp_settings[default_vacancy_rate]"
-                                   value="<?php echo esc_attr($settings['default_vacancy_rate'] ?? 3); ?>"
-                                   step="0.5" min="0" max="20" class="small-text"> %
-                            <p class="description"><?php esc_html_e('Erwartete Leerstandsrate für die Mieteinnahmen-Berechnung.', 'immobilien-rechner-pro'); ?></p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">
-                            <label for="default_broker_commission"><?php esc_html_e('Maklerprovision (%)', 'immobilien-rechner-pro'); ?></label>
-                        </th>
-                        <td>
-                            <input type="number" id="default_broker_commission" name="irp_settings[default_broker_commission]"
-                                   value="<?php echo esc_attr($settings['default_broker_commission'] ?? 3.57); ?>"
-                                   step="0.01" min="0" max="10" class="small-text"> %
-                            <p class="description"><?php esc_html_e('Standard-Maklerprovision für Verkaufsberechnungen.', 'immobilien-rechner-pro'); ?></p>
-                        </td>
-                    </tr>
-                </table>
-            </div>
-
-            <div class="irp-settings-section">
                 <h2><?php esc_html_e('Datenschutz & Einwilligung', 'immobilien-rechner-pro'); ?></h2>
 
                 <table class="form-table">

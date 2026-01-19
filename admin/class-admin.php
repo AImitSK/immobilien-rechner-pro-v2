@@ -345,8 +345,38 @@ class IRP_Admin {
         wp_localize_script('irp-admin', 'irpAdmin', [
             'nonce' => wp_create_nonce('irp_admin_nonce'),
             'i18n' => [
+                // Media uploader
                 'mediaTitle' => __('Logo auswählen', 'immobilien-rechner-pro'),
                 'mediaButton' => __('Dieses Bild verwenden', 'immobilien-rechner-pro'),
+                // City accordion
+                'newCity' => __('Neue Stadt', 'immobilien-rechner-pro'),
+                'deleteCity' => __('Stadt löschen', 'immobilien-rechner-pro'),
+                'minOneCity' => __('Sie müssen mindestens eine Stadt konfiguriert haben.', 'immobilien-rechner-pro'),
+                'confirmDeleteCity' => __('Stadt "{city}" wirklich löschen?', 'immobilien-rechner-pro'),
+                // City field groups
+                'baseData' => __('Basisdaten', 'immobilien-rechner-pro'),
+                'rentalParams' => __('Mietwert-Parameter', 'immobilien-rechner-pro'),
+                'saleParams' => __('Verkaufswert-Parameter', 'immobilien-rechner-pro'),
+                // City field labels
+                'cityId' => __('Stadt-ID', 'immobilien-rechner-pro'),
+                'cityName' => __('Name', 'immobilien-rechner-pro'),
+                'cityNamePlaceholder' => __('Stadtname', 'immobilien-rechner-pro'),
+                'basePrice' => __('Basis-Mietpreis', 'immobilien-rechner-pro'),
+                'degression' => __('Größendegression', 'immobilien-rechner-pro'),
+                'saleFactor' => __('Vervielfältiger', 'immobilien-rechner-pro'),
+                'landPrice' => __('Bodenrichtwert', 'immobilien-rechner-pro'),
+                'buildingPrice' => __('Gebäude', 'immobilien-rechner-pro'),
+                'apartmentPrice' => __('Wohnung', 'immobilien-rechner-pro'),
+                'marketFactor' => __('Marktfaktor', 'immobilien-rechner-pro'),
+                // Tooltips
+                'cityIdTooltip' => __('Eindeutige Kennung für den Shortcode (z.B. muenchen)', 'immobilien-rechner-pro'),
+                'basePriceTooltip' => __('Ausgangspreis für eine 70m² Referenzwohnung in durchschnittlicher Lage und normalem Zustand.', 'immobilien-rechner-pro'),
+                'degressionTooltip' => __('Steuert wie stark der m²-Preis bei größeren Wohnungen sinkt. 0.20 = Standard, 0 = keine Anpassung.', 'immobilien-rechner-pro'),
+                'saleFactorTooltip' => __('Anzahl Jahresnettokaltmieten für den Kaufpreis. Bei 1.000€/Monat und Faktor 25 → 300.000€ Kaufpreis.', 'immobilien-rechner-pro'),
+                'landPriceTooltip' => __('Durchschnittlicher Grundstückspreis pro m² in dieser Stadt (vom Gutachterausschuss).', 'immobilien-rechner-pro'),
+                'buildingPriceTooltip' => __('Normalherstellungskosten für Wohngebäude - Neubaukosten pro m² Wohnfläche.', 'immobilien-rechner-pro'),
+                'apartmentPriceTooltip' => __('Durchschnittlicher Verkaufspreis pro m² für Eigentumswohnungen in dieser Stadt.', 'immobilien-rechner-pro'),
+                'marketFactorTooltip' => __('Marktanpassung: 0.8 = schwacher Markt, 1.0 = normal, 1.2+ = Boom-Markt.', 'immobilien-rechner-pro'),
             ],
         ]);
 

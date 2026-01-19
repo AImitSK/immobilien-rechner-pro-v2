@@ -1,735 +1,607 @@
+# English translations for Immobilien Rechner Pro package.
 # Copyright (C) 2024 Stefan Kühne
 # This file is distributed under the GPL v2 or later.
+# Stefan Kühne <info@sk-online-marketing.de>, 2024.
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Immobilien Rechner Pro 2.1.1\n"
 "Report-Msgid-Bugs-To: https://github.com/AImitSK/immobilien-rechner-pro-v2/issues\n"
-"POT-Creation-Date: 2024-01-18T12:00:00+00:00\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"POT-Creation-Date: 2026-01-19T12:00:00+00:00\n"
+"PO-Revision-Date: 2026-01-19T12:00:00+00:00\n"
+"Last-Translator: Claude Code <noreply@anthropic.com>\n"
+"Language-Team: English <en@li.org>\n"
+"Language: en_US\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Claude Code\n"
 "X-Domain: immobilien-rechner-pro\n"
 
 #. Plugin Name of the plugin
 msgid "Immobilien Rechner Pro V2"
-msgstr ""
+msgstr "Real Estate Calculator Pro V2"
 
 #. Description of the plugin
 msgid "Professionelles WordPress-Plugin für Immobilienbewertung, Mietwertberechnung und Verkaufen-vs-Vermieten-Vergleich. White-Label-Lösung für Immobilienmakler."
-msgstr ""
+msgstr "Professional WordPress plugin for property valuation, rental value calculation and sell-vs-rent comparison. White-label solution for real estate agents."
 
 #. Author of the plugin
 msgid "Stefan Kühne"
-msgstr ""
+msgstr "Stefan Kühne"
 
 #: src/components/App.js
 msgid "Ein Fehler ist aufgetreten."
-msgstr ""
+msgstr "An error has occurred."
 
 #: src/components/ModeSelector.js
 msgid "Mietwert berechnen"
-msgstr ""
+msgstr "Calculate rental value"
 
 #: src/components/ModeSelector.js
 msgid "Erfahren Sie, wie viel Miete Sie für Ihre Immobilie verlangen können"
-msgstr ""
+msgstr "Find out how much rent you can charge for your property"
 
 #: src/components/ModeSelector.js
 msgid "Ich möchte meine Immobilie vermieten"
-msgstr ""
+msgstr "I want to rent out my property"
 
 #: src/components/ModeSelector.js
 msgid "Verkaufen vs. Vermieten"
-msgstr ""
+msgstr "Sell vs. Rent"
 
 #: src/components/ModeSelector.js
 msgid "Vergleichen Sie die finanziellen Ergebnisse von Verkauf und Vermietung"
-msgstr ""
+msgstr "Compare the financial outcomes of selling and renting"
 
 #: src/components/ModeSelector.js
 msgid "Ich bin unsicher, ob ich verkaufen oder vermieten soll"
-msgstr ""
+msgstr "I'm unsure whether to sell or rent"
 
 #: src/components/ModeSelector.js
 msgid "Was möchten Sie wissen?"
-msgstr ""
+msgstr "What would you like to know?"
 
 #: src/components/ModeSelector.js
 msgid "Wählen Sie eine Option, um mit Ihrer Immobilienanalyse zu beginnen"
-msgstr ""
+msgstr "Choose an option to start your property analysis"
 
 #: src/components/RentalCalculator.js src/components/ComparisonCalculator.js src/components/SaleValueCalculator.js
 msgid "Immobilienart"
-msgstr ""
+msgstr "Property type"
 
 #: src/components/RentalCalculator.js src/components/ComparisonCalculator.js
 msgid "Details"
-msgstr ""
+msgstr "Details"
 
 #: src/components/RentalCalculator.js src/components/ComparisonCalculator.js
 msgid "Standort"
-msgstr ""
+msgstr "Location"
 
 #: src/components/RentalCalculator.js src/components/ComparisonCalculator.js
 msgid "Zustand"
-msgstr ""
+msgstr "Condition"
 
 #: src/components/RentalCalculator.js src/components/ComparisonCalculator.js
 msgid "Lage"
-msgstr ""
+msgstr "Location rating"
 
 #: src/components/RentalCalculator.js src/components/ComparisonCalculator.js src/components/SaleValueCalculator.js
 msgid "Ausstattung"
-msgstr ""
+msgstr "Features"
 
 #: src/components/RentalCalculator.js src/components/ComparisonCalculator.js src/components/SaleValueCalculator.js
 msgid "Berechnung fehlgeschlagen"
-msgstr ""
+msgstr "Calculation failed"
 
 #: src/components/RentalCalculator.js src/components/ComparisonCalculator.js src/components/SaleValueCalculator.js
 msgid "Ein Fehler ist aufgetreten"
-msgstr ""
+msgstr "An error occurred"
 
 #: src/components/RentalCalculator.js src/components/ComparisonCalculator.js src/components/SaleValueCalculator.js src/components/steps/ContactFormStep.js src/components/LeadForm.js
 msgid "Zurück"
-msgstr ""
+msgstr "Back"
 
 #: src/components/RentalCalculator.js src/components/ComparisonCalculator.js src/components/SaleValueCalculator.js
 msgid "Berechnen"
-msgstr ""
+msgstr "Calculate"
 
 #: src/components/RentalCalculator.js src/components/ComparisonCalculator.js src/components/SaleValueCalculator.js
 msgid "Weiter"
-msgstr ""
+msgstr "Continue"
 
 #: src/components/ComparisonCalculator.js
 msgid "Immobilie"
-msgstr ""
+msgstr "Property"
 
 #: src/components/ComparisonCalculator.js
 msgid "Finanzen"
-msgstr ""
+msgstr "Finances"
 
 #: src/components/SaleValueCalculator.js
 msgid "Größe"
-msgstr ""
+msgstr "Size"
 
 #: src/components/SaleValueCalculator.js
 msgid "Qualität & Lage"
-msgstr ""
+msgstr "Quality & Location"
 
 #: src/components/SaleValueCalculator.js
 msgid "Adresse"
-msgstr ""
+msgstr "Address"
 
 #: src/components/SaleValueCalculator.js
 msgid "Vorhaben"
-msgstr ""
+msgstr "Intention"
 
 #: src/components/ResultsDisplay.js
 msgid "Vielen Dank für Ihre Anfrage!"
-msgstr ""
+msgstr "Thank you for your inquiry!"
 
 #: src/components/ResultsDisplay.js
 msgid "Ihre Daten werden jetzt von einem erfahrenen Immobilienexperten bei %s analysiert. Sie erhalten in Kürze eine ausführliche Bewertung mit detaillierten Marktdaten direkt in Ihr E-Mail-Postfach."
-msgstr ""
+msgstr "Your data is now being analyzed by an experienced real estate expert at %s. You will shortly receive a detailed valuation with comprehensive market data directly to your email inbox."
 
 #: src/components/ResultsDisplay.js
 msgid "Ihre Daten werden jetzt von einem erfahrenen Immobilienexperten analysiert. Sie erhalten in Kürze eine ausführliche Bewertung mit detaillierten Marktdaten direkt in Ihr E-Mail-Postfach."
-msgstr ""
+msgstr "Your data is now being analyzed by an experienced real estate expert. You will shortly receive a detailed valuation with comprehensive market data directly to your email inbox."
 
 #: src/components/ResultsDisplay.js
 msgid "Ihre Mietwert-Schätzung"
-msgstr ""
+msgstr "Your rental value estimate"
 
 #: src/components/ResultsDisplay.js
 msgid "Basierend auf Ihren Immobiliendaten und dem Standort"
-msgstr ""
+msgstr "Based on your property data and location"
 
 #: src/components/ResultsDisplay.js
 msgid "Geschätzte Monatsmiete"
-msgstr ""
+msgstr "Estimated monthly rent"
 
 #: src/components/ResultsDisplay.js
 msgid "Spanne:"
-msgstr ""
+msgstr "Range:"
 
 #: src/components/ResultsDisplay.js
 msgid "Preis pro m²"
-msgstr ""
+msgstr "Price per sqm"
 
 #: src/components/ResultsDisplay.js
 msgid "Jährliche Mieteinnahmen"
-msgstr ""
+msgstr "Annual rental income"
 
 #: src/components/ResultsDisplay.js
 msgid "Marktposition"
-msgstr ""
+msgstr "Market position"
 
 #: src/components/ResultsDisplay.js src/components/SaleResultsDisplay.js
 msgid "Neue Berechnung starten"
-msgstr ""
+msgstr "Start new calculation"
 
 #: src/components/ResultsDisplay.js
 msgid "Kumulierte Mieteinnahmen"
-msgstr ""
+msgstr "Cumulative rental income"
 
 #: src/components/ResultsDisplay.js
 msgid "Verkaufserlös (wenn in dem Jahr verkauft)"
-msgstr ""
+msgstr "Sale proceeds (if sold in that year)"
 
 #: src/components/ResultsDisplay.js
 msgid "Verkaufen vs. Vermieten Vergleich"
-msgstr ""
+msgstr "Sell vs. Rent comparison"
 
 #: src/components/ResultsDisplay.js
 msgid "Wenn Sie jetzt verkaufen"
-msgstr ""
+msgstr "If you sell now"
 
 #: src/components/ResultsDisplay.js
 msgid "Nettoerlös"
-msgstr ""
+msgstr "Net proceeds"
 
 #: src/components/ResultsDisplay.js
 msgid "Immobilienwert"
-msgstr ""
+msgstr "Property value"
 
 #: src/components/ResultsDisplay.js
 msgid "Verkaufskosten"
-msgstr ""
+msgstr "Sale costs"
 
 #: src/components/ResultsDisplay.js
 msgid "Hypothekenablösung"
-msgstr ""
+msgstr "Mortgage payoff"
 
 #: src/components/ResultsDisplay.js
 msgid "Wenn Sie vermieten"
-msgstr ""
+msgstr "If you rent out"
 
 #: src/components/ResultsDisplay.js
 msgid "Jahr"
-msgstr ""
+msgstr "Year"
 
 #: src/components/ResultsDisplay.js
 msgid "Netto-Mieteinnahmen"
-msgstr ""
+msgstr "Net rental income"
 
 #: src/components/ResultsDisplay.js
 msgid "Bruttomiete"
-msgstr ""
+msgstr "Gross rent"
 
 #: src/components/ResultsDisplay.js
 msgid "Leerstandsverlust"
-msgstr ""
+msgstr "Vacancy loss"
 
 #: src/components/ResultsDisplay.js
 msgid "Instandhaltung"
-msgstr ""
+msgstr "Maintenance"
 
 #: src/components/ResultsDisplay.js
 msgid "Bruttorendite:"
-msgstr ""
+msgstr "Gross yield:"
 
 #: src/components/ResultsDisplay.js
 msgid "Nettorendite:"
-msgstr ""
+msgstr "Net yield:"
 
 #: src/components/ResultsDisplay.js
 msgid "15-Jahres-Prognose"
-msgstr ""
+msgstr "15-year forecast"
 
 #: src/components/ResultsDisplay.js
 msgid "Break-even-Punkt:"
-msgstr ""
+msgstr "Break-even point:"
 
 #: src/components/ResultsDisplay.js src/components/steps/FinancialStep.js
 msgid "Jahre"
-msgstr ""
+msgstr "years"
 
 #: src/components/ResultsDisplay.js
 msgid "Unsere Einschätzung"
-msgstr ""
-
-#: src/components/SaleResultsDisplay.js
-msgid "Ein Immobilienexperte von %s wird sich in Kürze mit Ihnen in Verbindung setzen, um eine detaillierte Bewertung Ihrer Immobilie vorzunehmen."
-msgstr ""
-
-#: src/components/SaleResultsDisplay.js
-msgid "Ein Immobilienexperte wird sich in Kürze mit Ihnen in Verbindung setzen, um eine detaillierte Bewertung Ihrer Immobilie vorzunehmen."
-msgstr ""
-
-#: src/components/SaleResultsDisplay.js
-msgid "Mittelwert:"
-msgstr ""
-
-#: src/components/SaleResultsDisplay.js
-msgid "Geschätzter Verkaufswert Ihrer Immobilie"
-msgstr ""
-
-#: src/components/SaleResultsDisplay.js
-msgid "Ermittelt nach dem Sachwertverfahren"
-msgstr ""
-
-#: src/components/SaleResultsDisplay.js
-msgid "Geschätzter Verkaufspreis"
-msgstr ""
-
-#: src/components/SaleResultsDisplay.js src/components/steps/SaleFeaturesStep.js
-msgid "Wertermittlung"
-msgstr ""
-
-#: src/components/SaleResultsDisplay.js
-msgid "Grundstückswert"
-msgstr ""
-
-#: src/components/SaleResultsDisplay.js
-msgid "Gebäudewert"
-msgstr ""
-
-#: src/components/SaleResultsDisplay.js
-msgid "Marktanpassung"
-msgstr ""
-
-#: src/components/SaleResultsDisplay.js
-msgid "Kennzahlen"
-msgstr ""
-
-#: src/components/SaleResultsDisplay.js
-msgid "pro m² Wohnfläche"
-msgstr ""
-
-#: src/components/SaleResultsDisplay.js
-msgid "pro m² Grundstück"
-msgstr ""
-
-#: src/components/SaleResultsDisplay.js
-msgid "Angewandte Faktoren"
-msgstr ""
-
-#: src/components/SaleResultsDisplay.js
-msgid "Haustyp"
-msgstr ""
-
-#: src/components/SaleResultsDisplay.js src/components/steps/SaleQualityLocationStep.js
-msgid "Qualität"
-msgstr ""
-
-#: src/components/SaleResultsDisplay.js
-msgid "Fikt. Baujahr"
-msgstr ""
-
-#: src/components/SaleResultsDisplay.js
-msgid "Geschätzter Verkaufswert Ihrer Wohnung"
-msgstr ""
-
-#: src/components/SaleResultsDisplay.js
-msgid "Ermittelt nach dem Vergleichswertverfahren"
-msgstr ""
-
-#: src/components/SaleResultsDisplay.js
-msgid "Basierend auf"
-msgstr ""
-
-#: src/components/SaleResultsDisplay.js src/components/steps/SaleQualityLocationStep.js
-msgid "Qualität:"
-msgstr ""
-
-#: src/components/SaleResultsDisplay.js src/components/steps/SaleQualityLocationStep.js
-msgid "Lage:"
-msgstr ""
-
-#: src/components/SaleResultsDisplay.js
-msgid "Vergleich Region"
-msgstr ""
-
-#: src/components/SaleResultsDisplay.js
-msgid "Ø Preis/m² in"
-msgstr ""
-
-#: src/components/SaleResultsDisplay.js
-msgid "der Region"
-msgstr ""
-
-#: src/components/SaleResultsDisplay.js
-msgid "Ihre Wohnung"
-msgstr ""
-
-#: src/components/SaleResultsDisplay.js
-msgid "Geschätzter Wert Ihres Grundstücks"
-msgstr ""
-
-#: src/components/SaleResultsDisplay.js
-msgid "Ermittelt auf Basis des Bodenrichtwerts"
-msgstr ""
-
-#: src/components/SaleResultsDisplay.js
-msgid "Geschätzter Grundstückswert"
-msgstr ""
-
-#: src/components/SaleResultsDisplay.js
-msgid "Lagefaktor"
-msgstr ""
-
-#: src/components/SaleResultsDisplay.js
-msgid "Bodenrichtwert pro m²"
-msgstr ""
-
-#: src/components/SaleResultsDisplay.js
-msgid "Standort:"
-msgstr ""
-
-#: src/components/SaleResultsDisplay.js
-msgid "Hinweis: Diese Schätzung dient nur zur Orientierung und ersetzt keine professionelle Immobilienbewertung. Der tatsächliche Verkaufspreis kann aufgrund individueller Objektmerkmale, aktueller Marktbedingungen und Verhandlungen abweichen."
-msgstr ""
+msgstr "Our assessment"
 
 #: src/components/steps/PropertyTypeStep.js src/components/steps/SalePropertyTypeStep.js
 msgid "Wohnung"
-msgstr ""
+msgstr "Apartment"
 
 #: src/components/steps/PropertyTypeStep.js
 msgid "Wohnung in einem Mehrfamilienhaus"
-msgstr ""
+msgstr "Apartment in a multi-family building"
 
 #: src/components/steps/PropertyTypeStep.js src/components/steps/SalePropertyTypeStep.js
 msgid "Haus"
-msgstr ""
+msgstr "House"
 
 #: src/components/steps/PropertyTypeStep.js
 msgid "Einfamilienhaus oder Doppelhaushälfte"
-msgstr ""
+msgstr "Single-family home or semi-detached house"
 
 #: src/components/steps/PropertyTypeStep.js
 msgid "Gewerbe"
-msgstr ""
+msgstr "Commercial"
 
 #: src/components/steps/PropertyTypeStep.js
 msgid "Büro, Einzelhandel oder Mischnutzung"
-msgstr ""
+msgstr "Office, retail or mixed use"
 
 #: src/components/steps/PropertyTypeStep.js
 msgid "Welche Art von Immobilie haben Sie?"
-msgstr ""
+msgstr "What type of property do you have?"
 
 #: src/components/steps/PropertyDetailsStep.js
 msgid "Erzählen Sie uns von Ihrer Immobilie"
-msgstr ""
+msgstr "Tell us about your property"
 
 #: src/components/steps/PropertyDetailsStep.js src/components/steps/SaleSizeStep.js
 msgid "Wohnfläche"
-msgstr ""
+msgstr "Living area"
 
 #: src/components/steps/PropertyDetailsStep.js
 msgid "Gesamte Wohnfläche in Quadratmetern"
-msgstr ""
+msgstr "Total living area in square meters"
 
 #: src/components/steps/PropertyDetailsStep.js
 msgid "Anzahl der Zimmer"
-msgstr ""
+msgstr "Number of rooms"
 
 #: src/components/steps/PropertyDetailsStep.js
 msgid "Auswählen..."
-msgstr ""
+msgstr "Select..."
 
 #: src/components/steps/PropertyDetailsStep.js
 msgid "Ohne Küche und Bad"
-msgstr ""
+msgstr "Excluding kitchen and bathroom"
 
 #: src/components/steps/PropertyDetailsStep.js src/components/steps/SaleSizeStep.js
 msgid "Baujahr"
-msgstr ""
+msgstr "Year built"
 
 #: src/components/steps/PropertyDetailsStep.js
 msgid "Ursprüngliches Baujahr"
-msgstr ""
+msgstr "Original year of construction"
 
 #: src/components/steps/CityStep.js
 msgid "Städte konnten nicht geladen werden"
-msgstr ""
+msgstr "Cities could not be loaded"
 
 #: src/components/steps/CityStep.js
 msgid "Standort auswählen"
-msgstr ""
+msgstr "Select location"
 
 #: src/components/steps/CityStep.js
 msgid "Städte werden geladen..."
-msgstr ""
+msgstr "Loading cities..."
 
 #: src/components/steps/CityStep.js
 msgid "Keine Städte konfiguriert. Bitte kontaktieren Sie den Administrator."
-msgstr ""
+msgstr "No cities configured. Please contact the administrator."
 
 #: src/components/steps/CityStep.js
 msgid "Für welche Stadt möchten Sie den Mietwert berechnen?"
-msgstr ""
+msgstr "For which city would you like to calculate the rental value?"
 
 #: src/components/steps/CityStep.js src/components/steps/SaleAddressStep.js
 msgid "Stadt"
-msgstr ""
+msgstr "City"
 
 #: src/components/steps/CityStep.js
 msgid "Bitte wählen..."
-msgstr ""
+msgstr "Please select..."
 
 #: src/components/steps/CityStep.js
 msgid "Berechnung für"
-msgstr ""
+msgstr "Calculation for"
 
 #: src/components/steps/ConditionStep.js
 msgid "Neubau / Kernsaniert"
-msgstr ""
+msgstr "New build / Fully renovated"
 
 #: src/components/steps/ConditionStep.js
 msgid "Neu gebaut oder vollständig saniert"
-msgstr ""
+msgstr "Newly built or completely renovated"
 
 #: src/components/steps/ConditionStep.js
 msgid "Kürzlich renoviert"
-msgstr ""
+msgstr "Recently renovated"
 
 #: src/components/steps/ConditionStep.js
 msgid "In den letzten 5 Jahren modernisiert"
-msgstr ""
+msgstr "Modernized in the last 5 years"
 
 #: src/components/steps/ConditionStep.js
 msgid "Guter Zustand"
-msgstr ""
+msgstr "Good condition"
 
 #: src/components/steps/ConditionStep.js
 msgid "Gut gepflegt, bezugsfertig"
-msgstr ""
+msgstr "Well maintained, move-in ready"
 
 #: src/components/steps/ConditionStep.js
 msgid "Renovierungsbedürftig"
-msgstr ""
+msgstr "Needs renovation"
 
 #: src/components/steps/ConditionStep.js
 msgid "Erfordert Modernisierung oder Reparaturen"
-msgstr ""
+msgstr "Requires modernization or repairs"
 
 #: src/components/steps/ConditionStep.js
 msgid "In welchem Zustand ist Ihre Immobilie?"
-msgstr ""
+msgstr "What condition is your property in?"
 
 #: src/components/steps/LocationRatingStep.js
 msgid "Wie bewerten Sie die Lage?"
-msgstr ""
+msgstr "How do you rate the location?"
 
 #: src/components/steps/LocationRatingStep.js
 msgid "Die Lage hat einen erheblichen Einfluss auf den Mietwert."
-msgstr ""
+msgstr "Location has a significant impact on rental value."
 
 #: src/components/steps/LocationRatingStep.js
 msgid "Adresse der Immobilie"
-msgstr ""
+msgstr "Property address"
 
 #: src/components/steps/LocationRatingStep.js
 msgid "optional"
-msgstr ""
+msgstr "optional"
 
 #: src/components/steps/LocationRatingStep.js
 msgid "Straße und Hausnummer in "
-msgstr ""
+msgstr "Street and house number in "
 
 #: src/components/steps/LocationRatingStep.js
 msgid "Adresse eingeben..."
-msgstr ""
+msgstr "Enter address..."
 
 #: src/components/steps/LocationRatingStep.js
 msgid "z.B. Musterstraße 123"
-msgstr ""
+msgstr "e.g. Main Street 123"
 
 #: src/components/steps/LocationRatingStep.js
 msgid "Lage-Bewertung"
-msgstr ""
+msgstr "Location rating"
 
 #: src/components/steps/LocationRatingStep.js src/components/steps/SaleQualityLocationStep.js
 msgid "Einfach"
-msgstr ""
+msgstr "Basic"
 
 #: src/components/steps/LocationRatingStep.js
 msgid "Premium"
-msgstr ""
+msgstr "Premium"
 
 #: src/components/steps/FeaturesStep.js src/components/steps/SaleFeaturesStep.js
 msgid "Balkon"
-msgstr ""
+msgstr "Balcony"
 
 #: src/components/steps/FeaturesStep.js src/components/steps/SaleFeaturesStep.js
 msgid "Terrasse"
-msgstr ""
+msgstr "Terrace"
 
 #: src/components/steps/FeaturesStep.js src/components/steps/SaleFeaturesStep.js
 msgid "Garten"
-msgstr ""
+msgstr "Garden"
 
 #: src/components/steps/FeaturesStep.js src/components/steps/SaleFeaturesStep.js
 msgid "Aufzug"
-msgstr ""
+msgstr "Elevator"
 
 #: src/components/steps/FeaturesStep.js src/components/steps/SaleFeaturesStep.js
 msgid "Stellplatz"
-msgstr ""
+msgstr "Parking space"
 
 #: src/components/steps/FeaturesStep.js src/components/steps/SaleFeaturesStep.js
 msgid "Garage"
-msgstr ""
+msgstr "Garage"
 
 #: src/components/steps/FeaturesStep.js src/components/steps/SaleFeaturesStep.js
 msgid "Keller"
-msgstr ""
+msgstr "Basement"
 
 #: src/components/steps/FeaturesStep.js src/components/steps/SaleFeaturesStep.js
 msgid "Einbauküche"
-msgstr ""
+msgstr "Built-in kitchen"
 
 #: src/components/steps/FeaturesStep.js
 msgid "Fußbodenheizung"
-msgstr ""
+msgstr "Underfloor heating"
 
 #: src/components/steps/FeaturesStep.js
 msgid "Gäste-WC"
-msgstr ""
+msgstr "Guest toilet"
 
 #: src/components/steps/FeaturesStep.js
 msgid "Barrierefrei"
-msgstr ""
+msgstr "Accessible"
 
 #: src/components/steps/FeaturesStep.js
 msgid "Welche Ausstattungsmerkmale hat Ihre Immobilie?"
-msgstr ""
+msgstr "What features does your property have?"
 
 #: src/components/steps/FeaturesStep.js
 msgid "Wählen Sie alle zutreffenden aus. Diese können den Mietwert erhöhen."
-msgstr ""
+msgstr "Select all that apply. These can increase the rental value."
 
 #: src/components/steps/FeaturesStep.js src/components/steps/SaleFeaturesStep.js
 msgid "Keine Ausstattung ausgewählt"
-msgstr ""
+msgstr "No features selected"
 
 #: src/components/steps/FeaturesStep.js src/components/steps/SaleFeaturesStep.js
 msgid "Merkmal ausgewählt"
-msgstr ""
+msgstr "feature selected"
 
 #: src/components/steps/FeaturesStep.js src/components/steps/SaleFeaturesStep.js
 msgid "Merkmale ausgewählt"
-msgstr ""
+msgstr "features selected"
 
 #: src/components/steps/FinancialStep.js
 msgid "Finanzielle Details"
-msgstr ""
+msgstr "Financial details"
 
 #: src/components/steps/FinancialStep.js
 msgid "Diese Informationen helfen uns, Verkauf und Vermietung genau zu vergleichen."
-msgstr ""
+msgstr "This information helps us compare selling and renting accurately."
 
 #: src/components/steps/FinancialStep.js
 msgid "Geschätzter Immobilienwert"
-msgstr ""
+msgstr "Estimated property value"
 
 #: src/components/steps/FinancialStep.js
 msgid "Ihre beste Schätzung des aktuellen Marktwerts"
-msgstr ""
+msgstr "Your best estimate of the current market value"
 
 #: src/components/steps/FinancialStep.js
 msgid "Restschuld Hypothek"
-msgstr ""
+msgstr "Remaining mortgage"
 
 #: src/components/steps/FinancialStep.js
 msgid "Offener Darlehensbetrag (falls vorhanden)"
-msgstr ""
+msgstr "Outstanding loan amount (if any)"
 
 #: src/components/steps/FinancialStep.js
 msgid "Besitzdauer"
-msgstr ""
+msgstr "Ownership duration"
 
 #: src/components/steps/FinancialStep.js
 msgid "Wie lange Sie die Immobilie besitzen"
-msgstr ""
+msgstr "How long you have owned the property"
 
 #: src/components/steps/FinancialStep.js
 msgid "Hypothekenzins"
-msgstr ""
+msgstr "Mortgage interest rate"
 
 #: src/components/steps/FinancialStep.js
 msgid "Warum das wichtig ist"
-msgstr ""
+msgstr "Why this matters"
 
 #: src/components/steps/FinancialStep.js
 msgid "Immobilien, die weniger als 10 Jahre im Besitz sind, können beim Verkauf der Spekulationssteuer unterliegen. Ihre Hypothek beeinflusst sowohl den Nettoverkaufserlös als auch die laufenden Kosten der Vermietung."
-msgstr ""
+msgstr "Properties owned for less than 10 years may be subject to speculation tax when sold. Your mortgage affects both the net sale proceeds and the ongoing costs of renting."
 
 #: src/components/steps/FinancialStep.js
 msgid "Erweiterte Optionen"
-msgstr ""
+msgstr "Advanced options"
 
 #: src/components/steps/FinancialStep.js
 msgid "Erwartete jährliche Wertsteigerung"
-msgstr ""
+msgstr "Expected annual appreciation"
 
 #: src/components/steps/FinancialStep.js
 msgid "Der historische Durchschnitt liegt bei etwa 2-3% pro Jahr"
-msgstr ""
+msgstr "The historical average is about 2-3% per year"
 
 #: src/components/steps/ContactFormStep.js
 msgid "Bitte geben Sie Ihren Namen ein."
-msgstr ""
+msgstr "Please enter your name."
 
 #: src/components/steps/ContactFormStep.js
 msgid "Bitte geben Sie Ihre E-Mail-Adresse ein."
-msgstr ""
+msgstr "Please enter your email address."
 
 #: src/components/steps/ContactFormStep.js
 msgid "Bitte geben Sie eine gültige E-Mail-Adresse ein."
-msgstr ""
+msgstr "Please enter a valid email address."
 
 #: src/components/steps/ContactFormStep.js
 msgid "Bitte stimmen Sie der Datenschutzerklärung zu."
-msgstr ""
+msgstr "Please agree to the privacy policy."
 
 #: src/components/steps/ContactFormStep.js
 msgid "Fast geschafft!"
-msgstr ""
+msgstr "Almost done!"
 
 #: src/components/steps/ContactFormStep.js
 msgid "Geben Sie Ihre Kontaktdaten ein, um Ihre persönliche Bewertung zu erhalten."
-msgstr ""
+msgstr "Enter your contact details to receive your personal valuation."
 
 #: src/components/steps/ContactFormStep.js src/components/LeadForm.js
 msgid "Name"
-msgstr ""
+msgstr "Name"
 
 #: src/components/steps/ContactFormStep.js
 msgid "Max Mustermann"
-msgstr ""
+msgstr "John Smith"
 
 #: src/components/steps/ContactFormStep.js src/components/LeadForm.js
 msgid "E-Mail"
-msgstr ""
+msgstr "Email"
 
 #: src/components/steps/ContactFormStep.js
 msgid "max@beispiel.de"
-msgstr ""
+msgstr "john@example.com"
 
 #: src/components/steps/ContactFormStep.js src/components/LeadForm.js
 msgid "Telefon"
-msgstr ""
+msgstr "Phone"
 
 #: src/components/steps/ContactFormStep.js
 msgid "+49 123 456789"
-msgstr ""
+msgstr "+1 123 456789"
 
 #: src/components/steps/ContactFormStep.js src/components/LeadForm.js
 msgid "Ich stimme der"
-msgstr ""
+msgstr "I agree to the"
 
 #: src/components/steps/ContactFormStep.js src/components/LeadForm.js
 msgid "Datenschutzerklärung"
-msgstr ""
+msgstr "privacy policy"
 
 #: src/components/steps/ContactFormStep.js
 msgid "zu."
@@ -737,487 +609,487 @@ msgstr ""
 
 #: src/components/steps/ContactFormStep.js
 msgid "Ich möchte den Newsletter mit Immobilien-Tipps erhalten."
-msgstr ""
+msgstr "I would like to receive the newsletter with real estate tips."
 
 #: src/components/steps/ContactFormStep.js src/components/LeadForm.js
 msgid "Wird gesendet..."
-msgstr ""
+msgstr "Sending..."
 
 #: src/components/steps/ContactFormStep.js
 msgid "Bewertung anzeigen"
-msgstr ""
+msgstr "Show valuation"
 
 #: src/components/steps/ContactFormStep.js src/components/LeadForm.js
 msgid "Ihre Daten sind sicher"
-msgstr ""
+msgstr "Your data is secure"
 
 #: src/components/steps/ContactFormStep.js
 msgid "Kostenlos & unverbindlich"
-msgstr ""
+msgstr "Free & non-binding"
 
 #: src/components/steps/ContactFormStep.js
 msgid "Diese Seite ist durch reCAPTCHA geschützt. Es gelten die"
-msgstr ""
+msgstr "This site is protected by reCAPTCHA. The"
 
 #: src/components/steps/ContactFormStep.js
 msgid "und"
-msgstr ""
+msgstr "and"
 
 #: src/components/steps/ContactFormStep.js
 msgid "Nutzungsbedingungen"
-msgstr ""
+msgstr "Terms of Service"
 
 #: src/components/steps/ContactFormStep.js
 msgid "von Google."
-msgstr ""
+msgstr "of Google apply."
 
 #: src/components/steps/CalculationPendingStep.js
 msgid "Daten werden analysiert..."
-msgstr ""
+msgstr "Analyzing data..."
 
 #: src/components/steps/CalculationPendingStep.js
 msgid "Marktdaten werden abgerufen..."
-msgstr ""
+msgstr "Fetching market data..."
 
 #: src/components/steps/CalculationPendingStep.js
 msgid "Mietwert wird berechnet..."
-msgstr ""
+msgstr "Calculating rental value..."
 
 #: src/components/steps/CalculationPendingStep.js
 msgid "Ihre Berechnung wird vorbereitet"
-msgstr ""
+msgstr "Your calculation is being prepared"
 
 #: src/components/steps/SalePropertyTypeStep.js
 msgid "Grundstück"
-msgstr ""
+msgstr "Land"
 
 #: src/components/steps/SalePropertyTypeStep.js
 msgid "Unbebautes Grundstück"
-msgstr ""
+msgstr "Undeveloped land"
 
 #: src/components/steps/SalePropertyTypeStep.js
 msgid "Eigentumswohnung in einem Mehrfamilienhaus"
-msgstr ""
+msgstr "Condominium in a multi-family building"
 
 #: src/components/steps/SalePropertyTypeStep.js
 msgid "Einfamilienhaus, Reihenhaus oder Mehrfamilienhaus"
-msgstr ""
+msgstr "Single-family home, townhouse or multi-family house"
 
 #: src/components/steps/SalePropertyTypeStep.js
 msgid "Einfamilienhaus"
-msgstr ""
+msgstr "Detached house"
 
 #: src/components/steps/SalePropertyTypeStep.js
 msgid "Doppelhaushälfte"
-msgstr ""
+msgstr "Semi-detached house"
 
 #: src/components/steps/SalePropertyTypeStep.js
 msgid "Endreihenhaus"
-msgstr ""
+msgstr "End-terrace house"
 
 #: src/components/steps/SalePropertyTypeStep.js
 msgid "Mittelreihenhaus"
-msgstr ""
+msgstr "Mid-terrace house"
 
 #: src/components/steps/SalePropertyTypeStep.js
 msgid "Mehrfamilienhaus"
-msgstr ""
+msgstr "Multi-family house"
 
 #: src/components/steps/SalePropertyTypeStep.js
 msgid "Bungalow"
-msgstr ""
+msgstr "Bungalow"
 
 #: src/components/steps/SalePropertyTypeStep.js
 msgid "Welche Art von Immobilie möchten Sie bewerten?"
-msgstr ""
+msgstr "What type of property would you like to value?"
 
 #: src/components/steps/SalePropertyTypeStep.js
 msgid "Um welchen Haustyp handelt es sich?"
-msgstr ""
+msgstr "What type of house is it?"
 
 #: src/components/steps/SaleSizeStep.js
 msgid "Vor 1-3 Jahren"
-msgstr ""
+msgstr "1-3 years ago"
 
 #: src/components/steps/SaleSizeStep.js
 msgid "Kernsanierung / umfassende Modernisierung"
-msgstr ""
+msgstr "Complete renovation / comprehensive modernization"
 
 #: src/components/steps/SaleSizeStep.js
 msgid "Vor 4-9 Jahren"
-msgstr ""
+msgstr "4-9 years ago"
 
 #: src/components/steps/SaleSizeStep.js
 msgid "Größere Modernisierungsmaßnahmen"
-msgstr ""
+msgstr "Major modernization measures"
 
 #: src/components/steps/SaleSizeStep.js
 msgid "Vor 10-15 Jahren"
-msgstr ""
+msgstr "10-15 years ago"
 
 #: src/components/steps/SaleSizeStep.js
 msgid "Mittlere Modernisierung"
-msgstr ""
+msgstr "Medium modernization"
 
 #: src/components/steps/SaleSizeStep.js
 msgid "Vor mehr als 15 Jahren"
-msgstr ""
+msgstr "More than 15 years ago"
 
 #: src/components/steps/SaleSizeStep.js
 msgid "Ältere Modernisierung"
-msgstr ""
+msgstr "Older modernization"
 
 #: src/components/steps/SaleSizeStep.js
 msgid "Noch nie"
-msgstr ""
+msgstr "Never"
 
 #: src/components/steps/SaleSizeStep.js
 msgid "Originalzustand"
-msgstr ""
+msgstr "Original condition"
 
 #: src/components/steps/SaleSizeStep.js
 msgid "Wie groß ist Ihr Grundstück?"
-msgstr ""
+msgstr "How large is your plot?"
 
 #: src/components/steps/SaleSizeStep.js
 msgid "Angaben zu Größe und Baujahr"
-msgstr ""
+msgstr "Size and year of construction details"
 
 #: src/components/steps/SaleSizeStep.js
 msgid "Grundstücksfläche"
-msgstr ""
+msgstr "Plot size"
 
 #: src/components/steps/SaleSizeStep.js
 msgid "Die Größe des Grundstücks lt. Grundbuch"
-msgstr ""
+msgstr "The size of the plot according to land registry"
 
 #: src/components/steps/SaleSizeStep.js
 msgid "Die Wohnfläche gemäß Wohnflächenberechnung"
-msgstr ""
+msgstr "The living area according to floor area calculation"
 
 #: src/components/steps/SaleSizeStep.js
 msgid "Das Jahr der ursprünglichen Fertigstellung"
-msgstr ""
+msgstr "The year of original completion"
 
 #: src/components/steps/SaleSizeStep.js
 msgid "Wann wurde zuletzt umfassend modernisiert?"
-msgstr ""
+msgstr "When was the last comprehensive modernization?"
 
 #: src/components/steps/SaleSizeStep.js
 msgid "Eine umfassende Modernisierung wirkt sich positiv auf den Wert aus."
-msgstr ""
+msgstr "A comprehensive modernization has a positive effect on the value."
 
 #: src/components/steps/SaleFeaturesStep.js
 msgid "Solaranlage"
-msgstr ""
+msgstr "Solar system"
 
 #: src/components/steps/SaleFeaturesStep.js
 msgid "Dachboden"
-msgstr ""
+msgstr "Attic"
 
 #: src/components/steps/SaleFeaturesStep.js
 msgid "Kamin"
-msgstr ""
+msgstr "Fireplace"
 
 #: src/components/steps/SaleFeaturesStep.js
 msgid "Parkettboden"
-msgstr ""
+msgstr "Parquet flooring"
 
 #: src/components/steps/SaleFeaturesStep.js
 msgid "Ausstattungsmerkmale"
-msgstr ""
+msgstr "Features"
 
 #: src/components/steps/SaleFeaturesStep.js
 msgid "Für unbebaute Grundstücke werden keine Ausstattungsmerkmale erfasst."
-msgstr ""
+msgstr "No features are recorded for undeveloped land."
 
 #: src/components/steps/SaleFeaturesStep.js
 msgid "Welche Ausstattung hat Ihre Immobilie?"
-msgstr ""
+msgstr "What features does your property have?"
 
 #: src/components/steps/SaleFeaturesStep.js
 msgid "Wählen Sie alle zutreffenden Merkmale aus. Diese erhöhen den geschätzten Verkaufswert."
-msgstr ""
+msgstr "Select all applicable features. These increase the estimated sale value."
 
 #: src/components/steps/SaleFeaturesStep.js
 msgid "Außenbereich"
-msgstr ""
+msgstr "Exterior"
 
 #: src/components/steps/SaleFeaturesStep.js
 msgid "Innenbereich"
-msgstr ""
+msgstr "Interior"
 
 #: src/components/steps/SaleQualityLocationStep.js
 msgid "Einfache Ausstattung, Standardmaterialien"
-msgstr ""
+msgstr "Basic equipment, standard materials"
 
 #: src/components/steps/SaleQualityLocationStep.js
 msgid "Normal"
-msgstr ""
+msgstr "Standard"
 
 #: src/components/steps/SaleQualityLocationStep.js
 msgid "Durchschnittliche Ausstattung und Materialien"
-msgstr ""
+msgstr "Average equipment and materials"
 
 #: src/components/steps/SaleQualityLocationStep.js
 msgid "Gehoben"
-msgstr ""
+msgstr "Upscale"
 
 #: src/components/steps/SaleQualityLocationStep.js
 msgid "Hochwertige Ausstattung und Materialien"
-msgstr ""
+msgstr "High-quality equipment and materials"
 
 #: src/components/steps/SaleQualityLocationStep.js
 msgid "Luxuriös"
-msgstr ""
+msgstr "Luxury"
 
 #: src/components/steps/SaleQualityLocationStep.js
 msgid "Erstklassige Ausstattung, exklusive Materialien"
-msgstr ""
+msgstr "First-class equipment, exclusive materials"
 
 #: src/components/steps/SaleQualityLocationStep.js
 msgid "Einfache Lage"
-msgstr ""
+msgstr "Basic location"
 
 #: src/components/steps/SaleQualityLocationStep.js
 msgid "Weniger begehrte Wohngegend, einfache Infrastruktur"
-msgstr ""
+msgstr "Less desirable residential area, basic infrastructure"
 
 #: src/components/steps/SaleQualityLocationStep.js
 msgid "Normale Lage"
-msgstr ""
+msgstr "Standard location"
 
 #: src/components/steps/SaleQualityLocationStep.js
 msgid "Durchschnittliche Wohnlage mit guter Versorgung"
-msgstr ""
+msgstr "Average residential area with good amenities"
 
 #: src/components/steps/SaleQualityLocationStep.js
 msgid "Gute Lage"
-msgstr ""
+msgstr "Good location"
 
 #: src/components/steps/SaleQualityLocationStep.js
 msgid "Beliebte Wohngegend, gute Anbindung"
-msgstr ""
+msgstr "Popular residential area, good connections"
 
 #: src/components/steps/SaleQualityLocationStep.js
 msgid "Sehr gute Lage"
-msgstr ""
+msgstr "Very good location"
 
 #: src/components/steps/SaleQualityLocationStep.js
 msgid "Begehrte Wohngegend, sehr gute Infrastruktur"
-msgstr ""
+msgstr "Sought-after residential area, very good infrastructure"
 
 #: src/components/steps/SaleQualityLocationStep.js
 msgid "Premium-Lage"
-msgstr ""
+msgstr "Premium location"
 
 #: src/components/steps/SaleQualityLocationStep.js
 msgid "Erstklassige Wohngegend, exzellente Ausstattung"
-msgstr ""
+msgstr "First-class residential area, excellent amenities"
 
 #: src/components/steps/SaleQualityLocationStep.js
 msgid "Wie würden Sie die Bauqualität einschätzen?"
-msgstr ""
+msgstr "How would you rate the construction quality?"
 
 #: src/components/steps/SaleQualityLocationStep.js
 msgid "Die Qualität der Bauausführung und verwendeten Materialien."
-msgstr ""
+msgstr "The quality of construction and materials used."
 
 #: src/components/steps/SaleQualityLocationStep.js
 msgid "Wie bewerten Sie die Lage des Grundstücks?"
-msgstr ""
+msgstr "How do you rate the location of the plot?"
 
 #: src/components/steps/SaleQualityLocationStep.js
 msgid "Wie bewerten Sie die Lage der Immobilie?"
-msgstr ""
+msgstr "How do you rate the location of the property?"
 
 #: src/components/steps/SaleQualityLocationStep.js
 msgid "Die Lage hat erheblichen Einfluss auf den Verkaufswert."
-msgstr ""
+msgstr "Location has a significant impact on the sale value."
 
 #: src/components/steps/SaleAddressStep.js
 msgid "Wo befindet sich die Immobilie?"
-msgstr ""
+msgstr "Where is the property located?"
 
 #: src/components/steps/SaleAddressStep.js
 msgid "Die genaue Adresse wird für die Bewertung und Kontaktaufnahme benötigt."
-msgstr ""
+msgstr "The exact address is needed for the valuation and contact."
 
 #: src/components/steps/SaleAddressStep.js
 msgid "PLZ"
-msgstr ""
+msgstr "ZIP code"
 
 #: src/components/steps/SaleAddressStep.js
 msgid "z.B. Berlin"
-msgstr ""
+msgstr "e.g. New York"
 
 #: src/components/steps/SaleAddressStep.js
 msgid "Straße und Hausnummer"
-msgstr ""
+msgstr "Street and house number"
 
 #: src/components/steps/SaleAddressStep.js
 msgid "Straße und Hausnummer..."
-msgstr ""
+msgstr "Street and house number..."
 
 #: src/components/steps/SaleAddressStep.js
 msgid "Tippen Sie die Adresse ein für Vorschläge."
-msgstr ""
+msgstr "Type the address for suggestions."
 
 #: src/components/steps/SaleAddressStep.js
 msgid "Die Adresse wird vertraulich behandelt und nur für die Bewertung verwendet."
-msgstr ""
+msgstr "The address is treated confidentially and only used for the valuation."
 
 #: src/components/steps/SalePurposeStep.js
 msgid "Selbstgenutzt"
-msgstr ""
+msgstr "Owner-occupied"
 
 #: src/components/steps/SalePurposeStep.js
 msgid "Sie wohnen selbst in der Immobilie"
-msgstr ""
+msgstr "You live in the property yourself"
 
 #: src/components/steps/SalePurposeStep.js
 msgid "Vermietet"
-msgstr ""
+msgstr "Rented"
 
 #: src/components/steps/SalePurposeStep.js
 msgid "Die Immobilie ist aktuell vermietet"
-msgstr ""
+msgstr "The property is currently rented"
 
 #: src/components/steps/SalePurposeStep.js
 msgid "Leerstand"
-msgstr ""
+msgstr "Vacant"
 
 #: src/components/steps/SalePurposeStep.js
 msgid "Die Immobilie steht derzeit leer"
-msgstr ""
+msgstr "The property is currently vacant"
 
 #: src/components/steps/SalePurposeStep.js
 msgid "Verkaufen"
-msgstr ""
+msgstr "Sell"
 
 #: src/components/steps/SalePurposeStep.js
 msgid "Ich möchte die Immobilie verkaufen"
-msgstr ""
+msgstr "I want to sell the property"
 
 #: src/components/steps/SalePurposeStep.js
 msgid "Kaufen"
-msgstr ""
+msgstr "Buy"
 
 #: src/components/steps/SalePurposeStep.js
 msgid "Ich möchte eine Immobilie kaufen"
-msgstr ""
+msgstr "I want to buy a property"
 
 #: src/components/steps/SalePurposeStep.js
 msgid "Sofort"
-msgstr ""
+msgstr "Immediately"
 
 #: src/components/steps/SalePurposeStep.js
 msgid "So schnell wie möglich"
-msgstr ""
+msgstr "As soon as possible"
 
 #: src/components/steps/SalePurposeStep.js
 msgid "In 3 Monaten"
-msgstr ""
+msgstr "In 3 months"
 
 #: src/components/steps/SalePurposeStep.js
 msgid "Kurzfristig"
-msgstr ""
+msgstr "Short-term"
 
 #: src/components/steps/SalePurposeStep.js
 msgid "In 6 Monaten"
-msgstr ""
+msgstr "In 6 months"
 
 #: src/components/steps/SalePurposeStep.js
 msgid "Mittelfristig"
-msgstr ""
+msgstr "Medium-term"
 
 #: src/components/steps/SalePurposeStep.js
 msgid "In 12 Monaten"
-msgstr ""
+msgstr "In 12 months"
 
 #: src/components/steps/SalePurposeStep.js
 msgid "Langfristig"
-msgstr ""
+msgstr "Long-term"
 
 #: src/components/steps/SalePurposeStep.js
 msgid "Noch offen"
-msgstr ""
+msgstr "Still open"
 
 #: src/components/steps/SalePurposeStep.js
 msgid "Kein fester Zeitplan"
-msgstr ""
+msgstr "No fixed timeline"
 
 #: src/components/steps/SalePurposeStep.js
 msgid "Wie wird die Immobilie aktuell genutzt?"
-msgstr ""
+msgstr "How is the property currently used?"
 
 #: src/components/steps/SalePurposeStep.js
 msgid "Was ist Ihr Ziel?"
-msgstr ""
+msgstr "What is your goal?"
 
 #: src/components/steps/SalePurposeStep.js
 msgid "Was möchten Sie tun?"
-msgstr ""
+msgstr "What would you like to do?"
 
 #: src/components/steps/SalePurposeStep.js
 msgid "Wann möchten Sie aktiv werden?"
-msgstr ""
+msgstr "When would you like to take action?"
 
 #: src/components/LeadForm.js
 msgid "E-Mail ist erforderlich"
-msgstr ""
+msgstr "Email is required"
 
 #: src/components/LeadForm.js
 msgid "Bitte geben Sie eine gültige E-Mail-Adresse ein"
-msgstr ""
+msgstr "Please enter a valid email address"
 
 #: src/components/LeadForm.js
 msgid "Sie müssen der Datenschutzerklärung zustimmen"
-msgstr ""
+msgstr "You must agree to the privacy policy"
 
 #: src/components/LeadForm.js
 msgid "Übermittlung fehlgeschlagen"
-msgstr ""
+msgstr "Submission failed"
 
 #: src/components/LeadForm.js
 msgid "Ihre kostenlose Beratung"
-msgstr ""
+msgstr "Your free consultation"
 
 #: src/components/LeadForm.js
 msgid "Hinterlassen Sie Ihre Kontaktdaten und ein lokaler Experte wird sich mit Ihnen in Verbindung setzen."
-msgstr ""
+msgstr "Leave your contact details and a local expert will get in touch with you."
 
 #: src/components/LeadForm.js
 msgid "Ihr Name"
-msgstr ""
+msgstr "Your name"
 
 #: src/components/LeadForm.js
 msgid "ihre@email.de"
-msgstr ""
+msgstr "your@email.com"
 
 #: src/components/LeadForm.js
 msgid "Ihre Telefonnummer"
-msgstr ""
+msgstr "Your phone number"
 
 #: src/components/LeadForm.js
 msgid "Optional - für schnellere Rückmeldung"
-msgstr ""
+msgstr "Optional - for faster response"
 
 #: src/components/LeadForm.js
 msgid "zu und bin mit einer Kontaktaufnahme einverstanden."
-msgstr ""
+msgstr "and agree to be contacted."
 
 #: src/components/LeadForm.js
 msgid "Beratung anfordern"
-msgstr ""
+msgstr "Request consultation"
 
 #: src/components/LeadForm.js
 msgid "Antwort innerhalb 24h"
-msgstr ""
+msgstr "Response within 24h"
 
 #: src/components/LeadForm.js
 msgid "Unverbindlich"
-msgstr ""
+msgstr "Non-binding"
 
 #. ============================================
 #. Admin Backend Strings (matrix.php)
@@ -1225,432 +1097,412 @@ msgstr ""
 
 #: admin/views/matrix.php
 msgid "Matrix & Daten"
-msgstr ""
+msgstr "Matrix & Data"
 
 #: admin/views/matrix.php
 msgid "Städte"
-msgstr ""
+msgstr "Cities"
 
 #: admin/views/matrix.php
 msgid "Lage-Faktoren"
-msgstr ""
+msgstr "Location Factors"
 
 #: admin/views/matrix.php
 msgid "Mietwert"
-msgstr ""
+msgstr "Rental Value"
 
 #: admin/views/matrix.php
 msgid "Verkaufswert"
-msgstr ""
+msgstr "Sale Value"
 
 #: admin/views/matrix.php
 msgid "Globale Parameter"
-msgstr ""
+msgstr "Global Parameters"
 
-#. City Accordion - Group Headers
 #: admin/views/matrix.php
 msgid "Basisdaten"
-msgstr ""
+msgstr "Basic Data"
 
 #: admin/views/matrix.php
 msgid "Mietwert-Parameter"
-msgstr ""
+msgstr "Rental Value Parameters"
 
 #: admin/views/matrix.php
 msgid "Verkaufswert-Parameter"
-msgstr ""
+msgstr "Sale Value Parameters"
 
-#. City Accordion - Fields
 #: admin/views/matrix.php
 msgid "Stadt-ID"
-msgstr ""
+msgstr "City ID"
 
 #: admin/views/matrix.php
 msgid "Basis-Mietpreis"
-msgstr ""
+msgstr "Base Rental Price"
 
 #: admin/views/matrix.php
 msgid "Größendegression"
-msgstr ""
+msgstr "Size Degression"
 
 #: admin/views/matrix.php
 msgid "Vervielfältiger"
-msgstr ""
+msgstr "Multiplier Factor"
 
 #: admin/views/matrix.php
 msgid "Bodenrichtwert"
-msgstr ""
+msgstr "Land Value"
 
 #: admin/views/matrix.php
 msgid "Gebäude"
-msgstr ""
-
-#: admin/views/matrix.php
-msgid "Wohnung"
-msgstr ""
+msgstr "Building"
 
 #: admin/views/matrix.php
 msgid "Marktfaktor"
-msgstr ""
+msgstr "Market Factor"
 
-#. City Accordion - Tooltips
 #: admin/views/matrix.php
 msgid "Wird automatisch aus dem Namen generiert. Nur Kleinbuchstaben, keine Umlaute oder Sonderzeichen."
-msgstr ""
+msgstr "Automatically generated from the name. Only lowercase letters, no umlauts or special characters."
 
 #: admin/views/matrix.php
 msgid "Ausgangspreis für eine 70m² Referenzwohnung in durchschnittlicher Lage und normalem Zustand."
-msgstr ""
+msgstr "Starting price for a 70sqm reference apartment in average location and normal condition."
 
 #: admin/views/matrix.php
 msgid "Steuert wie stark der m²-Preis bei größeren Wohnungen sinkt. 0.20 = Standard, 0 = keine Anpassung."
-msgstr ""
+msgstr "Controls how much the sqm price decreases for larger apartments. 0.20 = standard, 0 = no adjustment."
 
 #: admin/views/matrix.php
 msgid "Anzahl Jahresnettokaltmieten für den Kaufpreis. Bei 1.000€/Monat und Faktor 25 → 300.000€ Kaufpreis."
-msgstr ""
+msgstr "Number of annual net cold rents for the purchase price. At 1,000€/month and factor 25 → 300,000€ purchase price."
 
 #: admin/views/matrix.php
 msgid "Durchschnittlicher Grundstückspreis pro m² in dieser Stadt (vom Gutachterausschuss)."
-msgstr ""
+msgstr "Average land price per sqm in this city (from the property valuation committee)."
 
 #: admin/views/matrix.php
 msgid "Normalherstellungskosten für Wohngebäude - Neubaukosten pro m² Wohnfläche."
-msgstr ""
+msgstr "Standard construction costs for residential buildings - new construction costs per sqm living area."
 
 #: admin/views/matrix.php
 msgid "Durchschnittlicher Verkaufspreis pro m² für Eigentumswohnungen in dieser Stadt."
-msgstr ""
+msgstr "Average selling price per sqm for condominiums in this city."
 
 #: admin/views/matrix.php
 msgid "Marktanpassung: 0.8 = schwacher Markt, 1.0 = normal, 1.2+ = Boom-Markt."
-msgstr ""
+msgstr "Market adjustment: 0.8 = weak market, 1.0 = normal, 1.2+ = boom market."
 
 #: admin/views/matrix.php
 msgid "Stadt hinzufügen"
-msgstr ""
+msgstr "Add city"
 
-#. Location Rating Tab - Tooltips
 #: admin/views/matrix.php
 msgid "Stufe"
-msgstr ""
+msgstr "Level"
 
 #: admin/views/matrix.php
 msgid "Bezeichnung"
-msgstr ""
+msgstr "Name"
 
 #: admin/views/matrix.php
 msgid "Faktor"
-msgstr ""
+msgstr "Factor"
 
 #: admin/views/matrix.php
 msgid "Auswirkung"
-msgstr ""
+msgstr "Impact"
 
 #: admin/views/matrix.php
 msgid "Beschreibung"
-msgstr ""
+msgstr "Description"
 
 #: admin/views/matrix.php
 msgid "Bewertungsstufe von 1 (einfach) bis 5 (sehr gut). Im Rechner als Sterne dargestellt."
-msgstr ""
+msgstr "Rating level from 1 (basic) to 5 (very good). Displayed as stars in the calculator."
 
 #: admin/views/matrix.php
 msgid "Angezeigter Name der Lagestufe im Rechner (z.B. \"Sehr gute Lage\")."
-msgstr ""
+msgstr "Displayed name of the location level in the calculator (e.g. \"Very good location\")."
 
 #: admin/views/matrix.php
 msgid "Multiplikator für den Mietpreis. 1.0 = Basis, 0.9 = -10%, 1.2 = +20%."
-msgstr ""
+msgstr "Multiplier for the rental price. 1.0 = base, 0.9 = -10%, 1.2 = +20%."
 
 #: admin/views/matrix.php
 msgid "Prozentuale Auswirkung auf den Mietpreis (automatisch berechnet)."
-msgstr ""
+msgstr "Percentage impact on rental price (automatically calculated)."
 
 #: admin/views/matrix.php
 msgid "Kriterien für diese Lagestufe. Jede Zeile wird als Aufzählungspunkt angezeigt."
-msgstr ""
+msgstr "Criteria for this location level. Each line is displayed as a bullet point."
 
-#. Mietwert Tab - Condition Multipliers
 #: admin/views/matrix.php
 msgid "Zustands-Multiplikatoren"
-msgstr ""
+msgstr "Condition Multipliers"
 
 #: admin/views/matrix.php
 msgid "Allgemeiner Zustand der Wohnung (Saniert, Renoviert, Normal, etc.)."
-msgstr ""
+msgstr "General condition of the apartment (Renovated, Refurbished, Normal, etc.)."
 
 #: admin/views/matrix.php
 msgid "Faktor für den Mietpreis. 1.0 = Basis, 1.25 = +25%, 0.85 = -15%."
-msgstr ""
+msgstr "Factor for rental price. 1.0 = base, 1.25 = +25%, 0.85 = -15%."
 
-#. Mietwert Tab - Type Multipliers
 #: admin/views/matrix.php
 msgid "Objekttyp-Multiplikatoren"
-msgstr ""
+msgstr "Property Type Multipliers"
 
 #: admin/views/matrix.php
 msgid "Art der Immobilie (Wohnung, Haus, Maisonette, etc.)."
-msgstr ""
+msgstr "Type of property (Apartment, House, Maisonette, etc.)."
 
 #: admin/views/matrix.php
 msgid "Faktor für den Mietpreis. Einfamilienhäuser oft höher als Geschosswohnungen."
-msgstr ""
+msgstr "Factor for rental price. Single-family homes often higher than apartments."
 
-#. Mietwert Tab - Age Multipliers
 #: admin/views/matrix.php
 msgid "Baualters-Multiplikatoren"
-msgstr ""
+msgstr "Building Age Multipliers"
 
 #: admin/views/matrix.php
 msgid "Baualtersklasse"
-msgstr ""
+msgstr "Building Age Class"
 
 #: admin/views/matrix.php
 msgid "Zeitraum"
-msgstr ""
+msgstr "Period"
 
 #: admin/views/matrix.php
 msgid "Zeitliche Einordnung nach typischen Baualtersklassen deutscher Mietspiegel."
-msgstr ""
+msgstr "Classification according to typical building age classes of German rent indices."
 
 #: admin/views/matrix.php
 msgid "Baujahr-Spanne für diese Kategorie."
-msgstr ""
+msgstr "Year of construction range for this category."
 
 #: admin/views/matrix.php
 msgid "Faktor für den Mietpreis basierend auf dem Baualter."
-msgstr ""
+msgstr "Factor for rental price based on building age."
 
-#. Mietwert Tab - Feature Premiums
 #: admin/views/matrix.php
 msgid "Ausstattungs-Zuschläge"
-msgstr ""
+msgstr "Feature Premiums"
 
 #: admin/views/matrix.php
 msgid "Ausstattungsmerkmal"
-msgstr ""
+msgstr "Feature"
 
 #: admin/views/matrix.php
 msgid "Zuschlag (€/m²)"
-msgstr ""
+msgstr "Premium (€/sqm)"
 
 #: admin/views/matrix.php
 msgid "Bei 70m² Wohnung"
-msgstr ""
+msgstr "For 70sqm apartment"
 
 #: admin/views/matrix.php
 msgid "Besondere Ausstattungsmerkmale die den Mietwert erhöhen."
-msgstr ""
+msgstr "Special features that increase rental value."
 
 #: admin/views/matrix.php
 msgid "Betrag der pro m² zum Basis-Mietpreis addiert wird."
-msgstr ""
+msgstr "Amount added per sqm to the base rental price."
 
 #: admin/views/matrix.php
 msgid "Monatlicher Mehrwert für eine Referenzwohnung (automatisch berechnet)."
-msgstr ""
+msgstr "Monthly added value for a reference apartment (automatically calculated)."
 
-#. Verkaufswert Tab - House Type Multipliers
 #: admin/views/matrix.php
 msgid "Haustyp-Multiplikatoren"
-msgstr ""
+msgstr "House Type Multipliers"
 
 #: admin/views/matrix.php
 msgid "Art des Gebäudes (Freistehendes EFH, DHH, Reihenhaus, etc.)."
-msgstr ""
+msgstr "Type of building (Detached house, Semi-detached, Townhouse, etc.)."
 
 #: admin/views/matrix.php
 msgid "Faktor für den Gebäudewert. Freistehende Häuser meist höher bewertet."
-msgstr ""
+msgstr "Factor for building value. Detached houses usually valued higher."
 
 #: admin/views/matrix.php
 msgid "Prozentuale Auswirkung auf den Gebäudewert (automatisch berechnet)."
-msgstr ""
+msgstr "Percentage impact on building value (automatically calculated)."
 
-#. Verkaufswert Tab - Quality Multipliers
 #: admin/views/matrix.php
 msgid "Qualitäts-Multiplikatoren"
-msgstr ""
+msgstr "Quality Multipliers"
 
 #: admin/views/matrix.php
 msgid "Qualitätsstufe"
-msgstr ""
+msgstr "Quality Level"
 
 #: admin/views/matrix.php
 msgid "Bauausführungsqualität nach ImmoWertV (Einfach, Mittel, Gehoben, Luxus)."
-msgstr ""
+msgstr "Construction quality according to ImmoWertV (Basic, Standard, Upscale, Luxury)."
 
 #: admin/views/matrix.php
 msgid "Faktor für Normalherstellungskosten. Gehobene Qualität = höhere Baukosten."
-msgstr ""
+msgstr "Factor for standard construction costs. Higher quality = higher construction costs."
 
-#. Verkaufswert Tab - Modernization
 #: admin/views/matrix.php
 msgid "Modernisierung → Fiktives Baujahr"
-msgstr ""
+msgstr "Modernization → Fictitious Year Built"
 
 #: admin/views/matrix.php
 msgid "Modernisierung"
-msgstr ""
+msgstr "Modernization"
 
 #: admin/views/matrix.php
 msgid "Jahres-Verschiebung"
-msgstr ""
+msgstr "Year Shift"
 
 #: admin/views/matrix.php
 msgid "Erklärung"
-msgstr ""
+msgstr "Explanation"
 
 #: admin/views/matrix.php
 msgid "Art und Zeitpunkt der durchgeführten Modernisierungsmaßnahmen."
-msgstr ""
+msgstr "Type and timing of modernization measures carried out."
 
 #: admin/views/matrix.php
 msgid "Um wie viele Jahre das fiktive Baujahr nach vorne verschoben wird."
-msgstr ""
+msgstr "How many years the fictitious year of construction is shifted forward."
 
 #: admin/views/matrix.php
 msgid "Auswirkung auf die Alterswertminderung (automatisch berechnet)."
-msgstr ""
+msgstr "Effect on age depreciation (automatically calculated)."
 
-#. Verkaufswert Tab - Age Depreciation
 #: admin/views/matrix.php
 msgid "Altersabschlag"
-msgstr ""
+msgstr "Age Depreciation"
 
 #: admin/views/matrix.php
 msgid "Abschlag pro Jahr"
-msgstr ""
+msgstr "Depreciation per Year"
 
 #: admin/views/matrix.php
 msgid "Maximaler Abschlag"
-msgstr ""
+msgstr "Maximum Depreciation"
 
 #: admin/views/matrix.php
 msgid "Basisjahr"
-msgstr ""
+msgstr "Base Year"
 
 #: admin/views/matrix.php
 msgid "Jährliche Wertminderung des Gebäudes durch Alterung (ImmoWertV-konform)."
-msgstr ""
+msgstr "Annual depreciation of the building due to aging (ImmoWertV compliant)."
 
 #: admin/views/matrix.php
 msgid "Obergrenze der Alterswertminderung. Auch alte Gebäude behalten einen Restwert."
-msgstr ""
+msgstr "Upper limit of age depreciation. Even old buildings retain a residual value."
 
 #: admin/views/matrix.php
 msgid "Bezugsjahr für die Altersberechnung. Bei Wertermittlung meist das aktuelle Jahr."
-msgstr ""
+msgstr "Reference year for age calculation. Usually the current year for valuations."
 
-#. Verkaufswert Tab - Sale Features
 #: admin/views/matrix.php
 msgid "Ausstattungs-Zuschläge (Verkaufswert)"
-msgstr ""
+msgstr "Feature Premiums (Sale Value)"
 
 #: admin/views/matrix.php
 msgid "Außenausstattung"
-msgstr ""
+msgstr "Exterior Features"
 
 #: admin/views/matrix.php
 msgid "Innenausstattung"
-msgstr ""
+msgstr "Interior Features"
 
 #: admin/views/matrix.php
 msgid "Außenanlagen und Nebengebäude die den Verkaufswert erhöhen."
-msgstr ""
+msgstr "Outdoor facilities and outbuildings that increase the sale value."
 
 #: admin/views/matrix.php
 msgid "Wertsteigernde Innenausstattung und technische Anlagen."
-msgstr ""
+msgstr "Value-enhancing interior features and technical systems."
 
 #: admin/views/matrix.php
 msgid "Absoluter Wert der zum Verkaufspreis addiert wird."
-msgstr ""
+msgstr "Absolute value added to the sale price."
 
-#. Global Parameters Tab
 #: admin/views/matrix.php
 msgid "Globale Berechnungsparameter"
-msgstr ""
+msgstr "Global Calculation Parameters"
 
 #: admin/views/matrix.php
 msgid "Kapitalanlage-Zinssatz"
-msgstr ""
+msgstr "Investment Interest Rate"
 
 #: admin/views/matrix.php
 msgid "Wertsteigerung Immobilie"
-msgstr ""
+msgstr "Property Appreciation"
 
 #: admin/views/matrix.php
 msgid "Jährliche Mietsteigerung"
-msgstr ""
+msgstr "Annual Rent Increase"
 
 #: admin/views/matrix.php
 msgid "Instandhaltungsrate"
-msgstr ""
+msgstr "Maintenance Rate"
 
 #: admin/views/matrix.php
 msgid "Leerstandsrate"
-msgstr ""
+msgstr "Vacancy Rate"
 
 #: admin/views/matrix.php
 msgid "Maklerprovision"
-msgstr ""
+msgstr "Broker Commission"
 
 #: admin/views/matrix.php
 msgid "Vergleichszinssatz für alternative Kapitalanlage des Verkaufserlöses (z.B. Festgeld, Anleihen)."
-msgstr ""
+msgstr "Comparison interest rate for alternative investment of sale proceeds (e.g. fixed deposits, bonds)."
 
 #: admin/views/matrix.php
 msgid "Angenommene jährliche Wertsteigerung der Immobilie für die 30-Jahres-Prognose."
-msgstr ""
+msgstr "Assumed annual property appreciation for the 30-year forecast."
 
 #: admin/views/matrix.php
 msgid "Angenommene jährliche Mieterhöhung für die Vergleichsrechnung (Verkaufen vs. Vermieten)."
-msgstr ""
+msgstr "Assumed annual rent increase for the comparison calculation (sell vs. rent)."
 
 #: admin/views/matrix.php
 msgid "Jährliche Rücklagen für Reparaturen und Instandhaltung (% vom Immobilienwert)."
-msgstr ""
+msgstr "Annual reserves for repairs and maintenance (% of property value)."
 
 #: admin/views/matrix.php
 msgid "Erwarteter Mietausfall durch Leerstand oder Mieterwechsel pro Jahr."
-msgstr ""
+msgstr "Expected rental loss due to vacancy or tenant turnover per year."
 
 #: admin/views/matrix.php
 msgid "Übliche Maklergebühr bei Immobilienverkauf in Ihrer Region."
-msgstr ""
+msgstr "Usual broker fee for property sales in your region."
 
 #: admin/views/matrix.php
 msgid "Änderungen speichern"
-msgstr ""
+msgstr "Save changes"
 
-#. Info Box Hints
 #: admin/views/matrix.php
 msgid "Hinweise zur Städte-Konfiguration"
-msgstr ""
+msgstr "Notes on city configuration"
 
 #: admin/views/matrix.php
 msgid "Hinweise:"
-msgstr ""
+msgstr "Notes:"
 
 #: admin/views/matrix.php
 msgid "Hinweise zu Baualtersklassen:"
-msgstr ""
+msgstr "Notes on building age classes:"
 
 #: admin/views/matrix.php
 msgid "Hinweise zur Verkaufswertberechnung"
-msgstr ""
+msgstr "Notes on sale value calculation"
 
-#. Admin JavaScript i18n (admin.js)
 #: admin/js/admin.js
 msgid "Neue Stadt"
-msgstr ""
+msgstr "New City"
 
 #: admin/js/admin.js
 msgid "Stadt löschen"
-msgstr ""
+msgstr "Delete City"
 
 #: admin/js/admin.js
 msgid "Stadt \"{city}\" wirklich löschen?"
-msgstr ""
+msgstr "Really delete city \"{city}\"?"

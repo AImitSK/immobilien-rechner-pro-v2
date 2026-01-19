@@ -127,11 +127,8 @@ $location_ratings = $matrix['location_ratings'] ?? $admin->get_default_location_
         <a href="?page=irp-matrix&tab=location" class="nav-tab <?php echo $active_tab === 'location' ? 'nav-tab-active' : ''; ?>">
             <?php esc_html_e('Lage-Faktoren', 'immobilien-rechner-pro'); ?>
         </a>
-        <a href="?page=irp-matrix&tab=multipliers" class="nav-tab <?php echo $active_tab === 'multipliers' ? 'nav-tab-active' : ''; ?>">
-            <?php esc_html_e('Multiplikatoren', 'immobilien-rechner-pro'); ?>
-        </a>
-        <a href="?page=irp-matrix&tab=features" class="nav-tab <?php echo $active_tab === 'features' ? 'nav-tab-active' : ''; ?>">
-            <?php esc_html_e('Ausstattung', 'immobilien-rechner-pro'); ?>
+        <a href="?page=irp-matrix&tab=rental" class="nav-tab <?php echo ($active_tab === 'rental' || $active_tab === 'multipliers' || $active_tab === 'features') ? 'nav-tab-active' : ''; ?>">
+            <?php esc_html_e('Mietwert', 'immobilien-rechner-pro'); ?>
         </a>
         <a href="?page=irp-matrix&tab=sale_value" class="nav-tab <?php echo $active_tab === 'sale_value' ? 'nav-tab-active' : ''; ?>">
             <?php esc_html_e('Verkaufswert', 'immobilien-rechner-pro'); ?>
@@ -149,7 +146,7 @@ $location_ratings = $matrix['location_ratings'] ?? $admin->get_default_location_
             <div class="irp-settings-section">
                 <h2><?php esc_html_e('Städte verwalten', 'immobilien-rechner-pro'); ?></h2>
                 <p class="description">
-                    <?php esc_html_e('Legen Sie hier Städte an, für die der Rechner verwendet werden soll. Jede Stadt bekommt eine eindeutige ID für den Shortcode.', 'immobilien-rechner-pro'); ?>
+                    <?php esc_html_e('Legen Sie hier Städte an, für die der Rechner verwendet werden soll. Klicken Sie auf eine Stadt, um deren Parameter zu bearbeiten.', 'immobilien-rechner-pro'); ?>
                 </p>
 
                 <div class="irp-shortcode-hint">
@@ -158,270 +155,428 @@ $location_ratings = $matrix['location_ratings'] ?? $admin->get_default_location_
                     <span class="description"><?php esc_html_e('Ohne city_id wird ein Dropdown mit allen Städten angezeigt.', 'immobilien-rechner-pro'); ?></span>
                 </div>
 
-                <table class="widefat irp-data-table irp-cities-table" id="irp-cities-table">
-                    <thead>
-                        <tr>
-                            <th style="width: 100px;"><?php esc_html_e('Stadt-ID', 'immobilien-rechner-pro'); ?></th>
-                            <th><?php esc_html_e('Name', 'immobilien-rechner-pro'); ?></th>
-                            <th style="width: 100px;"><?php esc_html_e('Basis-Mietpreis', 'immobilien-rechner-pro'); ?></th>
-                            <th style="width: 80px;"><?php esc_html_e('Degression', 'immobilien-rechner-pro'); ?></th>
-                            <th style="width: 80px;"><?php esc_html_e('Vervielf.', 'immobilien-rechner-pro'); ?></th>
-                            <th style="width: 90px;" title="<?php esc_attr_e('Bodenrichtwert für Verkaufswertberechnung', 'immobilien-rechner-pro'); ?>"><?php esc_html_e('Boden €/m²', 'immobilien-rechner-pro'); ?></th>
-                            <th style="width: 90px;" title="<?php esc_attr_e('Normalherstellungskosten für Häuser', 'immobilien-rechner-pro'); ?>"><?php esc_html_e('Gebäude €/m²', 'immobilien-rechner-pro'); ?></th>
-                            <th style="width: 90px;" title="<?php esc_attr_e('Vergleichspreis für Wohnungen', 'immobilien-rechner-pro'); ?>"><?php esc_html_e('Wohnung €/m²', 'immobilien-rechner-pro'); ?></th>
-                            <th style="width: 80px;" title="<?php esc_attr_e('Marktanpassungsfaktor (0.8 = schwacher Markt, 1.4 = Boom)', 'immobilien-rechner-pro'); ?>"><?php esc_html_e('Markt', 'immobilien-rechner-pro'); ?></th>
-                            <th style="width: 50px;"><?php esc_html_e('Aktion', 'immobilien-rechner-pro'); ?></th>
-                        </tr>
-                    </thead>
-                    <tbody id="irp-cities-body">
-                        <?php if (!empty($cities)) : ?>
-                            <?php foreach ($cities as $index => $city) : ?>
-                                <tr class="irp-city-row" data-index="<?php echo esc_attr($index); ?>">
-                                    <td>
-                                        <input type="text"
-                                               name="irp_price_matrix[cities][<?php echo esc_attr($index); ?>][id]"
-                                               value="<?php echo esc_attr($city['id'] ?? ''); ?>"
-                                               class="regular-text irp-city-id"
-                                               placeholder="z.B. muenchen"
-                                               pattern="[a-z0-9_-]+"
-                                               required>
-                                    </td>
-                                    <td>
-                                        <input type="text"
-                                               name="irp_price_matrix[cities][<?php echo esc_attr($index); ?>][name]"
-                                               value="<?php echo esc_attr($city['name'] ?? ''); ?>"
-                                               class="regular-text"
-                                               placeholder="<?php esc_attr_e('Stadtname', 'immobilien-rechner-pro'); ?>"
-                                               required>
-                                    </td>
-                                    <td>
-                                        <input type="number"
-                                               name="irp_price_matrix[cities][<?php echo esc_attr($index); ?>][base_price]"
-                                               value="<?php echo esc_attr($city['base_price'] ?? 12.00); ?>"
-                                               step="0.10"
-                                               min="1"
-                                               max="100"
-                                               class="small-text"> €/m²
-                                    </td>
-                                    <td>
-                                        <input type="number"
-                                               name="irp_price_matrix[cities][<?php echo esc_attr($index); ?>][size_degression]"
-                                               value="<?php echo esc_attr($city['size_degression'] ?? 0.20); ?>"
-                                               step="0.01"
-                                               min="0"
-                                               max="0.5"
-                                               class="small-text">
-                                    </td>
-                                    <td>
-                                        <input type="number"
-                                               name="irp_price_matrix[cities][<?php echo esc_attr($index); ?>][sale_factor]"
-                                               value="<?php echo esc_attr($city['sale_factor'] ?? 25); ?>"
-                                               step="0.5"
-                                               min="5"
-                                               max="60"
-                                               class="small-text">
-                                    </td>
-                                    <td>
-                                        <input type="number"
-                                               name="irp_price_matrix[cities][<?php echo esc_attr($index); ?>][land_price_per_sqm]"
-                                               value="<?php echo esc_attr($city['land_price_per_sqm'] ?? 150); ?>"
-                                               step="10"
-                                               min="10"
-                                               max="5000"
-                                               class="small-text">
-                                    </td>
-                                    <td>
-                                        <input type="number"
-                                               name="irp_price_matrix[cities][<?php echo esc_attr($index); ?>][building_price_per_sqm]"
-                                               value="<?php echo esc_attr($city['building_price_per_sqm'] ?? 2500); ?>"
-                                               step="50"
-                                               min="500"
-                                               max="10000"
-                                               class="small-text">
-                                    </td>
-                                    <td>
-                                        <input type="number"
-                                               name="irp_price_matrix[cities][<?php echo esc_attr($index); ?>][apartment_price_per_sqm]"
-                                               value="<?php echo esc_attr($city['apartment_price_per_sqm'] ?? 2200); ?>"
-                                               step="50"
-                                               min="500"
-                                               max="15000"
-                                               class="small-text">
-                                    </td>
-                                    <td>
-                                        <input type="number"
-                                               name="irp_price_matrix[cities][<?php echo esc_attr($index); ?>][market_adjustment_factor]"
-                                               value="<?php echo esc_attr($city['market_adjustment_factor'] ?? 1.00); ?>"
-                                               step="0.05"
-                                               min="0.5"
-                                               max="2.0"
-                                               class="small-text">
-                                    </td>
-                                    <td>
-                                        <button type="button" class="button irp-remove-city" title="<?php esc_attr_e('Stadt entfernen', 'immobilien-rechner-pro'); ?>">
-                                            <span class="dashicons dashicons-trash"></span>
-                                        </button>
-                                    </td>
-                                </tr>
-                            <?php endforeach; ?>
-                        <?php else : ?>
-                            <tr class="irp-city-row" data-index="0">
-                                <td>
-                                    <input type="text"
-                                           name="irp_price_matrix[cities][0][id]"
-                                           value=""
-                                           class="regular-text irp-city-id"
-                                           placeholder="z.B. muenchen"
-                                           pattern="[a-z0-9_-]+"
-                                           required>
-                                </td>
-                                <td>
-                                    <input type="text"
-                                           name="irp_price_matrix[cities][0][name]"
-                                           value=""
-                                           class="regular-text"
-                                           placeholder="<?php esc_attr_e('Stadtname', 'immobilien-rechner-pro'); ?>"
-                                           required>
-                                </td>
-                                <td>
-                                    <input type="number"
-                                           name="irp_price_matrix[cities][0][base_price]"
-                                           value="12.00"
-                                           step="0.10"
-                                           min="1"
-                                           max="100"
-                                           class="small-text"> €/m²
-                                </td>
-                                <td>
-                                    <input type="number"
-                                           name="irp_price_matrix[cities][0][size_degression]"
-                                           value="0.20"
-                                           step="0.01"
-                                           min="0"
-                                           max="0.5"
-                                           class="small-text">
-                                </td>
-                                <td>
-                                    <input type="number"
-                                           name="irp_price_matrix[cities][0][sale_factor]"
-                                           value="25"
-                                           step="0.5"
-                                           min="5"
-                                           max="60"
-                                           class="small-text">
-                                </td>
-                                <td>
-                                    <input type="number"
-                                           name="irp_price_matrix[cities][0][land_price_per_sqm]"
-                                           value="150"
-                                           step="10"
-                                           min="10"
-                                           max="5000"
-                                           class="small-text">
-                                </td>
-                                <td>
-                                    <input type="number"
-                                           name="irp_price_matrix[cities][0][building_price_per_sqm]"
-                                           value="2500"
-                                           step="50"
-                                           min="500"
-                                           max="10000"
-                                           class="small-text">
-                                </td>
-                                <td>
-                                    <input type="number"
-                                           name="irp_price_matrix[cities][0][apartment_price_per_sqm]"
-                                           value="2200"
-                                           step="50"
-                                           min="500"
-                                           max="15000"
-                                           class="small-text">
-                                </td>
-                                <td>
-                                    <input type="number"
-                                           name="irp_price_matrix[cities][0][market_adjustment_factor]"
-                                           value="1.00"
-                                           step="0.05"
-                                           min="0.5"
-                                           max="2.0"
-                                           class="small-text">
-                                </td>
-                                <td>
-                                    <button type="button" class="button irp-remove-city" title="<?php esc_attr_e('Stadt entfernen', 'immobilien-rechner-pro'); ?>">
+                <!-- City Accordion -->
+                <div class="irp-city-accordion">
+                    <?php if (!empty($cities)) : ?>
+                        <?php foreach ($cities as $index => $city) :
+                            $city_id = $city['id'] ?? '';
+                            $city_name = $city['name'] ?? __('Neue Stadt', 'immobilien-rechner-pro');
+                            $base_price = $city['base_price'] ?? 12.00;
+                            $size_degression = $city['size_degression'] ?? 0.20;
+                            $sale_factor = $city['sale_factor'] ?? 25;
+                            $land_price = $city['land_price_per_sqm'] ?? 150;
+                            $building_price = $city['building_price_per_sqm'] ?? 2500;
+                            $apartment_price = $city['apartment_price_per_sqm'] ?? 2200;
+                            $market_factor = $city['market_adjustment_factor'] ?? 1.00;
+                        ?>
+                            <div class="irp-city-item" data-city-index="<?php echo esc_attr($index); ?>">
+                                <div class="irp-city-header">
+                                    <span class="irp-city-toggle dashicons dashicons-arrow-right-alt2"></span>
+                                    <span class="irp-city-title"><?php echo esc_html($city_name); ?></span>
+                                    <code class="irp-city-id"><?php echo esc_html($city_id ?: '...'); ?></code>
+                                    <button type="button" class="irp-city-delete" title="<?php esc_attr_e('Stadt löschen', 'immobilien-rechner-pro'); ?>">
                                         <span class="dashicons dashicons-trash"></span>
                                     </button>
-                                </td>
-                            </tr>
-                        <?php endif; ?>
-                    </tbody>
-                    <tfoot>
-                        <tr>
-                            <td colspan="10">
-                                <button type="button" class="button button-secondary" id="irp-add-city">
-                                    <span class="dashicons dashicons-plus-alt2"></span>
-                                    <?php esc_html_e('Stadt hinzufügen', 'immobilien-rechner-pro'); ?>
+                                </div>
+                                <div class="irp-city-content">
+                                    <!-- Basisdaten -->
+                                    <div class="irp-city-group">
+                                        <div class="irp-city-group-header">
+                                            <span class="dashicons dashicons-admin-home"></span>
+                                            <h4><?php esc_html_e('Basisdaten', 'immobilien-rechner-pro'); ?></h4>
+                                        </div>
+                                        <div class="irp-city-field">
+                                            <span class="irp-city-field-label">
+                                                <?php esc_html_e('Stadt-ID', 'immobilien-rechner-pro'); ?>
+                                                <span class="irp-tooltip">
+                                                    <span class="dashicons dashicons-editor-help"></span>
+                                                    <span class="irp-tooltip-text"><?php esc_html_e('Eindeutige Kennung für den Shortcode. Nur Kleinbuchstaben, Zahlen, Bindestriche und Unterstriche erlaubt.', 'immobilien-rechner-pro'); ?></span>
+                                                </span>
+                                            </span>
+                                            <div class="irp-city-field-input">
+                                                <input type="text"
+                                                       name="irp_price_matrix[cities][<?php echo esc_attr($index); ?>][id]"
+                                                       value="<?php echo esc_attr($city_id); ?>"
+                                                       class="irp-number-input irp-input-wide"
+                                                       placeholder="z.B. muenchen"
+                                                       pattern="[a-z0-9_-]+"
+                                                       required>
+                                            </div>
+                                        </div>
+                                        <div class="irp-city-field">
+                                            <span class="irp-city-field-label"><?php esc_html_e('Name', 'immobilien-rechner-pro'); ?></span>
+                                            <div class="irp-city-field-input">
+                                                <input type="text"
+                                                       name="irp_price_matrix[cities][<?php echo esc_attr($index); ?>][name]"
+                                                       value="<?php echo esc_attr($city_name); ?>"
+                                                       class="irp-number-input irp-input-wide"
+                                                       placeholder="<?php esc_attr_e('Stadtname', 'immobilien-rechner-pro'); ?>"
+                                                       required>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Mietwert-Parameter -->
+                                    <div class="irp-city-group">
+                                        <div class="irp-city-group-header">
+                                            <span class="dashicons dashicons-building"></span>
+                                            <h4><?php esc_html_e('Mietwert-Parameter', 'immobilien-rechner-pro'); ?></h4>
+                                        </div>
+                                        <div class="irp-city-field">
+                                            <span class="irp-city-field-label">
+                                                <?php esc_html_e('Basis-Mietpreis', 'immobilien-rechner-pro'); ?>
+                                                <span class="irp-tooltip">
+                                                    <span class="dashicons dashicons-editor-help"></span>
+                                                    <span class="irp-tooltip-text"><?php esc_html_e('Ausgangspreis für eine 70m² Referenzwohnung in durchschnittlicher Lage und normalem Zustand.', 'immobilien-rechner-pro'); ?></span>
+                                                </span>
+                                            </span>
+                                            <div class="irp-city-field-input">
+                                                <div class="irp-input-group">
+                                                    <input type="text"
+                                                           name="irp_price_matrix[cities][<?php echo esc_attr($index); ?>][base_price]"
+                                                           value="<?php echo esc_attr($base_price); ?>"
+                                                           class="irp-number-input"
+                                                           inputmode="decimal">
+                                                    <span class="irp-input-suffix">€/m²</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="irp-city-field">
+                                            <span class="irp-city-field-label">
+                                                <?php esc_html_e('Größendegression', 'immobilien-rechner-pro'); ?>
+                                                <span class="irp-tooltip">
+                                                    <span class="dashicons dashicons-editor-help"></span>
+                                                    <span class="irp-tooltip-text"><?php esc_html_e('Steuert wie stark der m²-Preis bei größeren Wohnungen sinkt. 0.20 = Standard, 0 = keine Anpassung.', 'immobilien-rechner-pro'); ?></span>
+                                                </span>
+                                            </span>
+                                            <div class="irp-city-field-input">
+                                                <input type="text"
+                                                       name="irp_price_matrix[cities][<?php echo esc_attr($index); ?>][size_degression]"
+                                                       value="<?php echo esc_attr($size_degression); ?>"
+                                                       class="irp-number-input irp-input-narrow"
+                                                       inputmode="decimal">
+                                            </div>
+                                        </div>
+                                        <div class="irp-city-field">
+                                            <span class="irp-city-field-label">
+                                                <?php esc_html_e('Vervielfältiger', 'immobilien-rechner-pro'); ?>
+                                                <span class="irp-tooltip">
+                                                    <span class="dashicons dashicons-editor-help"></span>
+                                                    <span class="irp-tooltip-text"><?php esc_html_e('Anzahl Jahresnettokaltmieten für den Kaufpreis. Bei 1.000€/Monat und Faktor 25 → 300.000€ Kaufpreis.', 'immobilien-rechner-pro'); ?></span>
+                                                </span>
+                                            </span>
+                                            <div class="irp-city-field-input">
+                                                <input type="text"
+                                                       name="irp_price_matrix[cities][<?php echo esc_attr($index); ?>][sale_factor]"
+                                                       value="<?php echo esc_attr($sale_factor); ?>"
+                                                       class="irp-number-input irp-input-narrow"
+                                                       inputmode="decimal">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Verkaufswert-Parameter -->
+                                    <div class="irp-city-group">
+                                        <div class="irp-city-group-header">
+                                            <span class="dashicons dashicons-money-alt"></span>
+                                            <h4><?php esc_html_e('Verkaufswert-Parameter', 'immobilien-rechner-pro'); ?></h4>
+                                        </div>
+                                        <div class="irp-city-field">
+                                            <span class="irp-city-field-label">
+                                                <?php esc_html_e('Bodenrichtwert', 'immobilien-rechner-pro'); ?>
+                                                <span class="irp-tooltip">
+                                                    <span class="dashicons dashicons-editor-help"></span>
+                                                    <span class="irp-tooltip-text"><?php esc_html_e('Durchschnittlicher Grundstückspreis pro m² in dieser Stadt (vom Gutachterausschuss).', 'immobilien-rechner-pro'); ?></span>
+                                                </span>
+                                            </span>
+                                            <div class="irp-city-field-input">
+                                                <div class="irp-input-group">
+                                                    <input type="text"
+                                                           name="irp_price_matrix[cities][<?php echo esc_attr($index); ?>][land_price_per_sqm]"
+                                                           value="<?php echo esc_attr($land_price); ?>"
+                                                           class="irp-number-input"
+                                                           inputmode="decimal">
+                                                    <span class="irp-input-suffix">€/m²</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="irp-city-field">
+                                            <span class="irp-city-field-label">
+                                                <?php esc_html_e('Gebäude', 'immobilien-rechner-pro'); ?>
+                                                <span class="irp-tooltip">
+                                                    <span class="dashicons dashicons-editor-help"></span>
+                                                    <span class="irp-tooltip-text"><?php esc_html_e('Normalherstellungskosten für Wohngebäude - Neubaukosten pro m² Wohnfläche.', 'immobilien-rechner-pro'); ?></span>
+                                                </span>
+                                            </span>
+                                            <div class="irp-city-field-input">
+                                                <div class="irp-input-group">
+                                                    <input type="text"
+                                                           name="irp_price_matrix[cities][<?php echo esc_attr($index); ?>][building_price_per_sqm]"
+                                                           value="<?php echo esc_attr($building_price); ?>"
+                                                           class="irp-number-input"
+                                                           inputmode="decimal">
+                                                    <span class="irp-input-suffix">€/m²</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="irp-city-field">
+                                            <span class="irp-city-field-label">
+                                                <?php esc_html_e('Wohnung', 'immobilien-rechner-pro'); ?>
+                                                <span class="irp-tooltip">
+                                                    <span class="dashicons dashicons-editor-help"></span>
+                                                    <span class="irp-tooltip-text"><?php esc_html_e('Durchschnittlicher Verkaufspreis pro m² für Eigentumswohnungen in dieser Stadt.', 'immobilien-rechner-pro'); ?></span>
+                                                </span>
+                                            </span>
+                                            <div class="irp-city-field-input">
+                                                <div class="irp-input-group">
+                                                    <input type="text"
+                                                           name="irp_price_matrix[cities][<?php echo esc_attr($index); ?>][apartment_price_per_sqm]"
+                                                           value="<?php echo esc_attr($apartment_price); ?>"
+                                                           class="irp-number-input"
+                                                           inputmode="decimal">
+                                                    <span class="irp-input-suffix">€/m²</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="irp-city-field">
+                                            <span class="irp-city-field-label">
+                                                <?php esc_html_e('Marktfaktor', 'immobilien-rechner-pro'); ?>
+                                                <span class="irp-tooltip">
+                                                    <span class="dashicons dashicons-editor-help"></span>
+                                                    <span class="irp-tooltip-text"><?php esc_html_e('Marktanpassung: 0.8 = schwacher Markt, 1.0 = normal, 1.2+ = Boom-Markt.', 'immobilien-rechner-pro'); ?></span>
+                                                </span>
+                                            </span>
+                                            <div class="irp-city-field-input">
+                                                <div class="irp-multiplier-slider">
+                                                    <input type="range"
+                                                           min="0.5"
+                                                           max="2.0"
+                                                           step="0.05"
+                                                           value="<?php echo esc_attr($market_factor); ?>">
+                                                    <input type="hidden"
+                                                           name="irp_price_matrix[cities][<?php echo esc_attr($index); ?>][market_adjustment_factor]"
+                                                           value="<?php echo esc_attr($market_factor); ?>">
+                                                    <span class="irp-multiplier-value"><?php echo esc_html(number_format((float)$market_factor, 2)); ?></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        <?php endforeach; ?>
+                    <?php else : ?>
+                        <!-- Default empty city -->
+                        <div class="irp-city-item open" data-city-index="0">
+                            <div class="irp-city-header">
+                                <span class="irp-city-toggle dashicons dashicons-arrow-right-alt2"></span>
+                                <span class="irp-city-title"><?php esc_html_e('Neue Stadt', 'immobilien-rechner-pro'); ?></span>
+                                <code class="irp-city-id">...</code>
+                                <button type="button" class="irp-city-delete" title="<?php esc_attr_e('Stadt löschen', 'immobilien-rechner-pro'); ?>">
+                                    <span class="dashicons dashicons-trash"></span>
                                 </button>
-                            </td>
-                        </tr>
-                    </tfoot>
-                </table>
+                            </div>
+                            <div class="irp-city-content">
+                                <!-- Basisdaten -->
+                                <div class="irp-city-group">
+                                    <div class="irp-city-group-header">
+                                        <span class="dashicons dashicons-admin-home"></span>
+                                        <h4><?php esc_html_e('Basisdaten', 'immobilien-rechner-pro'); ?></h4>
+                                    </div>
+                                    <div class="irp-city-field">
+                                        <span class="irp-city-field-label">
+                                            <?php esc_html_e('Stadt-ID', 'immobilien-rechner-pro'); ?>
+                                            <span class="irp-tooltip">
+                                                <span class="dashicons dashicons-editor-help"></span>
+                                                <span class="irp-tooltip-text"><?php esc_html_e('Eindeutige Kennung für den Shortcode. Nur Kleinbuchstaben, Zahlen, Bindestriche und Unterstriche erlaubt.', 'immobilien-rechner-pro'); ?></span>
+                                            </span>
+                                        </span>
+                                        <div class="irp-city-field-input">
+                                            <input type="text"
+                                                   name="irp_price_matrix[cities][0][id]"
+                                                   value=""
+                                                   class="irp-number-input irp-input-wide"
+                                                   placeholder="z.B. muenchen"
+                                                   pattern="[a-z0-9_-]+"
+                                                   required>
+                                        </div>
+                                    </div>
+                                    <div class="irp-city-field">
+                                        <span class="irp-city-field-label"><?php esc_html_e('Name', 'immobilien-rechner-pro'); ?></span>
+                                        <div class="irp-city-field-input">
+                                            <input type="text"
+                                                   name="irp_price_matrix[cities][0][name]"
+                                                   value=""
+                                                   class="irp-number-input irp-input-wide"
+                                                   placeholder="<?php esc_attr_e('Stadtname', 'immobilien-rechner-pro'); ?>"
+                                                   required>
+                                        </div>
+                                    </div>
+                                </div>
 
-                <div class="irp-city-info irp-info-box-formula">
-                    <h4><?php esc_html_e('Berechnungsformel: Größendegression', 'immobilien-rechner-pro'); ?></h4>
-                    <p><?php esc_html_e('Der Basis-Mietpreis bezieht sich auf eine 70 m² Referenzwohnung. Größere Wohnungen werden pro m² günstiger, kleinere teurer.', 'immobilien-rechner-pro'); ?></p>
+                                <!-- Mietwert-Parameter -->
+                                <div class="irp-city-group">
+                                    <div class="irp-city-group-header">
+                                        <span class="dashicons dashicons-building"></span>
+                                        <h4><?php esc_html_e('Mietwert-Parameter', 'immobilien-rechner-pro'); ?></h4>
+                                    </div>
+                                    <div class="irp-city-field">
+                                        <span class="irp-city-field-label">
+                                            <?php esc_html_e('Basis-Mietpreis', 'immobilien-rechner-pro'); ?>
+                                            <span class="irp-tooltip">
+                                                <span class="dashicons dashicons-editor-help"></span>
+                                                <span class="irp-tooltip-text"><?php esc_html_e('Ausgangspreis für eine 70m² Referenzwohnung in durchschnittlicher Lage und normalem Zustand.', 'immobilien-rechner-pro'); ?></span>
+                                            </span>
+                                        </span>
+                                        <div class="irp-city-field-input">
+                                            <div class="irp-input-group">
+                                                <input type="text"
+                                                       name="irp_price_matrix[cities][0][base_price]"
+                                                       value="12.00"
+                                                       class="irp-number-input"
+                                                       inputmode="decimal">
+                                                <span class="irp-input-suffix">€/m²</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="irp-city-field">
+                                        <span class="irp-city-field-label">
+                                            <?php esc_html_e('Größendegression', 'immobilien-rechner-pro'); ?>
+                                            <span class="irp-tooltip">
+                                                <span class="dashicons dashicons-editor-help"></span>
+                                                <span class="irp-tooltip-text"><?php esc_html_e('Steuert wie stark der m²-Preis bei größeren Wohnungen sinkt. 0.20 = Standard, 0 = keine Anpassung.', 'immobilien-rechner-pro'); ?></span>
+                                            </span>
+                                        </span>
+                                        <div class="irp-city-field-input">
+                                            <input type="text"
+                                                   name="irp_price_matrix[cities][0][size_degression]"
+                                                   value="0.20"
+                                                   class="irp-number-input irp-input-narrow"
+                                                   inputmode="decimal">
+                                        </div>
+                                    </div>
+                                    <div class="irp-city-field">
+                                        <span class="irp-city-field-label">
+                                            <?php esc_html_e('Vervielfältiger', 'immobilien-rechner-pro'); ?>
+                                            <span class="irp-tooltip">
+                                                <span class="dashicons dashicons-editor-help"></span>
+                                                <span class="irp-tooltip-text"><?php esc_html_e('Anzahl Jahresnettokaltmieten für den Kaufpreis. Bei 1.000€/Monat und Faktor 25 → 300.000€ Kaufpreis.', 'immobilien-rechner-pro'); ?></span>
+                                            </span>
+                                        </span>
+                                        <div class="irp-city-field-input">
+                                            <input type="text"
+                                                   name="irp_price_matrix[cities][0][sale_factor]"
+                                                   value="25"
+                                                   class="irp-number-input irp-input-narrow"
+                                                   inputmode="decimal">
+                                        </div>
+                                    </div>
+                                </div>
 
-                    <div class="irp-formula-box">
-                        <code>m²-Preis = Basis-Preis × (70 / Fläche)<sup>Degression</sup></code>
-                    </div>
+                                <!-- Verkaufswert-Parameter -->
+                                <div class="irp-city-group">
+                                    <div class="irp-city-group-header">
+                                        <span class="dashicons dashicons-money-alt"></span>
+                                        <h4><?php esc_html_e('Verkaufswert-Parameter', 'immobilien-rechner-pro'); ?></h4>
+                                    </div>
+                                    <div class="irp-city-field">
+                                        <span class="irp-city-field-label">
+                                            <?php esc_html_e('Bodenrichtwert', 'immobilien-rechner-pro'); ?>
+                                            <span class="irp-tooltip">
+                                                <span class="dashicons dashicons-editor-help"></span>
+                                                <span class="irp-tooltip-text"><?php esc_html_e('Durchschnittlicher Grundstückspreis pro m² in dieser Stadt (vom Gutachterausschuss).', 'immobilien-rechner-pro'); ?></span>
+                                            </span>
+                                        </span>
+                                        <div class="irp-city-field-input">
+                                            <div class="irp-input-group">
+                                                <input type="text"
+                                                       name="irp_price_matrix[cities][0][land_price_per_sqm]"
+                                                       value="150"
+                                                       class="irp-number-input"
+                                                       inputmode="decimal">
+                                                <span class="irp-input-suffix">€/m²</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="irp-city-field">
+                                        <span class="irp-city-field-label">
+                                            <?php esc_html_e('Gebäude', 'immobilien-rechner-pro'); ?>
+                                            <span class="irp-tooltip">
+                                                <span class="dashicons dashicons-editor-help"></span>
+                                                <span class="irp-tooltip-text"><?php esc_html_e('Normalherstellungskosten für Wohngebäude - Neubaukosten pro m² Wohnfläche.', 'immobilien-rechner-pro'); ?></span>
+                                            </span>
+                                        </span>
+                                        <div class="irp-city-field-input">
+                                            <div class="irp-input-group">
+                                                <input type="text"
+                                                       name="irp_price_matrix[cities][0][building_price_per_sqm]"
+                                                       value="2500"
+                                                       class="irp-number-input"
+                                                       inputmode="decimal">
+                                                <span class="irp-input-suffix">€/m²</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="irp-city-field">
+                                        <span class="irp-city-field-label">
+                                            <?php esc_html_e('Wohnung', 'immobilien-rechner-pro'); ?>
+                                            <span class="irp-tooltip">
+                                                <span class="dashicons dashicons-editor-help"></span>
+                                                <span class="irp-tooltip-text"><?php esc_html_e('Durchschnittlicher Verkaufspreis pro m² für Eigentumswohnungen in dieser Stadt.', 'immobilien-rechner-pro'); ?></span>
+                                            </span>
+                                        </span>
+                                        <div class="irp-city-field-input">
+                                            <div class="irp-input-group">
+                                                <input type="text"
+                                                       name="irp_price_matrix[cities][0][apartment_price_per_sqm]"
+                                                       value="2200"
+                                                       class="irp-number-input"
+                                                       inputmode="decimal">
+                                                <span class="irp-input-suffix">€/m²</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="irp-city-field">
+                                        <span class="irp-city-field-label">
+                                            <?php esc_html_e('Marktfaktor', 'immobilien-rechner-pro'); ?>
+                                            <span class="irp-tooltip">
+                                                <span class="dashicons dashicons-editor-help"></span>
+                                                <span class="irp-tooltip-text"><?php esc_html_e('Marktanpassung: 0.8 = schwacher Markt, 1.0 = normal, 1.2+ = Boom-Markt.', 'immobilien-rechner-pro'); ?></span>
+                                            </span>
+                                        </span>
+                                        <div class="irp-city-field-input">
+                                            <div class="irp-multiplier-slider">
+                                                <input type="range"
+                                                       min="0.5"
+                                                       max="2.0"
+                                                       step="0.05"
+                                                       value="1.00">
+                                                <input type="hidden"
+                                                       name="irp_price_matrix[cities][0][market_adjustment_factor]"
+                                                       value="1.00">
+                                                <span class="irp-multiplier-value">1.00</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    <?php endif; ?>
+                </div>
 
-                    <table class="irp-formula-example">
-                        <thead>
-                            <tr>
-                                <th><?php esc_html_e('Fläche', 'immobilien-rechner-pro'); ?></th>
-                                <th><?php esc_html_e('Faktor (α=0.20)', 'immobilien-rechner-pro'); ?></th>
-                                <th><?php esc_html_e('Bei 10 €/m² Basis', 'immobilien-rechner-pro'); ?></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>35 m²</td>
-                                <td class="irp-positive">× 1.15</td>
-                                <td><strong>11.50 €/m²</strong></td>
-                            </tr>
-                            <tr>
-                                <td>50 m²</td>
-                                <td class="irp-positive">× 1.07</td>
-                                <td><strong>10.70 €/m²</strong></td>
-                            </tr>
-                            <tr class="irp-highlight-row">
-                                <td>70 m² <em>(Referenz)</em></td>
-                                <td>× 1.00</td>
-                                <td><strong>10.00 €/m²</strong></td>
-                            </tr>
-                            <tr>
-                                <td>100 m²</td>
-                                <td class="irp-negative">× 0.93</td>
-                                <td><strong>9.30 €/m²</strong></td>
-                            </tr>
-                            <tr>
-                                <td>140 m²</td>
-                                <td class="irp-negative">× 0.87</td>
-                                <td><strong>8.70 €/m²</strong></td>
-                            </tr>
-                            <tr>
-                                <td>200 m²</td>
-                                <td class="irp-negative">× 0.80</td>
-                                <td><strong>8.00 €/m²</strong></td>
-                            </tr>
-                        </tbody>
-                    </table>
+                <!-- Add City Button -->
+                <button type="button" class="button button-secondary irp-add-city-btn">
+                    <span class="dashicons dashicons-plus-alt2"></span>
+                    <?php esc_html_e('Stadt hinzufügen', 'immobilien-rechner-pro'); ?>
+                </button>
 
-                    <h4><?php esc_html_e('Weitere Hinweise:', 'immobilien-rechner-pro'); ?></h4>
+                <!-- Info Box -->
+                <div class="irp-info-box" style="margin-top: 20px;">
+                    <h4><?php esc_html_e('Hinweise zur Städte-Konfiguration', 'immobilien-rechner-pro'); ?></h4>
                     <ul>
-                        <li><?php esc_html_e('Degression 0.20 ist der Standardwert. Höhere Werte = stärkere Preisabnahme bei großen Wohnungen.', 'immobilien-rechner-pro'); ?></li>
-                        <li><?php esc_html_e('Degression 0 = keine Größenanpassung (lineare Berechnung).', 'immobilien-rechner-pro'); ?></li>
-                        <li><?php esc_html_e('Die Stadt-ID muss eindeutig sein (nur Kleinbuchstaben, Zahlen, Bindestriche, Unterstriche).', 'immobilien-rechner-pro'); ?></li>
-                        <li><?php esc_html_e('Vervielfältiger: Anzahl Jahresnettokaltmieten = Kaufpreis. Bei 1.000 €/Monat und Faktor 25 → 300.000 € Kaufpreis.', 'immobilien-rechner-pro'); ?></li>
+                        <li><strong><?php esc_html_e('Stadt-ID:', 'immobilien-rechner-pro'); ?></strong> <?php esc_html_e('Wird automatisch aus dem Namen generiert. Nur Kleinbuchstaben, Zahlen, Bindestriche und Unterstriche.', 'immobilien-rechner-pro'); ?></li>
+                        <li><strong><?php esc_html_e('Basis-Mietpreis:', 'immobilien-rechner-pro'); ?></strong> <?php esc_html_e('Bezieht sich auf eine 70m² Referenzwohnung. Größere Wohnungen werden per Degression günstiger.', 'immobilien-rechner-pro'); ?></li>
+                        <li><strong><?php esc_html_e('Vervielfältiger:', 'immobilien-rechner-pro'); ?></strong> <?php esc_html_e('Typische Werte: 20-25 (ländlich), 25-35 (städtisch), 35+ (Metropolen).', 'immobilien-rechner-pro'); ?></li>
+                        <li><strong><?php esc_html_e('Marktfaktor:', 'immobilien-rechner-pro'); ?></strong> <?php esc_html_e('Passt den Verkaufswert an die lokale Marktlage an.', 'immobilien-rechner-pro'); ?></li>
                     </ul>
                 </div>
             </div>
@@ -438,11 +593,41 @@ $location_ratings = $matrix['location_ratings'] ?? $admin->get_default_location_
                 <table class="widefat irp-data-table irp-location-table">
                     <thead>
                         <tr>
-                            <th style="width: 60px;"><?php esc_html_e('Stufe', 'immobilien-rechner-pro'); ?></th>
-                            <th style="width: 180px;"><?php esc_html_e('Bezeichnung', 'immobilien-rechner-pro'); ?></th>
-                            <th style="width: 100px;"><?php esc_html_e('Faktor', 'immobilien-rechner-pro'); ?></th>
-                            <th style="width: 100px;"><?php esc_html_e('Auswirkung', 'immobilien-rechner-pro'); ?></th>
-                            <th><?php esc_html_e('Beschreibung', 'immobilien-rechner-pro'); ?></th>
+                            <th style="width: 60px;">
+                                <?php esc_html_e('Stufe', 'immobilien-rechner-pro'); ?>
+                                <span class="irp-tooltip">
+                                    <span class="dashicons dashicons-editor-help"></span>
+                                    <span class="irp-tooltip-text"><?php esc_html_e('Bewertungsstufe von 1 (einfach) bis 5 (sehr gut). Im Rechner als Sterne dargestellt.', 'immobilien-rechner-pro'); ?></span>
+                                </span>
+                            </th>
+                            <th style="width: 180px;">
+                                <?php esc_html_e('Bezeichnung', 'immobilien-rechner-pro'); ?>
+                                <span class="irp-tooltip">
+                                    <span class="dashicons dashicons-editor-help"></span>
+                                    <span class="irp-tooltip-text"><?php esc_html_e('Angezeigter Name der Lagestufe im Rechner (z.B. "Sehr gute Lage").', 'immobilien-rechner-pro'); ?></span>
+                                </span>
+                            </th>
+                            <th style="width: 100px;">
+                                <?php esc_html_e('Faktor', 'immobilien-rechner-pro'); ?>
+                                <span class="irp-tooltip">
+                                    <span class="dashicons dashicons-editor-help"></span>
+                                    <span class="irp-tooltip-text"><?php esc_html_e('Multiplikator für den Mietpreis. 1.0 = Basis, 0.9 = -10%, 1.2 = +20%.', 'immobilien-rechner-pro'); ?></span>
+                                </span>
+                            </th>
+                            <th style="width: 100px;">
+                                <?php esc_html_e('Auswirkung', 'immobilien-rechner-pro'); ?>
+                                <span class="irp-tooltip">
+                                    <span class="dashicons dashicons-editor-help"></span>
+                                    <span class="irp-tooltip-text"><?php esc_html_e('Prozentuale Auswirkung auf den Mietpreis (automatisch berechnet).', 'immobilien-rechner-pro'); ?></span>
+                                </span>
+                            </th>
+                            <th>
+                                <?php esc_html_e('Beschreibung', 'immobilien-rechner-pro'); ?>
+                                <span class="irp-tooltip">
+                                    <span class="dashicons dashicons-editor-help"></span>
+                                    <span class="irp-tooltip-text"><?php esc_html_e('Kriterien für diese Lagestufe. Jede Zeile wird als Aufzählungspunkt angezeigt.', 'immobilien-rechner-pro'); ?></span>
+                                </span>
+                            </th>
                         </tr>
                     </thead>
                     <tbody>
@@ -500,8 +685,8 @@ $location_ratings = $matrix['location_ratings'] ?? $admin->get_default_location_
             </div>
         </div>
 
-        <!-- Tab: Multiplikatoren -->
-        <div class="irp-tab-content <?php echo $active_tab === 'multipliers' ? 'active' : ''; ?>" id="tab-multipliers">
+        <!-- Tab: Mietwert (Multiplikatoren + Ausstattung) -->
+        <div class="irp-tab-content <?php echo ($active_tab === 'rental' || $active_tab === 'multipliers' || $active_tab === 'features') ? 'active' : ''; ?>" id="tab-rental">
             <div class="irp-settings-section">
                 <h2><?php esc_html_e('Zustands-Multiplikatoren', 'immobilien-rechner-pro'); ?></h2>
                 <p class="description">
@@ -511,9 +696,27 @@ $location_ratings = $matrix['location_ratings'] ?? $admin->get_default_location_
                 <table class="widefat irp-data-table">
                     <thead>
                         <tr>
-                            <th><?php esc_html_e('Zustand', 'immobilien-rechner-pro'); ?></th>
-                            <th><?php esc_html_e('Multiplikator', 'immobilien-rechner-pro'); ?></th>
-                            <th><?php esc_html_e('Auswirkung', 'immobilien-rechner-pro'); ?></th>
+                            <th>
+                                <?php esc_html_e('Zustand', 'immobilien-rechner-pro'); ?>
+                                <span class="irp-tooltip">
+                                    <span class="dashicons dashicons-editor-help"></span>
+                                    <span class="irp-tooltip-text"><?php esc_html_e('Allgemeiner Zustand der Wohnung (Saniert, Renoviert, Normal, etc.).', 'immobilien-rechner-pro'); ?></span>
+                                </span>
+                            </th>
+                            <th>
+                                <?php esc_html_e('Multiplikator', 'immobilien-rechner-pro'); ?>
+                                <span class="irp-tooltip">
+                                    <span class="dashicons dashicons-editor-help"></span>
+                                    <span class="irp-tooltip-text"><?php esc_html_e('Faktor für den Mietpreis. 1.0 = Basis, 1.25 = +25%, 0.85 = -15%.', 'immobilien-rechner-pro'); ?></span>
+                                </span>
+                            </th>
+                            <th>
+                                <?php esc_html_e('Auswirkung', 'immobilien-rechner-pro'); ?>
+                                <span class="irp-tooltip">
+                                    <span class="dashicons dashicons-editor-help"></span>
+                                    <span class="irp-tooltip-text"><?php esc_html_e('Prozentuale Auswirkung auf den Mietpreis (automatisch berechnet).', 'immobilien-rechner-pro'); ?></span>
+                                </span>
+                            </th>
                         </tr>
                     </thead>
                     <tbody>
@@ -549,9 +752,27 @@ $location_ratings = $matrix['location_ratings'] ?? $admin->get_default_location_
                 <table class="widefat irp-data-table">
                     <thead>
                         <tr>
-                            <th><?php esc_html_e('Objekttyp', 'immobilien-rechner-pro'); ?></th>
-                            <th><?php esc_html_e('Multiplikator', 'immobilien-rechner-pro'); ?></th>
-                            <th><?php esc_html_e('Auswirkung', 'immobilien-rechner-pro'); ?></th>
+                            <th>
+                                <?php esc_html_e('Objekttyp', 'immobilien-rechner-pro'); ?>
+                                <span class="irp-tooltip">
+                                    <span class="dashicons dashicons-editor-help"></span>
+                                    <span class="irp-tooltip-text"><?php esc_html_e('Art der Immobilie (Wohnung, Haus, Maisonette, etc.).', 'immobilien-rechner-pro'); ?></span>
+                                </span>
+                            </th>
+                            <th>
+                                <?php esc_html_e('Multiplikator', 'immobilien-rechner-pro'); ?>
+                                <span class="irp-tooltip">
+                                    <span class="dashicons dashicons-editor-help"></span>
+                                    <span class="irp-tooltip-text"><?php esc_html_e('Faktor für den Mietpreis. Einfamilienhäuser oft höher als Geschosswohnungen.', 'immobilien-rechner-pro'); ?></span>
+                                </span>
+                            </th>
+                            <th>
+                                <?php esc_html_e('Auswirkung', 'immobilien-rechner-pro'); ?>
+                                <span class="irp-tooltip">
+                                    <span class="dashicons dashicons-editor-help"></span>
+                                    <span class="irp-tooltip-text"><?php esc_html_e('Prozentuale Auswirkung auf den Mietpreis (automatisch berechnet).', 'immobilien-rechner-pro'); ?></span>
+                                </span>
+                            </th>
                         </tr>
                     </thead>
                     <tbody>
@@ -590,10 +811,34 @@ $location_ratings = $matrix['location_ratings'] ?? $admin->get_default_location_
                 <table class="widefat irp-data-table">
                     <thead>
                         <tr>
-                            <th><?php esc_html_e('Baualtersklasse', 'immobilien-rechner-pro'); ?></th>
-                            <th><?php esc_html_e('Zeitraum', 'immobilien-rechner-pro'); ?></th>
-                            <th><?php esc_html_e('Multiplikator', 'immobilien-rechner-pro'); ?></th>
-                            <th><?php esc_html_e('Auswirkung', 'immobilien-rechner-pro'); ?></th>
+                            <th>
+                                <?php esc_html_e('Baualtersklasse', 'immobilien-rechner-pro'); ?>
+                                <span class="irp-tooltip">
+                                    <span class="dashicons dashicons-editor-help"></span>
+                                    <span class="irp-tooltip-text"><?php esc_html_e('Zeitliche Einordnung nach typischen Baualtersklassen deutscher Mietspiegel.', 'immobilien-rechner-pro'); ?></span>
+                                </span>
+                            </th>
+                            <th>
+                                <?php esc_html_e('Zeitraum', 'immobilien-rechner-pro'); ?>
+                                <span class="irp-tooltip">
+                                    <span class="dashicons dashicons-editor-help"></span>
+                                    <span class="irp-tooltip-text"><?php esc_html_e('Baujahr-Spanne für diese Kategorie.', 'immobilien-rechner-pro'); ?></span>
+                                </span>
+                            </th>
+                            <th>
+                                <?php esc_html_e('Multiplikator', 'immobilien-rechner-pro'); ?>
+                                <span class="irp-tooltip">
+                                    <span class="dashicons dashicons-editor-help"></span>
+                                    <span class="irp-tooltip-text"><?php esc_html_e('Faktor für den Mietpreis basierend auf dem Baualter.', 'immobilien-rechner-pro'); ?></span>
+                                </span>
+                            </th>
+                            <th>
+                                <?php esc_html_e('Auswirkung', 'immobilien-rechner-pro'); ?>
+                                <span class="irp-tooltip">
+                                    <span class="dashicons dashicons-editor-help"></span>
+                                    <span class="irp-tooltip-text"><?php esc_html_e('Prozentuale Auswirkung auf den Mietpreis (automatisch berechnet).', 'immobilien-rechner-pro'); ?></span>
+                                </span>
+                            </th>
                         </tr>
                     </thead>
                     <tbody>
@@ -654,10 +899,8 @@ $location_ratings = $matrix['location_ratings'] ?? $admin->get_default_location_
                     </ul>
                 </div>
             </div>
-        </div>
 
-        <!-- Tab: Ausstattung -->
-        <div class="irp-tab-content <?php echo $active_tab === 'features' ? 'active' : ''; ?>" id="tab-features">
+            <!-- Ausstattungs-Zuschläge (integriert aus ehemaligem Ausstattung-Tab) -->
             <div class="irp-settings-section">
                 <h2><?php esc_html_e('Ausstattungs-Zuschläge', 'immobilien-rechner-pro'); ?></h2>
                 <p class="description">
@@ -667,9 +910,27 @@ $location_ratings = $matrix['location_ratings'] ?? $admin->get_default_location_
                 <table class="widefat irp-data-table" id="irp-features-table">
                     <thead>
                         <tr>
-                            <th><?php esc_html_e('Ausstattungsmerkmal', 'immobilien-rechner-pro'); ?></th>
-                            <th><?php esc_html_e('Zuschlag (€/m²)', 'immobilien-rechner-pro'); ?></th>
-                            <th><?php esc_html_e('Bei 70m² Wohnung', 'immobilien-rechner-pro'); ?></th>
+                            <th>
+                                <?php esc_html_e('Ausstattungsmerkmal', 'immobilien-rechner-pro'); ?>
+                                <span class="irp-tooltip">
+                                    <span class="dashicons dashicons-editor-help"></span>
+                                    <span class="irp-tooltip-text"><?php esc_html_e('Besondere Ausstattungsmerkmale die den Mietwert erhöhen.', 'immobilien-rechner-pro'); ?></span>
+                                </span>
+                            </th>
+                            <th>
+                                <?php esc_html_e('Zuschlag (€/m²)', 'immobilien-rechner-pro'); ?>
+                                <span class="irp-tooltip">
+                                    <span class="dashicons dashicons-editor-help"></span>
+                                    <span class="irp-tooltip-text"><?php esc_html_e('Betrag der pro m² zum Basis-Mietpreis addiert wird.', 'immobilien-rechner-pro'); ?></span>
+                                </span>
+                            </th>
+                            <th>
+                                <?php esc_html_e('Bei 70m² Wohnung', 'immobilien-rechner-pro'); ?>
+                                <span class="irp-tooltip">
+                                    <span class="dashicons dashicons-editor-help"></span>
+                                    <span class="irp-tooltip-text"><?php esc_html_e('Monatlicher Mehrwert für eine Referenzwohnung (automatisch berechnet).', 'immobilien-rechner-pro'); ?></span>
+                                </span>
+                            </th>
                         </tr>
                     </thead>
                     <tbody>
@@ -710,9 +971,27 @@ $location_ratings = $matrix['location_ratings'] ?? $admin->get_default_location_
                 <table class="widefat irp-data-table">
                     <thead>
                         <tr>
-                            <th><?php esc_html_e('Haustyp', 'immobilien-rechner-pro'); ?></th>
-                            <th style="width: 120px;"><?php esc_html_e('Multiplikator', 'immobilien-rechner-pro'); ?></th>
-                            <th style="width: 120px;"><?php esc_html_e('Auswirkung', 'immobilien-rechner-pro'); ?></th>
+                            <th>
+                                <?php esc_html_e('Haustyp', 'immobilien-rechner-pro'); ?>
+                                <span class="irp-tooltip">
+                                    <span class="dashicons dashicons-editor-help"></span>
+                                    <span class="irp-tooltip-text"><?php esc_html_e('Art des Gebäudes (Freistehendes EFH, DHH, Reihenhaus, etc.).', 'immobilien-rechner-pro'); ?></span>
+                                </span>
+                            </th>
+                            <th style="width: 120px;">
+                                <?php esc_html_e('Multiplikator', 'immobilien-rechner-pro'); ?>
+                                <span class="irp-tooltip">
+                                    <span class="dashicons dashicons-editor-help"></span>
+                                    <span class="irp-tooltip-text"><?php esc_html_e('Faktor für den Gebäudewert. Freistehende Häuser meist höher bewertet.', 'immobilien-rechner-pro'); ?></span>
+                                </span>
+                            </th>
+                            <th style="width: 120px;">
+                                <?php esc_html_e('Auswirkung', 'immobilien-rechner-pro'); ?>
+                                <span class="irp-tooltip">
+                                    <span class="dashicons dashicons-editor-help"></span>
+                                    <span class="irp-tooltip-text"><?php esc_html_e('Prozentuale Auswirkung auf den Gebäudewert (automatisch berechnet).', 'immobilien-rechner-pro'); ?></span>
+                                </span>
+                            </th>
                         </tr>
                     </thead>
                     <tbody>
@@ -754,9 +1033,27 @@ $location_ratings = $matrix['location_ratings'] ?? $admin->get_default_location_
                 <table class="widefat irp-data-table">
                     <thead>
                         <tr>
-                            <th><?php esc_html_e('Qualitätsstufe', 'immobilien-rechner-pro'); ?></th>
-                            <th style="width: 120px;"><?php esc_html_e('Multiplikator', 'immobilien-rechner-pro'); ?></th>
-                            <th style="width: 120px;"><?php esc_html_e('Auswirkung', 'immobilien-rechner-pro'); ?></th>
+                            <th>
+                                <?php esc_html_e('Qualitätsstufe', 'immobilien-rechner-pro'); ?>
+                                <span class="irp-tooltip">
+                                    <span class="dashicons dashicons-editor-help"></span>
+                                    <span class="irp-tooltip-text"><?php esc_html_e('Bauausführungsqualität nach ImmoWertV (Einfach, Mittel, Gehoben, Luxus).', 'immobilien-rechner-pro'); ?></span>
+                                </span>
+                            </th>
+                            <th style="width: 120px;">
+                                <?php esc_html_e('Multiplikator', 'immobilien-rechner-pro'); ?>
+                                <span class="irp-tooltip">
+                                    <span class="dashicons dashicons-editor-help"></span>
+                                    <span class="irp-tooltip-text"><?php esc_html_e('Faktor für Normalherstellungskosten. Gehobene Qualität = höhere Baukosten.', 'immobilien-rechner-pro'); ?></span>
+                                </span>
+                            </th>
+                            <th style="width: 120px;">
+                                <?php esc_html_e('Auswirkung', 'immobilien-rechner-pro'); ?>
+                                <span class="irp-tooltip">
+                                    <span class="dashicons dashicons-editor-help"></span>
+                                    <span class="irp-tooltip-text"><?php esc_html_e('Prozentuale Auswirkung auf den Gebäudewert (automatisch berechnet).', 'immobilien-rechner-pro'); ?></span>
+                                </span>
+                            </th>
                         </tr>
                     </thead>
                     <tbody>
@@ -798,9 +1095,27 @@ $location_ratings = $matrix['location_ratings'] ?? $admin->get_default_location_
                 <table class="widefat irp-data-table">
                     <thead>
                         <tr>
-                            <th><?php esc_html_e('Modernisierung', 'immobilien-rechner-pro'); ?></th>
-                            <th style="width: 150px;"><?php esc_html_e('Jahres-Verschiebung', 'immobilien-rechner-pro'); ?></th>
-                            <th><?php esc_html_e('Erklärung', 'immobilien-rechner-pro'); ?></th>
+                            <th>
+                                <?php esc_html_e('Modernisierung', 'immobilien-rechner-pro'); ?>
+                                <span class="irp-tooltip">
+                                    <span class="dashicons dashicons-editor-help"></span>
+                                    <span class="irp-tooltip-text"><?php esc_html_e('Art und Zeitpunkt der durchgeführten Modernisierungsmaßnahmen.', 'immobilien-rechner-pro'); ?></span>
+                                </span>
+                            </th>
+                            <th style="width: 150px;">
+                                <?php esc_html_e('Jahres-Verschiebung', 'immobilien-rechner-pro'); ?>
+                                <span class="irp-tooltip">
+                                    <span class="dashicons dashicons-editor-help"></span>
+                                    <span class="irp-tooltip-text"><?php esc_html_e('Um wie viele Jahre das fiktive Baujahr nach vorne verschoben wird.', 'immobilien-rechner-pro'); ?></span>
+                                </span>
+                            </th>
+                            <th>
+                                <?php esc_html_e('Erklärung', 'immobilien-rechner-pro'); ?>
+                                <span class="irp-tooltip">
+                                    <span class="dashicons dashicons-editor-help"></span>
+                                    <span class="irp-tooltip-text"><?php esc_html_e('Auswirkung auf die Alterswertminderung (automatisch berechnet).', 'immobilien-rechner-pro'); ?></span>
+                                </span>
+                            </th>
                         </tr>
                     </thead>
                     <tbody>
@@ -850,7 +1165,13 @@ $location_ratings = $matrix['location_ratings'] ?? $admin->get_default_location_
                 <table class="form-table">
                     <tr>
                         <th scope="row">
-                            <label for="age_rate_per_year"><?php esc_html_e('Abschlag pro Jahr', 'immobilien-rechner-pro'); ?></label>
+                            <label for="age_rate_per_year">
+                                <?php esc_html_e('Abschlag pro Jahr', 'immobilien-rechner-pro'); ?>
+                                <span class="irp-tooltip">
+                                    <span class="dashicons dashicons-editor-help"></span>
+                                    <span class="irp-tooltip-text"><?php esc_html_e('Jährliche Wertminderung des Gebäudes durch Alterung (ImmoWertV-konform).', 'immobilien-rechner-pro'); ?></span>
+                                </span>
+                            </label>
                         </th>
                         <td>
                             <input type="number"
@@ -868,7 +1189,13 @@ $location_ratings = $matrix['location_ratings'] ?? $admin->get_default_location_
                     </tr>
                     <tr>
                         <th scope="row">
-                            <label for="age_max_depreciation"><?php esc_html_e('Maximaler Abschlag', 'immobilien-rechner-pro'); ?></label>
+                            <label for="age_max_depreciation">
+                                <?php esc_html_e('Maximaler Abschlag', 'immobilien-rechner-pro'); ?>
+                                <span class="irp-tooltip">
+                                    <span class="dashicons dashicons-editor-help"></span>
+                                    <span class="irp-tooltip-text"><?php esc_html_e('Obergrenze der Alterswertminderung. Auch alte Gebäude behalten einen Restwert.', 'immobilien-rechner-pro'); ?></span>
+                                </span>
+                            </label>
                         </th>
                         <td>
                             <input type="number"
@@ -886,7 +1213,13 @@ $location_ratings = $matrix['location_ratings'] ?? $admin->get_default_location_
                     </tr>
                     <tr>
                         <th scope="row">
-                            <label for="age_base_year"><?php esc_html_e('Basisjahr', 'immobilien-rechner-pro'); ?></label>
+                            <label for="age_base_year">
+                                <?php esc_html_e('Basisjahr', 'immobilien-rechner-pro'); ?>
+                                <span class="irp-tooltip">
+                                    <span class="dashicons dashicons-editor-help"></span>
+                                    <span class="irp-tooltip-text"><?php esc_html_e('Bezugsjahr für die Altersberechnung. Bei Wertermittlung meist das aktuelle Jahr.', 'immobilien-rechner-pro'); ?></span>
+                                </span>
+                            </label>
                         </th>
                         <td>
                             <input type="number"
@@ -915,8 +1248,20 @@ $location_ratings = $matrix['location_ratings'] ?? $admin->get_default_location_
                 <table class="widefat irp-data-table">
                     <thead>
                         <tr>
-                            <th><?php esc_html_e('Ausstattung', 'immobilien-rechner-pro'); ?></th>
-                            <th style="width: 150px;"><?php esc_html_e('Zuschlag (€)', 'immobilien-rechner-pro'); ?></th>
+                            <th>
+                                <?php esc_html_e('Ausstattung', 'immobilien-rechner-pro'); ?>
+                                <span class="irp-tooltip">
+                                    <span class="dashicons dashicons-editor-help"></span>
+                                    <span class="irp-tooltip-text"><?php esc_html_e('Außenanlagen und Nebengebäude die den Verkaufswert erhöhen.', 'immobilien-rechner-pro'); ?></span>
+                                </span>
+                            </th>
+                            <th style="width: 150px;">
+                                <?php esc_html_e('Zuschlag (€)', 'immobilien-rechner-pro'); ?>
+                                <span class="irp-tooltip">
+                                    <span class="dashicons dashicons-editor-help"></span>
+                                    <span class="irp-tooltip-text"><?php esc_html_e('Absoluter Wert der zum Verkaufspreis addiert wird.', 'immobilien-rechner-pro'); ?></span>
+                                </span>
+                            </th>
                         </tr>
                     </thead>
                     <tbody>
@@ -950,8 +1295,20 @@ $location_ratings = $matrix['location_ratings'] ?? $admin->get_default_location_
                 <table class="widefat irp-data-table">
                     <thead>
                         <tr>
-                            <th><?php esc_html_e('Ausstattung', 'immobilien-rechner-pro'); ?></th>
-                            <th style="width: 150px;"><?php esc_html_e('Zuschlag (€)', 'immobilien-rechner-pro'); ?></th>
+                            <th>
+                                <?php esc_html_e('Ausstattung', 'immobilien-rechner-pro'); ?>
+                                <span class="irp-tooltip">
+                                    <span class="dashicons dashicons-editor-help"></span>
+                                    <span class="irp-tooltip-text"><?php esc_html_e('Wertsteigernde Innenausstattung und technische Anlagen.', 'immobilien-rechner-pro'); ?></span>
+                                </span>
+                            </th>
+                            <th style="width: 150px;">
+                                <?php esc_html_e('Zuschlag (€)', 'immobilien-rechner-pro'); ?>
+                                <span class="irp-tooltip">
+                                    <span class="dashicons dashicons-editor-help"></span>
+                                    <span class="irp-tooltip-text"><?php esc_html_e('Absoluter Wert der zum Verkaufspreis addiert wird.', 'immobilien-rechner-pro'); ?></span>
+                                </span>
+                            </th>
                         </tr>
                     </thead>
                     <tbody>
@@ -1004,7 +1361,13 @@ $location_ratings = $matrix['location_ratings'] ?? $admin->get_default_location_
                 <table class="form-table">
                     <tr>
                         <th scope="row">
-                            <label for="interest_rate"><?php esc_html_e('Kapitalanlage-Zinssatz', 'immobilien-rechner-pro'); ?></label>
+                            <label for="interest_rate">
+                                <?php esc_html_e('Kapitalanlage-Zinssatz', 'immobilien-rechner-pro'); ?>
+                                <span class="irp-tooltip">
+                                    <span class="dashicons dashicons-editor-help"></span>
+                                    <span class="irp-tooltip-text"><?php esc_html_e('Vergleichszinssatz für alternative Kapitalanlage des Verkaufserlöses (z.B. Festgeld, Anleihen).', 'immobilien-rechner-pro'); ?></span>
+                                </span>
+                            </label>
                         </th>
                         <td>
                             <input type="number"
@@ -1022,7 +1385,13 @@ $location_ratings = $matrix['location_ratings'] ?? $admin->get_default_location_
                     </tr>
                     <tr>
                         <th scope="row">
-                            <label for="appreciation_rate"><?php esc_html_e('Wertsteigerung Immobilie', 'immobilien-rechner-pro'); ?></label>
+                            <label for="appreciation_rate">
+                                <?php esc_html_e('Wertsteigerung Immobilie', 'immobilien-rechner-pro'); ?>
+                                <span class="irp-tooltip">
+                                    <span class="dashicons dashicons-editor-help"></span>
+                                    <span class="irp-tooltip-text"><?php esc_html_e('Angenommene jährliche Wertsteigerung der Immobilie für die 30-Jahres-Prognose.', 'immobilien-rechner-pro'); ?></span>
+                                </span>
+                            </label>
                         </th>
                         <td>
                             <input type="number"
@@ -1040,7 +1409,13 @@ $location_ratings = $matrix['location_ratings'] ?? $admin->get_default_location_
                     </tr>
                     <tr>
                         <th scope="row">
-                            <label for="rent_increase_rate"><?php esc_html_e('Jährliche Mietsteigerung', 'immobilien-rechner-pro'); ?></label>
+                            <label for="rent_increase_rate">
+                                <?php esc_html_e('Jährliche Mietsteigerung', 'immobilien-rechner-pro'); ?>
+                                <span class="irp-tooltip">
+                                    <span class="dashicons dashicons-editor-help"></span>
+                                    <span class="irp-tooltip-text"><?php esc_html_e('Angenommene jährliche Mieterhöhung für die Vergleichsrechnung (Verkaufen vs. Vermieten).', 'immobilien-rechner-pro'); ?></span>
+                                </span>
+                            </label>
                         </th>
                         <td>
                             <input type="number"
@@ -1053,6 +1428,78 @@ $location_ratings = $matrix['location_ratings'] ?? $admin->get_default_location_
                                    class="small-text"> %
                             <p class="description">
                                 <?php esc_html_e('Angenommene jährliche Mietsteigerung für die Prognose.', 'immobilien-rechner-pro'); ?>
+                            </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">
+                            <label for="maintenance_rate">
+                                <?php esc_html_e('Instandhaltungsrate', 'immobilien-rechner-pro'); ?>
+                                <span class="irp-tooltip">
+                                    <span class="dashicons dashicons-editor-help"></span>
+                                    <span class="irp-tooltip-text"><?php esc_html_e('Jährliche Rücklagen für Reparaturen und Instandhaltung (% vom Immobilienwert).', 'immobilien-rechner-pro'); ?></span>
+                                </span>
+                            </label>
+                        </th>
+                        <td>
+                            <input type="number"
+                                   id="maintenance_rate"
+                                   name="irp_price_matrix[maintenance_rate]"
+                                   value="<?php echo esc_attr($matrix['maintenance_rate'] ?? 1.5); ?>"
+                                   step="0.1"
+                                   min="0"
+                                   max="10"
+                                   class="small-text"> %
+                            <p class="description">
+                                <?php esc_html_e('Jährliche Instandhaltungskosten als Prozentsatz des Immobilienwerts.', 'immobilien-rechner-pro'); ?>
+                            </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">
+                            <label for="vacancy_rate">
+                                <?php esc_html_e('Leerstandsrate', 'immobilien-rechner-pro'); ?>
+                                <span class="irp-tooltip">
+                                    <span class="dashicons dashicons-editor-help"></span>
+                                    <span class="irp-tooltip-text"><?php esc_html_e('Erwarteter Mietausfall durch Leerstand oder Mieterwechsel pro Jahr.', 'immobilien-rechner-pro'); ?></span>
+                                </span>
+                            </label>
+                        </th>
+                        <td>
+                            <input type="number"
+                                   id="vacancy_rate"
+                                   name="irp_price_matrix[vacancy_rate]"
+                                   value="<?php echo esc_attr($matrix['vacancy_rate'] ?? 3); ?>"
+                                   step="0.5"
+                                   min="0"
+                                   max="20"
+                                   class="small-text"> %
+                            <p class="description">
+                                <?php esc_html_e('Erwartete Leerstandsrate für die Mieteinnahmen-Berechnung.', 'immobilien-rechner-pro'); ?>
+                            </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">
+                            <label for="broker_commission">
+                                <?php esc_html_e('Maklerprovision', 'immobilien-rechner-pro'); ?>
+                                <span class="irp-tooltip">
+                                    <span class="dashicons dashicons-editor-help"></span>
+                                    <span class="irp-tooltip-text"><?php esc_html_e('Übliche Maklergebühr bei Immobilienverkauf in Ihrer Region.', 'immobilien-rechner-pro'); ?></span>
+                                </span>
+                            </label>
+                        </th>
+                        <td>
+                            <input type="number"
+                                   id="broker_commission"
+                                   name="irp_price_matrix[broker_commission]"
+                                   value="<?php echo esc_attr($matrix['broker_commission'] ?? 3.57); ?>"
+                                   step="0.01"
+                                   min="0"
+                                   max="10"
+                                   class="small-text"> %
+                            <p class="description">
+                                <?php esc_html_e('Standard-Maklerprovision für Verkaufsberechnungen.', 'immobilien-rechner-pro'); ?>
                             </p>
                         </td>
                     </tr>
@@ -1108,6 +1555,9 @@ $location_ratings = $matrix['location_ratings'] ?? $admin->get_default_location_
             <input type="hidden" name="irp_price_matrix[interest_rate]" value="<?php echo esc_attr($matrix['interest_rate'] ?? 3.0); ?>">
             <input type="hidden" name="irp_price_matrix[appreciation_rate]" value="<?php echo esc_attr($matrix['appreciation_rate'] ?? 2.0); ?>">
             <input type="hidden" name="irp_price_matrix[rent_increase_rate]" value="<?php echo esc_attr($matrix['rent_increase_rate'] ?? 2.0); ?>">
+            <input type="hidden" name="irp_price_matrix[maintenance_rate]" value="<?php echo esc_attr($matrix['maintenance_rate'] ?? 1.5); ?>">
+            <input type="hidden" name="irp_price_matrix[vacancy_rate]" value="<?php echo esc_attr($matrix['vacancy_rate'] ?? 3); ?>">
+            <input type="hidden" name="irp_price_matrix[broker_commission]" value="<?php echo esc_attr($matrix['broker_commission'] ?? 3.57); ?>">
         <?php endif; ?>
 
         <?php if ($active_tab !== 'sale_value') : ?>

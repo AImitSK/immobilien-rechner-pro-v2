@@ -1,0 +1,810 @@
+{
+  "translation-revision-date": "2026-01-19T09:28:45.141Z",
+  "generator": "Claude Code",
+  "source": "build/index.js",
+  "domain": "messages",
+  "locale_data": {
+    "messages": {
+      "": {
+        "domain": "immobilien-rechner-pro",
+        "lang": "en_GB",
+        "plural-forms": "nplurals=2; plural=(n != 1);"
+      },
+      "Ein Fehler ist aufgetreten.": [
+        "An error has occurred."
+      ],
+      "Mietwert berechnen": [
+        "Calculate rental value"
+      ],
+      "Erfahren Sie, wie viel Miete Sie für Ihre Immobilie verlangen können": [
+        "Find out how much rent you can charge for your property"
+      ],
+      "Ich möchte meine Immobilie vermieten": [
+        "I want to rent out my property"
+      ],
+      "Verkaufen vs. Vermieten": [
+        "Sell vs. Rent"
+      ],
+      "Vergleichen Sie die finanziellen Ergebnisse von Verkauf und Vermietung": [
+        "Compare the financial outcomes of selling and renting"
+      ],
+      "Ich bin unsicher, ob ich verkaufen oder vermieten soll": [
+        "I'm unsure whether to sell or rent"
+      ],
+      "Was möchten Sie wissen?": [
+        "What would you like to know?"
+      ],
+      "Wählen Sie eine Option, um mit Ihrer Immobilienanalyse zu beginnen": [
+        "Choose an option to start your property analysis"
+      ],
+      "Immobilienart": [
+        "Property type"
+      ],
+      "Details": [
+        "Details"
+      ],
+      "Standort": [
+        "Location"
+      ],
+      "Zustand": [
+        "Condition"
+      ],
+      "Lage": [
+        "Location rating"
+      ],
+      "Ausstattung": [
+        "Features"
+      ],
+      "Berechnung fehlgeschlagen": [
+        "Calculation failed"
+      ],
+      "Ein Fehler ist aufgetreten": [
+        "An error occurred"
+      ],
+      "Zurück": [
+        "Back"
+      ],
+      "Berechnen": [
+        "Calculate"
+      ],
+      "Weiter": [
+        "Continue"
+      ],
+      "Immobilie": [
+        "Property"
+      ],
+      "Finanzen": [
+        "Finances"
+      ],
+      "Größe": [
+        "Size"
+      ],
+      "Qualität & Lage": [
+        "Quality & Location"
+      ],
+      "Adresse": [
+        "Address"
+      ],
+      "Vorhaben": [
+        "Intention"
+      ],
+      "Vielen Dank für Ihre Anfrage!": [
+        "Thank you for your inquiry!"
+      ],
+      "Ihre Daten werden jetzt von einem erfahrenen Immobilienexperten bei %s analysiert. Sie erhalten in Kürze eine ausführliche Bewertung mit detaillierten Marktdaten direkt in Ihr E-Mail-Postfach.": [
+        "Your data is now being analyzed by an experienced real estate expert at %s. You will shortly receive a detailed valuation with comprehensive market data directly to your email inbox."
+      ],
+      "Ihre Daten werden jetzt von einem erfahrenen Immobilienexperten analysiert. Sie erhalten in Kürze eine ausführliche Bewertung mit detaillierten Marktdaten direkt in Ihr E-Mail-Postfach.": [
+        "Your data is now being analyzed by an experienced real estate expert. You will shortly receive a detailed valuation with comprehensive market data directly to your email inbox."
+      ],
+      "Ihre Mietwert-Schätzung": [
+        "Your rental value estimate"
+      ],
+      "Basierend auf Ihren Immobiliendaten und dem Standort": [
+        "Based on your property data and location"
+      ],
+      "Geschätzte Monatsmiete": [
+        "Estimated monthly rent"
+      ],
+      "Spanne:": [
+        "Range:"
+      ],
+      "Preis pro m²": [
+        "Price per sqm"
+      ],
+      "Jährliche Mieteinnahmen": [
+        "Annual rental income"
+      ],
+      "Marktposition": [
+        "Market position"
+      ],
+      "Neue Berechnung starten": [
+        "Start new calculation"
+      ],
+      "Kumulierte Mieteinnahmen": [
+        "Cumulative rental income"
+      ],
+      "Verkaufserlös (wenn in dem Jahr verkauft)": [
+        "Sale proceeds (if sold in that year)"
+      ],
+      "Verkaufen vs. Vermieten Vergleich": [
+        "Sell vs. Rent comparison"
+      ],
+      "Wenn Sie jetzt verkaufen": [
+        "If you sell now"
+      ],
+      "Nettoerlös": [
+        "Net proceeds"
+      ],
+      "Immobilienwert": [
+        "Property value"
+      ],
+      "Verkaufskosten": [
+        "Sale costs"
+      ],
+      "Hypothekenablösung": [
+        "Mortgage payoff"
+      ],
+      "Wenn Sie vermieten": [
+        "If you rent out"
+      ],
+      "Jahr": [
+        "Year"
+      ],
+      "Netto-Mieteinnahmen": [
+        "Net rental income"
+      ],
+      "Bruttomiete": [
+        "Gross rent"
+      ],
+      "Leerstandsverlust": [
+        "Vacancy loss"
+      ],
+      "Instandhaltung": [
+        "Maintenance"
+      ],
+      "Bruttorendite:": [
+        "Gross yield:"
+      ],
+      "Nettorendite:": [
+        "Net yield:"
+      ],
+      "15-Jahres-Prognose": [
+        "15-year forecast"
+      ],
+      "Break-even-Punkt:": [
+        "Break-even point:"
+      ],
+      "Jahre": [
+        "years"
+      ],
+      "Unsere Einschätzung": [
+        "Our assessment"
+      ],
+      "Wohnung": [
+        "Apartment"
+      ],
+      "Wohnung in einem Mehrfamilienhaus": [
+        "Apartment in a multi-family building"
+      ],
+      "Haus": [
+        "House"
+      ],
+      "Einfamilienhaus oder Doppelhaushälfte": [
+        "Single-family home or semi-detached house"
+      ],
+      "Gewerbe": [
+        "Commercial"
+      ],
+      "Büro, Einzelhandel oder Mischnutzung": [
+        "Office, retail or mixed use"
+      ],
+      "Welche Art von Immobilie haben Sie?": [
+        "What type of property do you have?"
+      ],
+      "Erzählen Sie uns von Ihrer Immobilie": [
+        "Tell us about your property"
+      ],
+      "Wohnfläche": [
+        "Living area"
+      ],
+      "Gesamte Wohnfläche in Quadratmetern": [
+        "Total living area in square meters"
+      ],
+      "Anzahl der Zimmer": [
+        "Number of rooms"
+      ],
+      "Auswählen...": [
+        "Select..."
+      ],
+      "Ohne Küche und Bad": [
+        "Excluding kitchen and bathroom"
+      ],
+      "Baujahr": [
+        "Year built"
+      ],
+      "Ursprüngliches Baujahr": [
+        "Original year of construction"
+      ],
+      "Städte konnten nicht geladen werden": [
+        "Cities could not be loaded"
+      ],
+      "Standort auswählen": [
+        "Select location"
+      ],
+      "Städte werden geladen...": [
+        "Loading cities..."
+      ],
+      "Keine Städte konfiguriert. Bitte kontaktieren Sie den Administrator.": [
+        "No cities configured. Please contact the administrator."
+      ],
+      "Für welche Stadt möchten Sie den Mietwert berechnen?": [
+        "For which city would you like to calculate the rental value?"
+      ],
+      "Stadt": [
+        "City"
+      ],
+      "Bitte wählen...": [
+        "Please select..."
+      ],
+      "Berechnung für": [
+        "Calculation for"
+      ],
+      "Neubau / Kernsaniert": [
+        "New build / Fully renovated"
+      ],
+      "Neu gebaut oder vollständig saniert": [
+        "Newly built or completely renovated"
+      ],
+      "Kürzlich renoviert": [
+        "Recently renovated"
+      ],
+      "In den letzten 5 Jahren modernisiert": [
+        "Modernized in the last 5 years"
+      ],
+      "Guter Zustand": [
+        "Good condition"
+      ],
+      "Gut gepflegt, bezugsfertig": [
+        "Well maintained, move-in ready"
+      ],
+      "Renovierungsbedürftig": [
+        "Needs renovation"
+      ],
+      "Erfordert Modernisierung oder Reparaturen": [
+        "Requires modernization or repairs"
+      ],
+      "In welchem Zustand ist Ihre Immobilie?": [
+        "What condition is your property in?"
+      ],
+      "Wie bewerten Sie die Lage?": [
+        "How do you rate the location?"
+      ],
+      "Die Lage hat einen erheblichen Einfluss auf den Mietwert.": [
+        "Location has a significant impact on rental value."
+      ],
+      "Adresse der Immobilie": [
+        "Property address"
+      ],
+      "optional": [
+        "optional"
+      ],
+      "Straße und Hausnummer in ": [
+        "Street and house number in "
+      ],
+      "Adresse eingeben...": [
+        "Enter address..."
+      ],
+      "z.B. Musterstraße 123": [
+        "e.g. Main Street 123"
+      ],
+      "Lage-Bewertung": [
+        "Location rating"
+      ],
+      "Einfach": [
+        "Basic"
+      ],
+      "Premium": [
+        "Premium"
+      ],
+      "Balkon": [
+        "Balcony"
+      ],
+      "Terrasse": [
+        "Terrace"
+      ],
+      "Garten": [
+        "Garden"
+      ],
+      "Aufzug": [
+        "Elevator"
+      ],
+      "Stellplatz": [
+        "Parking space"
+      ],
+      "Garage": [
+        "Garage"
+      ],
+      "Keller": [
+        "Basement"
+      ],
+      "Einbauküche": [
+        "Built-in kitchen"
+      ],
+      "Fußbodenheizung": [
+        "Underfloor heating"
+      ],
+      "Gäste-WC": [
+        "Guest toilet"
+      ],
+      "Barrierefrei": [
+        "Accessible"
+      ],
+      "Welche Ausstattungsmerkmale hat Ihre Immobilie?": [
+        "What features does your property have?"
+      ],
+      "Wählen Sie alle zutreffenden aus. Diese können den Mietwert erhöhen.": [
+        "Select all that apply. These can increase the rental value."
+      ],
+      "Keine Ausstattung ausgewählt": [
+        "No features selected"
+      ],
+      "Merkmal ausgewählt": [
+        "feature selected"
+      ],
+      "Merkmale ausgewählt": [
+        "features selected"
+      ],
+      "Finanzielle Details": [
+        "Financial details"
+      ],
+      "Diese Informationen helfen uns, Verkauf und Vermietung genau zu vergleichen.": [
+        "This information helps us compare selling and renting accurately."
+      ],
+      "Geschätzter Immobilienwert": [
+        "Estimated property value"
+      ],
+      "Ihre beste Schätzung des aktuellen Marktwerts": [
+        "Your best estimate of the current market value"
+      ],
+      "Restschuld Hypothek": [
+        "Remaining mortgage"
+      ],
+      "Offener Darlehensbetrag (falls vorhanden)": [
+        "Outstanding loan amount (if any)"
+      ],
+      "Besitzdauer": [
+        "Ownership duration"
+      ],
+      "Wie lange Sie die Immobilie besitzen": [
+        "How long you have owned the property"
+      ],
+      "Hypothekenzins": [
+        "Mortgage interest rate"
+      ],
+      "Warum das wichtig ist": [
+        "Why this matters"
+      ],
+      "Immobilien, die weniger als 10 Jahre im Besitz sind, können beim Verkauf der Spekulationssteuer unterliegen. Ihre Hypothek beeinflusst sowohl den Nettoverkaufserlös als auch die laufenden Kosten der Vermietung.": [
+        "Properties owned for less than 10 years may be subject to speculation tax when sold. Your mortgage affects both the net sale proceeds and the ongoing costs of renting."
+      ],
+      "Erweiterte Optionen": [
+        "Advanced options"
+      ],
+      "Erwartete jährliche Wertsteigerung": [
+        "Expected annual appreciation"
+      ],
+      "Der historische Durchschnitt liegt bei etwa 2-3% pro Jahr": [
+        "The historical average is about 2-3% per year"
+      ],
+      "Bitte geben Sie Ihren Namen ein.": [
+        "Please enter your name."
+      ],
+      "Bitte geben Sie Ihre E-Mail-Adresse ein.": [
+        "Please enter your email address."
+      ],
+      "Bitte geben Sie eine gültige E-Mail-Adresse ein.": [
+        "Please enter a valid email address."
+      ],
+      "Bitte stimmen Sie der Datenschutzerklärung zu.": [
+        "Please agree to the privacy policy."
+      ],
+      "Fast geschafft!": [
+        "Almost done!"
+      ],
+      "Geben Sie Ihre Kontaktdaten ein, um Ihre persönliche Bewertung zu erhalten.": [
+        "Enter your contact details to receive your personal valuation."
+      ],
+      "Name": [
+        "Name"
+      ],
+      "Max Mustermann": [
+        "John Smith"
+      ],
+      "E-Mail": [
+        "Email"
+      ],
+      "max@beispiel.de": [
+        "john@example.com"
+      ],
+      "Telefon": [
+        "Phone"
+      ],
+      "+49 123 456789": [
+        "+1 123 456789"
+      ],
+      "Ich stimme der": [
+        "I agree to the"
+      ],
+      "Datenschutzerklärung": [
+        "privacy policy"
+      ],
+      "zu.": [
+        "zu."
+      ],
+      "Ich möchte den Newsletter mit Immobilien-Tipps erhalten.": [
+        "I would like to receive the newsletter with real estate tips."
+      ],
+      "Wird gesendet...": [
+        "Sending..."
+      ],
+      "Bewertung anzeigen": [
+        "Show valuation"
+      ],
+      "Ihre Daten sind sicher": [
+        "Your data is secure"
+      ],
+      "Kostenlos & unverbindlich": [
+        "Free & non-binding"
+      ],
+      "Diese Seite ist durch reCAPTCHA geschützt. Es gelten die": [
+        "This site is protected by reCAPTCHA. The"
+      ],
+      "und": [
+        "and"
+      ],
+      "Nutzungsbedingungen": [
+        "Terms of Service"
+      ],
+      "von Google.": [
+        "of Google apply."
+      ],
+      "Daten werden analysiert...": [
+        "Analyzing data..."
+      ],
+      "Marktdaten werden abgerufen...": [
+        "Fetching market data..."
+      ],
+      "Mietwert wird berechnet...": [
+        "Calculating rental value..."
+      ],
+      "Ihre Berechnung wird vorbereitet": [
+        "Your calculation is being prepared"
+      ],
+      "Grundstück": [
+        "Land"
+      ],
+      "Unbebautes Grundstück": [
+        "Undeveloped land"
+      ],
+      "Eigentumswohnung in einem Mehrfamilienhaus": [
+        "Condominium in a multi-family building"
+      ],
+      "Einfamilienhaus, Reihenhaus oder Mehrfamilienhaus": [
+        "Single-family home, townhouse or multi-family house"
+      ],
+      "Einfamilienhaus": [
+        "Detached house"
+      ],
+      "Doppelhaushälfte": [
+        "Semi-detached house"
+      ],
+      "Endreihenhaus": [
+        "End-terrace house"
+      ],
+      "Mittelreihenhaus": [
+        "Mid-terrace house"
+      ],
+      "Mehrfamilienhaus": [
+        "Multi-family house"
+      ],
+      "Bungalow": [
+        "Bungalow"
+      ],
+      "Welche Art von Immobilie möchten Sie bewerten?": [
+        "What type of property would you like to value?"
+      ],
+      "Um welchen Haustyp handelt es sich?": [
+        "What type of house is it?"
+      ],
+      "Vor 1-3 Jahren": [
+        "1-3 years ago"
+      ],
+      "Kernsanierung / umfassende Modernisierung": [
+        "Complete renovation / comprehensive modernization"
+      ],
+      "Vor 4-9 Jahren": [
+        "4-9 years ago"
+      ],
+      "Größere Modernisierungsmaßnahmen": [
+        "Major modernization measures"
+      ],
+      "Vor 10-15 Jahren": [
+        "10-15 years ago"
+      ],
+      "Mittlere Modernisierung": [
+        "Medium modernization"
+      ],
+      "Vor mehr als 15 Jahren": [
+        "More than 15 years ago"
+      ],
+      "Ältere Modernisierung": [
+        "Older modernization"
+      ],
+      "Noch nie": [
+        "Never"
+      ],
+      "Originalzustand": [
+        "Original condition"
+      ],
+      "Wie groß ist Ihr Grundstück?": [
+        "How large is your plot?"
+      ],
+      "Angaben zu Größe und Baujahr": [
+        "Size and year of construction details"
+      ],
+      "Grundstücksfläche": [
+        "Plot size"
+      ],
+      "Die Größe des Grundstücks lt. Grundbuch": [
+        "The size of the plot according to land registry"
+      ],
+      "Die Wohnfläche gemäß Wohnflächenberechnung": [
+        "The living area according to floor area calculation"
+      ],
+      "Das Jahr der ursprünglichen Fertigstellung": [
+        "The year of original completion"
+      ],
+      "Wann wurde zuletzt umfassend modernisiert?": [
+        "When was the last comprehensive modernization?"
+      ],
+      "Eine umfassende Modernisierung wirkt sich positiv auf den Wert aus.": [
+        "A comprehensive modernization has a positive effect on the value."
+      ],
+      "Solaranlage": [
+        "Solar system"
+      ],
+      "Dachboden": [
+        "Attic"
+      ],
+      "Kamin": [
+        "Fireplace"
+      ],
+      "Parkettboden": [
+        "Parquet flooring"
+      ],
+      "Ausstattungsmerkmale": [
+        "Features"
+      ],
+      "Für unbebaute Grundstücke werden keine Ausstattungsmerkmale erfasst.": [
+        "No features are recorded for undeveloped land."
+      ],
+      "Welche Ausstattung hat Ihre Immobilie?": [
+        "What features does your property have?"
+      ],
+      "Wählen Sie alle zutreffenden Merkmale aus. Diese erhöhen den geschätzten Verkaufswert.": [
+        "Select all applicable features. These increase the estimated sale value."
+      ],
+      "Außenbereich": [
+        "Exterior"
+      ],
+      "Innenbereich": [
+        "Interior"
+      ],
+      "Einfache Ausstattung, Standardmaterialien": [
+        "Basic equipment, standard materials"
+      ],
+      "Normal": [
+        "Standard"
+      ],
+      "Durchschnittliche Ausstattung und Materialien": [
+        "Average equipment and materials"
+      ],
+      "Gehoben": [
+        "Upscale"
+      ],
+      "Hochwertige Ausstattung und Materialien": [
+        "High-quality equipment and materials"
+      ],
+      "Luxuriös": [
+        "Luxury"
+      ],
+      "Erstklassige Ausstattung, exklusive Materialien": [
+        "First-class equipment, exclusive materials"
+      ],
+      "Einfache Lage": [
+        "Basic location"
+      ],
+      "Weniger begehrte Wohngegend, einfache Infrastruktur": [
+        "Less desirable residential area, basic infrastructure"
+      ],
+      "Normale Lage": [
+        "Standard location"
+      ],
+      "Durchschnittliche Wohnlage mit guter Versorgung": [
+        "Average residential area with good amenities"
+      ],
+      "Gute Lage": [
+        "Good location"
+      ],
+      "Beliebte Wohngegend, gute Anbindung": [
+        "Popular residential area, good connections"
+      ],
+      "Sehr gute Lage": [
+        "Very good location"
+      ],
+      "Begehrte Wohngegend, sehr gute Infrastruktur": [
+        "Sought-after residential area, very good infrastructure"
+      ],
+      "Premium-Lage": [
+        "Premium location"
+      ],
+      "Erstklassige Wohngegend, exzellente Ausstattung": [
+        "First-class residential area, excellent amenities"
+      ],
+      "Wie würden Sie die Bauqualität einschätzen?": [
+        "How would you rate the construction quality?"
+      ],
+      "Die Qualität der Bauausführung und verwendeten Materialien.": [
+        "The quality of construction and materials used."
+      ],
+      "Wie bewerten Sie die Lage des Grundstücks?": [
+        "How do you rate the location of the plot?"
+      ],
+      "Wie bewerten Sie die Lage der Immobilie?": [
+        "How do you rate the location of the property?"
+      ],
+      "Die Lage hat erheblichen Einfluss auf den Verkaufswert.": [
+        "Location has a significant impact on the sale value."
+      ],
+      "Wo befindet sich die Immobilie?": [
+        "Where is the property located?"
+      ],
+      "Die genaue Adresse wird für die Bewertung und Kontaktaufnahme benötigt.": [
+        "The exact address is needed for the valuation and contact."
+      ],
+      "PLZ": [
+        "ZIP code"
+      ],
+      "z.B. Berlin": [
+        "e.g. New York"
+      ],
+      "Straße und Hausnummer": [
+        "Street and house number"
+      ],
+      "Straße und Hausnummer...": [
+        "Street and house number..."
+      ],
+      "Tippen Sie die Adresse ein für Vorschläge.": [
+        "Type the address for suggestions."
+      ],
+      "Die Adresse wird vertraulich behandelt und nur für die Bewertung verwendet.": [
+        "The address is treated confidentially and only used for the valuation."
+      ],
+      "Selbstgenutzt": [
+        "Owner-occupied"
+      ],
+      "Sie wohnen selbst in der Immobilie": [
+        "You live in the property yourself"
+      ],
+      "Vermietet": [
+        "Rented"
+      ],
+      "Die Immobilie ist aktuell vermietet": [
+        "The property is currently rented"
+      ],
+      "Leerstand": [
+        "Vacant"
+      ],
+      "Die Immobilie steht derzeit leer": [
+        "The property is currently vacant"
+      ],
+      "Verkaufen": [
+        "Sell"
+      ],
+      "Ich möchte die Immobilie verkaufen": [
+        "I want to sell the property"
+      ],
+      "Kaufen": [
+        "Buy"
+      ],
+      "Ich möchte eine Immobilie kaufen": [
+        "I want to buy a property"
+      ],
+      "Sofort": [
+        "Immediately"
+      ],
+      "So schnell wie möglich": [
+        "As soon as possible"
+      ],
+      "In 3 Monaten": [
+        "In 3 months"
+      ],
+      "Kurzfristig": [
+        "Short-term"
+      ],
+      "In 6 Monaten": [
+        "In 6 months"
+      ],
+      "Mittelfristig": [
+        "Medium-term"
+      ],
+      "In 12 Monaten": [
+        "In 12 months"
+      ],
+      "Langfristig": [
+        "Long-term"
+      ],
+      "Noch offen": [
+        "Still open"
+      ],
+      "Kein fester Zeitplan": [
+        "No fixed timeline"
+      ],
+      "Wie wird die Immobilie aktuell genutzt?": [
+        "How is the property currently used?"
+      ],
+      "Was ist Ihr Ziel?": [
+        "What is your goal?"
+      ],
+      "Was möchten Sie tun?": [
+        "What would you like to do?"
+      ],
+      "Wann möchten Sie aktiv werden?": [
+        "When would you like to take action?"
+      ],
+      "E-Mail ist erforderlich": [
+        "Email is required"
+      ],
+      "Bitte geben Sie eine gültige E-Mail-Adresse ein": [
+        "Please enter a valid email address"
+      ],
+      "Sie müssen der Datenschutzerklärung zustimmen": [
+        "You must agree to the privacy policy"
+      ],
+      "Übermittlung fehlgeschlagen": [
+        "Submission failed"
+      ],
+      "Ihre kostenlose Beratung": [
+        "Your free consultation"
+      ],
+      "Hinterlassen Sie Ihre Kontaktdaten und ein lokaler Experte wird sich mit Ihnen in Verbindung setzen.": [
+        "Leave your contact details and a local expert will get in touch with you."
+      ],
+      "Ihr Name": [
+        "Your name"
+      ],
+      "ihre@email.de": [
+        "your@email.com"
+      ],
+      "Ihre Telefonnummer": [
+        "Your phone number"
+      ],
+      "Optional - für schnellere Rückmeldung": [
+        "Optional - for faster response"
+      ],
+      "zu und bin mit einer Kontaktaufnahme einverstanden.": [
+        "and agree to be contacted."
+      ],
+      "Beratung anfordern": [
+        "Request consultation"
+      ],
+      "Antwort innerhalb 24h": [
+        "Response within 24h"
+      ],
+      "Unverbindlich": [
+        "Non-binding"
+      ]
+    }
+  }
+}

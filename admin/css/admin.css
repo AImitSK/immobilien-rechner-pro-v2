@@ -1079,3 +1079,419 @@
         text-align: center;
     }
 }
+
+/* =====================================================
+   Tooltip Component [?]
+   ===================================================== */
+
+.irp-tooltip {
+    position: relative;
+    display: inline-block;
+    cursor: help;
+    margin-left: 5px;
+    vertical-align: middle;
+}
+
+.irp-tooltip .dashicons {
+    color: #2271b1;
+    font-size: 16px;
+    width: 16px;
+    height: 16px;
+    line-height: 1;
+}
+
+.irp-tooltip .dashicons:hover {
+    color: #135e96;
+}
+
+.irp-tooltip-text {
+    visibility: hidden;
+    opacity: 0;
+    position: absolute;
+    z-index: 1000;
+    bottom: calc(100% + 8px);
+    left: 50%;
+    transform: translateX(-50%);
+    width: 260px;
+    background: #1d2327;
+    color: #fff;
+    padding: 10px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: normal;
+    line-height: 1.5;
+    text-align: left;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    transition: opacity 0.2s ease, visibility 0.2s ease;
+    pointer-events: none;
+}
+
+.irp-tooltip-text::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -6px;
+    border: 6px solid transparent;
+    border-top-color: #1d2327;
+}
+
+.irp-tooltip:hover .irp-tooltip-text,
+.irp-tooltip:focus .irp-tooltip-text {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* Tooltip position variants */
+.irp-tooltip-right .irp-tooltip-text {
+    left: calc(100% + 10px);
+    bottom: auto;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.irp-tooltip-right .irp-tooltip-text::after {
+    top: 50%;
+    left: -6px;
+    margin-top: -6px;
+    margin-left: 0;
+    border: 6px solid transparent;
+    border-right-color: #1d2327;
+}
+
+/* =====================================================
+   Number Input without Spinner
+   ===================================================== */
+
+.irp-number-input {
+    width: 80px;
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+    padding: 6px 10px;
+    border: 1px solid #8c8f94;
+    border-radius: 4px;
+    background: #fff;
+    font-size: 14px;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.irp-number-input:focus {
+    border-color: #2271b1;
+    box-shadow: 0 0 0 1px #2271b1;
+    outline: none;
+}
+
+.irp-number-input.irp-input-wide {
+    width: 120px;
+}
+
+.irp-number-input.irp-input-narrow {
+    width: 60px;
+}
+
+/* Input with unit suffix */
+.irp-input-group {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.irp-input-suffix {
+    color: #646970;
+    font-size: 13px;
+    white-space: nowrap;
+}
+
+/* =====================================================
+   City Accordion
+   ===================================================== */
+
+.irp-city-accordion {
+    margin-top: 20px;
+}
+
+.irp-city-item {
+    background: #fff;
+    border: 1px solid #c3c4c7;
+    border-radius: 4px;
+    margin-bottom: 12px;
+    transition: box-shadow 0.2s ease;
+}
+
+.irp-city-item:hover {
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+}
+
+.irp-city-header {
+    display: flex;
+    align-items: center;
+    padding: 14px 16px;
+    cursor: pointer;
+    gap: 12px;
+    user-select: none;
+}
+
+.irp-city-header:hover {
+    background: #f6f7f7;
+}
+
+.irp-city-toggle {
+    color: #646970;
+    transition: transform 0.2s ease;
+    font-size: 20px;
+    width: 20px;
+    height: 20px;
+}
+
+.irp-city-item.open .irp-city-toggle {
+    transform: rotate(90deg);
+}
+
+.irp-city-title {
+    font-weight: 600;
+    font-size: 14px;
+    color: #1d2327;
+    flex: 1;
+}
+
+.irp-city-header .irp-city-id {
+    background: #f0f6fc;
+    padding: 3px 10px;
+    border-radius: 3px;
+    font-size: 12px;
+    font-family: monospace;
+    color: #2271b1;
+}
+
+.irp-city-delete {
+    padding: 6px 8px;
+    background: transparent;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    cursor: pointer;
+    color: #646970;
+    transition: all 0.2s ease;
+}
+
+.irp-city-delete:hover {
+    background: #fcf0f1;
+    border-color: #d63638;
+    color: #d63638;
+}
+
+.irp-city-delete .dashicons {
+    font-size: 18px;
+    width: 18px;
+    height: 18px;
+}
+
+.irp-city-content {
+    display: none;
+    padding: 20px;
+    border-top: 1px solid #c3c4c7;
+    background: #fafafa;
+}
+
+.irp-city-item.open .irp-city-content {
+    display: block;
+}
+
+/* City field groups */
+.irp-city-group {
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    padding: 16px 20px;
+    margin-bottom: 16px;
+}
+
+.irp-city-group:last-child {
+    margin-bottom: 0;
+}
+
+.irp-city-group-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 16px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.irp-city-group-header h4 {
+    margin: 0;
+    font-size: 13px;
+    font-weight: 600;
+    color: #1d2327;
+}
+
+.irp-city-group-header .dashicons {
+    color: #2271b1;
+    font-size: 18px;
+    width: 18px;
+    height: 18px;
+}
+
+/* City field rows */
+.irp-city-field {
+    display: flex;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #f0f0f1;
+}
+
+.irp-city-field:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.irp-city-field-label {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 13px;
+    color: #1d2327;
+}
+
+.irp-city-field-input {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Add city button */
+.irp-add-city-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 10px;
+}
+
+.irp-add-city-btn .dashicons {
+    font-size: 18px;
+    width: 18px;
+    height: 18px;
+}
+
+/* =====================================================
+   Enhanced Range Slider for Multipliers
+   ===================================================== */
+
+.irp-multiplier-slider {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-width: 280px;
+}
+
+.irp-multiplier-slider input[type="range"] {
+    flex: 1;
+    -webkit-appearance: none;
+    appearance: none;
+    height: 6px;
+    background: linear-gradient(to right, #d63638 0%, #c3c4c7 40%, #c3c4c7 60%, #00a32a 100%);
+    border-radius: 3px;
+    outline: none;
+    cursor: pointer;
+}
+
+.irp-multiplier-slider input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    background: #2271b1;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    transition: transform 0.15s ease;
+}
+
+.irp-multiplier-slider input[type="range"]::-webkit-slider-thumb:hover {
+    transform: scale(1.1);
+}
+
+.irp-multiplier-slider input[type="range"]::-moz-range-thumb {
+    width: 18px;
+    height: 18px;
+    background: #2271b1;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.irp-multiplier-value {
+    min-width: 55px;
+    padding: 5px 10px;
+    background: #f0f6fc;
+    border: 1px solid #72aee6;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 13px;
+    color: #2271b1;
+    text-align: center;
+    font-variant-numeric: tabular-nums;
+}
+
+/* Impact indicator */
+.irp-impact {
+    min-width: 50px;
+    font-size: 12px;
+    font-weight: 600;
+    text-align: right;
+}
+
+.irp-impact-positive {
+    color: #00a32a;
+}
+
+.irp-impact-negative {
+    color: #d63638;
+}
+
+.irp-impact-neutral {
+    color: #646970;
+}
+
+/* =====================================================
+   Responsive Adjustments
+   ===================================================== */
+
+@media (max-width: 782px) {
+    .irp-city-field {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+
+    .irp-city-field-label {
+        width: 100%;
+    }
+
+    .irp-city-field-input {
+        width: 100%;
+    }
+
+    .irp-multiplier-slider {
+        min-width: 100%;
+        flex-wrap: wrap;
+    }
+
+    .irp-multiplier-slider input[type="range"] {
+        width: 100%;
+        order: 2;
+    }
+
+    .irp-tooltip-text {
+        width: 200px;
+        left: 0;
+        transform: none;
+    }
+
+    .irp-tooltip-text::after {
+        left: 20px;
+    }
+}

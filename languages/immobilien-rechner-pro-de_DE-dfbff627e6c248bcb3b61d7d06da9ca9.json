@@ -1,0 +1,906 @@
+{
+  "translation-revision-date": "2026-01-19T09:28:45.129Z",
+  "generator": "Claude Code",
+  "source": "build/index.js",
+  "domain": "messages",
+  "locale_data": {
+    "messages": {
+      "": {
+        "domain": "immobilien-rechner-pro",
+        "lang": "de_DE",
+        "plural-forms": "nplurals=2; plural=(n != 1);"
+      },
+      "Ein Fehler ist aufgetreten.": [
+        "Ein Fehler ist aufgetreten."
+      ],
+      "Mietwert berechnen": [
+        "Mietwert berechnen"
+      ],
+      "Erfahren Sie, wie viel Miete Sie für Ihre Immobilie verlangen können": [
+        "Erfahren Sie, wie viel Miete Sie für Ihre Immobilie verlangen können"
+      ],
+      "Ich möchte meine Immobilie vermieten": [
+        "Ich möchte meine Immobilie vermieten"
+      ],
+      "Verkaufen vs. Vermieten": [
+        "Verkaufen vs. Vermieten"
+      ],
+      "Vergleichen Sie die finanziellen Ergebnisse von Verkauf und Vermietung": [
+        "Vergleichen Sie die finanziellen Ergebnisse von Verkauf und Vermietung"
+      ],
+      "Ich bin unsicher, ob ich verkaufen oder vermieten soll": [
+        "Ich bin unsicher, ob ich verkaufen oder vermieten soll"
+      ],
+      "Was möchten Sie wissen?": [
+        "Was möchten Sie wissen?"
+      ],
+      "Wählen Sie eine Option, um mit Ihrer Immobilienanalyse zu beginnen": [
+        "Wählen Sie eine Option, um mit Ihrer Immobilienanalyse zu beginnen"
+      ],
+      "Immobilienart": [
+        "Immobilienart"
+      ],
+      "Details": [
+        "Details"
+      ],
+      "Standort": [
+        "Standort"
+      ],
+      "Zustand": [
+        "Zustand"
+      ],
+      "Lage": [
+        "Lage"
+      ],
+      "Ausstattung": [
+        "Ausstattung"
+      ],
+      "Berechnung fehlgeschlagen": [
+        "Berechnung fehlgeschlagen"
+      ],
+      "Ein Fehler ist aufgetreten": [
+        "Ein Fehler ist aufgetreten"
+      ],
+      "Zurück": [
+        "Zurück"
+      ],
+      "Berechnen": [
+        "Berechnen"
+      ],
+      "Weiter": [
+        "Weiter"
+      ],
+      "Immobilie": [
+        "Immobilie"
+      ],
+      "Finanzen": [
+        "Finanzen"
+      ],
+      "Größe": [
+        "Größe"
+      ],
+      "Qualität & Lage": [
+        "Qualität & Lage"
+      ],
+      "Adresse": [
+        "Adresse"
+      ],
+      "Vorhaben": [
+        "Vorhaben"
+      ],
+      "Vielen Dank für Ihre Anfrage!": [
+        "Vielen Dank für Ihre Anfrage!"
+      ],
+      "Ihre Daten werden jetzt von einem erfahrenen Immobilienexperten bei %s analysiert. Sie erhalten in Kürze eine ausführliche Bewertung mit detaillierten Marktdaten direkt in Ihr E-Mail-Postfach.": [
+        "Ihre Daten werden jetzt von einem erfahrenen Immobilienexperten bei %s analysiert. Sie erhalten in Kürze eine ausführliche Bewertung mit detaillierten Marktdaten direkt in Ihr E-Mail-Postfach."
+      ],
+      "Ihre Daten werden jetzt von einem erfahrenen Immobilienexperten analysiert. Sie erhalten in Kürze eine ausführliche Bewertung mit detaillierten Marktdaten direkt in Ihr E-Mail-Postfach.": [
+        "Ihre Daten werden jetzt von einem erfahrenen Immobilienexperten analysiert. Sie erhalten in Kürze eine ausführliche Bewertung mit detaillierten Marktdaten direkt in Ihr E-Mail-Postfach."
+      ],
+      "Ihre Mietwert-Schätzung": [
+        "Ihre Mietwert-Schätzung"
+      ],
+      "Basierend auf Ihren Immobiliendaten und dem Standort": [
+        "Basierend auf Ihren Immobiliendaten und dem Standort"
+      ],
+      "Geschätzte Monatsmiete": [
+        "Geschätzte Monatsmiete"
+      ],
+      "Spanne:": [
+        "Spanne:"
+      ],
+      "Preis pro m²": [
+        "Preis pro m²"
+      ],
+      "Jährliche Mieteinnahmen": [
+        "Jährliche Mieteinnahmen"
+      ],
+      "Marktposition": [
+        "Marktposition"
+      ],
+      "Neue Berechnung starten": [
+        "Neue Berechnung starten"
+      ],
+      "Kumulierte Mieteinnahmen": [
+        "Kumulierte Mieteinnahmen"
+      ],
+      "Verkaufserlös (wenn in dem Jahr verkauft)": [
+        "Verkaufserlös (wenn in dem Jahr verkauft)"
+      ],
+      "Verkaufen vs. Vermieten Vergleich": [
+        "Verkaufen vs. Vermieten Vergleich"
+      ],
+      "Wenn Sie jetzt verkaufen": [
+        "Wenn Sie jetzt verkaufen"
+      ],
+      "Nettoerlös": [
+        "Nettoerlös"
+      ],
+      "Immobilienwert": [
+        "Immobilienwert"
+      ],
+      "Verkaufskosten": [
+        "Verkaufskosten"
+      ],
+      "Hypothekenablösung": [
+        "Hypothekenablösung"
+      ],
+      "Wenn Sie vermieten": [
+        "Wenn Sie vermieten"
+      ],
+      "Jahr": [
+        "Jahr"
+      ],
+      "Netto-Mieteinnahmen": [
+        "Netto-Mieteinnahmen"
+      ],
+      "Bruttomiete": [
+        "Bruttomiete"
+      ],
+      "Leerstandsverlust": [
+        "Leerstandsverlust"
+      ],
+      "Instandhaltung": [
+        "Instandhaltung"
+      ],
+      "Bruttorendite:": [
+        "Bruttorendite:"
+      ],
+      "Nettorendite:": [
+        "Nettorendite:"
+      ],
+      "15-Jahres-Prognose": [
+        "15-Jahres-Prognose"
+      ],
+      "Break-even-Punkt:": [
+        "Break-even-Punkt:"
+      ],
+      "Jahre": [
+        "Jahre"
+      ],
+      "Unsere Einschätzung": [
+        "Unsere Einschätzung"
+      ],
+      "Ein Immobilienexperte von %s wird sich in Kürze mit Ihnen in Verbindung setzen, um eine detaillierte Bewertung Ihrer Immobilie vorzunehmen.": [
+        "Ein Immobilienexperte von %s wird sich in Kürze mit Ihnen in Verbindung setzen, um eine detaillierte Bewertung Ihrer Immobilie vorzunehmen."
+      ],
+      "Ein Immobilienexperte wird sich in Kürze mit Ihnen in Verbindung setzen, um eine detaillierte Bewertung Ihrer Immobilie vorzunehmen.": [
+        "Ein Immobilienexperte wird sich in Kürze mit Ihnen in Verbindung setzen, um eine detaillierte Bewertung Ihrer Immobilie vorzunehmen."
+      ],
+      "Mittelwert:": [
+        "Mittelwert:"
+      ],
+      "Geschätzter Verkaufswert Ihrer Immobilie": [
+        "Geschätzter Verkaufswert Ihrer Immobilie"
+      ],
+      "Ermittelt nach dem Sachwertverfahren": [
+        "Ermittelt nach dem Sachwertverfahren"
+      ],
+      "Geschätzter Verkaufspreis": [
+        "Geschätzter Verkaufspreis"
+      ],
+      "Wertermittlung": [
+        "Wertermittlung"
+      ],
+      "Grundstückswert": [
+        "Grundstückswert"
+      ],
+      "Gebäudewert": [
+        "Gebäudewert"
+      ],
+      "Marktanpassung": [
+        "Marktanpassung"
+      ],
+      "Kennzahlen": [
+        "Kennzahlen"
+      ],
+      "pro m² Wohnfläche": [
+        "pro m² Wohnfläche"
+      ],
+      "pro m² Grundstück": [
+        "pro m² Grundstück"
+      ],
+      "Angewandte Faktoren": [
+        "Angewandte Faktoren"
+      ],
+      "Haustyp": [
+        "Haustyp"
+      ],
+      "Qualität": [
+        "Qualität"
+      ],
+      "Fikt. Baujahr": [
+        "Fikt. Baujahr"
+      ],
+      "Geschätzter Verkaufswert Ihrer Wohnung": [
+        "Geschätzter Verkaufswert Ihrer Wohnung"
+      ],
+      "Ermittelt nach dem Vergleichswertverfahren": [
+        "Ermittelt nach dem Vergleichswertverfahren"
+      ],
+      "Basierend auf": [
+        "Basierend auf"
+      ],
+      "Qualität:": [
+        "Qualität:"
+      ],
+      "Lage:": [
+        "Lage:"
+      ],
+      "Vergleich Region": [
+        "Vergleich Region"
+      ],
+      "Ø Preis/m² in": [
+        "Ø Preis/m² in"
+      ],
+      "der Region": [
+        "der Region"
+      ],
+      "Ihre Wohnung": [
+        "Ihre Wohnung"
+      ],
+      "Geschätzter Wert Ihres Grundstücks": [
+        "Geschätzter Wert Ihres Grundstücks"
+      ],
+      "Ermittelt auf Basis des Bodenrichtwerts": [
+        "Ermittelt auf Basis des Bodenrichtwerts"
+      ],
+      "Geschätzter Grundstückswert": [
+        "Geschätzter Grundstückswert"
+      ],
+      "Lagefaktor": [
+        "Lagefaktor"
+      ],
+      "Bodenrichtwert pro m²": [
+        "Bodenrichtwert pro m²"
+      ],
+      "Standort:": [
+        "Standort:"
+      ],
+      "Hinweis: Diese Schätzung dient nur zur Orientierung und ersetzt keine professionelle Immobilienbewertung. Der tatsächliche Verkaufspreis kann aufgrund individueller Objektmerkmale, aktueller Marktbedingungen und Verhandlungen abweichen.": [
+        "Hinweis: Diese Schätzung dient nur zur Orientierung und ersetzt keine professionelle Immobilienbewertung. Der tatsächliche Verkaufspreis kann aufgrund individueller Objektmerkmale, aktueller Marktbedingungen und Verhandlungen abweichen."
+      ],
+      "Wohnung in einem Mehrfamilienhaus": [
+        "Wohnung in einem Mehrfamilienhaus"
+      ],
+      "Haus": [
+        "Haus"
+      ],
+      "Einfamilienhaus oder Doppelhaushälfte": [
+        "Einfamilienhaus oder Doppelhaushälfte"
+      ],
+      "Gewerbe": [
+        "Gewerbe"
+      ],
+      "Büro, Einzelhandel oder Mischnutzung": [
+        "Büro, Einzelhandel oder Mischnutzung"
+      ],
+      "Welche Art von Immobilie haben Sie?": [
+        "Welche Art von Immobilie haben Sie?"
+      ],
+      "Erzählen Sie uns von Ihrer Immobilie": [
+        "Erzählen Sie uns von Ihrer Immobilie"
+      ],
+      "Wohnfläche": [
+        "Wohnfläche"
+      ],
+      "Gesamte Wohnfläche in Quadratmetern": [
+        "Gesamte Wohnfläche in Quadratmetern"
+      ],
+      "Anzahl der Zimmer": [
+        "Anzahl der Zimmer"
+      ],
+      "Auswählen...": [
+        "Auswählen..."
+      ],
+      "Ohne Küche und Bad": [
+        "Ohne Küche und Bad"
+      ],
+      "Baujahr": [
+        "Baujahr"
+      ],
+      "Ursprüngliches Baujahr": [
+        "Ursprüngliches Baujahr"
+      ],
+      "Städte konnten nicht geladen werden": [
+        "Städte konnten nicht geladen werden"
+      ],
+      "Standort auswählen": [
+        "Standort auswählen"
+      ],
+      "Städte werden geladen...": [
+        "Städte werden geladen..."
+      ],
+      "Keine Städte konfiguriert. Bitte kontaktieren Sie den Administrator.": [
+        "Keine Städte konfiguriert. Bitte kontaktieren Sie den Administrator."
+      ],
+      "Für welche Stadt möchten Sie den Mietwert berechnen?": [
+        "Für welche Stadt möchten Sie den Mietwert berechnen?"
+      ],
+      "Stadt": [
+        "Stadt"
+      ],
+      "Bitte wählen...": [
+        "Bitte wählen..."
+      ],
+      "Berechnung für": [
+        "Berechnung für"
+      ],
+      "Neubau / Kernsaniert": [
+        "Neubau / Kernsaniert"
+      ],
+      "Neu gebaut oder vollständig saniert": [
+        "Neu gebaut oder vollständig saniert"
+      ],
+      "Kürzlich renoviert": [
+        "Kürzlich renoviert"
+      ],
+      "In den letzten 5 Jahren modernisiert": [
+        "In den letzten 5 Jahren modernisiert"
+      ],
+      "Guter Zustand": [
+        "Guter Zustand"
+      ],
+      "Gut gepflegt, bezugsfertig": [
+        "Gut gepflegt, bezugsfertig"
+      ],
+      "Renovierungsbedürftig": [
+        "Renovierungsbedürftig"
+      ],
+      "Erfordert Modernisierung oder Reparaturen": [
+        "Erfordert Modernisierung oder Reparaturen"
+      ],
+      "In welchem Zustand ist Ihre Immobilie?": [
+        "In welchem Zustand ist Ihre Immobilie?"
+      ],
+      "Wie bewerten Sie die Lage?": [
+        "Wie bewerten Sie die Lage?"
+      ],
+      "Die Lage hat einen erheblichen Einfluss auf den Mietwert.": [
+        "Die Lage hat einen erheblichen Einfluss auf den Mietwert."
+      ],
+      "Adresse der Immobilie": [
+        "Adresse der Immobilie"
+      ],
+      "optional": [
+        "optional"
+      ],
+      "Straße und Hausnummer in ": [
+        "Straße und Hausnummer in "
+      ],
+      "Adresse eingeben...": [
+        "Adresse eingeben..."
+      ],
+      "z.B. Musterstraße 123": [
+        "z.B. Musterstraße 123"
+      ],
+      "Lage-Bewertung": [
+        "Lage-Bewertung"
+      ],
+      "Einfach": [
+        "Einfach"
+      ],
+      "Premium": [
+        "Premium"
+      ],
+      "Balkon": [
+        "Balkon"
+      ],
+      "Terrasse": [
+        "Terrasse"
+      ],
+      "Garten": [
+        "Garten"
+      ],
+      "Aufzug": [
+        "Aufzug"
+      ],
+      "Stellplatz": [
+        "Stellplatz"
+      ],
+      "Garage": [
+        "Garage"
+      ],
+      "Keller": [
+        "Keller"
+      ],
+      "Einbauküche": [
+        "Einbauküche"
+      ],
+      "Fußbodenheizung": [
+        "Fußbodenheizung"
+      ],
+      "Gäste-WC": [
+        "Gäste-WC"
+      ],
+      "Barrierefrei": [
+        "Barrierefrei"
+      ],
+      "Welche Ausstattungsmerkmale hat Ihre Immobilie?": [
+        "Welche Ausstattungsmerkmale hat Ihre Immobilie?"
+      ],
+      "Wählen Sie alle zutreffenden aus. Diese können den Mietwert erhöhen.": [
+        "Wählen Sie alle zutreffenden aus. Diese können den Mietwert erhöhen."
+      ],
+      "Keine Ausstattung ausgewählt": [
+        "Keine Ausstattung ausgewählt"
+      ],
+      "Merkmal ausgewählt": [
+        "Merkmal ausgewählt"
+      ],
+      "Merkmale ausgewählt": [
+        "Merkmale ausgewählt"
+      ],
+      "Finanzielle Details": [
+        "Finanzielle Details"
+      ],
+      "Diese Informationen helfen uns, Verkauf und Vermietung genau zu vergleichen.": [
+        "Diese Informationen helfen uns, Verkauf und Vermietung genau zu vergleichen."
+      ],
+      "Geschätzter Immobilienwert": [
+        "Geschätzter Immobilienwert"
+      ],
+      "Ihre beste Schätzung des aktuellen Marktwerts": [
+        "Ihre beste Schätzung des aktuellen Marktwerts"
+      ],
+      "Restschuld Hypothek": [
+        "Restschuld Hypothek"
+      ],
+      "Offener Darlehensbetrag (falls vorhanden)": [
+        "Offener Darlehensbetrag (falls vorhanden)"
+      ],
+      "Besitzdauer": [
+        "Besitzdauer"
+      ],
+      "Wie lange Sie die Immobilie besitzen": [
+        "Wie lange Sie die Immobilie besitzen"
+      ],
+      "Hypothekenzins": [
+        "Hypothekenzins"
+      ],
+      "Warum das wichtig ist": [
+        "Warum das wichtig ist"
+      ],
+      "Immobilien, die weniger als 10 Jahre im Besitz sind, können beim Verkauf der Spekulationssteuer unterliegen. Ihre Hypothek beeinflusst sowohl den Nettoverkaufserlös als auch die laufenden Kosten der Vermietung.": [
+        "Immobilien, die weniger als 10 Jahre im Besitz sind, können beim Verkauf der Spekulationssteuer unterliegen. Ihre Hypothek beeinflusst sowohl den Nettoverkaufserlös als auch die laufenden Kosten der Vermietung."
+      ],
+      "Erweiterte Optionen": [
+        "Erweiterte Optionen"
+      ],
+      "Erwartete jährliche Wertsteigerung": [
+        "Erwartete jährliche Wertsteigerung"
+      ],
+      "Der historische Durchschnitt liegt bei etwa 2-3% pro Jahr": [
+        "Der historische Durchschnitt liegt bei etwa 2-3% pro Jahr"
+      ],
+      "Bitte geben Sie Ihren Namen ein.": [
+        "Bitte geben Sie Ihren Namen ein."
+      ],
+      "Bitte geben Sie Ihre E-Mail-Adresse ein.": [
+        "Bitte geben Sie Ihre E-Mail-Adresse ein."
+      ],
+      "Bitte geben Sie eine gültige E-Mail-Adresse ein.": [
+        "Bitte geben Sie eine gültige E-Mail-Adresse ein."
+      ],
+      "Bitte stimmen Sie der Datenschutzerklärung zu.": [
+        "Bitte stimmen Sie der Datenschutzerklärung zu."
+      ],
+      "Fast geschafft!": [
+        "Fast geschafft!"
+      ],
+      "Geben Sie Ihre Kontaktdaten ein, um Ihre persönliche Bewertung zu erhalten.": [
+        "Geben Sie Ihre Kontaktdaten ein, um Ihre persönliche Bewertung zu erhalten."
+      ],
+      "Name": [
+        "Name"
+      ],
+      "Max Mustermann": [
+        "Max Mustermann"
+      ],
+      "E-Mail": [
+        "E-Mail"
+      ],
+      "max@beispiel.de": [
+        "max@beispiel.de"
+      ],
+      "Telefon": [
+        "Telefon"
+      ],
+      "+49 123 456789": [
+        "+49 123 456789"
+      ],
+      "Ich stimme der": [
+        "Ich stimme der"
+      ],
+      "Datenschutzerklärung": [
+        "Datenschutzerklärung"
+      ],
+      "zu.": [
+        "zu."
+      ],
+      "Ich möchte den Newsletter mit Immobilien-Tipps erhalten.": [
+        "Ich möchte den Newsletter mit Immobilien-Tipps erhalten."
+      ],
+      "Wird gesendet...": [
+        "Wird gesendet..."
+      ],
+      "Bewertung anzeigen": [
+        "Bewertung anzeigen"
+      ],
+      "Ihre Daten sind sicher": [
+        "Ihre Daten sind sicher"
+      ],
+      "Kostenlos & unverbindlich": [
+        "Kostenlos & unverbindlich"
+      ],
+      "Diese Seite ist durch reCAPTCHA geschützt. Es gelten die": [
+        "Diese Seite ist durch reCAPTCHA geschützt. Es gelten die"
+      ],
+      "und": [
+        "und"
+      ],
+      "Nutzungsbedingungen": [
+        "Nutzungsbedingungen"
+      ],
+      "von Google.": [
+        "von Google."
+      ],
+      "Daten werden analysiert...": [
+        "Daten werden analysiert..."
+      ],
+      "Marktdaten werden abgerufen...": [
+        "Marktdaten werden abgerufen..."
+      ],
+      "Mietwert wird berechnet...": [
+        "Mietwert wird berechnet..."
+      ],
+      "Ihre Berechnung wird vorbereitet": [
+        "Ihre Berechnung wird vorbereitet"
+      ],
+      "Grundstück": [
+        "Grundstück"
+      ],
+      "Unbebautes Grundstück": [
+        "Unbebautes Grundstück"
+      ],
+      "Eigentumswohnung in einem Mehrfamilienhaus": [
+        "Eigentumswohnung in einem Mehrfamilienhaus"
+      ],
+      "Einfamilienhaus, Reihenhaus oder Mehrfamilienhaus": [
+        "Einfamilienhaus, Reihenhaus oder Mehrfamilienhaus"
+      ],
+      "Einfamilienhaus": [
+        "Einfamilienhaus"
+      ],
+      "Doppelhaushälfte": [
+        "Doppelhaushälfte"
+      ],
+      "Endreihenhaus": [
+        "Endreihenhaus"
+      ],
+      "Mittelreihenhaus": [
+        "Mittelreihenhaus"
+      ],
+      "Mehrfamilienhaus": [
+        "Mehrfamilienhaus"
+      ],
+      "Bungalow": [
+        "Bungalow"
+      ],
+      "Welche Art von Immobilie möchten Sie bewerten?": [
+        "Welche Art von Immobilie möchten Sie bewerten?"
+      ],
+      "Um welchen Haustyp handelt es sich?": [
+        "Um welchen Haustyp handelt es sich?"
+      ],
+      "Vor 1-3 Jahren": [
+        "Vor 1-3 Jahren"
+      ],
+      "Kernsanierung / umfassende Modernisierung": [
+        "Kernsanierung / umfassende Modernisierung"
+      ],
+      "Vor 4-9 Jahren": [
+        "Vor 4-9 Jahren"
+      ],
+      "Größere Modernisierungsmaßnahmen": [
+        "Größere Modernisierungsmaßnahmen"
+      ],
+      "Vor 10-15 Jahren": [
+        "Vor 10-15 Jahren"
+      ],
+      "Mittlere Modernisierung": [
+        "Mittlere Modernisierung"
+      ],
+      "Vor mehr als 15 Jahren": [
+        "Vor mehr als 15 Jahren"
+      ],
+      "Ältere Modernisierung": [
+        "Ältere Modernisierung"
+      ],
+      "Noch nie": [
+        "Noch nie"
+      ],
+      "Originalzustand": [
+        "Originalzustand"
+      ],
+      "Wie groß ist Ihr Grundstück?": [
+        "Wie groß ist Ihr Grundstück?"
+      ],
+      "Angaben zu Größe und Baujahr": [
+        "Angaben zu Größe und Baujahr"
+      ],
+      "Grundstücksfläche": [
+        "Grundstücksfläche"
+      ],
+      "Die Größe des Grundstücks lt. Grundbuch": [
+        "Die Größe des Grundstücks lt. Grundbuch"
+      ],
+      "Die Wohnfläche gemäß Wohnflächenberechnung": [
+        "Die Wohnfläche gemäß Wohnflächenberechnung"
+      ],
+      "Das Jahr der ursprünglichen Fertigstellung": [
+        "Das Jahr der ursprünglichen Fertigstellung"
+      ],
+      "Wann wurde zuletzt umfassend modernisiert?": [
+        "Wann wurde zuletzt umfassend modernisiert?"
+      ],
+      "Eine umfassende Modernisierung wirkt sich positiv auf den Wert aus.": [
+        "Eine umfassende Modernisierung wirkt sich positiv auf den Wert aus."
+      ],
+      "Solaranlage": [
+        "Solaranlage"
+      ],
+      "Dachboden": [
+        "Dachboden"
+      ],
+      "Kamin": [
+        "Kamin"
+      ],
+      "Parkettboden": [
+        "Parkettboden"
+      ],
+      "Ausstattungsmerkmale": [
+        "Ausstattungsmerkmale"
+      ],
+      "Für unbebaute Grundstücke werden keine Ausstattungsmerkmale erfasst.": [
+        "Für unbebaute Grundstücke werden keine Ausstattungsmerkmale erfasst."
+      ],
+      "Welche Ausstattung hat Ihre Immobilie?": [
+        "Welche Ausstattung hat Ihre Immobilie?"
+      ],
+      "Wählen Sie alle zutreffenden Merkmale aus. Diese erhöhen den geschätzten Verkaufswert.": [
+        "Wählen Sie alle zutreffenden Merkmale aus. Diese erhöhen den geschätzten Verkaufswert."
+      ],
+      "Außenbereich": [
+        "Außenbereich"
+      ],
+      "Innenbereich": [
+        "Innenbereich"
+      ],
+      "Einfache Ausstattung, Standardmaterialien": [
+        "Einfache Ausstattung, Standardmaterialien"
+      ],
+      "Normal": [
+        "Normal"
+      ],
+      "Durchschnittliche Ausstattung und Materialien": [
+        "Durchschnittliche Ausstattung und Materialien"
+      ],
+      "Gehoben": [
+        "Gehoben"
+      ],
+      "Hochwertige Ausstattung und Materialien": [
+        "Hochwertige Ausstattung und Materialien"
+      ],
+      "Luxuriös": [
+        "Luxuriös"
+      ],
+      "Erstklassige Ausstattung, exklusive Materialien": [
+        "Erstklassige Ausstattung, exklusive Materialien"
+      ],
+      "Einfache Lage": [
+        "Einfache Lage"
+      ],
+      "Weniger begehrte Wohngegend, einfache Infrastruktur": [
+        "Weniger begehrte Wohngegend, einfache Infrastruktur"
+      ],
+      "Normale Lage": [
+        "Normale Lage"
+      ],
+      "Durchschnittliche Wohnlage mit guter Versorgung": [
+        "Durchschnittliche Wohnlage mit guter Versorgung"
+      ],
+      "Gute Lage": [
+        "Gute Lage"
+      ],
+      "Beliebte Wohngegend, gute Anbindung": [
+        "Beliebte Wohngegend, gute Anbindung"
+      ],
+      "Sehr gute Lage": [
+        "Sehr gute Lage"
+      ],
+      "Begehrte Wohngegend, sehr gute Infrastruktur": [
+        "Begehrte Wohngegend, sehr gute Infrastruktur"
+      ],
+      "Premium-Lage": [
+        "Premium-Lage"
+      ],
+      "Erstklassige Wohngegend, exzellente Ausstattung": [
+        "Erstklassige Wohngegend, exzellente Ausstattung"
+      ],
+      "Wie würden Sie die Bauqualität einschätzen?": [
+        "Wie würden Sie die Bauqualität einschätzen?"
+      ],
+      "Die Qualität der Bauausführung und verwendeten Materialien.": [
+        "Die Qualität der Bauausführung und verwendeten Materialien."
+      ],
+      "Wie bewerten Sie die Lage des Grundstücks?": [
+        "Wie bewerten Sie die Lage des Grundstücks?"
+      ],
+      "Wie bewerten Sie die Lage der Immobilie?": [
+        "Wie bewerten Sie die Lage der Immobilie?"
+      ],
+      "Die Lage hat erheblichen Einfluss auf den Verkaufswert.": [
+        "Die Lage hat erheblichen Einfluss auf den Verkaufswert."
+      ],
+      "Wo befindet sich die Immobilie?": [
+        "Wo befindet sich die Immobilie?"
+      ],
+      "Die genaue Adresse wird für die Bewertung und Kontaktaufnahme benötigt.": [
+        "Die genaue Adresse wird für die Bewertung und Kontaktaufnahme benötigt."
+      ],
+      "PLZ": [
+        "PLZ"
+      ],
+      "z.B. Berlin": [
+        "z.B. Berlin"
+      ],
+      "Straße und Hausnummer": [
+        "Straße und Hausnummer"
+      ],
+      "Straße und Hausnummer...": [
+        "Straße und Hausnummer..."
+      ],
+      "Tippen Sie die Adresse ein für Vorschläge.": [
+        "Tippen Sie die Adresse ein für Vorschläge."
+      ],
+      "Die Adresse wird vertraulich behandelt und nur für die Bewertung verwendet.": [
+        "Die Adresse wird vertraulich behandelt und nur für die Bewertung verwendet."
+      ],
+      "Selbstgenutzt": [
+        "Selbstgenutzt"
+      ],
+      "Sie wohnen selbst in der Immobilie": [
+        "Sie wohnen selbst in der Immobilie"
+      ],
+      "Vermietet": [
+        "Vermietet"
+      ],
+      "Die Immobilie ist aktuell vermietet": [
+        "Die Immobilie ist aktuell vermietet"
+      ],
+      "Leerstand": [
+        "Leerstand"
+      ],
+      "Die Immobilie steht derzeit leer": [
+        "Die Immobilie steht derzeit leer"
+      ],
+      "Verkaufen": [
+        "Verkaufen"
+      ],
+      "Ich möchte die Immobilie verkaufen": [
+        "Ich möchte die Immobilie verkaufen"
+      ],
+      "Kaufen": [
+        "Kaufen"
+      ],
+      "Ich möchte eine Immobilie kaufen": [
+        "Ich möchte eine Immobilie kaufen"
+      ],
+      "Sofort": [
+        "Sofort"
+      ],
+      "So schnell wie möglich": [
+        "So schnell wie möglich"
+      ],
+      "In 3 Monaten": [
+        "In 3 Monaten"
+      ],
+      "Kurzfristig": [
+        "Kurzfristig"
+      ],
+      "In 6 Monaten": [
+        "In 6 Monaten"
+      ],
+      "Mittelfristig": [
+        "Mittelfristig"
+      ],
+      "In 12 Monaten": [
+        "In 12 Monaten"
+      ],
+      "Langfristig": [
+        "Langfristig"
+      ],
+      "Noch offen": [
+        "Noch offen"
+      ],
+      "Kein fester Zeitplan": [
+        "Kein fester Zeitplan"
+      ],
+      "Wie wird die Immobilie aktuell genutzt?": [
+        "Wie wird die Immobilie aktuell genutzt?"
+      ],
+      "Was ist Ihr Ziel?": [
+        "Was ist Ihr Ziel?"
+      ],
+      "Was möchten Sie tun?": [
+        "Was möchten Sie tun?"
+      ],
+      "Wann möchten Sie aktiv werden?": [
+        "Wann möchten Sie aktiv werden?"
+      ],
+      "E-Mail ist erforderlich": [
+        "E-Mail ist erforderlich"
+      ],
+      "Bitte geben Sie eine gültige E-Mail-Adresse ein": [
+        "Bitte geben Sie eine gültige E-Mail-Adresse ein"
+      ],
+      "Sie müssen der Datenschutzerklärung zustimmen": [
+        "Sie müssen der Datenschutzerklärung zustimmen"
+      ],
+      "Übermittlung fehlgeschlagen": [
+        "Übermittlung fehlgeschlagen"
+      ],
+      "Ihre kostenlose Beratung": [
+        "Ihre kostenlose Beratung"
+      ],
+      "Hinterlassen Sie Ihre Kontaktdaten und ein lokaler Experte wird sich mit Ihnen in Verbindung setzen.": [
+        "Hinterlassen Sie Ihre Kontaktdaten und ein lokaler Experte wird sich mit Ihnen in Verbindung setzen."
+      ],
+      "Ihr Name": [
+        "Ihr Name"
+      ],
+      "ihre@email.de": [
+        "ihre@email.de"
+      ],
+      "Ihre Telefonnummer": [
+        "Ihre Telefonnummer"
+      ],
+      "Optional - für schnellere Rückmeldung": [
+        "Optional - für schnellere Rückmeldung"
+      ],
+      "zu und bin mit einer Kontaktaufnahme einverstanden.": [
+        "zu und bin mit einer Kontaktaufnahme einverstanden."
+      ],
+      "Beratung anfordern": [
+        "Beratung anfordern"
+      ],
+      "Antwort innerhalb 24h": [
+        "Antwort innerhalb 24h"
+      ],
+      "Unverbindlich": [
+        "Unverbindlich"
+      ]
+    }
+  }
+}

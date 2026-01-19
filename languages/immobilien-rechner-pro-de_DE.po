@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Immobilien Rechner Pro 2.1.1\n"
 "Report-Msgid-Bugs-To: https://github.com/AImitSK/immobilien-rechner-pro-v2/issues\n"
-"POT-Creation-Date: 2024-01-18T12:00:00+00:00\n"
-"PO-Revision-Date: 2024-01-18T12:00:00+00:00\n"
+"POT-Creation-Date: 2026-01-19T12:00:00+00:00\n"
+"PO-Revision-Date: 2026-01-19T12:00:00+00:00\n"
 "Last-Translator: Stefan Kühne <info@sk-online-marketing.de>\n"
 "Language-Team: German <de@li.org>\n"
 "Language: de_DE\n"
@@ -1222,3 +1222,439 @@ msgstr "Antwort innerhalb 24h"
 #: src/components/LeadForm.js
 msgid "Unverbindlich"
 msgstr "Unverbindlich"
+
+#. ============================================
+#. Admin Backend Strings (matrix.php)
+#. ============================================
+
+#: admin/views/matrix.php
+msgid "Matrix & Daten"
+msgstr "Matrix & Daten"
+
+#: admin/views/matrix.php
+msgid "Städte"
+msgstr "Städte"
+
+#: admin/views/matrix.php
+msgid "Lage-Faktoren"
+msgstr "Lage-Faktoren"
+
+#: admin/views/matrix.php
+msgid "Mietwert"
+msgstr "Mietwert"
+
+#: admin/views/matrix.php
+msgid "Verkaufswert"
+msgstr "Verkaufswert"
+
+#: admin/views/matrix.php
+msgid "Globale Parameter"
+msgstr "Globale Parameter"
+
+#. City Accordion - Group Headers
+#: admin/views/matrix.php
+msgid "Basisdaten"
+msgstr "Basisdaten"
+
+#: admin/views/matrix.php
+msgid "Mietwert-Parameter"
+msgstr "Mietwert-Parameter"
+
+#: admin/views/matrix.php
+msgid "Verkaufswert-Parameter"
+msgstr "Verkaufswert-Parameter"
+
+#. City Accordion - Fields
+#: admin/views/matrix.php
+msgid "Stadt-ID"
+msgstr "Stadt-ID"
+
+#: admin/views/matrix.php
+msgid "Basis-Mietpreis"
+msgstr "Basis-Mietpreis"
+
+#: admin/views/matrix.php
+msgid "Größendegression"
+msgstr "Größendegression"
+
+#: admin/views/matrix.php
+msgid "Vervielfältiger"
+msgstr "Vervielfältiger"
+
+#: admin/views/matrix.php
+msgid "Bodenrichtwert"
+msgstr "Bodenrichtwert"
+
+#: admin/views/matrix.php
+msgid "Gebäude"
+msgstr "Gebäude"
+
+#: admin/views/matrix.php
+msgid "Wohnung"
+msgstr "Wohnung"
+
+#: admin/views/matrix.php
+msgid "Marktfaktor"
+msgstr "Marktfaktor"
+
+#. City Accordion - Tooltips
+#: admin/views/matrix.php
+msgid "Wird automatisch aus dem Namen generiert. Nur Kleinbuchstaben, keine Umlaute oder Sonderzeichen."
+msgstr "Wird automatisch aus dem Namen generiert. Nur Kleinbuchstaben, keine Umlaute oder Sonderzeichen."
+
+#: admin/views/matrix.php
+msgid "Ausgangspreis für eine 70m² Referenzwohnung in durchschnittlicher Lage und normalem Zustand."
+msgstr "Ausgangspreis für eine 70m² Referenzwohnung in durchschnittlicher Lage und normalem Zustand."
+
+#: admin/views/matrix.php
+msgid "Steuert wie stark der m²-Preis bei größeren Wohnungen sinkt. 0.20 = Standard, 0 = keine Anpassung."
+msgstr "Steuert wie stark der m²-Preis bei größeren Wohnungen sinkt. 0.20 = Standard, 0 = keine Anpassung."
+
+#: admin/views/matrix.php
+msgid "Anzahl Jahresnettokaltmieten für den Kaufpreis. Bei 1.000€/Monat und Faktor 25 → 300.000€ Kaufpreis."
+msgstr "Anzahl Jahresnettokaltmieten für den Kaufpreis. Bei 1.000€/Monat und Faktor 25 → 300.000€ Kaufpreis."
+
+#: admin/views/matrix.php
+msgid "Durchschnittlicher Grundstückspreis pro m² in dieser Stadt (vom Gutachterausschuss)."
+msgstr "Durchschnittlicher Grundstückspreis pro m² in dieser Stadt (vom Gutachterausschuss)."
+
+#: admin/views/matrix.php
+msgid "Normalherstellungskosten für Wohngebäude - Neubaukosten pro m² Wohnfläche."
+msgstr "Normalherstellungskosten für Wohngebäude - Neubaukosten pro m² Wohnfläche."
+
+#: admin/views/matrix.php
+msgid "Durchschnittlicher Verkaufspreis pro m² für Eigentumswohnungen in dieser Stadt."
+msgstr "Durchschnittlicher Verkaufspreis pro m² für Eigentumswohnungen in dieser Stadt."
+
+#: admin/views/matrix.php
+msgid "Marktanpassung: 0.8 = schwacher Markt, 1.0 = normal, 1.2+ = Boom-Markt."
+msgstr "Marktanpassung: 0.8 = schwacher Markt, 1.0 = normal, 1.2+ = Boom-Markt."
+
+#: admin/views/matrix.php
+msgid "Stadt hinzufügen"
+msgstr "Stadt hinzufügen"
+
+#. Location Rating Tab - Tooltips
+#: admin/views/matrix.php
+msgid "Stufe"
+msgstr "Stufe"
+
+#: admin/views/matrix.php
+msgid "Bezeichnung"
+msgstr "Bezeichnung"
+
+#: admin/views/matrix.php
+msgid "Faktor"
+msgstr "Faktor"
+
+#: admin/views/matrix.php
+msgid "Auswirkung"
+msgstr "Auswirkung"
+
+#: admin/views/matrix.php
+msgid "Beschreibung"
+msgstr "Beschreibung"
+
+#: admin/views/matrix.php
+msgid "Bewertungsstufe von 1 (einfach) bis 5 (sehr gut). Im Rechner als Sterne dargestellt."
+msgstr "Bewertungsstufe von 1 (einfach) bis 5 (sehr gut). Im Rechner als Sterne dargestellt."
+
+#: admin/views/matrix.php
+msgid "Angezeigter Name der Lagestufe im Rechner (z.B. \"Sehr gute Lage\")."
+msgstr "Angezeigter Name der Lagestufe im Rechner (z.B. \"Sehr gute Lage\")."
+
+#: admin/views/matrix.php
+msgid "Multiplikator für den Mietpreis. 1.0 = Basis, 0.9 = -10%, 1.2 = +20%."
+msgstr "Multiplikator für den Mietpreis. 1.0 = Basis, 0.9 = -10%, 1.2 = +20%."
+
+#: admin/views/matrix.php
+msgid "Prozentuale Auswirkung auf den Mietpreis (automatisch berechnet)."
+msgstr "Prozentuale Auswirkung auf den Mietpreis (automatisch berechnet)."
+
+#: admin/views/matrix.php
+msgid "Kriterien für diese Lagestufe. Jede Zeile wird als Aufzählungspunkt angezeigt."
+msgstr "Kriterien für diese Lagestufe. Jede Zeile wird als Aufzählungspunkt angezeigt."
+
+#. Mietwert Tab - Condition Multipliers
+#: admin/views/matrix.php
+msgid "Zustands-Multiplikatoren"
+msgstr "Zustands-Multiplikatoren"
+
+#: admin/views/matrix.php
+msgid "Allgemeiner Zustand der Wohnung (Saniert, Renoviert, Normal, etc.)."
+msgstr "Allgemeiner Zustand der Wohnung (Saniert, Renoviert, Normal, etc.)."
+
+#: admin/views/matrix.php
+msgid "Faktor für den Mietpreis. 1.0 = Basis, 1.25 = +25%, 0.85 = -15%."
+msgstr "Faktor für den Mietpreis. 1.0 = Basis, 1.25 = +25%, 0.85 = -15%."
+
+#. Mietwert Tab - Type Multipliers
+#: admin/views/matrix.php
+msgid "Objekttyp-Multiplikatoren"
+msgstr "Objekttyp-Multiplikatoren"
+
+#: admin/views/matrix.php
+msgid "Art der Immobilie (Wohnung, Haus, Maisonette, etc.)."
+msgstr "Art der Immobilie (Wohnung, Haus, Maisonette, etc.)."
+
+#: admin/views/matrix.php
+msgid "Faktor für den Mietpreis. Einfamilienhäuser oft höher als Geschosswohnungen."
+msgstr "Faktor für den Mietpreis. Einfamilienhäuser oft höher als Geschosswohnungen."
+
+#. Mietwert Tab - Age Multipliers
+#: admin/views/matrix.php
+msgid "Baualters-Multiplikatoren"
+msgstr "Baualters-Multiplikatoren"
+
+#: admin/views/matrix.php
+msgid "Baualtersklasse"
+msgstr "Baualtersklasse"
+
+#: admin/views/matrix.php
+msgid "Zeitraum"
+msgstr "Zeitraum"
+
+#: admin/views/matrix.php
+msgid "Zeitliche Einordnung nach typischen Baualtersklassen deutscher Mietspiegel."
+msgstr "Zeitliche Einordnung nach typischen Baualtersklassen deutscher Mietspiegel."
+
+#: admin/views/matrix.php
+msgid "Baujahr-Spanne für diese Kategorie."
+msgstr "Baujahr-Spanne für diese Kategorie."
+
+#: admin/views/matrix.php
+msgid "Faktor für den Mietpreis basierend auf dem Baualter."
+msgstr "Faktor für den Mietpreis basierend auf dem Baualter."
+
+#. Mietwert Tab - Feature Premiums
+#: admin/views/matrix.php
+msgid "Ausstattungs-Zuschläge"
+msgstr "Ausstattungs-Zuschläge"
+
+#: admin/views/matrix.php
+msgid "Ausstattungsmerkmal"
+msgstr "Ausstattungsmerkmal"
+
+#: admin/views/matrix.php
+msgid "Zuschlag (€/m²)"
+msgstr "Zuschlag (€/m²)"
+
+#: admin/views/matrix.php
+msgid "Bei 70m² Wohnung"
+msgstr "Bei 70m² Wohnung"
+
+#: admin/views/matrix.php
+msgid "Besondere Ausstattungsmerkmale die den Mietwert erhöhen."
+msgstr "Besondere Ausstattungsmerkmale die den Mietwert erhöhen."
+
+#: admin/views/matrix.php
+msgid "Betrag der pro m² zum Basis-Mietpreis addiert wird."
+msgstr "Betrag der pro m² zum Basis-Mietpreis addiert wird."
+
+#: admin/views/matrix.php
+msgid "Monatlicher Mehrwert für eine Referenzwohnung (automatisch berechnet)."
+msgstr "Monatlicher Mehrwert für eine Referenzwohnung (automatisch berechnet)."
+
+#. Verkaufswert Tab - House Type Multipliers
+#: admin/views/matrix.php
+msgid "Haustyp-Multiplikatoren"
+msgstr "Haustyp-Multiplikatoren"
+
+#: admin/views/matrix.php
+msgid "Art des Gebäudes (Freistehendes EFH, DHH, Reihenhaus, etc.)."
+msgstr "Art des Gebäudes (Freistehendes EFH, DHH, Reihenhaus, etc.)."
+
+#: admin/views/matrix.php
+msgid "Faktor für den Gebäudewert. Freistehende Häuser meist höher bewertet."
+msgstr "Faktor für den Gebäudewert. Freistehende Häuser meist höher bewertet."
+
+#: admin/views/matrix.php
+msgid "Prozentuale Auswirkung auf den Gebäudewert (automatisch berechnet)."
+msgstr "Prozentuale Auswirkung auf den Gebäudewert (automatisch berechnet)."
+
+#. Verkaufswert Tab - Quality Multipliers
+#: admin/views/matrix.php
+msgid "Qualitäts-Multiplikatoren"
+msgstr "Qualitäts-Multiplikatoren"
+
+#: admin/views/matrix.php
+msgid "Qualitätsstufe"
+msgstr "Qualitätsstufe"
+
+#: admin/views/matrix.php
+msgid "Bauausführungsqualität nach ImmoWertV (Einfach, Mittel, Gehoben, Luxus)."
+msgstr "Bauausführungsqualität nach ImmoWertV (Einfach, Mittel, Gehoben, Luxus)."
+
+#: admin/views/matrix.php
+msgid "Faktor für Normalherstellungskosten. Gehobene Qualität = höhere Baukosten."
+msgstr "Faktor für Normalherstellungskosten. Gehobene Qualität = höhere Baukosten."
+
+#. Verkaufswert Tab - Modernization
+#: admin/views/matrix.php
+msgid "Modernisierung → Fiktives Baujahr"
+msgstr "Modernisierung → Fiktives Baujahr"
+
+#: admin/views/matrix.php
+msgid "Modernisierung"
+msgstr "Modernisierung"
+
+#: admin/views/matrix.php
+msgid "Jahres-Verschiebung"
+msgstr "Jahres-Verschiebung"
+
+#: admin/views/matrix.php
+msgid "Erklärung"
+msgstr "Erklärung"
+
+#: admin/views/matrix.php
+msgid "Art und Zeitpunkt der durchgeführten Modernisierungsmaßnahmen."
+msgstr "Art und Zeitpunkt der durchgeführten Modernisierungsmaßnahmen."
+
+#: admin/views/matrix.php
+msgid "Um wie viele Jahre das fiktive Baujahr nach vorne verschoben wird."
+msgstr "Um wie viele Jahre das fiktive Baujahr nach vorne verschoben wird."
+
+#: admin/views/matrix.php
+msgid "Auswirkung auf die Alterswertminderung (automatisch berechnet)."
+msgstr "Auswirkung auf die Alterswertminderung (automatisch berechnet)."
+
+#. Verkaufswert Tab - Age Depreciation
+#: admin/views/matrix.php
+msgid "Altersabschlag"
+msgstr "Altersabschlag"
+
+#: admin/views/matrix.php
+msgid "Abschlag pro Jahr"
+msgstr "Abschlag pro Jahr"
+
+#: admin/views/matrix.php
+msgid "Maximaler Abschlag"
+msgstr "Maximaler Abschlag"
+
+#: admin/views/matrix.php
+msgid "Basisjahr"
+msgstr "Basisjahr"
+
+#: admin/views/matrix.php
+msgid "Jährliche Wertminderung des Gebäudes durch Alterung (ImmoWertV-konform)."
+msgstr "Jährliche Wertminderung des Gebäudes durch Alterung (ImmoWertV-konform)."
+
+#: admin/views/matrix.php
+msgid "Obergrenze der Alterswertminderung. Auch alte Gebäude behalten einen Restwert."
+msgstr "Obergrenze der Alterswertminderung. Auch alte Gebäude behalten einen Restwert."
+
+#: admin/views/matrix.php
+msgid "Bezugsjahr für die Altersberechnung. Bei Wertermittlung meist das aktuelle Jahr."
+msgstr "Bezugsjahr für die Altersberechnung. Bei Wertermittlung meist das aktuelle Jahr."
+
+#. Verkaufswert Tab - Sale Features
+#: admin/views/matrix.php
+msgid "Ausstattungs-Zuschläge (Verkaufswert)"
+msgstr "Ausstattungs-Zuschläge (Verkaufswert)"
+
+#: admin/views/matrix.php
+msgid "Außenausstattung"
+msgstr "Außenausstattung"
+
+#: admin/views/matrix.php
+msgid "Innenausstattung"
+msgstr "Innenausstattung"
+
+#: admin/views/matrix.php
+msgid "Außenanlagen und Nebengebäude die den Verkaufswert erhöhen."
+msgstr "Außenanlagen und Nebengebäude die den Verkaufswert erhöhen."
+
+#: admin/views/matrix.php
+msgid "Wertsteigernde Innenausstattung und technische Anlagen."
+msgstr "Wertsteigernde Innenausstattung und technische Anlagen."
+
+#: admin/views/matrix.php
+msgid "Absoluter Wert der zum Verkaufspreis addiert wird."
+msgstr "Absoluter Wert der zum Verkaufspreis addiert wird."
+
+#. Global Parameters Tab
+#: admin/views/matrix.php
+msgid "Globale Berechnungsparameter"
+msgstr "Globale Berechnungsparameter"
+
+#: admin/views/matrix.php
+msgid "Kapitalanlage-Zinssatz"
+msgstr "Kapitalanlage-Zinssatz"
+
+#: admin/views/matrix.php
+msgid "Wertsteigerung Immobilie"
+msgstr "Wertsteigerung Immobilie"
+
+#: admin/views/matrix.php
+msgid "Jährliche Mietsteigerung"
+msgstr "Jährliche Mietsteigerung"
+
+#: admin/views/matrix.php
+msgid "Instandhaltungsrate"
+msgstr "Instandhaltungsrate"
+
+#: admin/views/matrix.php
+msgid "Leerstandsrate"
+msgstr "Leerstandsrate"
+
+#: admin/views/matrix.php
+msgid "Maklerprovision"
+msgstr "Maklerprovision"
+
+#: admin/views/matrix.php
+msgid "Vergleichszinssatz für alternative Kapitalanlage des Verkaufserlöses (z.B. Festgeld, Anleihen)."
+msgstr "Vergleichszinssatz für alternative Kapitalanlage des Verkaufserlöses (z.B. Festgeld, Anleihen)."
+
+#: admin/views/matrix.php
+msgid "Angenommene jährliche Wertsteigerung der Immobilie für die 30-Jahres-Prognose."
+msgstr "Angenommene jährliche Wertsteigerung der Immobilie für die 30-Jahres-Prognose."
+
+#: admin/views/matrix.php
+msgid "Angenommene jährliche Mieterhöhung für die Vergleichsrechnung (Verkaufen vs. Vermieten)."
+msgstr "Angenommene jährliche Mieterhöhung für die Vergleichsrechnung (Verkaufen vs. Vermieten)."
+
+#: admin/views/matrix.php
+msgid "Jährliche Rücklagen für Reparaturen und Instandhaltung (% vom Immobilienwert)."
+msgstr "Jährliche Rücklagen für Reparaturen und Instandhaltung (% vom Immobilienwert)."
+
+#: admin/views/matrix.php
+msgid "Erwarteter Mietausfall durch Leerstand oder Mieterwechsel pro Jahr."
+msgstr "Erwarteter Mietausfall durch Leerstand oder Mieterwechsel pro Jahr."
+
+#: admin/views/matrix.php
+msgid "Übliche Maklergebühr bei Immobilienverkauf in Ihrer Region."
+msgstr "Übliche Maklergebühr bei Immobilienverkauf in Ihrer Region."
+
+#: admin/views/matrix.php
+msgid "Änderungen speichern"
+msgstr "Änderungen speichern"
+
+#. Info Box Hints
+#: admin/views/matrix.php
+msgid "Hinweise zur Städte-Konfiguration"
+msgstr "Hinweise zur Städte-Konfiguration"
+
+#: admin/views/matrix.php
+msgid "Hinweise:"
+msgstr "Hinweise:"
+
+#: admin/views/matrix.php
+msgid "Hinweise zu Baualtersklassen:"
+msgstr "Hinweise zu Baualtersklassen:"
+
+#: admin/views/matrix.php
+msgid "Hinweise zur Verkaufswertberechnung"
+msgstr "Hinweise zur Verkaufswertberechnung"
+
+#. Admin JavaScript i18n (admin.js)
+#: admin/js/admin.js
+msgid "Neue Stadt"
+msgstr "Neue Stadt"
+
+#: admin/js/admin.js
+msgid "Stadt löschen"
+msgstr "Stadt löschen"
+
+#: admin/js/admin.js
+msgid "Stadt \"{city}\" wirklich löschen?"
+msgstr "Stadt \"{city}\" wirklich löschen?"

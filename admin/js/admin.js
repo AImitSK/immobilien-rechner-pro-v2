@@ -450,6 +450,380 @@
                 }
             });
         });
+
+        // =====================================================
+        // City Accordion
+        // =====================================================
+
+        // Toggle city accordion
+        $(document).on('click', '.irp-city-header', function(e) {
+            // Don't toggle if clicking on delete button or input
+            if ($(e.target).closest('.irp-city-delete, input, button').length) {
+                return;
+            }
+            $(this).closest('.irp-city-item').toggleClass('open');
+        });
+
+        // Open first city by default
+        $('.irp-city-accordion .irp-city-item:first').addClass('open');
+
+        // Add new city (accordion version)
+        $(document).on('click', '.irp-add-city-btn', function() {
+            var $accordion = $('.irp-city-accordion');
+            var $items = $accordion.find('.irp-city-item');
+            var newIndex = 0;
+
+            // Find highest index
+            $items.each(function() {
+                var idx = parseInt($(this).data('city-index')) || 0;
+                if (idx >= newIndex) {
+                    newIndex = idx + 1;
+                }
+            });
+
+            var newCity = createCityAccordionItem(newIndex);
+            $accordion.append(newCity);
+
+            // Close all others and open new one
+            $items.removeClass('open');
+            $accordion.find('.irp-city-item:last').addClass('open');
+
+            // Focus on name input
+            $accordion.find('.irp-city-item:last input[name*="[name]"]').focus();
+        });
+
+        // Remove city (accordion version)
+        $(document).on('click', '.irp-city-accordion .irp-city-delete', function(e) {
+            e.stopPropagation();
+            var $accordion = $('.irp-city-accordion');
+            var $items = $accordion.find('.irp-city-item');
+
+            if ($items.length <= 1) {
+                alert(irpAdmin.i18n.minOneCity || 'Sie müssen mindestens eine Stadt konfiguriert haben.');
+                return;
+            }
+
+            var $item = $(this).closest('.irp-city-item');
+            var cityName = $item.find('.irp-city-title').text();
+
+            if (confirm((irpAdmin.i18n.confirmDeleteCity || 'Stadt "{city}" wirklich löschen?').replace('{city}', cityName))) {
+                $item.slideUp(200, function() {
+                    $(this).remove();
+                    // Open first remaining city if none open
+                    if (!$accordion.find('.irp-city-item.open').length) {
+                        $accordion.find('.irp-city-item:first').addClass('open');
+                    }
+                });
+            }
+        });
+
+        // Auto-update city title in accordion header
+        $(document).on('input', '.irp-city-accordion input[name*="[name]"]', function() {
+            var $item = $(this).closest('.irp-city-item');
+            var name = $(this).val() || (irpAdmin.i18n.newCity || 'Neue Stadt');
+            $item.find('.irp-city-title').text(name);
+        });
+
+        // Auto-update city ID in accordion header
+        $(document).on('input', '.irp-city-accordion input[name*="[id]"]', function() {
+            var $item = $(this).closest('.irp-city-item');
+            var id = $(this).val() || '...';
+            $item.find('.irp-city-header .irp-city-id').text(id);
+        });
+
+        // Auto-generate ID from name (accordion version)
+        $(document).on('input', '.irp-city-accordion input[name*="[name]"]', function() {
+            var $item = $(this).closest('.irp-city-item');
+            var $idInput = $item.find('input[name*="[id]"]');
+
+            // Only auto-fill if ID is empty or matches auto-generated pattern
+            if (!$idInput.data('manual')) {
+                var name = $(this).val();
+                var id = name
+                    .toLowerCase()
+                    .replace(/ä/g, 'ae')
+                    .replace(/ö/g, 'oe')
+                    .replace(/ü/g, 'ue')
+                    .replace(/ß/g, 'ss')
+                    .replace(/[^a-z0-9]/g, '_')
+                    .replace(/_+/g, '_')
+                    .replace(/^_|_$/g, '');
+
+                $idInput.val(id).trigger('input');
+            }
+        });
+
+        // Mark ID as manually edited
+        $(document).on('change', '.irp-city-accordion input[name*="[id]"]', function() {
+            $(this).data('manual', true);
+        });
+
+        // =====================================================
+        // Multiplier Slider
+        // =====================================================
+
+        // Update multiplier value display and impact
+        $(document).on('input', '.irp-multiplier-slider input[type="range"]', function() {
+            var $slider = $(this).closest('.irp-multiplier-slider');
+            var value = parseFloat($(this).val());
+            var $valueDisplay = $slider.find('.irp-multiplier-value');
+            var $impact = $slider.find('.irp-impact');
+
+            // Update value display
+            $valueDisplay.text(value.toFixed(2));
+
+            // Update hidden input if exists
+            var $hidden = $slider.find('input[type="hidden"]');
+            if ($hidden.length) {
+                $hidden.val(value);
+            }
+
+            // Update impact indicator
+            if ($impact.length) {
+                var impact = (value - 1) * 100;
+                var sign = impact >= 0 ? '+' : '';
+                $impact
+                    .text(sign + Math.round(impact) + '%')
+                    .removeClass('irp-impact-positive irp-impact-negative irp-impact-neutral')
+                    .addClass(impact > 0 ? 'irp-impact-positive' : (impact < 0 ? 'irp-impact-negative' : 'irp-impact-neutral'));
+            }
+        });
+
+        // =====================================================
+        // Number Input Validation (no spinner)
+        // =====================================================
+
+        // Allow only numbers and decimal point
+        $(document).on('keypress', '.irp-number-input', function(e) {
+            var char = String.fromCharCode(e.which);
+            var value = $(this).val();
+
+            // Allow: backspace, delete, tab, escape, enter, decimal point, comma
+            if (e.which === 8 || e.which === 0 || e.which === 13) {
+                return true;
+            }
+
+            // Allow decimal point/comma (only one)
+            if ((char === '.' || char === ',') && value.indexOf('.') === -1 && value.indexOf(',') === -1) {
+                return true;
+            }
+
+            // Allow numbers
+            if (char >= '0' && char <= '9') {
+                return true;
+            }
+
+            e.preventDefault();
+            return false;
+        });
+
+        // Normalize decimal separator on blur
+        $(document).on('blur', '.irp-number-input', function() {
+            var value = $(this).val().replace(',', '.');
+            if (value && !isNaN(parseFloat(value))) {
+                $(this).val(parseFloat(value));
+            }
+        });
+
+        // =====================================================
+        // Helper: Create City Accordion Item HTML
+        // =====================================================
+
+        function createCityAccordionItem(index) {
+            var i18n = irpAdmin.i18n || {};
+            return `
+                <div class="irp-city-item open" data-city-index="${index}">
+                    <div class="irp-city-header">
+                        <span class="irp-city-toggle dashicons dashicons-arrow-right-alt2"></span>
+                        <span class="irp-city-title">${i18n.newCity || 'Neue Stadt'}</span>
+                        <code class="irp-city-id">...</code>
+                        <button type="button" class="irp-city-delete" title="${i18n.deleteCity || 'Stadt löschen'}">
+                            <span class="dashicons dashicons-trash"></span>
+                        </button>
+                    </div>
+                    <div class="irp-city-content">
+                        <div class="irp-city-group">
+                            <div class="irp-city-group-header">
+                                <span class="dashicons dashicons-admin-home"></span>
+                                <h4>${i18n.baseData || 'Basisdaten'}</h4>
+                            </div>
+                            <div class="irp-city-field">
+                                <span class="irp-city-field-label">
+                                    ${i18n.cityId || 'Stadt-ID'}
+                                    <span class="irp-tooltip">
+                                        <span class="dashicons dashicons-editor-help"></span>
+                                        <span class="irp-tooltip-text">${i18n.cityIdTooltip || 'Eindeutige Kennung für den Shortcode (z.B. muenchen)'}</span>
+                                    </span>
+                                </span>
+                                <div class="irp-city-field-input">
+                                    <input type="text"
+                                           name="irp_price_matrix[cities][${index}][id]"
+                                           value=""
+                                           class="irp-number-input irp-input-wide"
+                                           placeholder="z.B. muenchen"
+                                           pattern="[a-z0-9_-]+"
+                                           required>
+                                </div>
+                            </div>
+                            <div class="irp-city-field">
+                                <span class="irp-city-field-label">${i18n.cityName || 'Name'}</span>
+                                <div class="irp-city-field-input">
+                                    <input type="text"
+                                           name="irp_price_matrix[cities][${index}][name]"
+                                           value=""
+                                           class="irp-number-input irp-input-wide"
+                                           placeholder="${i18n.cityNamePlaceholder || 'Stadtname'}"
+                                           required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="irp-city-group">
+                            <div class="irp-city-group-header">
+                                <span class="dashicons dashicons-building"></span>
+                                <h4>${i18n.rentalParams || 'Mietwert-Parameter'}</h4>
+                            </div>
+                            <div class="irp-city-field">
+                                <span class="irp-city-field-label">
+                                    ${i18n.basePrice || 'Basis-Mietpreis'}
+                                    <span class="irp-tooltip">
+                                        <span class="dashicons dashicons-editor-help"></span>
+                                        <span class="irp-tooltip-text">${i18n.basePriceTooltip || 'Ausgangspreis für eine 70m² Referenzwohnung in durchschnittlicher Lage und normalem Zustand.'}</span>
+                                    </span>
+                                </span>
+                                <div class="irp-city-field-input">
+                                    <div class="irp-input-group">
+                                        <input type="text"
+                                               name="irp_price_matrix[cities][${index}][base_price]"
+                                               value="12.00"
+                                               class="irp-number-input"
+                                               inputmode="decimal">
+                                        <span class="irp-input-suffix">€/m²</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="irp-city-field">
+                                <span class="irp-city-field-label">
+                                    ${i18n.degression || 'Größendegression'}
+                                    <span class="irp-tooltip">
+                                        <span class="dashicons dashicons-editor-help"></span>
+                                        <span class="irp-tooltip-text">${i18n.degressionTooltip || 'Steuert wie stark der m²-Preis bei größeren Wohnungen sinkt. 0.20 = Standard, 0 = keine Anpassung.'}</span>
+                                    </span>
+                                </span>
+                                <div class="irp-city-field-input">
+                                    <input type="text"
+                                           name="irp_price_matrix[cities][${index}][size_degression]"
+                                           value="0.20"
+                                           class="irp-number-input irp-input-narrow"
+                                           inputmode="decimal">
+                                </div>
+                            </div>
+                            <div class="irp-city-field">
+                                <span class="irp-city-field-label">
+                                    ${i18n.saleFactor || 'Vervielfältiger'}
+                                    <span class="irp-tooltip">
+                                        <span class="dashicons dashicons-editor-help"></span>
+                                        <span class="irp-tooltip-text">${i18n.saleFactorTooltip || 'Anzahl Jahresnettokaltmieten für den Kaufpreis. Bei 1.000€/Monat und Faktor 25 → 300.000€ Kaufpreis.'}</span>
+                                    </span>
+                                </span>
+                                <div class="irp-city-field-input">
+                                    <input type="text"
+                                           name="irp_price_matrix[cities][${index}][sale_factor]"
+                                           value="25"
+                                           class="irp-number-input irp-input-narrow"
+                                           inputmode="decimal">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="irp-city-group">
+                            <div class="irp-city-group-header">
+                                <span class="dashicons dashicons-money-alt"></span>
+                                <h4>${i18n.saleParams || 'Verkaufswert-Parameter'}</h4>
+                            </div>
+                            <div class="irp-city-field">
+                                <span class="irp-city-field-label">
+                                    ${i18n.landPrice || 'Bodenrichtwert'}
+                                    <span class="irp-tooltip">
+                                        <span class="dashicons dashicons-editor-help"></span>
+                                        <span class="irp-tooltip-text">${i18n.landPriceTooltip || 'Durchschnittlicher Grundstückspreis pro m² in dieser Stadt (vom Gutachterausschuss).'}</span>
+                                    </span>
+                                </span>
+                                <div class="irp-city-field-input">
+                                    <div class="irp-input-group">
+                                        <input type="text"
+                                               name="irp_price_matrix[cities][${index}][land_price_per_sqm]"
+                                               value="150"
+                                               class="irp-number-input"
+                                               inputmode="decimal">
+                                        <span class="irp-input-suffix">€/m²</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="irp-city-field">
+                                <span class="irp-city-field-label">
+                                    ${i18n.buildingPrice || 'Gebäude'}
+                                    <span class="irp-tooltip">
+                                        <span class="dashicons dashicons-editor-help"></span>
+                                        <span class="irp-tooltip-text">${i18n.buildingPriceTooltip || 'Normalherstellungskosten für Wohngebäude - Neubaukosten pro m² Wohnfläche.'}</span>
+                                    </span>
+                                </span>
+                                <div class="irp-city-field-input">
+                                    <div class="irp-input-group">
+                                        <input type="text"
+                                               name="irp_price_matrix[cities][${index}][building_price_per_sqm]"
+                                               value="2500"
+                                               class="irp-number-input"
+                                               inputmode="decimal">
+                                        <span class="irp-input-suffix">€/m²</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="irp-city-field">
+                                <span class="irp-city-field-label">
+                                    ${i18n.apartmentPrice || 'Wohnung'}
+                                    <span class="irp-tooltip">
+                                        <span class="dashicons dashicons-editor-help"></span>
+                                        <span class="irp-tooltip-text">${i18n.apartmentPriceTooltip || 'Durchschnittlicher Verkaufspreis pro m² für Eigentumswohnungen in dieser Stadt.'}</span>
+                                    </span>
+                                </span>
+                                <div class="irp-city-field-input">
+                                    <div class="irp-input-group">
+                                        <input type="text"
+                                               name="irp_price_matrix[cities][${index}][apartment_price_per_sqm]"
+                                               value="2200"
+                                               class="irp-number-input"
+                                               inputmode="decimal">
+                                        <span class="irp-input-suffix">€/m²</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="irp-city-field">
+                                <span class="irp-city-field-label">
+                                    ${i18n.marketFactor || 'Marktfaktor'}
+                                    <span class="irp-tooltip">
+                                        <span class="dashicons dashicons-editor-help"></span>
+                                        <span class="irp-tooltip-text">${i18n.marketFactorTooltip || 'Marktanpassung: 0.8 = schwacher Markt, 1.0 = normal, 1.2+ = Boom-Markt.'}</span>
+                                    </span>
+                                </span>
+                                <div class="irp-city-field-input">
+                                    <div class="irp-multiplier-slider">
+                                        <input type="range"
+                                               min="0.5"
+                                               max="2.0"
+                                               step="0.05"
+                                               value="1.00">
+                                        <input type="hidden"
+                                               name="irp_price_matrix[cities][${index}][market_adjustment_factor]"
+                                               value="1.00">
+                                        <span class="irp-multiplier-value">1.00</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
     });
 
 })(jQuery);

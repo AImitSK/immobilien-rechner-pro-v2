@@ -374,10 +374,9 @@ class IRP_Calculator {
         }
         $vervielfaeltiger = $city ? (float) $city['sale_factor'] : 25;
 
-        $settings = get_option('irp_settings', []);
-        $maintenance_rate = (float) ($settings['default_maintenance_rate'] ?? 1.5) / 100;
-        $vacancy_rate = (float) ($settings['default_vacancy_rate'] ?? 3) / 100;
-        $broker_commission = (float) ($settings['default_broker_commission'] ?? 3.57) / 100;
+        $maintenance_rate = (float) ($this->matrix['maintenance_rate'] ?? 1.5) / 100;
+        $vacancy_rate = (float) ($this->matrix['vacancy_rate'] ?? 3) / 100;
+        $broker_commission = (float) ($this->matrix['broker_commission'] ?? 3.57) / 100;
 
         // Calculate annual rental income (after costs)
         $gross_annual_rent = $rental['annual_rent'];
