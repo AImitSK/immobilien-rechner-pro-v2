@@ -962,6 +962,9 @@
     font-size: 16px;
     width: 16px;
     height: 16px;
+    line-height: 1;
+    vertical-align: middle;
+    margin-top: -2px;
 }
 
 .irp-copy-success {
