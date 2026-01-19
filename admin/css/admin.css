@@ -451,12 +451,14 @@
 /* Consistent column widths for multiplier tables */
 .irp-data-table th:nth-child(2),
 .irp-data-table td:nth-child(2) {
-    width: 120px;
+    width: 140px;
+    white-space: nowrap;
 }
 
 .irp-data-table th:nth-child(3),
 .irp-data-table td:nth-child(3) {
-    width: 100px;
+    width: 130px;
+    white-space: nowrap;
 }
 
 .irp-data-table th:nth-child(4),
