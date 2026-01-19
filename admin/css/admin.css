@@ -363,6 +363,23 @@
 }
 
 /* Settings */
+.irp-settings-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin: 20px 0;
+}
+
+.irp-settings-row .irp-settings-section {
+    margin: 0;
+}
+
+@media (max-width: 782px) {
+    .irp-settings-row {
+        grid-template-columns: 1fr;
+    }
+}
+
 .irp-settings-section {
     background: #fff;
     border: 1px solid #c3c4c7;

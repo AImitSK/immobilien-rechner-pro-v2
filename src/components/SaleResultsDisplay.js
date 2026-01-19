@@ -6,10 +6,11 @@
  * - Land: Pure land value (Bodenwert)
  */
 
-import { useEffect, useRef } from '@wordpress/element';
+import { useEffect, useRef, useState } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 import { motion } from 'framer-motion';
 import { trackCompleteLead } from '../utils/tracking';
+import Icon from './Icon';
 
 export default function SaleResultsDisplay({
     formData,
@@ -283,6 +284,13 @@ function HouseResults({ formData, results, onStartOver, showBrokerNotice, compan
                 </div>
             </motion.div>
 
+            {/* Map with Price Marker */}
+            <ResultsMap
+                formData={formData}
+                priceEstimate={results?.price_estimate || 0}
+                propertyType="house"
+            />
+
             {showBrokerNotice && <BrokerNotice companyName={companyName} />}
 
             <motion.div
@@ -394,6 +402,13 @@ function ApartmentResults({ formData, results, onStartOver, showBrokerNotice, co
                 </div>
             </motion.div>
 
+            {/* Map with Price Marker */}
+            <ResultsMap
+                formData={formData}
+                priceEstimate={results?.price_estimate || 0}
+                propertyType="apartment"
+            />
+
             {showBrokerNotice && <BrokerNotice companyName={companyName} />}
 
             <motion.div
@@ -488,8 +503,15 @@ function LandResults({ formData, results, onStartOver, showBrokerNotice, company
                 </div>
             </motion.div>
 
-            {/* Location Info */}
-            {city?.name && (
+            {/* Map with Price Marker */}
+            <ResultsMap
+                formData={formData}
+                priceEstimate={results?.price_estimate || 0}
+                propertyType="land"
+            />
+
+            {/* Location Info - only show if no map */}
+            {city?.name && !formData?.address_lat && (
                 <motion.div
                     className="irp-sale-location-info"
                     initial={{ opacity: 0, y: 20 }}
@@ -542,6 +564,150 @@ function Disclaimer() {
             <p>
                 {__('Hinweis: Diese Schätzung dient nur zur Orientierung und ersetzt keine professionelle Immobilienbewertung. Der tatsächliche Verkaufspreis kann aufgrund individueller Objektmerkmale, aktueller Marktbedingungen und Verhandlungen abweichen.', 'immobilien-rechner-pro')}
             </p>
+        </motion.div>
+    );
+}
+
+/**
+ * Results Map Component with Custom Price Marker
+ */
+function ResultsMap({ formData, priceEstimate, propertyType }) {
+    const mapRef = useRef(null);
+    const mapInstanceRef = useRef(null);
+    const overlayRef = useRef(null);
+    const [mapLoaded, setMapLoaded] = useState(false);
+
+    const settings = window.irpSettings?.settings || {};
+    const googleMapsApiKey = settings.googleMapsApiKey || window.irpSettings?.googleMapsApiKey || '';
+    const showMap = googleMapsApiKey && formData?.address_lat && formData?.address_lng;
+
+    // Get icon path based on property type
+    const getIconPath = () => {
+        switch (propertyType) {
+            case 'apartment':
+                return 'assets/icon/immobilientyp/wohnung.svg';
+            case 'land':
+                return 'assets/icon/immobilientyp/grundstueck.svg';
+            case 'house':
+            default:
+                return 'assets/icon/immobilientyp/haus.svg';
+        }
+    };
+
+    useEffect(() => {
+        if (!showMap || !window.google?.maps) return;
+
+        const initMap = () => {
+            if (!mapRef.current || mapInstanceRef.current) return;
+
+            const position = {
+                lat: parseFloat(formData.address_lat),
+                lng: parseFloat(formData.address_lng),
+            };
+
+            mapInstanceRef.current = new window.google.maps.Map(mapRef.current, {
+                center: position,
+                zoom: 15,
+                mapTypeControl: false,
+                streetViewControl: false,
+                fullscreenControl: false,
+                zoomControl: true,
+            });
+
+            // Create custom overlay for price marker
+            class PriceMarkerOverlay extends window.google.maps.OverlayView {
+                constructor(position, price, iconPath) {
+                    super();
+                    this.position = position;
+                    this.price = price;
+                    this.iconPath = iconPath;
+                    this.div = null;
+                }
+
+                onAdd() {
+                    this.div = document.createElement('div');
+                    this.div.className = 'irp-map-price-marker';
+                    this.div.innerHTML = `
+                        <div class="irp-map-marker-content">
+                            <div class="irp-map-marker-icon">
+                                <img src="${window.irpSettings?.pluginUrl || ''}${this.iconPath}" alt="" />
+                            </div>
+                            <div class="irp-map-marker-price">${this.price}</div>
+                        </div>
+                        <div class="irp-map-marker-arrow"></div>
+                    `;
+
+                    const panes = this.getPanes();
+                    panes.floatPane.appendChild(this.div);
+                }
+
+                draw() {
+                    const overlayProjection = this.getProjection();
+                    const pos = overlayProjection.fromLatLngToDivPixel(this.position);
+
+                    if (this.div) {
+                        // Center the marker horizontally, position above the point
+                        this.div.style.left = pos.x + 'px';
+                        this.div.style.top = pos.y + 'px';
+                    }
+                }
+
+                onRemove() {
+                    if (this.div) {
+                        this.div.parentNode.removeChild(this.div);
+                        this.div = null;
+                    }
+                }
+            }
+
+            // Create and add the overlay
+            const priceFormatted = formatCurrency(priceEstimate);
+            overlayRef.current = new PriceMarkerOverlay(
+                new window.google.maps.LatLng(position.lat, position.lng),
+                priceFormatted,
+                getIconPath()
+            );
+            overlayRef.current.setMap(mapInstanceRef.current);
+
+            setMapLoaded(true);
+        };
+
+        // Small delay to ensure DOM is ready
+        setTimeout(initMap, 100);
+
+        return () => {
+            if (overlayRef.current) {
+                overlayRef.current.setMap(null);
+            }
+        };
+    }, [showMap, formData?.address_lat, formData?.address_lng, priceEstimate, propertyType]);
+
+    if (!showMap) {
+        return null;
+    }
+
+    return (
+        <motion.div
+            className="irp-results-map-section"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.7 }}
+        >
+            <h3>{__('Standort', 'immobilien-rechner-pro')}</h3>
+            <div className="irp-results-map-container">
+                <div ref={mapRef} className="irp-results-google-map" />
+            </div>
+            {formData?.street_address && (
+                <p className="irp-results-address">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="16" height="16">
+                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                        <circle cx="12" cy="10" r="3" />
+                    </svg>
+                    {formData.street_address}
+                    {formData.zip_code && `, ${formData.zip_code}`}
+                    {formData.property_location && ` ${formData.property_location}`}
+                </p>
+            )}
         </motion.div>
     );
 }

@@ -1364,6 +1364,97 @@ select {
     background: var(--irp-bg-secondary);
 }
 
+// Results Map Section
+.irp-results-map-section {
+    margin: 24px 0;
+
+    h3 {
+        font-size: 1rem;
+        font-weight: 600;
+        margin-bottom: 12px;
+        color: var(--irp-text);
+    }
+}
+
+.irp-results-map-container {
+    border-radius: var(--irp-radius);
+    overflow: hidden;
+    border: 1px solid var(--irp-border);
+}
+
+.irp-results-google-map {
+    width: 100%;
+    height: 280px;
+    background: var(--irp-bg-secondary);
+}
+
+.irp-results-address {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 12px;
+    font-size: 0.875rem;
+    color: var(--irp-text-muted);
+
+    svg {
+        flex-shrink: 0;
+        color: var(--irp-primary);
+    }
+}
+
+// Custom Map Price Marker
+.irp-map-price-marker {
+    position: absolute;
+    transform: translate(-50%, -100%);
+    z-index: 1000;
+    cursor: pointer;
+    filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.25));
+}
+
+.irp-map-marker-content {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--irp-primary, #2563eb);
+    color: white;
+    padding: 8px 14px;
+    border-radius: 24px;
+    font-weight: 600;
+    font-size: 0.875rem;
+    white-space: nowrap;
+}
+
+.irp-map-marker-icon {
+    width: 24px;
+    height: 24px;
+    background: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+
+    img {
+        width: 16px;
+        height: 16px;
+        object-fit: contain;
+    }
+}
+
+.irp-map-marker-price {
+    font-size: 0.9375rem;
+    letter-spacing: -0.01em;
+}
+
+.irp-map-marker-arrow {
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 10px solid var(--irp-primary, #2563eb);
+    margin: -1px auto 0;
+}
+
 // Rating Section
 .irp-rating-section {
     margin: 24px 0;

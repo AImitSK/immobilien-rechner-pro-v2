@@ -7,7 +7,7 @@ if (!defined('ABSPATH')) {
     exit;
 }
 ?>
-<div class="wrap irp-admin-wrap">
+<div class="wrap irp-admin-wrap irp-shortcode-generator-wrap">
     <h1><?php esc_html_e('Shortcode Generator', 'immobilien-rechner-pro'); ?></h1>
 
     <p class="description">
@@ -59,64 +59,66 @@ if (!defined('ABSPATH')) {
         </div>
     </div>
 
-    <div class="irp-settings-section">
-        <h2><?php esc_html_e('Stadt', 'immobilien-rechner-pro'); ?></h2>
-        <p class="description">
-            <?php esc_html_e('Soll eine bestimmte Stadt vorausgewählt werden?', 'immobilien-rechner-pro'); ?>
-        </p>
-
-        <select name="irp_city_id" id="irp-city-select" class="regular-text">
-            <option value=""><?php esc_html_e('— Benutzer wählt aus Dropdown —', 'immobilien-rechner-pro'); ?></option>
-            <?php if (!empty($cities)) : ?>
-                <?php foreach ($cities as $city) : ?>
-                    <option value="<?php echo esc_attr($city['id']); ?>">
-                        <?php echo esc_html($city['name']); ?> (<?php echo esc_html($city['id']); ?>)
-                    </option>
-                <?php endforeach; ?>
-            <?php endif; ?>
-        </select>
-
-        <?php if (empty($cities)) : ?>
-            <p class="irp-warning">
-                <span class="dashicons dashicons-warning"></span>
-                <?php
-                printf(
-                    esc_html__('Keine Städte konfiguriert. %sStädte hinzufügen%s', 'immobilien-rechner-pro'),
-                    '<a href="' . esc_url(admin_url('admin.php?page=irp-matrix&tab=cities')) . '">',
-                    '</a>'
-                );
-                ?>
+    <div class="irp-settings-row">
+        <div class="irp-settings-section">
+            <h2><?php esc_html_e('Stadt', 'immobilien-rechner-pro'); ?></h2>
+            <p class="description">
+                <?php esc_html_e('Soll eine bestimmte Stadt vorausgewählt werden?', 'immobilien-rechner-pro'); ?>
             </p>
-        <?php endif; ?>
-    </div>
 
-    <div class="irp-settings-section">
-        <h2><?php esc_html_e('Design', 'immobilien-rechner-pro'); ?></h2>
+            <select name="irp_city_id" id="irp-city-select" class="regular-text">
+                <option value=""><?php esc_html_e('— Benutzer wählt aus Dropdown —', 'immobilien-rechner-pro'); ?></option>
+                <?php if (!empty($cities)) : ?>
+                    <?php foreach ($cities as $city) : ?>
+                        <option value="<?php echo esc_attr($city['id']); ?>">
+                            <?php echo esc_html($city['name']); ?> (<?php echo esc_html($city['id']); ?>)
+                        </option>
+                    <?php endforeach; ?>
+                <?php endif; ?>
+            </select>
 
-        <table class="form-table irp-compact-table">
-            <tr>
-                <th scope="row">
-                    <label for="irp-theme"><?php esc_html_e('Farbschema', 'immobilien-rechner-pro'); ?></label>
-                </th>
-                <td>
-                    <select name="irp_theme" id="irp-theme">
-                        <option value="light"><?php esc_html_e('Hell (Light)', 'immobilien-rechner-pro'); ?></option>
-                        <option value="dark"><?php esc_html_e('Dunkel (Dark)', 'immobilien-rechner-pro'); ?></option>
-                    </select>
-                </td>
-            </tr>
-            <tr>
-                <th scope="row">
-                    <?php esc_html_e('Branding anzeigen', 'immobilien-rechner-pro'); ?>
-                </th>
-                <td>
-                    <label>
-                        <input type="checkbox" name="irp_show_branding" id="irp-show-branding" value="true" checked>
-                        <?php esc_html_e('Firmenlogo und -name anzeigen', 'immobilien-rechner-pro'); ?>
-                    </label>
-                </td>
-            </tr>
-        </table>
+            <?php if (empty($cities)) : ?>
+                <p class="irp-warning">
+                    <span class="dashicons dashicons-warning"></span>
+                    <?php
+                    printf(
+                        esc_html__('Keine Städte konfiguriert. %sStädte hinzufügen%s', 'immobilien-rechner-pro'),
+                        '<a href="' . esc_url(admin_url('admin.php?page=irp-matrix&tab=cities')) . '">',
+                        '</a>'
+                    );
+                    ?>
+                </p>
+            <?php endif; ?>
+        </div>
+
+        <div class="irp-settings-section">
+            <h2><?php esc_html_e('Design', 'immobilien-rechner-pro'); ?></h2>
+
+            <table class="form-table irp-compact-table">
+                <tr>
+                    <th scope="row">
+                        <label for="irp-theme"><?php esc_html_e('Farbschema', 'immobilien-rechner-pro'); ?></label>
+                    </th>
+                    <td>
+                        <select name="irp_theme" id="irp-theme">
+                            <option value="light"><?php esc_html_e('Hell (Light)', 'immobilien-rechner-pro'); ?></option>
+                            <option value="dark"><?php esc_html_e('Dunkel (Dark)', 'immobilien-rechner-pro'); ?></option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">
+                        <?php esc_html_e('Branding anzeigen', 'immobilien-rechner-pro'); ?>
+                    </th>
+                    <td>
+                        <label>
+                            <input type="checkbox" name="irp_show_branding" id="irp-show-branding" value="true" checked>
+                            <?php esc_html_e('Firmenlogo und -name anzeigen', 'immobilien-rechner-pro'); ?>
+                        </label>
+                    </td>
+                </tr>
+            </table>
+        </div>
     </div>
 
     <div class="irp-settings-section">

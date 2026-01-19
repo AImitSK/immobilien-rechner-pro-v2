@@ -1,6 +1,6 @@
 /**
  * Sale Value Calculator - Address Step
- * Address input with Google Maps Autocomplete support
+ * Address input with Google Maps Autocomplete and Map display
  */
 
 import { useState, useEffect, useRef, useCallback } from '@wordpress/element';
@@ -15,10 +15,66 @@ export default function SaleAddressStep({ data, onChange, city }) {
     const [isGoogleMapsLoaded, setIsGoogleMapsLoaded] = useState(false);
     const [autocomplete, setAutocomplete] = useState(null);
     const addressInputRef = useRef(null);
+    const mapRef = useRef(null);
+    const mapInstanceRef = useRef(null);
+    const markerRef = useRef(null);
 
     // Get Google Maps API key from settings
-    const googleMapsApiKey = window.irpSettings?.googleMapsApiKey || '';
+    const settings = window.irpSettings?.settings || {};
+    const googleMapsApiKey = settings.googleMapsApiKey || window.irpSettings?.googleMapsApiKey || '';
+    const showMap = settings.showMapInLocationStep && googleMapsApiKey;
     const cityName = city?.name || data.property_location || '';
+
+    // Initialize Google Map
+    useEffect(() => {
+        if (!showMap || !window.google?.maps) return;
+
+        const initMap = () => {
+            if (!mapRef.current || mapInstanceRef.current) return;
+
+            const defaultCenter = { lat: 51.1657, lng: 10.4515 }; // Germany center
+
+            mapInstanceRef.current = new window.google.maps.Map(mapRef.current, {
+                center: data.address_lat && data.address_lng
+                    ? { lat: data.address_lat, lng: data.address_lng }
+                    : defaultCenter,
+                zoom: data.address_lat ? 15 : 6,
+                mapTypeControl: false,
+                streetViewControl: false,
+                fullscreenControl: false,
+            });
+
+            // Add marker if we have coordinates
+            if (data.address_lat && data.address_lng) {
+                markerRef.current = new window.google.maps.Marker({
+                    position: { lat: data.address_lat, lng: data.address_lng },
+                    map: mapInstanceRef.current,
+                });
+            }
+        };
+
+        // Small delay to ensure DOM is ready
+        setTimeout(initMap, 100);
+
+        return () => {
+            if (markerRef.current) {
+                markerRef.current.setMap(null);
+            }
+        };
+    }, [showMap]);
+
+    // Geocode city name to center map
+    useEffect(() => {
+        if (!showMap || !window.google?.maps || !cityName || data.address_lat) return;
+
+        const geocoder = new window.google.maps.Geocoder();
+        geocoder.geocode({ address: cityName + ', Deutschland' }, (results, status) => {
+            if (status === 'OK' && results[0]?.geometry?.location && mapInstanceRef.current) {
+                mapInstanceRef.current.setCenter(results[0].geometry.location);
+                mapInstanceRef.current.setZoom(12);
+            }
+        });
+    }, [showMap, cityName]);
 
     // Initialize Google Maps Autocomplete
     useEffect(() => {
@@ -70,11 +126,32 @@ export default function SaleAddressStep({ data, onChange, city }) {
                         ? `${street} ${streetNumber}`
                         : street;
 
+                    // Get coordinates from place
+                    const lat = place.geometry?.location?.lat();
+                    const lng = place.geometry?.location?.lng();
+
                     onChange({
                         street_address: fullStreet,
                         zip_code: zip || data.zip_code,
                         property_location: cityFromPlace || data.property_location,
+                        address_lat: lat,
+                        address_lng: lng,
                     });
+
+                    // Update map
+                    if (lat && lng && mapInstanceRef.current) {
+                        mapInstanceRef.current.setCenter({ lat, lng });
+                        mapInstanceRef.current.setZoom(15);
+
+                        if (markerRef.current) {
+                            markerRef.current.setPosition({ lat, lng });
+                        } else {
+                            markerRef.current = new window.google.maps.Marker({
+                                position: { lat, lng },
+                                map: mapInstanceRef.current,
+                            });
+                        }
+                    }
                 }
             });
 
@@ -176,6 +253,13 @@ export default function SaleAddressStep({ data, onChange, city }) {
                     )}
                 </div>
             </div>
+
+            {/* Google Map */}
+            {showMap && (
+                <div className="irp-map-container">
+                    <div ref={mapRef} className="irp-google-map" />
+                </div>
+            )}
 
             <p className="irp-info-text">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" width="16" height="16">
