@@ -115,7 +115,11 @@ class IRP_GitHub_Updater {
                     'new_version' => $remote_version,
                     'url' => "https://github.com/{$this->github_repo}",
                     'package' => $download_url,
-                    'icons' => [],
+                    'icons' => [
+                        '1x' => IRP_PLUGIN_URL . 'assets/images/icon.png',
+                        '2x' => IRP_PLUGIN_URL . 'assets/images/icon.png',
+                        'default' => IRP_PLUGIN_URL . 'assets/images/icon.png',
+                    ],
                     'banners' => [],
                     'requires' => '6.0',
                     'tested' => get_bloginfo('version'),
@@ -175,6 +179,11 @@ class IRP_GitHub_Updater {
             'requires_php' => '7.4',
             'downloaded' => 0,
             'last_updated' => $release->published_at ?? '',
+            'icons' => [
+                '1x' => IRP_PLUGIN_URL . 'assets/images/icon.png',
+                '2x' => IRP_PLUGIN_URL . 'assets/images/icon.png',
+                'default' => IRP_PLUGIN_URL . 'assets/images/icon.png',
+            ],
             'sections' => [
                 'description' => 'Professionelles WordPress-Plugin für Mietwertberechnung und Verkaufen-vs-Vermieten-Vergleich. White-Label-Lösung für Immobilienmakler.',
                 'changelog' => $this->format_changelog($release->body ?? ''),

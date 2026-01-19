@@ -8,7 +8,9 @@ if (!defined('ABSPATH')) {
 }
 ?>
 <div class="wrap irp-admin-wrap">
-    <h1><?php esc_html_e('Immobilien Rechner Pro', 'immobilien-rechner-pro'); ?></h1>
+    <div class="irp-dashboard-logo">
+        <img src="<?php echo esc_url(IRP_PLUGIN_URL . 'assets/images/logo.svg'); ?>" alt="Immobilien Rechner Pro" style="width: 350px; height: auto;">
+    </div>
 
     <div class="irp-dashboard-cards">
         <div class="irp-card">
