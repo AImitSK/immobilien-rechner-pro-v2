@@ -149,12 +149,6 @@ $location_ratings = $matrix['location_ratings'] ?? $admin->get_default_location_
                     <?php esc_html_e('Legen Sie hier Städte an, für die der Rechner verwendet werden soll. Klicken Sie auf eine Stadt, um deren Parameter zu bearbeiten.', 'immobilien-rechner-pro'); ?>
                 </p>
 
-                <div class="irp-shortcode-hint">
-                    <strong><?php esc_html_e('Shortcode-Verwendung:', 'immobilien-rechner-pro'); ?></strong>
-                    <code>[immobilien_rechner city_id="STADT_ID"]</code>
-                    <span class="description"><?php esc_html_e('Ohne city_id wird ein Dropdown mit allen Städten angezeigt.', 'immobilien-rechner-pro'); ?></span>
-                </div>
-
                 <!-- City Accordion -->
                 <div class="irp-city-accordion">
                     <?php if (!empty($cities)) : ?>
@@ -748,6 +742,9 @@ $location_ratings = $matrix['location_ratings'] ?? $admin->get_default_location_
 
             <div class="irp-settings-section">
                 <h2><?php esc_html_e('Objekttyp-Multiplikatoren', 'immobilien-rechner-pro'); ?></h2>
+                <p class="description">
+                    <?php esc_html_e('Unterschiedliche Immobilientypen haben unterschiedliche Mietpreisniveaus. Häuser erzielen oft höhere Mieten als Wohnungen.', 'immobilien-rechner-pro'); ?>
+                </p>
 
                 <table class="widefat irp-data-table">
                     <thead>
@@ -1102,7 +1099,7 @@ $location_ratings = $matrix['location_ratings'] ?? $admin->get_default_location_
                                     <span class="irp-tooltip-text"><?php esc_html_e('Art und Zeitpunkt der durchgeführten Modernisierungsmaßnahmen.', 'immobilien-rechner-pro'); ?></span>
                                 </span>
                             </th>
-                            <th style="width: 150px;">
+                            <th style="width: 180px;">
                                 <?php esc_html_e('Jahres-Verschiebung', 'immobilien-rechner-pro'); ?>
                                 <span class="irp-tooltip">
                                     <span class="dashicons dashicons-editor-help"></span>
@@ -1339,14 +1336,16 @@ $location_ratings = $matrix['location_ratings'] ?? $admin->get_default_location_
                 </table>
             </div>
 
-            <div class="irp-info-box">
-                <h4><?php esc_html_e('Hinweise zur Verkaufswertberechnung', 'immobilien-rechner-pro'); ?></h4>
-                <ul>
-                    <li><strong><?php esc_html_e('Wohnungen:', 'immobilien-rechner-pro'); ?></strong> <?php esc_html_e('Vergleichswertverfahren - basierend auf dem m²-Preis für Wohnungen in der Stadt.', 'immobilien-rechner-pro'); ?></li>
-                    <li><strong><?php esc_html_e('Häuser:', 'immobilien-rechner-pro'); ?></strong> <?php esc_html_e('Sachwertverfahren - Bodenwert + Gebäudewert × Faktoren + Ausstattung × Marktanpassung.', 'immobilien-rechner-pro'); ?></li>
-                    <li><strong><?php esc_html_e('Grundstücke:', 'immobilien-rechner-pro'); ?></strong> <?php esc_html_e('Reiner Bodenwert basierend auf dem Bodenrichtwert.', 'immobilien-rechner-pro'); ?></li>
-                    <li><strong><?php esc_html_e('Marktanpassung:', 'immobilien-rechner-pro'); ?></strong> <?php esc_html_e('Wird im Tab "Städte" pro Stadt konfiguriert (0.8 = schwacher Markt, 1.4 = Boom).', 'immobilien-rechner-pro'); ?></li>
-                </ul>
+            <div class="irp-settings-section">
+                <h2><?php esc_html_e('Hinweise zur Verkaufswertberechnung', 'immobilien-rechner-pro'); ?></h2>
+                <div class="irp-info-box">
+                    <ul>
+                        <li><strong><?php esc_html_e('Wohnungen:', 'immobilien-rechner-pro'); ?></strong> <?php esc_html_e('Vergleichswertverfahren - basierend auf dem m²-Preis für Wohnungen in der Stadt.', 'immobilien-rechner-pro'); ?></li>
+                        <li><strong><?php esc_html_e('Häuser:', 'immobilien-rechner-pro'); ?></strong> <?php esc_html_e('Sachwertverfahren - Bodenwert + Gebäudewert × Faktoren + Ausstattung × Marktanpassung.', 'immobilien-rechner-pro'); ?></li>
+                        <li><strong><?php esc_html_e('Grundstücke:', 'immobilien-rechner-pro'); ?></strong> <?php esc_html_e('Reiner Bodenwert basierend auf dem Bodenrichtwert.', 'immobilien-rechner-pro'); ?></li>
+                        <li><strong><?php esc_html_e('Marktanpassung:', 'immobilien-rechner-pro'); ?></strong> <?php esc_html_e('Wird im Tab "Städte" pro Stadt konfiguriert (0.8 = schwacher Markt, 1.4 = Boom).', 'immobilien-rechner-pro'); ?></li>
+                    </ul>
+                </div>
             </div>
         </div>
 
